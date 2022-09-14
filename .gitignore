@@ -1,0 +1,10 @@
+# CMake related
+build_debug/
+build_release_win64/
+build_release_win32/
+# VSCode internal folder
+.vscode/
+# Auto-generated headers from json files
+*.hxx
+# Remove any compiled binary
+*.exe

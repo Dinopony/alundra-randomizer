@@ -1,0 +1,527 @@
+[
+    {
+        "name": "Inoa: Chest in Lutas's house (Secret Pass)",
+        "nodeId": "inoa",
+        "address": "49969AE"
+    },
+
+    {
+        "name": "Overworld C2: Chest in Olen's house (Gilded Falcon)",
+        "nodeId": "overworld_c2",
+        "address": "44591EE"
+    },
+
+    {
+        "name": "Overworld D2: Middle chest (Herbs)",
+        "nodeId": "overworld_d2",
+        "address": "47E966"
+    },
+    {
+        "name": "Overworld D2: Cliff chest (Life Vessel)",
+        "nodeId": "overworld_d2_chest_cliff",
+        "address": "47E9DE"
+    },
+    {
+        "name": "Overworld D2: Pier chest (Gilded Falcon)",
+        "nodeId": "overworld_d2",
+        "address": "47E9F2"
+    },
+
+    {
+        "name": "Overworld D3: Elevated chest near bridge (Magic Seed)",
+        "nodeId": "overworld_d3_behind_spring_and_vines",
+        "address": "4C39EA"
+    },
+    {
+        "name": "Overworld D3: Elevated chest near left border (Gilded Falcon)",
+        "nodeId": "overworld_d3_behind_spring",
+        "address": "4C3A76"
+    },
+    {
+        "name": "Overworld D3: Leftmost chest in 3-chest group (Herbs)",
+        "nodeId": "overworld_d3_one_way_to_d4",
+        "address": "4C3B52"
+    },
+    {
+        "name": "Overworld D3: Middle chest in 3-chest group (Herbs)",
+        "nodeId": "overworld_d3_one_way_to_d4",
+        "address": "4C3B3E"
+    },
+    {
+        "name": "Overworld D3: Rightmost chest in 3-chest group (Herbs)",
+        "nodeId": "overworld_d3_one_way_to_d4",
+        "address": "4C3B66"
+    },
+    {
+        "name": "Overworld D3: 1st chest in 4-chest group (30 Gilder)",
+        "nodeId": "overworld_d3_behind_vines",
+        "address": "4C39FE"
+    },
+    {
+        "name": "Overworld D3: 2nd chest in 4-chest group (30 Gilder)",
+        "nodeId": "overworld_d3_behind_vines",
+        "address": "4C3B02"
+    },
+    {
+        "name": "Overworld D3: 3rd chest in 4-chest group (30 Gilder)",
+        "nodeId": "overworld_d3_behind_vines",
+        "address": "4C3B16"
+    },
+    {
+        "name": "Overworld D3: Rightmost chest in 4-chest group (30 Gilder)",
+        "nodeId": "overworld_d3_behind_vines",
+        "address": "4C3B2A"
+    },
+
+    {
+        "name": "Overworld D4: Elevated chest at top-left corner (Life Vessel)",
+        "nodeId": "overworld_d3_one_way_to_d4",
+        "address": "50120A"
+    },
+    {
+        "name": "Overworld D4: Second chest at top-left corner (Herbs)",
+        "nodeId": "overworld_d4",
+        "address": "5011F6"
+    },
+    {
+        "name": "Overworld D4: Chest to the left of the swamp (30 Gilder)",
+        "nodeId": "overworld_d4",
+        "address": "5011CE"
+    },
+    {
+        "name": "Overworld D4: Chest on left swamp island (Gilded Falcon)",
+        "nodeId": "overworld_d4_behind_merman",
+        "address": "5010F2"
+    },
+    {
+        "name": "Overworld D4: Right swamp chest (Strength Tonic)",
+        "nodeId": "overworld_d4",
+        "address": "5011E2"
+    },
+
+    {
+        "name": "Overworld C4: Left coast chest (Magic Elixyr)",
+        "nodeId": "overworld_c4",
+        "address": [
+            "3F8B96",
+            "584D6CA"
+        ]
+    },
+    {
+        "name": "Overworld C4: Bottom-right cliff upper chest (Gilded Falcon)",
+        "nodeId": "overworld_c4",
+        "address": [
+            "3F8A6A",
+            "584D6A2"
+        ]
+    },
+    {
+        "name": "Overworld C4: Bottom-right cliff lower chest (Life Vessel)",
+        "nodeId": "overworld_c4",
+        "address": [
+            "3F8A7E",
+            "584D68E"
+        ]
+    },
+    {
+        "name": "Overworld C4: Chest inside forest near the right border (Strength Elixyr)",
+        "nodeId": "overworld_c4",
+        "address": [
+            "3F8BAA",
+            "584D6B6"
+        ]
+
+    },
+    {
+        "name": "Overworld C4: Chest hidden among the trees near the middle (30 Gilder)",
+        "nodeId": "overworld_c4",
+        "address":  [
+            "3F8BBE",
+            "584D706"
+        ]
+    },
+    {
+        "name": "Overworld C4: Right coast chest behind spring (Gilded Falcon)",
+        "nodeId": "overworld_c4_behind_spring",
+        "address": [
+            "3F8A42",
+            "584D67A"
+        ]
+    },
+
+    {
+        "name": "Overworld C1: Chest accessible from cave (Life Vessel)",
+        "nodeId": "overworld_c1_elevated_cavern",
+        "address": "327B86"
+    },
+    {
+        "name": "Overworld C1: Chest on cliff accessible from right map (Gilded Falcon)",
+        "nodeId": "overworld_d1",
+        "address": "327D2A"
+    },
+    {
+        "name": "Overworld C1: Chest in right section (30 Gilder)",
+        "nodeId": "overworld_c1_right_sector",
+        "address": "327D8E"
+    },
+    {
+        "name": "Overworld C1: Leftmost chest (Herbs)",
+        "nodeId": "overworld_c1",
+        "address": "327DA2"
+    },
+    {
+        "name": "Overworld C1: Left chest in two chests group (10 Gilder)",
+        "nodeId": "overworld_c1",
+        "address": "327D66"
+    },
+    {
+        "name": "Overworld C1: Right chest in two chests group (10 Gilder)",
+        "nodeId": "overworld_c1",
+        "address": "327D7A"
+    },
+
+    {
+        "name": "Overworld D1: Elevated chest in cliffs labyrinth (Strength Elixyr)",
+        "nodeId": "overworld_d1_cliff_maze",
+        "address": "43FB26"
+    },
+    {
+        "name": "Overworld D1: Left chest in two chests group (Herbs)",
+        "nodeId": "overworld_d1",
+        "address": "43FBB2"
+    },
+    {
+        "name": "Overworld D1: Right chest in two chests group (Strength Tonic)",
+        "nodeId": "overworld_d1",
+        "address": "43FBC6"
+    },
+
+    {
+        "name": "Overworld B4: Chest hidden behind cabins on the pier (Gilded Falcon)",
+        "nodeId": "overworld_b4_behind_merman",
+        "address": "2E501E"
+    },
+    {
+        "name": "Overworld B4: Chest behind the tree stump (Gilded Falcon)",
+        "nodeId": "overworld_b4_behind_bomb",
+        "address": "2E5082"
+    },
+    {
+        "name": "Overworld B4: Chest accessible from left map (Gilded Falcon)",
+        "nodeId": "overworld_b4_behind_power_glove",
+        "address": "2E4F56"
+    },
+
+    {
+        "name": "Overworld B3: Elevated chest accessible from bottom map (Magic Seed)",
+        "nodeId": "overworld_b3_elevated",
+        "address": "29B6CE"
+    },
+    {
+        "name": "Overworld B3: Chest behind vines (Life Vessel)",
+        "nodeId": "overworld_b3_behind_vines",
+        "address": "29B6E2"
+    },
+
+    {
+        "name": "Riverside Casino: 'Roulette' chest (Life Vessel)",
+        "nodeId": "riverside_casino",
+        "address": "65FD322"
+    },
+    {
+        "name": "Riverside Casino: 'Hit Your Mark' chest (Life Vessel)",
+        "nodeId": "riverside_casino",
+        "address": "65C7BD6"
+    },
+    {
+        "name": "Riverside Casino: 'Slime Smash' chest (Life Vessel)",
+        "nodeId": "riverside_casino",
+        "address": "65979FA"
+    },
+
+    {
+        "name": "Overworld B2: Chest hidden behind musician's house (Strength Tonic)",
+        "nodeId": "overworld_b2",
+        "address": "24646A"
+    },
+    {
+        "name": "Overworld B2: Chest near the pond (Herbs)",
+        "nodeId": "overworld_b2",
+        "address": "2463DE"
+    },
+    {
+        "name": "Overworld B2: Chest near Coal Mine exit (Gilded Falcon)",
+        "nodeId": "overworld_b2_left",
+        "address": "246406"
+    },
+
+    {
+        "name": "Overworld A4: Chest behind Fire Manor (Strength Elixyr)",
+        "nodeId": "overworld_a4_behind_manor",
+        "address": "1C8012"
+    },
+    {
+        "name": "Fire Manor: Reward chest (Fire Wand)",
+        "nodeId": "fire_manor",
+        "address": "2021C8E"
+    },
+
+    {
+        "name": "Overworld A3: Elevated chest at top-left corner (Wonder Essence)",
+        "nodeId": "overworld_a3",
+        "address": "1866CE"
+    },
+    {
+        "name": "Overworld A3: Lower chest in left ruins (Gilded Falcon)",
+        "nodeId": "overworld_a3",
+        "address": "1866E2"
+    },
+    {
+        "name": "Overworld A3: Left chest in 3 chests group (30 Gilder)",
+        "nodeId": "overworld_a3",
+        "address": "186782"
+    },
+    {
+        "name": "Overworld A3: Middle chest in 3 chests group (Strength Elixyr)",
+        "nodeId": "overworld_a3",
+        "address": "186796"
+    },
+    {
+        "name": "Overworld A3: Right chest in 3 chests group (30 Gilder)",
+        "nodeId": "overworld_a3",
+        "address": "1867AA"
+    },
+    {
+        "name": "Overworld A3: Lower chest in middle ruins (Herbs)",
+        "nodeId": "overworld_a3",
+        "address": "186642"
+    },
+    {
+        "name": "Overworld A3: Chest behind the trees in middle ruins (Gilded Falcon)",
+        "nodeId": "overworld_a3",
+        "address": "186732"
+    },
+    {
+        "name": "Overworld A3: Elevated chest in middle ruins (Water Book)",
+        "nodeId": "overworld_a3",
+        "address": "18670A"
+    },
+
+
+
+
+    {
+        "name": "Overworld A2: Upper chest (Gilded Falcon)",
+        "nodeId": "overworld_a2",
+        "address": "13FA66"
+    },
+    {
+        "name": "Overworld A2: Chest near spikeball (Life Vessel)",
+        "nodeId": "overworld_a2",
+        "address": "13F872"
+    },
+    {
+        "name": "Overworld A2: Lower chest among trees (Strength Tonic)",
+        "nodeId": "overworld_a2",
+        "address": "13F7E6"
+    },
+    {
+        "name": "Overworld A2: Upper chest among trees (Herbs)",
+        "nodeId": "overworld_a2",
+        "address": "13F7D2"
+    },
+    {
+        "name": "Overworld A2: Chest dropped by Murggs (Willow Bow)",
+        "nodeId": "overworld_a2",
+        "address": "13F8FE"
+    },
+
+    {
+        "name": "Overworld A1: Left chest on great tree branches (Life Vessel)",
+        "nodeId": "overworld_a1",
+        "address": "1064EE"
+    },
+    {
+        "name": "Overworld A1: Right chest on great tree branches (Gilded Falcon)",
+        "nodeId": "overworld_a1",
+        "address": "1064DA"
+    },
+
+    {
+        "name": "Overworld A1: Right chest on great tree branches (Gilded Falcon)",
+        "nodeId": "overworld_a1",
+        "address": "1064DA"
+    },
+
+    {
+        "name": "Overworld B1: Chest on isolated island (Gilded Falcon)",
+        "nodeId": "overworld_b1",
+        "address": [
+            "206F96",
+            "670C8FE"
+        ]
+    },
+
+
+
+
+
+    {
+        "name": "Overworld E1: Chest on cliff near top-left corner (Earth Book)",
+        "nodeId": "overworld_e1",
+        "address": [
+            "548096",
+            "5F3D0A2"
+        ]
+    },
+    {
+        "name": "Overworld E1: Left chest in two chests group (30 Gilder)",
+        "nodeId": "overworld_e1",
+        "address": [
+            "5480AA",
+            "5F3D0B6"
+        ]
+    },
+    {
+        "name": "Overworld E1: Right chest in two chests group (30 Gilder)",
+        "nodeId": "overworld_e1",
+        "address": [
+            "5480BE",
+            "5F3D0CA"
+        ]
+    },
+    {
+        "name": "Overworld E1: Chest near bottom right corner (Strength Tonic)",
+        "nodeId": "overworld_e1",
+        "address": [
+            "547E02",
+            "5F3CE0E"
+        ]
+    },
+    {
+        "name": "Overworld E1: Chest near top right corner (Gilded Falcon)",
+        "nodeId": "overworld_e1",
+        "address": [
+            "54805A",
+            "5F3D066"
+        ]
+    },
+
+    {
+        "name": "Overworld E2: Top chest (Gilded Falcon)",
+        "nodeId": "overworld_e2",
+        "address": [
+            "58DE46",
+            "61F4656"
+        ]
+    },
+    {
+        "name": "Overworld E2: Right chest (30 Gilder)",
+        "nodeId": "overworld_e2",
+        "address": [
+            "58DE96",
+            "61F46A6"
+        ]
+    },
+    {
+        "name": "Overworld E2: Bottom chest (Strength Elixyr)",
+        "nodeId": "overworld_e2",
+        "address": [
+            "58DE82",
+            "61F4692"
+        ]
+    },
+
+    {
+        "name": "Overworld E3: Top-right chest in Sand Cape locked ruins (Herbs)",
+        "nodeId": "overworld_e3",
+        "address": "5CA6C2"
+    },
+    {
+        "name": "Overworld E3: Left chest in desert (Gilded Falcon)",
+        "nodeId": "overworld_e3",
+        "address": "5CA852"
+    },
+    {
+        "name": "Overworld E3: Chest on island outside desert (Life Vessel)",
+        "nodeId": "overworld_e3",
+        "address": "5CA79E"
+    },
+    {
+        "name": "Overworld E3: Chest on middle ruins (Gilded Falcon)",
+        "nodeId": "overworld_e3",
+        "address": "5CA852"
+    },
+
+    {
+        "name": "Overworld E4: Top-left chest hidden in grass (Gilded Falcon)",
+        "nodeId": "overworld_e4",
+        "address": "60BA0E"
+    },
+    {
+        "name": "Overworld E4: Chest at mid-level near waterfalls (Strength Tonic)",
+        "nodeId": "overworld_e4",
+        "address": "60BA4A"
+    },
+    {
+        "name": "Overworld E4: Chest on left cliff (Wonder Essence)",
+        "nodeId": "overworld_e4",
+        "address": "60BAAE"
+    },
+    {
+        "name": "Overworld E4: Chest in left rocky alcove (Magic Elixyr)",
+        "nodeId": "overworld_e4",
+        "address": "60BAC2"
+    },
+    {
+        "name": "Overworld E4: Left chest in 3 chests group (30 Gilder)",
+        "nodeId": "overworld_e4",
+        "address": "60BAD6"
+    },
+    {
+        "name": "Overworld E4: Middle chest in 3 chests group (30 Gilder)",
+        "nodeId": "overworld_e4",
+        "address": "60BAEA"
+    },
+    {
+        "name": "Overworld E4: Right chest in 3 chests group (30 Gilder)",
+        "nodeId": "overworld_e4",
+        "address": "60BAFE"
+    },
+    {
+        "name": "Overworld E4: Chest between two cliffs (Herbs)",
+        "nodeId": "overworld_e4",
+        "address": "60BB12"
+    },
+    {
+        "name": "Overworld E4: Chest on right cliff (30 Gilder)",
+        "nodeId": "overworld_e4",
+        "address": "60BA5E"
+    },
+    {
+        "name": "Overworld E4: Lower chest in the well (Strength Elixyr)",
+        "nodeId": "overworld_e4_well",
+        "address": [
+            "45FC646",
+            "56C00DE"
+        ]
+    },
+    {
+        "name": "Overworld E4: Upper chest in the well (Gilded Falcon)",
+        "nodeId": "overworld_e4_well_behind_vines",
+        "address": [
+            "45FC66E",
+            "56C00CA"
+        ]
+    },
+
+    {
+        "name": "Inoa shop: Slot 1 (Silver Armor)",
+        "nodeId": "inoa",
+        "isShop": true,
+        "address": [
+            "25143B6",
+            "3A6785E"
+        ]
+    }
+]

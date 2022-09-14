@@ -1,0 +1,233 @@
+{
+    "inoa": {
+        "name": "Inoa",
+        "hints": []
+    },
+
+    "overworld_c1": {
+        "name": "Overworld (C1 - Magyscar sector)",
+        "hints": []
+    },
+    "overworld_c1_right_sector": {
+        "name": "Overworld (C1 - Magyscar sector right half)",
+        "hints": []
+    },
+    "overworld_c1_elevated_cavern": {
+        "name": "Overworld (C1 - Magyscar sector elevated cavern)",
+        "hints": []
+    },
+
+    "overworld_c2": {
+        "name": "Overworld (C2 - Sanctuary sector)",
+        "hints": []
+    },
+
+    "overworld_d2": {
+        "name": "Overworld (D2 - Watermill sector)",
+        "hints": []
+    },
+    "overworld_d2_behind_spring": {
+        "name": "Overworld (D2 - Watermill sector behind spring)",
+        "hints": []
+    },
+    "overworld_d2_chest_cliff": {
+        "name": "Overworld (D2 - Watermill sector chest cliff)",
+        "hints": []
+    },
+    "overworld_d2_arches": {
+        "name": "Overworld (D2 - Watermill sector arches)",
+        "hints": []
+    },
+
+    "overworld_d3": {
+        "name": "Overworld (D3 - Tarn manor sector)",
+        "hints": []
+    },
+    "overworld_d3_behind_vines": {
+        "name": "Overworld (D3 - Tarn manor sector behind vines)",
+        "hints": []
+    },
+    "overworld_d3_behind_bricks": {
+        "name": "Overworld (D3 - Tarn manor sector behind bricks)",
+        "hints": []
+    },
+    "overworld_d3_behind_spring": {
+        "name": "Overworld (D3 - Tarn manor sector behind spring)",
+        "hints": []
+    },
+    "overworld_d3_behind_spring_and_vines": {
+        "name": "Overworld (D3 - Tarn manor sector behind spring and vines)",
+        "hints": []
+    },
+    "overworld_d3_one_way_to_d4": {
+        "name": "Overworld (D3 - Tarn manor sector one way to D4)",
+        "hints": []
+    },
+
+    "overworld_d4": {
+        "name": "Overworld (D4 - Lizardmen swamp sector)",
+        "hints": []
+    },
+    "overworld_d4_behind_merman": {
+        "name": "Overworld (D4 - Lizardmen swamp sector behind Merman Boots)",
+        "hints": []
+    },
+
+    "overworld_c4": {
+        "name": "Overworld (C4 - Merrick's shop sector)",
+        "hints": []
+    },
+    "overworld_c4_behind_spring": {
+        "name": "Overworld (C4 - Merrick's shop sector behind spring)",
+        "hints": []
+    },
+
+    "overworld_d1": {
+        "name": "Overworld (D1 - Torla sector)",
+        "hints": []
+    },
+    "overworld_d1_cliff_maze": {
+        "name": "Overworld (D1 - Torla sector cliff maze)",
+        "hints": []
+    },
+
+    "overworld_b4": {
+        "name": "Overworld (B4 - Nava's hut sector)",
+        "hints": []
+    },
+    "overworld_b4_behind_merman": {
+        "name": "Overworld (B4 - Nava's hut sector behind Merman Boots)",
+        "hints": []
+    },
+    "overworld_b4_behind_bomb": {
+        "name": "Overworld (B4 - Nava's hut sector behind Bomb)",
+        "hints": []
+    },
+    "overworld_b4_behind_power_glove": {
+        "name": "Overworld (B4 - Nava's hut sector behind Power Glove)",
+        "hints": []
+    },
+
+    "overworld_b3": {
+        "name": "Overworld (B3 - Riverside sector)",
+        "hints": []
+    },
+    "overworld_b3_elevated": {
+        "name": "Overworld (B3 - Riverside sector elevated)",
+        "hints": []
+    },
+    "overworld_b3_behind_vines": {
+        "name": "Overworld (B3 - Riverside sector behind vines)",
+        "hints": []
+    },
+    "overworld_b3_behind_power_glove": {
+        "name": "Overworld (B3 - Riverside sector behind power glove)",
+        "hints": []
+    },
+    "overworld_b3_megalith": {
+        "name": "Overworld (B3 - Riverside sector behind vines)",
+        "hints": []
+    },
+
+    "riverside_casino": {
+        "name": "Riverside Casino",
+        "hints": []
+    },
+
+    "overworld_b2": {
+        "name": "Overworld (B2 - Coal mine exterior)",
+        "hints": []
+    },
+    "overworld_b2_left": {
+        "name": "Overworld (B2 - Coal mine exterior left)",
+        "hints": []
+    },
+
+    "overworld_b1": {
+        "name": "Overworld (B1 - Lake)",
+        "hints": []
+    },
+
+    "overworld_a4_right": {
+        "name": "Overworld (A4 - Fire Manor sector right)",
+        "hints": []
+    },
+    "overworld_a4_middle": {
+        "name": "Overworld (A4 - Fire Manor sector middle)",
+        "hints": []
+    },
+    "overworld_a4_left": {
+        "name": "Overworld (A4 - Fire Manor sector left)",
+        "hints": []
+    },
+    "overworld_a4_manor": {
+        "name": "Overworld (A4 - Fire Manor sector near manor)",
+        "hints": []
+    },
+    "overworld_a4_behind_manor": {
+        "name": "Overworld (A4 - Fire Manor sector behind manor)",
+        "hints": []
+    },
+    "fire_manor": {
+        "name": "Fire Manor",
+        "hints": []
+    },
+
+    "overworld_a3": {
+        "name": "Overworld (A3 - above Fire Manor)",
+        "hints": []
+    },
+    "overworld_a3_megalith": {
+        "name": "Overworld (A3 - above Fire Manor, megalith)",
+        "hints": []
+    },
+
+    "overworld_a1": {
+        "name": "Overworld (A1 - Murgg tree)",
+        "hints": []
+    },
+
+    "overworld_e1": {
+        "name": "Overworld (E1 - Nirude sector)",
+        "hints": []
+    },
+    "overworld_a2": {
+        "name": "Overworld (A2 - Murgg woods)",
+        "hints": []
+    },
+
+
+    "overworld_e2": {
+        "name": "Overworld (E2 - Upper Desert of Despair)",
+        "hints": []
+    },
+
+
+
+
+    "overworld_e3": {
+        "name": "Overworld (E3 - Lower Desert of Despair)",
+        "hints": []
+    },
+
+    "overworld_e4": {
+        "name": "Overworld (E4 - Cliff of Madness sector)",
+        "hints": []
+    },
+    "overworld_e4_well": {
+        "name": "Overworld (E4 - Cliff of Madness sector well)",
+        "hints": []
+    },
+    "overworld_e4_well_behind_vines": {
+        "name": "Overworld (E4 - Cliff of Madness sector well behind vines)",
+        "hints": []
+    },
+
+
+    "lake_shrine": {
+        "name": "Lake Shrine"
+    },
+    "end": {
+        "name": "The End"
+    }
+}

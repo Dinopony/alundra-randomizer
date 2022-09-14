@@ -1,0 +1,212 @@
+{
+    "0": {
+        "name": "Nothing"
+    },
+    "1": {
+        "name": "Dagger"
+    },
+    "2": {
+        "name": "Sword"
+    },
+    "3": {
+        "name": "Fiend Blade"
+    },
+    "4": {
+        "name": "Holy Sword"
+    },
+    "5": {
+        "name": "Hunter's Bow"
+    },
+    "6": {
+        "name": "Willow Bow"
+    },
+    "7": {
+        "name": "Spirit Wand"
+    },
+    "8": {
+        "name": "Legend Sword"
+    },
+    "9": {
+        "name": "Iron Flail"
+    },
+    "10": {
+        "name": "Steel Flail"
+    },
+    "14": {
+        "name": "Ice Wand"
+    },
+    "16": {
+        "name": "Fire Wand"
+    },
+    "17": {
+        "name": "Cloth Armor"
+    },
+    "18": {
+        "name": "Leather Armor"
+    },
+    "19": {
+        "name": "Ancient Armor"
+    },
+    "20": {
+        "name": "Silver Armor"
+    },
+    "25": {
+        "name": "Short Boots"
+    },
+    "26": {
+        "name": "Long Boots"
+    },
+    "27": {
+        "name": "Merman Boots"
+    },
+    "28": {
+        "name": "Charm Boots"
+    },
+    "31": {
+        "name": "Spring Bean"
+    },
+    "32": {
+        "name": "Sand Cape"
+    },
+    "33": {
+        "name": "Broken Armor"
+    },
+    "35": {
+        "name": "Bomb"
+    },
+    "36": {
+        "name": "Herbs"
+    },
+    "37": {
+        "name": "Strength Elixyr"
+    },
+    "38": {
+        "name": "Magic Elixyr"
+    },
+    "39": {
+        "name": "Wonder Essence"
+    },
+    "40": {
+        "name": "Aqua Cape"
+    },
+    "41": {
+        "name": "Strength Tonic"
+    },
+    "43": {
+        "name": "Earth Scroll"
+    },
+    "44": {
+        "name": "Earth Book"
+    },
+    "45": {
+        "name": "Water Scroll"
+    },
+    "46": {
+        "name": "Water Book"
+    },
+    "47": {
+        "name": "Fire Scroll"
+    },
+    "48": {
+        "name": "Fire Book"
+    },
+    "49": {
+        "name": "Wind Scroll"
+    },
+    "50": {
+        "name": "Wind Book"
+    },
+    "51": {
+        "name": "Olga's Ring"
+    },
+    "52": {
+        "name": "Oak's Ring"
+    },
+    "53": {
+        "name": "Silver Armlet"
+    },
+    "54": {
+        "name": "Nava's Charm"
+    },
+    "55": {
+        "name": "Recovery Ring"
+    },
+    "56": {
+        "name": "Refresher"
+    },
+    "57": {
+        "name": "Secret Pass"
+    },
+    "59": {
+        "name": "Power Glove"
+    },
+    "60": {
+        "name": "Elevator Key"
+    },
+    "61": {
+        "name": "Key"
+    },
+    "62": {
+        "name": "Ruby Crest"
+    },
+    "63": {
+        "name": "Sapphire Crest"
+    },
+    "64": {
+        "name": "Topaz Crest"
+    },
+    "65": {
+        "name": "Agate Crest"
+    },
+    "66": {
+        "name": "Garnet Crest"
+    },
+    "67": {
+        "name": "Emerald Crest"
+    },
+    "68": {
+        "name": "Diamond Crest"
+    },
+    "69": {
+        "name": "1 Gilder"
+    },
+    "70": {
+        "name": "5 Gilder"
+    },
+    "71": {
+        "name": "10 Gilder"
+    },
+    "72": {
+        "name": "30 Gilder"
+    },
+    "73": {
+        "name": "Sluice Key"
+    },
+    "74": {
+        "name": "Bouquet"
+    },
+    "75": {
+        "name": "Small Key"
+    },
+    "76": {
+        "name": "Jess's Letter"
+    },
+    "77": {
+        "name": "Tree Gem"
+    },
+    "78": {
+        "name": "Zolist's Stone"
+    },
+    "79": {
+        "name": "Gilded Falcon"
+    },
+    "80": {
+        "name": "Magic Seed"
+    },
+    "83": {
+        "name": "Life Vessel"
+    },
+    "88": {
+        "name": "Book of Elna"
+    }
+}
