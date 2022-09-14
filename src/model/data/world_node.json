@@ -21,6 +21,10 @@
         "name": "Overworld (C2 - Sanctuary sector)",
         "hints": []
     },
+    "overworld_c2_cave_behind_spring": {
+        "name": "Overworld (C2 - Sanctuary sector top left cave behind spring)",
+        "hints": []
+    },
 
     "overworld_d2": {
         "name": "Overworld (D2 - Watermill sector)",
@@ -68,8 +72,8 @@
         "name": "Overworld (D4 - Lizardmen swamp sector)",
         "hints": []
     },
-    "overworld_d4_behind_merman": {
-        "name": "Overworld (D4 - Lizardmen swamp sector behind Merman Boots)",
+    "overworld_d4_behind_long_boots": {
+        "name": "Overworld (D4 - Lizardmen swamp sector behind Long Boots)",
         "hints": []
     },
 
@@ -79,6 +83,14 @@
     },
     "overworld_c4_behind_spring": {
         "name": "Overworld (C4 - Merrick's shop sector behind spring)",
+        "hints": []
+    },
+    "overworld_c4_behind_long_boots": {
+        "name": "Overworld (C4 - Merrick's shop sector behind long boots)",
+        "hints": []
+    },
+    "overworld_c4_right_cliff_behind_long_boots": {
+        "name": "Overworld (C4 - Merrick's shop sector right cliff behind long boots)",
         "hints": []
     },
 
@@ -105,6 +117,10 @@
     },
     "overworld_b4_behind_power_glove": {
         "name": "Overworld (B4 - Nava's hut sector behind Power Glove)",
+        "hints": []
+    },
+    "overworld_b4_nava_hut_behind_spring": {
+        "name": "Overworld (B4 - Nava's hut sector behind Spring Bean)",
         "hints": []
     },
 
@@ -142,9 +158,25 @@
         "name": "Overworld (B2 - Coal mine exterior left)",
         "hints": []
     },
+    "overworld_b2_cave_to_lake": {
+        "name": "Overworld (B2 - Coal mine exterior cave to lake)",
+        "hints": []
+    },
+    "overworld_b2_cave_to_lake_behind_merman": {
+        "name": "Overworld (B2 - Coal mine exterior cave to lake behind merman)",
+        "hints": []
+    },
 
     "overworld_b1": {
         "name": "Overworld (B1 - Lake)",
+        "hints": []
+    },
+    "overworld_b1_left": {
+        "name": "Overworld (B1 - Lake left)",
+        "hints": []
+    },
+    "overworld_b1_island": {
+        "name": "Overworld (B1 - Lake island)",
         "hints": []
     },
 

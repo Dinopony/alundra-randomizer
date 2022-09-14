@@ -10,6 +10,16 @@
         "nodeId": "overworld_c2",
         "address": "44591EE"
     },
+    {
+        "name": "Overworld C2: First chest in top-left cave (Herbs)",
+        "nodeId": "overworld_c2",
+        "address": "21230B6"
+    },
+    {
+        "name": "Overworld C2: Chest in top-left cave behind springs (Gilded Falcon)",
+        "nodeId": "overworld_c2_cave_behind_spring",
+        "address": "21230CA"
+    },
 
     {
         "name": "Overworld D2: Middle chest (Herbs)",
@@ -90,7 +100,7 @@
     },
     {
         "name": "Overworld D4: Chest on left swamp island (Gilded Falcon)",
-        "nodeId": "overworld_d4_behind_merman",
+        "nodeId": "overworld_d4_behind_long_boots",
         "address": "5010F2"
     },
     {
@@ -101,7 +111,7 @@
 
     {
         "name": "Overworld C4: Left coast chest (Magic Elixyr)",
-        "nodeId": "overworld_c4",
+        "nodeId": "overworld_c4_behind_long_boots",
         "address": [
             "3F8B96",
             "584D6CA"
@@ -117,7 +127,7 @@
     },
     {
         "name": "Overworld C4: Bottom-right cliff lower chest (Life Vessel)",
-        "nodeId": "overworld_c4",
+        "nodeId": "overworld_c4_right_cliff_behind_long_boots",
         "address": [
             "3F8A7E",
             "584D68E"
@@ -210,6 +220,11 @@
         "name": "Overworld B4: Chest accessible from left map (Gilded Falcon)",
         "nodeId": "overworld_b4_behind_power_glove",
         "address": "2E4F56"
+    },
+    {
+        "name": "Overworld B4: Chest in Nava's hut (Gilded Falcon)",
+        "nodeId": "overworld_b4_nava_hut_behind_spring",
+        "address": "20EB10E"
     },
 
     {
@@ -355,16 +370,12 @@
 
     {
         "name": "Overworld B1: Chest on isolated island (Gilded Falcon)",
-        "nodeId": "overworld_b1",
+        "nodeId": "overworld_b1_island",
         "address": [
             "206F96",
             "670C8FE"
         ]
     },
-
-
-
-
 
     {
         "name": "Overworld E1: Chest on cliff near top-left corner (Earth Book)",
@@ -513,6 +524,17 @@
             "45FC66E",
             "56C00CA"
         ]
+    },
+
+    {
+        "name": "Overworld B2: first chest in cave to lake (10 Gilder)",
+        "nodeId": "overworld_b2_cave_to_lake",
+        "address": "205504E"
+    },
+    {
+        "name": "Overworld B2: chest behind deep water in cave to lake (Wonder Essence)",
+        "nodeId": "overworld_b2_cave_to_lake_behind_merman",
+        "address": "2055062"
     },
 
     {

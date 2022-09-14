@@ -25,6 +25,17 @@
         "toId": "overworld_b2",
         "twoWay": true
     },
+    {
+        "fromId": "overworld_c2",
+        "toId": "overworld_c2_cave_behind_spring",
+        "requiredItems": [
+            "Spring Bean"
+        ]
+    },
+    {
+        "fromId": "overworld_c2_cave_behind_spring",
+        "toId": "overworld_c2"
+    },
 
     {
         "fromId": "overworld_d2",
@@ -135,11 +146,16 @@
     },
     {
         "fromId": "overworld_d4",
-        "toId": "overworld_d4_behind_merman",
+        "toId": "overworld_d4_behind_long_boots",
         "twoWay": true,
         "requiredItems": [
-            "Merman Boots"
+            "Long Boots"
         ]
+    },
+    {
+        "fromId": "overworld_d4_behind_long_boots",
+        "toId": "overworld_c4_right_cliff_behind_long_boots",
+        "twoWay": true
     },
 
     {
@@ -156,6 +172,17 @@
     },
     {
         "fromId": "overworld_c4_behind_spring",
+        "toId": "overworld_c4"
+    },
+    {
+        "fromId": "overworld_c4",
+        "toId": "overworld_c4_behind_long_boots",
+        "requiredItems": [
+            "Long Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_c4_behind_long_boots",
         "toId": "overworld_c4"
     },
 
@@ -224,6 +251,14 @@
         "twoWay": true,
         "requiredItems": [
             "Bomb"
+        ]
+    },
+    {
+        "fromId": "overworld_b4",
+        "toId": "overworld_b4_nava_hut_behind_spring",
+        "twoWay": true,
+        "requiredItems": [
+            "Spring Bean"
         ]
     },
     {
@@ -359,6 +394,30 @@
             "Steel Flail"
         ]
     },
+    {
+        "fromId": "overworld_b2",
+        "toId": "overworld_b2_cave_to_lake",
+        "requiredItems": [
+            "Bomb"
+        ]
+    },
+    {
+        "fromId": "overworld_b2_cave_to_lake",
+        "toId": "overworld_b2"
+    },
+    {
+        "fromId": "overworld_b2_cave_to_lake",
+        "toId": "overworld_b2_cave_to_lake_behind_merman",
+        "twoWay": true,
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_b2_cave_to_lake_behind_merman",
+        "toId": "overworld_b1_left",
+        "twoWay": true
+    },
 
     {
         "fromId": "overworld_a1",
@@ -400,8 +459,27 @@
             "Agate Crest",
             "Garnet Crest",
             "Diamond Crest"
+        ],
+        "requiredNodes": [
+            "overworld_b1_left",
+            "overworld_b1_island"
         ]
     },
+    {
+        "fromId": "overworld_b1",
+        "toId": "overworld_b1_island",
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_b1_island",
+        "toId": "overworld_b2",
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+
     {
         "fromId": "lake_shrine",
         "toId": "end"

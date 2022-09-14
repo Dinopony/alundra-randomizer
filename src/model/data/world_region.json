@@ -32,14 +32,18 @@
     {
         "name": "Overworld B1",
         "nodeIds": [
-            "overworld_b1"
+            "overworld_b1",
+            "overworld_b1_island",
+            "overworld_b1_left"
         ]
     },
     {
         "name": "Overworld B2",
         "nodeIds": [
             "overworld_b2",
-            "overworld_b2_left"
+            "overworld_b2_left",
+            "overworld_b2_cave_to_lake",
+            "overworld_b2_cave_to_lake_behind_merman"
         ]
     },
     {
@@ -64,7 +68,8 @@
             "overworld_b4",
             "overworld_b4_behind_merman",
             "overworld_b4_behind_bomb",
-            "overworld_b4_behind_power_glove"
+            "overworld_b4_behind_power_glove",
+            "overworld_b4_nava_hut_behind_spring"
         ]
     },
 
@@ -79,7 +84,8 @@
     {
         "name": "Overworld C2",
         "nodeIds": [
-            "overworld_c2"
+            "overworld_c2",
+            "overworld_c2_cave_behind_spring"
         ]
     },
     {
@@ -92,7 +98,9 @@
         "name": "Overworld C4",
         "nodeIds": [
             "overworld_c4",
-            "overworld_c4_behind_spring"
+            "overworld_c4_behind_spring",
+            "overworld_c4_behind_long_boots",
+            "overworld_c4_right_cliff_behind_long_boots"
         ]
     },
 
@@ -127,7 +135,7 @@
         "name": "Overworld D4",
         "nodeIds": [
             "overworld_d4",
-            "overworld_d4_behind_merman"
+            "overworld_d4_behind_long_boots"
         ]
     },
     {
