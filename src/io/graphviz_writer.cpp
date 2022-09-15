@@ -17,17 +17,10 @@ size_t COLORS_SIZE = 7;
 
 void write_logic_as_dot(const RandomizerWorld& world, const std::string& path)
 {
-//   const std::map<std::string, std::string> POS_FOR_NODES = {
-//           {"overworld_a1", "-2,2"}, {"overworld_b1", "-1,2"}, {"overworld_c1", "0,2"}, {"overworld_d1", "1,2"}, {"overworld_e1", "2,2"},
-//           {"overworld_a2", "-2,1"}, {"overworld_b2", "-1,1"}, {"overworld_c2", "0,1"}, {"overworld_d2", "1,1"}, {"overworld_e2", "2,1"},
-//           {"overworld_a3", "-2,0"}, {"overworld_b3", "-1,0"}, {"inoa", "0,0"},         {"overworld_d3", "1,0"}, {"overworld_e3", "2,0"},
-//           {"overworld_a4_middle", "-2,-1"}, {"overworld_b4", "-1,-1"}, {"overworld_c4", "0,-1"}, {"overworld_d4", "1,-1"}, {"overworld_e4", "2,-1"},
-//   };
-
     std::ofstream graphviz(path);
     graphviz << "digraph {\n";
 
-    graphviz << "\tgraph [pad=0.5, nodesep=0.5, ranksep=0.3];\n";
+    graphviz << "\tgraph [pad=0.5, nodesep=0.7, ranksep=0.5];\n";
     graphviz << "\tnode[shape=rect];\n\n";
 
     Json paths_json = Json::parse(WORLD_PATHS_JSON);
@@ -71,11 +64,10 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& path)
         for(WorldNode* node : region->nodes())
         {
             graphviz << "\t\t" << node->id() << "[";
-            graphviz << " label=\"" << node->id() << "\\n(" << std::to_string(node->item_sources().size()) << " items)\"";
-//            if(POS_FOR_NODES.count(node->id()))
-//                graphviz << " pos=\"" << POS_FOR_NODES.at(node->id()) << "!\"";
-
-            graphviz << "]\n";
+            graphviz << " label=\"" << node->id();
+            if(!node->item_sources().empty())
+                graphviz << "\\n(" << std::to_string(node->item_sources().size()) << " items)";
+            graphviz << "\"]\n";
         }
 
         graphviz << "\t}\n\n";
