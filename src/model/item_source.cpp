@@ -6,10 +6,13 @@
 #include "world.hpp"
 #include "../tools/exception.hpp"
 
-ItemSource::ItemSource(std::string  name, std::vector<uint32_t> addresses, const std::string& node_id, const std::vector<std::string>& hints) :
+ItemSource::ItemSource(std::string  name, std::vector<uint32_t> addresses,
+                       const std::string& node_id, bool ground_item,
+                       const std::vector<std::string>& hints) :
     _name       (std::move(name)),
     _addresses  (std::move(addresses)),
     _node_id    (node_id),
+    _ground_item(ground_item),
     _hints      (hints)
 {}
 
@@ -64,5 +67,9 @@ ItemSource* ItemSource::from_json(const Json& json, const World& world)
     if(json.contains("hints")) 
         json.at("hints").get_to(hints);
 
-    return new ItemSource(name, addresses, node_id, hints);
+    bool ground_item = false;
+    if(json.contains("groundItem"))
+        ground_item = json.at("groundItem");
+
+    return new ItemSource(name, addresses, node_id, ground_item, hints);
 }

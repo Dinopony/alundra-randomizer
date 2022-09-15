@@ -13,12 +13,15 @@ private:
     std::string _name;
     Item* _item = nullptr;
     std::string _node_id;
+    bool _ground_item = false;
     std::vector<std::string> _hints;
 
     std::vector<uint32_t> _addresses; ///< The address of the item source contents inside the DATAS.BIN file
 
 public:
-    ItemSource(std::string name, std::vector<uint32_t> addresses, const std::string& node_id, const std::vector<std::string>& hints);
+    ItemSource(std::string name, std::vector<uint32_t> addresses,
+               const std::string& node_id, bool ground_item,
+               const std::vector<std::string>& hints);
     virtual ~ItemSource() = default;
 
     [[nodiscard]] const std::string& name() const { return _name; }
@@ -32,6 +35,9 @@ public:
 
     [[nodiscard]] const std::string& node_id() const { return _node_id; }
     void node_id(const std::string& node_id) { _node_id = node_id; }
+
+    [[nodiscard]] bool is_ground_item() const { return _ground_item; }
+    void is_ground_item(bool val) { _ground_item = val; }
 
     [[nodiscard]] const std::vector<std::string>& hints() const { return _hints; }
     void add_hint(const std::string& hint) { _hints.emplace_back(hint); }

@@ -17,6 +17,9 @@ public:
         for(ItemSource* source : randomizer_world.item_sources())
         {
             uint8_t item_id = source->item() ? source->item()->id() : ITEM_NONE;
+            if(source->is_ground_item())
+                item_id += 0x1E;
+
             for(uint32_t addr : source->addresses())
                 data.set_byte(addr, item_id);
         }
