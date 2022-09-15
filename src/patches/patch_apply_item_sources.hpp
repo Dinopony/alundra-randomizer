@@ -23,5 +23,8 @@ public:
             for(uint32_t addr : source->addresses())
                 data.set_byte(addr, item_id);
         }
+
+        // Fix ground Book of Elna byte causing trouble
+        data.set_byte(0x1BA5D05, 0x00);
     }
 };

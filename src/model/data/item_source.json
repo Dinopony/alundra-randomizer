@@ -36,6 +36,11 @@
         "nodeId": "overworld_d2",
         "address": "47E9F2"
     },
+    {
+        "name": "Overworld D2: Chest in cave next to Underground Waterway (Herbs)",
+        "nodeId": "overworld_d2",
+        "address": "12B0472"
+    },
 
     {
         "name": "Overworld D3: Elevated chest near bridge (Magic Seed)",
@@ -265,6 +270,21 @@
         "address": "2463DE"
     },
     {
+        "name": "Overworld B2: First upper mines chest (30 Gilder)",
+        "nodeId": "overworld_b2_upper_mines",
+        "address": "208947A"
+    },
+    {
+        "name": "Overworld B2: Chest falling after beating 50 slimes in upper mines (Herbs)",
+        "nodeId": "overworld_b2_upper_mines",
+        "address": "2089466"
+    },
+    {
+        "name": "Overworld B2: Chest in house near Coal Mine (Gilded Falcon)",
+        "nodeId": "overworld_b2_upper_mines",
+        "address": "20BACBA"
+    },
+    {
         "name": "Overworld B2: Chest near Coal Mine exit (Gilded Falcon)",
         "nodeId": "overworld_b2_left",
         "address": "246406"
@@ -420,7 +440,7 @@
 
     {
         "name": "Overworld E2: Top chest (Gilded Falcon)",
-        "nodeId": "overworld_e2",
+        "nodeId": "overworld_e2_behind_long_boots",
         "address": [
             "58DE46",
             "61F4656"
@@ -428,7 +448,7 @@
     },
     {
         "name": "Overworld E2: Right chest (30 Gilder)",
-        "nodeId": "overworld_e2",
+        "nodeId": "overworld_e2_behind_long_boots",
         "address": [
             "58DE96",
             "61F46A6"
@@ -436,26 +456,37 @@
     },
     {
         "name": "Overworld E2: Bottom chest (Strength Elixyr)",
-        "nodeId": "overworld_e2",
+        "nodeId": "overworld_e2_behind_long_boots",
         "address": [
             "58DE82",
             "61F4692"
         ]
     },
+    {
+        "name": "Overworld E2: First chest in cave (Sluice Key)",
+        "nodeId": "overworld_e2_behind_long_boots",
+        "address": "5670C5A"
+    },
+    {
+        "name": "Overworld E2: Chest in cave behind burning pillars (Life Vessel)",
+        "nodeId": "overworld_e2_cave_behind_ice_wand",
+        "address": "5670C46"
+    },
+
 
     {
         "name": "Overworld E3: Top-right chest in Sand Cape locked ruins (Herbs)",
-        "nodeId": "overworld_e3",
+        "nodeId": "overworld_e3_behind_cape_or_boots",
         "address": "5CA6C2"
     },
     {
-        "name": "Overworld E3: Left chest in desert (Gilded Falcon)",
+        "name": "Overworld E3: Left chest in desert (30 Gilder)",
         "nodeId": "overworld_e3",
-        "address": "5CA852"
+        "address": "5CA762"
     },
     {
         "name": "Overworld E3: Chest on island outside desert (Life Vessel)",
-        "nodeId": "overworld_e3",
+        "nodeId": "overworld_e3_bottom_left_island",
         "address": "5CA79E"
     },
     {
@@ -463,15 +494,20 @@
         "nodeId": "overworld_e3",
         "address": "5CA852"
     },
+    {
+        "name": "Overworld E3: Chest in cave (Sand Cape)",
+        "nodeId": "overworld_e3_cape_cave",
+        "address": "5CA79C"
+    },
 
     {
         "name": "Overworld E4: Top-left chest hidden in grass (Gilded Falcon)",
-        "nodeId": "overworld_e4",
+        "nodeId": "overworld_e4_behind_merman",
         "address": "60BA0E"
     },
     {
         "name": "Overworld E4: Chest at mid-level near waterfalls (Strength Tonic)",
-        "nodeId": "overworld_e4",
+        "nodeId": "overworld_e4_behind_merman",
         "address": "60BA4A"
     },
     {
@@ -538,12 +574,54 @@
     },
 
     {
-        "name": "Inoa shop: Slot 1 (Silver Armor)",
-        "nodeId": "inoa",
-        "isShop": true,
-        "address": [
-            "25143B6",
-            "3A6785E"
-        ]
+        "name": "Tarn's Manor: Falling chest in dining room after slaying Murggs (Strength Tonic)",
+        "nodeId": "tarn_manor",
+        "address": "1B49342"
+    },
+    {
+        "name": "Tarn's Manor: Upstairs right chest (Herbs)",
+        "nodeId": "tarn_manor",
+        "address": "1B4927A"
+    },
+    {
+        "name": "Tarn's Manor: First underground chest (Herbs)",
+        "nodeId": "tarn_manor",
+        "address": "1B78CEA"
+    },
+    {
+        "name": "Tarn's Manor: Second underground chest (Herbs)",
+        "nodeId": "tarn_manor",
+        "address": "1B78E8E"
+    },
+    {
+        "name": "Tarn's Manor: Third underground chest (Gilded Falcon)",
+        "nodeId": "tarn_manor",
+        "address": "1B78E2A"
+    },
+    {
+        "name": "Tarn's Manor: Chest in watery hallway with spikeball (Herbs)",
+        "nodeId": "tarn_manor",
+        "address": "1BA5B96"
+    },
+    {
+        "name": "Tarn's Manor: Chest in right room coming back from the underground (Life Vessel)",
+        "nodeId": "tarn_manor",
+        "address": "1B49266"
+    },
+    {
+        "name": "Tarn's Manor: Left chest in final room (Herbs)",
+        "nodeId": "tarn_manor",
+        "address": "1BA5DDA"
+    },
+    {
+        "name": "Tarn's Manor: Right chest in final room (30 Gilder)",
+        "nodeId": "tarn_manor",
+        "address": "1BA5DEE"
+    },
+    {
+        "name": "Tarn's Manor: Item on table in final room (Book of Elna)",
+        "nodeId": "tarn_manor",
+        "groundItem": true,
+        "address": "1BA5D06"
     }
 ]

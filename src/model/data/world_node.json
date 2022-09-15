@@ -166,6 +166,10 @@
         "name": "Overworld (B2 - Coal mine exterior cave to lake behind merman)",
         "hints": []
     },
+    "overworld_b2_upper_mines": {
+        "name": "Overworld (B2 - Coal mine upper mines)",
+        "hints": []
+    },
 
     "overworld_b1": {
         "name": "Overworld (B1 - Lake)",
@@ -228,22 +232,47 @@
         "hints": []
     },
 
-
     "overworld_e2": {
         "name": "Overworld (E2 - Upper Desert of Despair)",
         "hints": []
     },
-
-
-
+    "overworld_e2_behind_long_boots": {
+        "name": "Overworld (E2 - Upper Desert of Despair behind Long Boots)",
+        "hints": []
+    },
+    "overworld_e2_cave_behind_ice_wand": {
+        "name": "Overworld (E2 - Upper Desert of Despair cave behind Ice Wand)",
+        "hints": []
+    },
 
     "overworld_e3": {
         "name": "Overworld (E3 - Lower Desert of Despair)",
         "hints": []
     },
+    "overworld_e3_bottom_left": {
+        "name": "Overworld (E3 - Outside Desert of Despair)",
+        "hints": []
+    },
+    "overworld_e3_bottom_left_island": {
+        "name": "Overworld (E3 - Outside Desert of Despair island)",
+        "hints": []
+    },
+    "overworld_e3_cape_cave": {
+        "name": "Overworld (E3 - Lower Desert of Despair cape cave)",
+        "hints": []
+    },
+    "overworld_e3_behind_cape_or_boots": {
+        "name": "Overworld (E3 - Lower Desert of Despair behind cape or boots)",
+        "hints": []
+    },
+
 
     "overworld_e4": {
         "name": "Overworld (E4 - Cliff of Madness sector)",
+        "hints": []
+    },
+    "overworld_e4_behind_merman": {
+        "name": "Overworld (E4 - Cliff of Madness sector behind Merman Boots)",
         "hints": []
     },
     "overworld_e4_well": {
@@ -255,6 +284,10 @@
         "hints": []
     },
 
+    "tarn_manor": {
+        "name": "Tarn Manor",
+        "hints": []
+    },
 
     "lake_shrine": {
         "name": "Lake Shrine"

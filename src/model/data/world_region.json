@@ -43,7 +43,8 @@
             "overworld_b2",
             "overworld_b2_left",
             "overworld_b2_cave_to_lake",
-            "overworld_b2_cave_to_lake_behind_merman"
+            "overworld_b2_cave_to_lake_behind_merman",
+            "overworld_b2_upper_mines"
         ]
     },
     {
@@ -154,13 +155,19 @@
     {
         "name": "Overworld E2",
         "nodeIds": [
-            "overworld_e2"
+            "overworld_e2",
+            "overworld_e2_behind_long_boots",
+            "overworld_e2_cave_behind_ice_wand"
         ]
     },
     {
         "name": "Overworld E3",
         "nodeIds": [
-            "overworld_e3"
+            "overworld_e3",
+            "overworld_e3_bottom_left",
+            "overworld_e3_bottom_left_island",
+            "overworld_e3_cape_cave",
+            "overworld_e3_behind_cape_or_boots"
         ]
     },
     {
@@ -168,10 +175,14 @@
         "nodeIds": [
             "overworld_e4",
             "overworld_e4_well",
-            "overworld_e4_well_behind_vines"
+            "overworld_e4_well_behind_vines",
+            "overworld_e4_behind_merman"
         ]
     },
-
+    {
+        "name": "Tarn Manor",
+        "nodeIds": [ "tarn_manor" ]
+    },
     {
         "name": "Lake Shrine",
         "nodeIds": [

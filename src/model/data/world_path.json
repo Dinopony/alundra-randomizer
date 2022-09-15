@@ -100,12 +100,38 @@
     },
     {
         "fromId": "overworld_d3",
+        "toId": "overworld_e3_bottom_left",
+        "twoWay": true
+    },
+    {
+        "fromId": "overworld_d3",
+        "toId": "overworld_e3",
+        "twoWay": true,
+        "requiredItems": [
+            "Sand Cape"
+        ]
+    },
+    {
+        "fromId": "overworld_d3",
+        "toId": "overworld_e3_bottom_left_island",
+        "twoWay": true,
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_d3",
         "toId": "overworld_d3_behind_bricks",
         "twoWay": true,
         "requiredItems": [
             "Iron Flail",
             "Steel Flail"
         ]
+    },
+    {
+        "fromId": "overworld_d3",
+        "toId": "tarn_manor",
+        "twoWay": true
     },
     {
         "fromId": "overworld_d3_behind_vines",
@@ -418,6 +444,15 @@
         "toId": "overworld_b1_left",
         "twoWay": true
     },
+    {
+        "fromId": "overworld_b2",
+        "toId": "overworld_b2_upper_mines",
+        "requiredItems": [
+            "Bomb",
+            "Iron Flail",
+            "Steel Flail"
+        ]
+    },
 
     {
         "fromId": "overworld_a1",
@@ -477,6 +512,84 @@
         "toId": "overworld_b2",
         "requiredItems": [
             "Merman Boots"
+        ]
+    },
+
+    {
+        "fromId": "overworld_e3_bottom_left",
+        "toId": "overworld_e4",
+        "twoWay": true,
+        "requiredItems": [
+            "Iron Flail",
+            "Steel Flail"
+        ]
+    },
+
+    {
+        "fromId": "overworld_e4",
+        "toId": "overworld_e4_behind_merman",
+        "twoWay": true,
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_e4",
+        "toId": "overworld_e3",
+        "twoWay": true
+    },
+
+    {
+        "fromId": "overworld_e3",
+        "twoWay": true,
+        "toId": "overworld_e3_behind_cape_or_boots",
+        "requiredItems": [
+            "Sand Cape",
+            "Long Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_e3",
+        "toId": "overworld_e3_cape_cave",
+        "twoWay": true,
+        "requiredItems": [
+            "Sand Cape"
+        ]
+    },
+    {
+        "fromId": "overworld_e3",
+        "toId": "overworld_e2_behind_long_boots",
+        "requiredItems": [
+            "Long Boots",
+            "Sand Cape"
+        ]
+    },
+    {
+        "fromId": "overworld_e2_behind_long_boots",
+        "toId": "overworld_e3"
+    },
+    {
+        "fromId": "overworld_e2",
+        "toId": "overworld_e3"
+    },
+
+    {
+        "fromId": "overworld_e2",
+        "toId": "overworld_e2_behind_long_boots",
+        "requiredItems": [
+            "Long Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_e2_behind_long_boots",
+        "toId": "overworld_e2"
+    },
+    {
+        "fromId": "overworld_e2_behind_long_boots",
+        "toId": "overworld_e2_cave_behind_ice_wand",
+        "twoWay": true,
+        "requiredItems": [
+            "Ice Wand"
         ]
     },
 
