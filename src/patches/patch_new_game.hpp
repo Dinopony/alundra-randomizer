@@ -62,6 +62,10 @@ private:
             func.li(reg_T0, 0x0008);
             func.sb(reg_T0, reg_AT, 0xD385);
 
+            // Open Underground Waterway (0x10 -> 0x1DD370)
+            func.li(reg_T0, 0x0010);
+            func.sb(reg_T0, reg_AT, 0xD370);
+
             // Remove the fallen tree on the way to Cliffs of Madness (0x20 -> 0x1DD35F)
             func.li(reg_T0, 0x0020);
             func.sb(reg_T0, reg_AT, 0xD35F);

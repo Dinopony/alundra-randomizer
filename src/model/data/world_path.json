@@ -44,6 +44,11 @@
     },
     {
         "fromId": "overworld_d2",
+        "toId": "overworld_d2_watermill",
+        "twoWay": true
+    },
+    {
+        "fromId": "overworld_d2",
         "toId": "overworld_d2_behind_spring",
         "requiredItems": [
             "Spring Bean"

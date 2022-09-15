@@ -41,6 +41,21 @@
         "nodeId": "overworld_d2",
         "address": "12B0472"
     },
+    {
+        "name": "Overworld D2: Left chest in watermill (30 Gilder)",
+        "nodeId": "overworld_d2_watermill",
+        "address": "564935E"
+    },
+    {
+        "name": "Overworld D2: Middle chest in watermill (Gilded Falcon)",
+        "nodeId": "overworld_d2_watermill",
+        "address": "5649372"
+    },
+    {
+        "name": "Overworld D2: Right chest in watermill (Strength Tonic)",
+        "nodeId": "overworld_d2_watermill",
+        "address": "5649386"
+    },
 
     {
         "name": "Overworld D3: Elevated chest near bridge (Magic Seed)",

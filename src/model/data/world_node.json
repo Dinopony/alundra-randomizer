@@ -42,6 +42,10 @@
         "name": "Overworld (D2 - Watermill sector arches)",
         "hints": []
     },
+    "overworld_d2_watermill": {
+        "name": "Overworld (D2 - Watermill)",
+        "hints": []
+    },
 
     "overworld_d3": {
         "name": "Overworld (D3 - Tarn manor sector)",
