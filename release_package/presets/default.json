@@ -1,0 +1,60 @@
+{
+    "gameSettings": {
+        "megalithsEnabledOnStart": true
+    },
+    "randomizerSettings": {
+        "allowSpoilerLog": true,
+        "itemsDistribution": {
+            "Herbs": 25,
+            "Strength Tonic": 5,
+            "Strength Elixyr": 2,
+
+            "Life Vessel": 40,
+            "Magic Seed": 4,
+
+            "Sword": 1,
+            "Fiend Blade": 1,
+            "Holy Sword": 1,
+            "Legend Sword": 1,
+
+            "Iron Flail": 1,
+            "Steel Flail": 1,
+
+            "Hunter's Bow": 1,
+            "Willow Bow": 1,
+
+            "Long Boots": 1,
+            "Merman Boots": 1,
+            "Charm Boots": 1,
+
+            "Broken Armor": 1,
+            "Silver Armor": 1,
+
+            "Fire Wand": 1,
+            "Ice Wand": 1,
+            "Bomb": 1,
+            "Spring Bean": 1,
+            "Sand Cape": 1,
+            "Aqua Cape": 1,
+            "Power Glove": 1,
+            "Secret Pass": 1,
+
+            "Earth Scroll": 1,
+            "Earth Book": 1,
+            "Water Scroll": 1,
+            "Water Book": 1,
+            "Fire Scroll": 1,
+            "Fire Book": 1,
+            "Wind Scroll": 1,
+            "Wind Book": 1,
+
+            "Ruby Crest": 1,
+            "Sapphire Crest": 1,
+            "Topaz Crest": 1,
+            "Emerald Crest": 1,
+            "Agate Crest": 1,
+            "Garnet Crest": 1,
+            "Diamond Crest": 1
+        }
+    }
+}
