@@ -69,6 +69,20 @@ MipsCode& MipsCode::j(uint32_t addr, bool add_load_delay_nop)
     return *this;
 }
 
+MipsCode& MipsCode::jr(const MipsRegister& reg, bool add_load_delay_nop)
+{
+    uint32_t instruction = 0x00000008;
+    instruction |= (reg.code() << 21);
+    this->add_long_le(instruction);
+
+    // Add a load slot delay nop
+    if(add_load_delay_nop)
+        this->nop();
+
+    return *this;
+}
+
+
 MipsCode& MipsCode::nop()
 {
     this->add_long(0x00000000);

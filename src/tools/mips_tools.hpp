@@ -34,6 +34,7 @@ public:
     MipsCode& sh(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to);
     MipsCode& sb(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to);
     MipsCode& j(uint32_t addr, bool add_load_delay_nop = true);
+    MipsCode& jr(const MipsRegister& reg, bool add_load_delay_nop = true);
     MipsCode& nop();
 
     /*
