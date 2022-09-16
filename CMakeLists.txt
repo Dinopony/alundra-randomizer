@@ -88,6 +88,7 @@ set(SOURCES
         "src/tools/bitstream_reader.cpp"
         "src/tools/bitstream_writer.hpp"
         "src/tools/byte_array.hpp"
+        "src/tools/byte_array.cpp"
         "src/tools/exception.hpp"
         "src/tools/json.hpp"
         "src/tools/mips_tools.hpp"

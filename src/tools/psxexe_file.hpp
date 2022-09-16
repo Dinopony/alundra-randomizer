@@ -55,7 +55,7 @@ public:
         _prepended_bytes.insert(_prepended_bytes.begin(), empty_bytes.begin(), empty_bytes.end());
 
         // Actually insert the bytes inside the data
-        _byte_array.insert(_byte_array.begin() + HEADER_SIZE, _prepended_bytes.begin(), _prepended_bytes.end());
+        this->insert(this->begin() + HEADER_SIZE, _prepended_bytes.begin(), _prepended_bytes.end());
 
         if(expansion_size > 0)
         {
@@ -64,7 +64,7 @@ public:
             this->set_long_le(0x18, new_code_loading_addr);
 
             // Update the amount of bytes to load
-            this->set_long_le(0x1C, _byte_array.size() - HEADER_SIZE);
+            this->set_long_le(0x1C, this->size() - HEADER_SIZE);
         }
     }
 };
