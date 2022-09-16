@@ -69,17 +69,17 @@
     },
     {
         "name": "Overworld D3: Leftmost chest in 3-chest group (Herbs)",
-        "nodeId": "overworld_d3_one_way_to_d4",
+        "nodeId": "overworld_d3",
         "address": "4C3B52"
     },
     {
         "name": "Overworld D3: Middle chest in 3-chest group (Herbs)",
-        "nodeId": "overworld_d3_one_way_to_d4",
+        "nodeId": "overworld_d3",
         "address": "4C3B3E"
     },
     {
         "name": "Overworld D3: Rightmost chest in 3-chest group (Herbs)",
-        "nodeId": "overworld_d3_one_way_to_d4",
+        "nodeId": "overworld_d3",
         "address": "4C3B66"
     },
     {
@@ -105,7 +105,7 @@
 
     {
         "name": "Overworld D4: Elevated chest at top-left corner (Life Vessel)",
-        "nodeId": "overworld_d3_one_way_to_d4",
+        "nodeId": "overworld_d4",
         "address": "50120A"
     },
     {

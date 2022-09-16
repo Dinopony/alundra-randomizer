@@ -163,13 +163,8 @@
     },
     {
         "fromId": "overworld_d3_behind_spring",
-        "toId": "overworld_d3_one_way_to_d4"
+        "toId": "overworld_d3"
     },
-    {
-        "fromId": "overworld_d3_one_way_to_d4",
-        "toId": "overworld_d4"
-    },
-
     {
         "fromId": "overworld_d4",
         "toId": "overworld_c4",
