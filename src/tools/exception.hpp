@@ -10,7 +10,7 @@ public:
     explicit RandomizerException(const std::string& reason) : std::exception()
     {}
 
-    [[nodiscard]] const char* what() const override
+    [[nodiscard]] const char* what() const noexcept override
     {
         return _reason.c_str();
     }
