@@ -184,6 +184,10 @@
         "nodeIds": [ "tarn_manor" ]
     },
     {
+        "name": "Coal Mine",
+        "nodeIds": [ "coal_mine" ]
+    },
+    {
         "name": "Lake Shrine",
         "nodeIds": [
             "lake_shrine",

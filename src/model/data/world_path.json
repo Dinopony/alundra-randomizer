@@ -455,6 +455,19 @@
     },
 
     {
+        "fromId": "overworld_b2",
+        "toId": "coal_mine",
+        "twoWay": true,
+        "requiredItems": [
+            "Bomb"
+        ]
+    },
+    {
+        "fromId": "coal_mine",
+        "toId": "overworld_b2_left"
+    },
+
+    {
         "fromId": "overworld_a1",
         "toId": "overworld_a2",
         "twoWay": true

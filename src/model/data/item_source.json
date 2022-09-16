@@ -638,5 +638,51 @@
         "nodeId": "tarn_manor",
         "groundItem": true,
         "address": "1BA5D06"
+    },
+
+    {
+        "name": "Coal Mine: Chest #1 in room where Lyman dies (Herbs)",
+        "nodeId": "coal_mine",
+        "address": "EF34BE"
+    },
+    {
+        "name": "Coal Mine: Chest #2 in room where Lyman dies (30 Gilder)",
+        "nodeId": "coal_mine",
+        "address": "EF34D2"
+    },
+    {
+        "name": "Coal Mine: Chest #3 in room where Lyman dies (Herbs)",
+        "nodeId": "coal_mine",
+        "address": "EF34E6"
+    },
+    {
+        "name": "Coal Mine: Chest #4 in room where Lyman dies (30 Gilder)",
+        "nodeId": "coal_mine",
+        "address": "EF34FA"
+    },
+    {
+        "name": "Coal Mine: Elevated chest in room with many minecarts (Herbs)",
+        "nodeId": "coal_mine",
+        "address": "F3BCC2"
+    },
+    {
+        "name": "Coal Mine: Lower chest in room with many minecarts (Herbs)",
+        "nodeId": "coal_mine",
+        "address": "F3BCD6"
+    },
+    {
+        "name": "Coal Mine: Elevated chest in last sector (Gilded Falcon)",
+        "nodeId": "coal_mine",
+        "address": "F7472A"
+    },
+    {
+        "name": "Coal Mine: Chest on wooden structure in last minecart starting room (Herbs)",
+        "nodeId": "coal_mine",
+        "address": "10AE572"
+    },
+    {
+        "name": "Coal Mine: Reward chest for beating the Murggs (Life Vessel)",
+        "nodeId": "coal_mine",
+        "address": "48DBB66"
     }
 ]
