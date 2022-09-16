@@ -1,6 +1,7 @@
 #include "randomizer_options.hpp"
 
 #include <iostream>
+#include <utility>
 
 #include "tools/vectools.hpp"
 #include "tools/bitstream_writer.hpp"
@@ -9,8 +10,8 @@
 
 #include "tools/base64.hpp"
 
-RandomizerOptions::RandomizerOptions(const ArgumentDictionary& args, const std::array<std::string, ITEM_COUNT>& item_names) :
-    _item_names(item_names)
+RandomizerOptions::RandomizerOptions(const ArgumentDictionary& args, std::array<std::string, ITEM_COUNT>  item_names) :
+    _item_names(std::move(item_names))
 {
     _items_distribution.fill(0);
 
@@ -65,19 +66,21 @@ Json RandomizerOptions::to_json() const
     Json json;
 
     // Game settings
+    json["gameSettings"]["originalGameBalance"] = _original_game_balance;
+    json["gameSettings"]["megalithsEnabledOnStart"] = _megaliths_enabled_on_start;
 
     // Randomizer settings
     json["randomizerSettings"]["allowSpoilerLog"] = _allow_spoiler_log;
 
-//    std::map<std::string, uint8_t> items_distribution_with_names;
-//    for(size_t i=0 ; i < _items_distribution.size() ; ++i)
-//    {
-//        uint8_t amount = _items_distribution[i];
-//        const std::string& item_name = _item_names[i];
-//        if(amount > 0)
-//            items_distribution_with_names[item_name] = amount;
-//    }
-//    json["randomizerSettings"]["itemsDistributions"] = items_distribution_with_names;
+    std::map<std::string, uint8_t> items_distribution_with_names;
+    for(size_t i=0 ; i < _items_distribution.size() ; ++i)
+    {
+        uint8_t amount = _items_distribution[i];
+        const std::string& item_name = _item_names[i];
+        if(amount > 0)
+            items_distribution_with_names[item_name] = amount;
+    }
+    json["randomizerSettings"]["itemsDistributions"] = items_distribution_with_names;
 
     return json;
 }
@@ -94,6 +97,8 @@ void RandomizerOptions::parse_json(const Json& json)
     {
         const Json& game_settings_json = json.at("gameSettings");
 
+        if(game_settings_json.contains("originalGameBalance"))
+            _original_game_balance = game_settings_json.at("originalGameBalance");
         if(game_settings_json.contains("megalithsEnabledOnStart"))
             _megaliths_enabled_on_start = game_settings_json.at("megalithsEnabledOnStart");
     }
@@ -159,6 +164,7 @@ std::string RandomizerOptions::permalink() const
     bitpack.pack(_allow_spoiler_log);
     bitpack.pack_array(_items_distribution);
 
+    bitpack.pack(_original_game_balance);
     bitpack.pack(_megaliths_enabled_on_start);
 
     return "a" + base64_encode(bitpack.bytes()) + "/";
@@ -181,5 +187,6 @@ void RandomizerOptions::parse_permalink(std::string permalink)
     _allow_spoiler_log = bitpack.unpack<bool>();
     _items_distribution = bitpack.unpack_array<uint8_t, ITEM_COUNT>();
 
+    _original_game_balance = bitpack.unpack<bool>();
     _megaliths_enabled_on_start = bitpack.unpack<bool>();
 }

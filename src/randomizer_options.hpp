@@ -20,6 +20,7 @@ private:
 
     // ------------- Game patching settings -------------
     // (included in permalink, presets & plandos)
+    bool _original_game_balance = true;
     bool _megaliths_enabled_on_start = true;
 
     // ------------- Randomization settings -------------
@@ -29,7 +30,7 @@ private:
     std::array<uint8_t, ITEM_COUNT> _items_distribution {};
 
 public:
-    explicit RandomizerOptions(const ArgumentDictionary& args, const std::array<std::string, ITEM_COUNT>& item_names);
+    explicit RandomizerOptions(const ArgumentDictionary& args, std::array<std::string, ITEM_COUNT>  item_names);
 
     [[nodiscard]] Json to_json() const;
     void parse_json(const Json& json);
@@ -39,6 +40,7 @@ public:
     [[nodiscard]] bool allow_spoiler_log() const { return _allow_spoiler_log; }
     [[nodiscard]] const std::array<uint8_t, ITEM_COUNT>& items_distribution() const { return _items_distribution; }
 
+    [[nodiscard]] bool original_game_balance() const { return _original_game_balance; }
     [[nodiscard]] bool megaliths_enabled_on_start() const { return _megaliths_enabled_on_start; }
 
     [[nodiscard]] std::vector<std::string> hash_words() const;

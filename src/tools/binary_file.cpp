@@ -1,5 +1,6 @@
 #include "binary_file.hpp"
 #include "exception.hpp"
+#include "byte_array.hpp"
 
 #include <iostream>
 
@@ -15,6 +16,18 @@ BinaryFile::BinaryFile(const std::string& input_path) : _input_path(input_path)
     file.seekg(0);
     file.read((char*)&(_byte_array[0]), file_size);
     file.close();
+}
+
+BinaryFile::BinaryFile(const std::vector<uint8_t>& bytes)
+{
+    _byte_array = bytes;
+}
+
+BinaryFile::BinaryFile(const uint8_t* buffer, size_t size)
+{
+    _byte_array.resize(size);
+    for(size_t i=0 ; i<size ; ++i)
+        _byte_array[i] = buffer[i];
 }
 
 void BinaryFile::set_byte(uint32_t address, uint8_t byte)

@@ -32,6 +32,7 @@ wrapped_dependency(TEXT   src/model/data/world_path.json     WORLD_PATHS_JSON)
 wrapped_dependency(TEXT   src/model/data/world_region.json   WORLD_REGIONS_JSON)
 wrapped_dependency(TEXT   src/model/data/item.json           ITEMS_JSON)
 wrapped_dependency(TEXT   src/model/data/item_source.json    ITEM_SOURCES_JSON)
+wrapped_dependency(RAW    src/assets/patched_balance.bin     PATCHED_BALANCE)
 
 set(SOURCES
         # --- Auto-generated dependencies ----------------------------------------
@@ -40,6 +41,7 @@ set(SOURCES
         "src/model/data/item_source.json.hxx"
         "src/model/data/item.json.hxx"
         "src/model/data/world_region.json.hxx"
+        "src/assets/patched_balance.bin.hxx"
 
         # --- Constnats ----------------------------------------
         "src/constants/item_codes.hpp"
@@ -70,9 +72,11 @@ set(SOURCES
         # --- Patches ----------------------------------------
         "src/patches/patch_new_game.hpp"
         "src/patches/patch_fix_map_inconsistencies.hpp"
+        "src/patches/patch_original_game_balance.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"
+        "src/patches/patches.cpp"
 
         # --- Tools ----------------------------------------
         "src/tools/argument_dictionary.hpp"
