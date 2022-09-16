@@ -60,7 +60,7 @@ private:
 
             // Set Overworld C4 to the "Merrick shop open" variant (0x0197 -> 0x1DD44C)
             func.li(reg_T0, 0x0197);
-            func.sb(reg_T0, reg_AT, 0xD44C);
+            func.sh(reg_T0, reg_AT, 0xD44C);
 
             // Open Riverside bar (0x08 -> 0x1DD385)
             func.li(reg_T0, 0x0008);
