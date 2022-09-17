@@ -8,7 +8,9 @@
     {
         "name": "Overworld A2",
         "nodeIds": [
-            "overworld_a2"
+            "overworld_a2",
+            "overworld_a2_behind_vines",
+            "overworld_a2_behind_vines_and_bomb"
         ]
     },
     {
@@ -91,7 +93,8 @@
         "name": "Overworld C2",
         "nodeIds": [
             "overworld_c2",
-            "overworld_c2_cave_behind_spring"
+            "overworld_c2_cave_behind_spring",
+            "overworld_c2_graveyard_house"
         ]
     },
     {
@@ -213,6 +216,12 @@
         "nodeIds": [
             "coastal_cave",
             "coastal_cave_behind_merman"
+        ]
+    },
+    {
+        "name": "Tower of the Great Tree",
+        "nodeIds": [
+            "great_tree_tower"
         ]
     },
     {

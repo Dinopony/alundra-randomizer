@@ -16,6 +16,11 @@
         "address": "21230B6"
     },
     {
+        "name": "Overworld C2: Chest in graveyard house basement (Nava's Charm)",
+        "nodeId": "overworld_c2_graveyard_house",
+        "address": "44592A2"
+    },
+    {
         "name": "Overworld C2: Chest in top-left cave behind springs (Gilded Falcon)",
         "nodeId": "overworld_c2_cave_behind_spring",
         "address": "21230CA"
@@ -384,46 +389,54 @@
     },
 
     {
-        "name": "Overworld A2: Upper chest (Gilded Falcon)",
-        "nodeId": "overworld_a2",
-        "address": "13FA66"
-    },
-    {
-        "name": "Overworld A2: Chest near spikeball (Life Vessel)",
-        "nodeId": "overworld_a2",
-        "address": "13F872"
-    },
-    {
-        "name": "Overworld A2: Lower chest among trees (Strength Tonic)",
-        "nodeId": "overworld_a2",
-        "address": "13F7E6"
-    },
-    {
-        "name": "Overworld A2: Upper chest among trees (Herbs)",
-        "nodeId": "overworld_a2",
-        "address": "13F7D2"
-    },
-    {
         "name": "Overworld A2: Chest dropped by Murggs (Willow Bow)",
         "nodeId": "overworld_a2",
         "address": "13F8FE"
     },
-
     {
-        "name": "Overworld A1: Left chest on great tree branches (Life Vessel)",
-        "nodeId": "overworld_a1",
-        "address": "1064EE"
+        "name": "Overworld A2: Chest in circular cave behind vines (Herbs)",
+        "nodeId": "overworld_a2_behind_vines",
+        "address": "53CAFEA"
     },
     {
-        "name": "Overworld A1: Right chest on great tree branches (Gilded Falcon)",
-        "nodeId": "overworld_a1",
-        "address": "1064DA"
+        "name": "Overworld A2: Left chest in bridge cave with 3 chests (Herbs)",
+        "nodeId": "overworld_a2_behind_vines_and_bomb",
+        "address": "53CB1B6"
     },
-
     {
-        "name": "Overworld A1: Right chest on great tree branches (Gilded Falcon)",
-        "nodeId": "overworld_a1",
-        "address": "1064DA"
+        "name": "Overworld A2: Middle chest in bridge cave with 3 chests (Strength Elixyr)",
+        "nodeId": "overworld_a2_behind_vines_and_bomb",
+        "address": "53CB1A2"
+    },
+    {
+        "name": "Overworld A2: Right chest in bridge cave with 3 chests (30 Gilder)",
+        "nodeId": "overworld_a2_behind_vines_and_bomb",
+        "address": "53CB1CA"
+    },
+    {
+        "name": "Overworld A2: Chest near spikeball (Life Vessel)",
+        "nodeId": "overworld_a2_behind_vines_and_bomb",
+        "address": "13F872"
+    },
+    {
+        "name": "Overworld A2: Upper chest (Gilded Falcon)",
+        "nodeId": "overworld_a2_behind_vines_and_bomb",
+        "address": "13FA66"
+    },
+    {
+        "name": "Overworld A2: Lower chest among trees (Strength Tonic)",
+        "nodeId": "overworld_a2_behind_vines_and_bomb",
+        "address": "13F7E6"
+    },
+    {
+        "name": "Overworld A2: Upper chest among trees (Herbs)",
+        "nodeId": "overworld_a2_behind_vines_and_bomb",
+        "address": "13F7D2"
+    },
+    {
+        "name": "Overworld A2: Chest after Stone Golem (Wonder Essence)",
+        "nodeId": "overworld_a2_behind_vines_and_bomb",
+        "address": "56E3FE6"
     },
 
     {
@@ -836,5 +849,131 @@
         "name": "Coastal Cave: Left boss reward chest (Water Scroll)",
         "nodeId": "coastal_cave_behind_merman",
         "address": "127B166"
+    },
+
+    {
+        "name": "Tower of the Great Tree (basement): bottom chest (Wonder Essence)",
+        "nodeId": "great_tree_tower",
+        "address": "2363162"
+    },
+    {
+        "name": "Tower of the Great Tree (basement): top-left chest (30 Gilder)",
+        "nodeId": "great_tree_tower",
+        "address": "2363176"
+    },
+    {
+        "name": "Tower of the Great Tree (basement): left chest among the two top chests (Strength Tonic)",
+        "nodeId": "great_tree_tower",
+        "address": "236318A"
+    },
+    {
+        "name": "Tower of the Great Tree (basement): right chest among the two top chests (Herbs)",
+        "nodeId": "great_tree_tower",
+        "address": "236319E"
+    },
+    {
+        "name": "Tower of the Great Tree (ground): chest in arena (1 Gilder)",
+        "nodeId": "great_tree_tower",
+        "address": "21CE702"
+    },
+    {
+        "name": "Tower of the Great Tree (ground): chest near left aisle entrance (Herbs)",
+        "nodeId": "great_tree_tower",
+        "address": "21CE586"
+    },
+    {
+        "name": "Tower of the Great Tree (ground): chest near right aisle entrance (Herbs)",
+        "nodeId": "great_tree_tower",
+        "address": "21CE496"
+    },
+    {
+        "name": "Tower of the Great Tree (1F): middle chest (Wonder Essence)",
+        "nodeId": "great_tree_tower",
+        "address": "220BAAE"
+    },
+    {
+        "name": "Tower of the Great Tree (1F): left chest in top-right room (Herbs)",
+        "nodeId": "great_tree_tower",
+        "address": "220BB3A"
+    },
+    {
+        "name": "Tower of the Great Tree (1F): right chest in top-right room (Strength Tonic)",
+        "nodeId": "great_tree_tower",
+        "address": "220BAEA"
+    },
+    {
+        "name": "Tower of the Great Tree (2F): left chest in top row of storage room (10 Gilder)",
+        "nodeId": "great_tree_tower",
+        "address": "224388A"
+    },
+    {
+        "name": "Tower of the Great Tree (2F): right chest in top row of storage room (Herbs)",
+        "nodeId": "great_tree_tower",
+        "address": "224389E"
+    },
+    {
+        "name": "Tower of the Great Tree (2F): left chest in bottom row of storage room (Herbs)",
+        "nodeId": "great_tree_tower",
+        "address": "22438B2"
+    },
+    {
+        "name": "Tower of the Great Tree (2F): right chest in bottom row of storage room (Strength Tonic)",
+        "nodeId": "great_tree_tower",
+        "address": "22436BE"
+    },
+    {
+        "name": "Tower of the Great Tree (2F): middle chest (Herbs)",
+        "nodeId": "great_tree_tower",
+        "address": "2243812"
+    },
+    {
+        "name": "Tower of the Great Tree (2F): top chest in bottom-right room (30 Gilder)",
+        "nodeId": "great_tree_tower",
+        "address": "22437D6"
+    },
+    {
+        "name": "Tower of the Great Tree (2F): left chest in bottom-right room (1 Gilder)",
+        "nodeId": "great_tree_tower",
+        "address": "22437EA"
+    },
+    {
+        "name": "Tower of the Great Tree (2F): right chest in bottom-right room (Life Vessel)",
+        "nodeId": "great_tree_tower",
+        "address": "22437FE"
+    },
+    {
+        "name": "Tower of the Great Tree (3F): left chest in top-right room (30 Gilder)",
+        "nodeId": "great_tree_tower",
+        "address": "227B1B2"
+    },
+    {
+        "name": "Tower of the Great Tree (3F): right chest in top-right room (Herbs)",
+        "nodeId": "great_tree_tower",
+        "address": "227B1C6"
+    },
+    {
+        "name": "Tower of the Great Tree (4F): chest in fireball launcher room (30 Gilder)",
+        "nodeId": "great_tree_tower",
+        "address": "22B23DA"
+    },
+    {
+        "name": "Tower of the Great Tree (Summit): left boss reward chest (Agate Crest)",
+        "nodeId": "great_tree_tower",
+        "address": "22EAE3E"
+    },
+    {
+        "name": "Tower of the Great Tree (Summit): right boss reward chest (Garnet Crest)",
+        "nodeId": "great_tree_tower",
+        "address": "22EAE52"
+    },
+    {
+        "name": "Tower of the Great Tree (Branches): Left chest on great tree branches (Life Vessel)",
+        "nodeId": "great_tree_tower",
+        "address": "1064EE"
+    },
+    {
+        "name": "Tower of the Great Tree (Branches): Right chest on great tree branches (Gilded Falcon)",
+        "nodeId": "great_tree_tower",
+        "address": "1064DA"
     }
 ]

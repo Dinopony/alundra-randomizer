@@ -18,6 +18,9 @@ public:
 
         // Neutralize the Inoa variant replacement when clearing Coastal Cave
         data.set_byte(0x127B08A, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
+
+        // Neutralize the Inoa variant replacement when clearing Tower of the Great Tree
+        data.set_byte(0x22EAD1F, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
     }
 
     void alter_exe(PsxExeFile& exe) override

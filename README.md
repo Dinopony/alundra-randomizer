@@ -14,6 +14,7 @@ It works on a 1.1 US image of the game by randomizing item sources and altering 
 - Most cutscenes and scenario-related blockers are removed to put the focus on gameplay & exploration
 - The global goal is to find the 7 crests, open Lake Shrine using those and beat Melzas
 - All arbitrary conditions from the original game tend to stay the same (e.g. Secret Pass to open the Casino)
+- Keys (including Elevator Key) are not shuffled to keep the dungeon flow similar to the vanilla game
 
 ## Usage
 

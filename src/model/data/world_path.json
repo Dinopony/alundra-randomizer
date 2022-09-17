@@ -36,7 +36,14 @@
         "fromId": "overworld_c2_cave_behind_spring",
         "toId": "overworld_c2"
     },
-
+    {
+        "fromId": "overworld_c2",
+        "toId": "overworld_c2_graveyard_house",
+        "twoWay": true,
+        "requiredItems": [
+            "Fire Wand"
+        ]
+    },
     {
         "fromId": "overworld_d2",
         "toId": "overworld_d3",
@@ -598,8 +605,33 @@
     },
 
     {
+        "fromId": "overworld_a2",
+        "toId": "overworld_a2_behind_vines",
+        "twoWay": true,
+        "requiredItems": [
+            "Fire Wand"
+        ]
+    },
+    {
+        "fromId": "overworld_a2_behind_vines",
+        "toId": "overworld_a2_behind_vines_and_bomb",
+        "requiredItems": [
+            "Bomb"
+        ]
+    },
+    {
+        "fromId": "overworld_a2_behind_vines_and_bomb",
+        "toId": "overworld_a2"
+    },
+    {
+        "fromId": "overworld_a2_behind_vines_and_bomb",
+        "toId": "overworld_a1",
+        "twoWay": true
+    },
+
+    {
         "fromId": "overworld_a1",
-        "toId": "overworld_a2",
+        "toId": "great_tree_tower",
         "twoWay": true
     },
 

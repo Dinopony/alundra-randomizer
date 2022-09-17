@@ -25,6 +25,10 @@
         "name": "Overworld (C2 - Sanctuary sector top left cave behind spring)",
         "hints": []
     },
+    "overworld_c2_graveyard_house": {
+        "name": "Overworld (C2 - Sanctuary sector top left graveyard house)",
+        "hints": []
+    },
 
     "overworld_d2": {
         "name": "Overworld (D2 - Watermill sector)",
@@ -256,6 +260,15 @@
         "name": "Overworld (A2 - Murgg woods)",
         "hints": []
     },
+    "overworld_a2_behind_vines": {
+        "name": "Overworld (A2 - Murgg woods behind vines)",
+        "hints": []
+    },
+    "overworld_a2_behind_vines_and_bomb": {
+        "name": "Overworld (A2 - Murgg woods behind vines and Bomb)",
+        "hints": []
+    },
+
 
     "overworld_e2": {
         "name": "Overworld (E2 - Upper Desert of Despair)",
@@ -330,6 +343,10 @@
     },
     "coastal_cave_behind_merman": {
         "name": "Coastal Cave (behind Merman Boots)",
+        "hints": []
+    },
+    "great_tree_tower": {
+        "name": "Great Tree Tower",
         "hints": []
     },
 
