@@ -11,10 +11,12 @@ class PatchNewGame : public GamePatch
 {
 private:
     bool _megaliths_enabled_on_start;
+    bool _skip_last_dungeon;
 
 public:
-    explicit PatchNewGame(bool megaliths_enabled_on_start) :
-        _megaliths_enabled_on_start(megaliths_enabled_on_start)
+    explicit PatchNewGame(RandomizerOptions& options) :
+        _megaliths_enabled_on_start(options.megaliths_enabled_on_start()),
+        _skip_last_dungeon(options.skip_last_dungeon())
     {}
 
     void alter_exe(PsxExeFile& exe) override
@@ -82,6 +84,27 @@ private:
                 // Activate megaliths (0x01 -> 0x1DD3E6)
                 func.li(reg_T0, 0x0001);
                 func.sb(reg_T0, reg_AT, 0xD3E6);
+            }
+
+            if(_skip_last_dungeon)
+            {
+                // Open Lake Shrine main gate (0x80 -> 0x1DD3B2)
+                func.li(reg_T0, 0x0080);
+                func.sb(reg_T0, reg_AT, 0xD3B2);
+                // Saw Melzas cutscene in Lake Shrine Interior freezing the dungeon
+                // Open NW, W, SW, SE seals in Lake Shrine Interior
+                // (0x8C -> 0x1DD3B3)
+                func.li(reg_T0, 0x008C);
+                func.sb(reg_T0, reg_AT, 0xD3B3);
+                // Open E, NE seals in Lake Shrine Interior (0x03 -> 0x1DD3B4)
+                func.li(reg_T0, 0x0003);
+                func.sb(reg_T0, reg_AT, 0xD3B4);
+                // Activate right mechanism inside Lake Shrine garden (0x80 -> 0x1DD3C1)
+                func.li(reg_T0, 0x0080);
+                func.sb(reg_T0, reg_AT, 0xD3C1);
+                // Activate left mechanism inside Lake Shrine garden (0x01 -> 0x1DD3C2)
+                func.li(reg_T0, 0x0001);
+                func.sb(reg_T0, reg_AT, 0xD3C2);
             }
 
             // Jump back to calling procedure

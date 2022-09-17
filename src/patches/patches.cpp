@@ -20,7 +20,7 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe, World& world, R
 {
     std::vector<GamePatch*> patches;
 
-    patches.emplace_back(new PatchNewGame(options.megaliths_enabled_on_start()));
+    patches.emplace_back(new PatchNewGame(options));
     patches.emplace_back(new PatchFixMapInconsistencies());
     patches.emplace_back(new PatchApplyItemSources());
     patches.emplace_back(new PatchNeutralizeMapVariantChanges());

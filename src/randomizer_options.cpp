@@ -68,6 +68,7 @@ Json RandomizerOptions::to_json() const
     // Game settings
     json["gameSettings"]["originalGameBalance"] = _original_game_balance;
     json["gameSettings"]["megalithsEnabledOnStart"] = _megaliths_enabled_on_start;
+    json["gameSettings"]["skipLastDungeon"] = _skip_last_dungeon;
 
     // Randomizer settings
     json["randomizerSettings"]["allowSpoilerLog"] = _allow_spoiler_log;
@@ -101,6 +102,8 @@ void RandomizerOptions::parse_json(const Json& json)
             _original_game_balance = game_settings_json.at("originalGameBalance");
         if(game_settings_json.contains("megalithsEnabledOnStart"))
             _megaliths_enabled_on_start = game_settings_json.at("megalithsEnabledOnStart");
+        if(game_settings_json.contains("skipLastDungeon"))
+            _skip_last_dungeon = game_settings_json.at("skipLastDungeon");
     }
 
     if(json.contains("randomizerSettings"))
@@ -166,6 +169,7 @@ std::string RandomizerOptions::permalink() const
 
     bitpack.pack(_original_game_balance);
     bitpack.pack(_megaliths_enabled_on_start);
+    bitpack.pack(_skip_last_dungeon);
 
     return "a" + base64_encode(bitpack.bytes()) + "/";
 }
@@ -189,4 +193,5 @@ void RandomizerOptions::parse_permalink(std::string permalink)
 
     _original_game_balance = bitpack.unpack<bool>();
     _megaliths_enabled_on_start = bitpack.unpack<bool>();
+    _skip_last_dungeon = bitpack.unpack<bool>();
 }

@@ -22,6 +22,7 @@ private:
     // (included in permalink, presets & plandos)
     bool _original_game_balance = true;
     bool _megaliths_enabled_on_start = true;
+    bool _skip_last_dungeon = true;
 
     // ------------- Randomization settings -------------
     // (included in permalink & presets, not in plandos)
@@ -42,6 +43,7 @@ public:
 
     [[nodiscard]] bool original_game_balance() const { return _original_game_balance; }
     [[nodiscard]] bool megaliths_enabled_on_start() const { return _megaliths_enabled_on_start; }
+    [[nodiscard]] bool skip_last_dungeon() const { return _skip_last_dungeon; }
 
     [[nodiscard]] std::vector<std::string> hash_words() const;
     [[nodiscard]] std::string hash_sentence() const { return stringtools::join(this->hash_words(), " "); }
