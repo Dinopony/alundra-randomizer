@@ -225,6 +225,11 @@
         "nodeId": "overworld_d1",
         "address": "43FBC6"
     },
+    {
+        "name": "Ice Manor: Reward chest (Ice Wand)",
+        "nodeId": "ice_manor",
+        "address": "448A77A"
+    },
 
     {
         "name": "Overworld B4: Chest hidden behind cabins on the pier (Gilded Falcon)",
@@ -684,5 +689,138 @@
         "name": "Coal Mine: Reward chest for beating the Murggs (Life Vessel)",
         "nodeId": "coal_mine",
         "address": "48DBB66"
-    }
+    },
+
+    {
+        "name": "Fairy Pond: First chest in spikeballs pit (Herbs)",
+        "nodeId": "fairy_pond",
+        "address": "246A506"
+    },
+    {
+        "name": "Fairy Pond: Second chest in spikeballs pit (Life Vessel)",
+        "nodeId": "fairy_pond",
+        "address": "246A4DE"
+    },
+    {
+        "name": "Fairy Pond: Chest in bubble jumping room (Herbs)",
+        "nodeId": "fairy_pond",
+        "address": "242F4F6"
+    },
+    {
+        "name": "Fairy Pond: Top chest in second chained spikeballs room (Herbs)",
+        "nodeId": "fairy_pond",
+        "address": "246A362"
+    },
+    {
+        "name": "Fairy Pond: Middle chest in second chained spikeballs room (Herbs)",
+        "nodeId": "fairy_pond",
+        "address": "246A376"
+    },
+    {
+        "name": "Fairy Pond: Bottom chest in second chained spikeballs room (Herbs)",
+        "nodeId": "fairy_pond",
+        "address": "246A38A"
+    },
+    {
+        "name": "Fairy Pond: Reward chest (Fiend Blade)",
+        "nodeId": "fairy_pond",
+        "address": "24A57C6"
+    },
+
+    {
+        "name": "Ancient Shrine: chest in left aisle of main entrance room (Herbs)",
+        "nodeId": "ancient_shrine",
+        "address": "769FFE"
+    },
+    {
+        "name": "Ancient Shrine: chest in right aisle of main entrance room (Herbs)",
+        "nodeId": "ancient_shrine",
+        "address": "76A012"
+    },
+    {
+        "name": "Ancient Shrine: chest in room with sandcape holes and jars (Herbs)",
+        "nodeId": "ancient_shrine",
+        "address": "89ED1E"
+    },
+    {
+        "name": "Ancient Shrine: chest near left exterior statue (Gilded Falcon)",
+        "nodeId": "ancient_shrine",
+        "address": "866AD2"
+    },
+    {
+        "name": "Ancient Shrine: left reward chest after beating boss (Sword)",
+        "nodeId": "ancient_shrine",
+        "address": "82F0DE"
+    },
+    {
+        "name": "Ancient Shrine: middle reward chest after beating boss (Long Boots)",
+        "nodeId": "ancient_shrine",
+        "address": "82F08E"
+    },
+    {
+        "name": "Ancient Shrine: right reward chest after beating boss (Life Vessel)",
+        "nodeId": "ancient_shrine",
+        "address": "82F0F2"
+    },
+
+    {
+        "name": "Coastal Cave: Chest hidden behind bricks near entrance (Herbs)",
+        "nodeId": "coastal_cave",
+        "address": "10EDA52"
+    },
+    {
+        "name": "Coastal Cave: Chest in 'spiral' room (Herbs)",
+        "nodeId": "coastal_cave",
+        "address": "10EDB56"
+    },
+    {
+        "name": "Coastal Cave: Chest reachable by throwing wood log on water near first key chest (Herbs)",
+        "nodeId": "coastal_cave_behind_merman",
+        "address": "112683E"
+    },
+    {
+        "name": "Coastal Cave: Chest on floating wooden structure in 3-buttons hub (Herbs)",
+        "nodeId": "coastal_cave_behind_merman",
+        "address": "1242F92"
+    },
+    {
+        "name": "Coastal Cave: Chest hidden below bricks in 3-buttons seal room (Herbs)",
+        "nodeId": "coastal_cave",
+        "address": "1243596"
+    },
+    {
+        "name": "Coastal Cave: Chest in buttons arena (Merman Boots)",
+        "nodeId": "coastal_cave",
+        "address": "120682A"
+    },
+
+    {
+        "name": "Coastal Cave: First chest in room with checkpoint (Life Vessel)",
+        "nodeId": "coastal_cave_behind_merman",
+        "address": "12068F2"
+    },
+    {
+        "name": "Coastal Cave: Second chest in room with checkpoint (Strength Elixyr)",
+        "nodeId": "coastal_cave_behind_merman",
+        "address": "1206852"
+    },
+    {
+        "name": "Coastal Cave: Chest on small island in room with elevated key chest (30 Gilder)",
+        "nodeId": "coastal_cave_behind_merman",
+        "address": "1192396"
+    },
+    {
+        "name": "Coastal Cave: Chest reachable by throwing wood log on water near last key chest (Wonder Essence)",
+        "nodeId": "coastal_cave_behind_merman",
+        "address": "11CE4B6"
+    },
+    {
+        "name": "Coastal Cave: Left boss reward chest (Water Scroll)",
+        "nodeId": "coastal_cave_behind_merman",
+        "address": "127B166"
+    },
+
+
+
+
 ]

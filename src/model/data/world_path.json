@@ -191,6 +191,15 @@
     },
     {
         "fromId": "overworld_c4",
+        "toId": "coastal_cave",
+        "twoWay": true,
+        "requiredItems": [
+            "Iron Flail",
+            "Steel Flail"
+        ]
+    },
+    {
+        "fromId": "overworld_c4",
         "toId": "overworld_c4_behind_spring",
         "requiredItems": [
             "Spring Bean"
@@ -262,6 +271,11 @@
         "fromId": "overworld_d1_cliff_maze",
         "toId": "overworld_d1"
     },
+    {
+        "fromId": "overworld_d1_cliff_maze",
+        "toId": "ice_manor",
+        "twoWay": true
+    },
 
     {
         "fromId": "overworld_b4",
@@ -322,6 +336,39 @@
         "requiredItems": [
             "Fire Wand"
         ]
+    },
+    {
+        "fromId": "overworld_b3",
+        "toId": "overworld_b3_top_left",
+        "twoWay": true,
+        "requiredNodes": [
+            "coal_mine"
+        ]
+    },
+    {
+        "fromId": "overworld_b3_top_left",
+        "toId": "overworld_b2_left",
+        "twoWay": true
+    },
+    {
+        "fromId": "overworld_b3_top_left",
+        "toId": "fairy_pond",
+        "requiredItems": [
+            "Merman Boots",
+            "Aqua Cape"
+        ]
+    },
+    {
+        "fromId": "overworld_b3_top_left",
+        "toId": "overworld_b3_megalith",
+        "requiredItems": [
+            "Iron Flail",
+            "Steel Flail"
+        ]
+    },
+    {
+        "fromId": "overworld_b3_megalith",
+        "toId": "overworld_b3_top_left"
     },
     {
         "fromId": "overworld_b3",
@@ -563,6 +610,17 @@
     },
     {
         "fromId": "overworld_e3",
+        "toId": "ancient_shrine",
+        "requiredItems": [
+            "Sand Cape"
+        ]
+    },
+    {
+        "fromId": "ancient_shrine",
+        "toId": "overworld_e3"
+    },
+    {
+        "fromId": "overworld_e3",
         "toId": "overworld_e3_cape_cave",
         "twoWay": true,
         "requiredItems": [
@@ -613,6 +671,15 @@
         "requiredItems": [
             "Hunter's Bow",
             "Willow Bow"
+        ]
+    },
+
+    {
+        "fromId": "coastal_cave",
+        "toId": "coastal_cave_behind_merman",
+        "twoWay": true,
+        "requiredItems": [
+            "Merman Boots"
         ]
     },
 

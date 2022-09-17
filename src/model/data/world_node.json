@@ -102,6 +102,10 @@
         "name": "Overworld (D1 - Torla sector cliff maze)",
         "hints": []
     },
+    "ice_manor": {
+        "name": "Ice Manor",
+        "hints": []
+    },
 
     "overworld_b4": {
         "name": "Overworld (B4 - Nava's hut sector)",
@@ -138,6 +142,10 @@
     },
     "overworld_b3_behind_power_glove": {
         "name": "Overworld (B3 - Riverside sector behind power glove)",
+        "hints": []
+    },
+    "overworld_b3_top_left": {
+        "name": "Overworld (B3 - Riverside sector top left)",
         "hints": []
     },
     "overworld_b3_megalith": {
@@ -295,6 +303,22 @@
     },
     "coal_mine": {
         "name": "Coal Mine",
+        "hints": []
+    },
+    "fairy_pond": {
+        "name": "Fairy Pond",
+        "hints": []
+    },
+    "ancient_shrine": {
+        "name": "Ancient Shrine",
+        "hints": []
+    },
+    "coastal_cave": {
+        "name": "Coastal Cave",
+        "hints": []
+    },
+    "coastal_cave_behind_merman": {
+        "name": "Coastal Cave (behind Merman Boots)",
         "hints": []
     },
 

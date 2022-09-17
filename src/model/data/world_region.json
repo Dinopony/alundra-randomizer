@@ -54,7 +54,8 @@
             "overworld_b3_elevated",
             "overworld_b3_behind_vines",
             "overworld_b3_behind_power_glove",
-            "overworld_b3_megalith"
+            "overworld_b3_megalith",
+            "overworld_b3_top_left"
         ]
     },
     {
@@ -140,12 +141,6 @@
             "overworld_d4_behind_long_boots"
         ]
     },
-    {
-        "name": "Fire Manor",
-        "nodeIds": [
-            "fire_manor"
-        ]
-    },
 
     {
         "name": "Overworld E1",
@@ -180,6 +175,20 @@
             "overworld_e4_behind_merman"
         ]
     },
+
+    {
+        "name": "Fire Manor",
+        "nodeIds": [
+            "fire_manor"
+        ]
+    },
+    {
+        "name": "Ice Manor",
+        "nodeIds": [
+            "ice_manor"
+        ]
+    },
+
     {
         "name": "Tarn Manor",
         "nodeIds": [ "tarn_manor" ]
@@ -187,6 +196,21 @@
     {
         "name": "Coal Mine",
         "nodeIds": [ "coal_mine" ]
+    },
+    {
+        "name": "Fairy Pond",
+        "nodeIds": [ "fairy_pond" ]
+    },
+    {
+        "name": "Ancient Shrine",
+        "nodeIds": [ "ancient_shrine" ]
+    },
+    {
+        "name": "Coastal Cave",
+        "nodeIds": [
+            "coastal_cave",
+            "coastal_cave_behind_merman"
+        ]
     },
     {
         "name": "Lake Shrine",

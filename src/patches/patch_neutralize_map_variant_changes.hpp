@@ -8,10 +8,16 @@ class PatchNeutralizeMapVariantChanges : public GamePatch
 public:
     void alter_data(BinaryFile& data, const World& world) override
     {
-        constexpr uint8_t INSTRUCTION_CODE_DO_NOTHING = 0xC5;
+        constexpr uint8_t INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET = 0xC5;
 
         // Neutralize the Inoa variant replacement in the Murgg watchtower cutscene
-        data.set_byte(0x105E29, INSTRUCTION_CODE_DO_NOTHING);
+        data.set_byte(0x105E29, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
+
+        // Neutralize the Inoa variant replacement when beating Ancient Shrine boss
+        data.set_byte(0x82E6DC, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
+
+        // Neutralize the Inoa variant replacement when clearing Coastal Cave
+        data.set_byte(0x127B08A, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
     }
 
     void alter_exe(PsxExeFile& exe) override
