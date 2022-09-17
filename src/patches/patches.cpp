@@ -7,6 +7,7 @@
 #include "patch_apply_item_sources.hpp"
 #include "patch_original_game_balance.hpp"
 #include "patch_neutralize_map_variant_changes.hpp"
+#include "patch_change_flag_checks.hpp"
 
 void execute_patches(const std::vector<GamePatch*>& patches, BinaryFile& data, PsxExeFile& exe, World& world)
 {
@@ -24,6 +25,7 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe, World& world, R
     patches.emplace_back(new PatchFixMapInconsistencies());
     patches.emplace_back(new PatchApplyItemSources());
     patches.emplace_back(new PatchNeutralizeMapVariantChanges());
+    patches.emplace_back(new PatchChangeFlagChecks());
     if(options.original_game_balance())
         patches.emplace_back(new PatchOriginalGameBalance());
 

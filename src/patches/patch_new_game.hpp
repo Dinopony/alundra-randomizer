@@ -64,10 +64,6 @@ private:
             func.li(reg_T0, 0x0197);
             func.sh(reg_T0, reg_AT, 0xD44C);
 
-            // Open Riverside bar (0x08 -> 0x1DD385)
-            func.li(reg_T0, 0x0008);
-            func.sb(reg_T0, reg_AT, 0xD385);
-
             // Open Underground Waterway (0x10 -> 0x1DD370)
             func.li(reg_T0, 0x0010);
             func.sb(reg_T0, reg_AT, 0xD370);

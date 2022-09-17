@@ -74,6 +74,7 @@ set(SOURCES
         "src/patches/patch_fix_map_inconsistencies.hpp"
         "src/patches/patch_original_game_balance.hpp"
         "src/patches/patch_neutralize_map_variant_changes.hpp"
+        "src/patches/patch_change_flag_checks.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"
