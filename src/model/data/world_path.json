@@ -554,8 +554,8 @@
 
     {
         "fromId": "overworld_e3",
-        "twoWay": true,
         "toId": "overworld_e3_behind_cape_or_boots",
+        "twoWay": true,
         "requiredItems": [
             "Sand Cape",
             "Long Boots"
@@ -603,6 +603,16 @@
         "twoWay": true,
         "requiredItems": [
             "Ice Wand"
+        ]
+    },
+
+    {
+        "fromId": "riverside_casino",
+        "toId": "riverside_casino_shooting_range",
+        "twoWay": true,
+        "requiredItems": [
+            "Hunter's Bow",
+            "Willow Bow"
         ]
     },
 

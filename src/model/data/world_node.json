@@ -149,6 +149,11 @@
         "name": "Riverside Casino",
         "hints": []
     },
+    "riverside_casino_shooting_range": {
+        "name": "Riverside Casino shooting range",
+        "hints": []
+    },
+
 
     "overworld_b2": {
         "name": "Overworld (B2 - Coal mine exterior)",
@@ -288,7 +293,6 @@
         "name": "Tarn Manor",
         "hints": []
     },
-
     "coal_mine": {
         "name": "Coal Mine",
         "hints": []

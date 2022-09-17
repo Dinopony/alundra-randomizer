@@ -60,7 +60,8 @@
     {
         "name": "Riverside Casino",
         "nodeIds": [
-            "riverside_casino"
+            "riverside_casino",
+            "riverside_casino_shooting_range"
         ]
     },
     {

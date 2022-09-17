@@ -265,7 +265,7 @@
     },
     {
         "name": "Riverside Casino: 'Hit Your Mark' chest (Life Vessel)",
-        "nodeId": "riverside_casino",
+        "nodeId": "riverside_casino_shooting_range",
         "address": "65C7BD6"
     },
     {
@@ -512,7 +512,7 @@
     {
         "name": "Overworld E3: Chest in cave (Sand Cape)",
         "nodeId": "overworld_e3_cape_cave",
-        "address": "5CA79C"
+        "address": "575536E"
     },
 
     {
