@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Tarn's Manor: Chest in underground pillars room (Key)",
+        "nodeId": "tarn_manor",
+        "address": "1BA5CFE"
+    },
+    {
+        "name": "Coal Mine: Lyman's dead body (Key)",
+        "nodeId": "coal_mine",
+        "address": "???"
+    },
+    {
+        "name": "Coal Mine: Jaylen's dead body (Key)",
+        "nodeId": "coal_mine",
+        "address": "???"
+    },
+    {
+        "name": "Coal Mine: Chest near Zane's dead body (Key)",
+        "nodeId": "coal_mine",
+        "address": "F7455E"
+    },
+    {
+        "name": "Ancient Shrine: Falling chest in room with symbols in grass (Key)",
+        "nodeId": "ancient_shrine",
+        "address": "82EF9E"
+    },
+    {
+        "name": "Coastal Cave: First key chest (Key)",
+        "nodeId": "coastal_cave",
+        "address": "1126532"
+    },
+    {
+        "name": "Coastal Cave: Second key chest (Key)",
+        "nodeId": "coastal_cave",
+        "address": "1192076"
+    },
+    {
+        "name": "Coastal Cave: Third key chest (Key)",
+        "nodeId": "coastal_cave",
+        "address": "11CE2FE"
+    },
+    {
+        "name": "Coastal Cave: Right boss reward chest (Nothing)",
+        "nodeId": "coastal_cave",
+        "address": "127B1A2"
+    },
+    {
+        "name": "Tower of the Great Tree (2F): Chest behind gate (Key)",
+        "nodeId": "great_tree_tower",
+        "address": "2243826"
+    },
+    {
+        "name": "Tower of the Great Tree (Branches): Chest in locked shack (Elevator Key)",
+        "nodeId": "great_tree_tower",
+        "address": "232A1D6"
+    }
+]
