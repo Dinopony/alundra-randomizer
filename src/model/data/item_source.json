@@ -323,47 +323,65 @@
 
     {
         "name": "Overworld A3: Elevated chest at top-left corner (Wonder Essence)",
-        "nodeId": "overworld_a3",
+        "nodeId": "overworld_a3_left",
         "address": "1866CE"
     },
     {
         "name": "Overworld A3: Lower chest in left ruins (Gilded Falcon)",
-        "nodeId": "overworld_a3",
+        "nodeId": "overworld_a3_left",
         "address": "1866E2"
     },
     {
         "name": "Overworld A3: Left chest in 3 chests group (30 Gilder)",
-        "nodeId": "overworld_a3",
+        "nodeId": "overworld_a3_left_behind_power_glove",
         "address": "186782"
     },
     {
         "name": "Overworld A3: Middle chest in 3 chests group (Strength Elixyr)",
-        "nodeId": "overworld_a3",
+        "nodeId": "overworld_a3_left_behind_power_glove",
         "address": "186796"
     },
     {
         "name": "Overworld A3: Right chest in 3 chests group (30 Gilder)",
-        "nodeId": "overworld_a3",
+        "nodeId": "overworld_a3_left_behind_power_glove",
         "address": "1867AA"
     },
     {
-        "name": "Overworld A3: Lower chest in middle ruins (Herbs)",
-        "nodeId": "overworld_a3",
+        "name": "Overworld A3: Left elevated chest in mimics cave (Gilded Falcon)",
+        "nodeId": "overworld_a3_left_behind_power_glove",
+        "address": "538B372"
+    },
+    {
+        "name": "Overworld A3: Right elevated chest in mimics cave (Herbs)",
+        "nodeId": "overworld_a3_left_behind_power_glove",
+        "address": "538B386"
+    },
+    {
+        "name": "Overworld A3: Left ground chest in mimics cave (Life Vessel)",
+        "nodeId": "overworld_a3_left_behind_power_glove",
+        "address": "538B34A"
+    },
+    {
+        "name": "Overworld A3: Right ground chest in mimics cave (Magic Elixyr)",
+        "nodeId": "overworld_a3_left_behind_power_glove",
+        "address": "538B35E"
+    },
+
+    {
+        "name": "Overworld A3: Lower chest in right ruins (Herbs)",
+        "nodeId": "overworld_a3_right",
         "address": "186642"
     },
     {
-        "name": "Overworld A3: Chest behind the trees in middle ruins (Gilded Falcon)",
-        "nodeId": "overworld_a3",
+        "name": "Overworld A3: Chest behind the trees in right ruins (Gilded Falcon)",
+        "nodeId": "overworld_a3_right_behind_vines",
         "address": "186732"
     },
     {
         "name": "Overworld A3: Elevated chest in middle ruins (Water Book)",
-        "nodeId": "overworld_a3",
+        "nodeId": "overworld_a3_right_behind_vines",
         "address": "18670A"
     },
-
-
-
 
     {
         "name": "Overworld A2: Upper chest (Gilded Falcon)",
@@ -818,9 +836,5 @@
         "name": "Coastal Cave: Left boss reward chest (Water Scroll)",
         "nodeId": "coastal_cave_behind_merman",
         "address": "127B166"
-    },
-
-
-
-
+    }
 ]

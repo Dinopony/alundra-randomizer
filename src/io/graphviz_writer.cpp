@@ -20,7 +20,7 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& path)
     std::ofstream graphviz(path);
     graphviz << "digraph {\n";
 
-    graphviz << "\tgraph [pad=0.5, nodesep=0.7, ranksep=0.5];\n";
+    graphviz << "\tgraph [pad=0.5, nodesep=1, ranksep=1.5];\n";
     graphviz << "\tnode[shape=rect];\n\n";
 
     Json paths_json = Json::parse(WORLD_PATHS_JSON);

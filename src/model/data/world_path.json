@@ -352,14 +352,6 @@
     },
     {
         "fromId": "overworld_b3_top_left",
-        "toId": "fairy_pond",
-        "requiredItems": [
-            "Merman Boots",
-            "Aqua Cape"
-        ]
-    },
-    {
-        "fromId": "overworld_b3_top_left",
         "toId": "overworld_b3_megalith",
         "requiredItems": [
             "Iron Flail",
@@ -412,6 +404,11 @@
         ]
     },
     {
+        "fromId": "overworld_a4_right",
+        "toId": "overworld_a3_right",
+        "twoWay": true
+    },
+    {
         "fromId": "overworld_a4_left",
         "toId": "overworld_a4_middle",
         "twoWay": true,
@@ -426,6 +423,11 @@
         "requiredItems": [
             "Power Glove"
         ]
+    },
+    {
+        "fromId": "overworld_a4_left",
+        "toId": "overworld_a3_left",
+        "twoWay": true
     },
     {
         "fromId": "overworld_a4_manor",
@@ -456,6 +458,87 @@
         "toId": "overworld_a3_megalith",
         "requiredItems": [
             "Power Glove"
+        ]
+    },
+    {
+        "fromId": "overworld_a3_right",
+        "toId": "overworld_a3_right_behind_vines",
+        "requiredItems": [
+            "Fire Wand"
+        ]
+    },
+    {
+        "fromId": "overworld_a3_right_behind_vines",
+        "toId": "overworld_a3_right"
+    },
+    {
+        "fromId": "overworld_a3_left",
+        "toId": "overworld_a3_left_behind_power_glove",
+        "twoWay": true,
+        "requiredItems": [
+            "Power Glove"
+        ]
+    },
+    {
+        "fromId": "overworld_a3_left_behind_power_glove",
+        "toId": "overworld_a2",
+        "twoWay": true,
+        "requiredItems": [
+            "Tree Gem"
+        ]
+    },
+
+    {
+        "fromId": "overworld_a4_middle",
+        "toId": "river_network",
+        "twoWay": true,
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_a3_left",
+        "toId": "river_network",
+        "twoWay": true,
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_a3_megalith",
+        "toId": "river_network",
+        "twoWay": true,
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_a4_right",
+        "toId": "river_network",
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_b2",
+        "toId": "river_network",
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "river_network",
+        "toId": "overworld_b4",
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "toId": "river_network",
+        "fromId": "fairy_pond",
+        "twoWay": true,
+        "requiredItems": [
+            "Aqua Cape"
         ]
     },
 
@@ -518,14 +601,6 @@
         "fromId": "overworld_a1",
         "toId": "overworld_a2",
         "twoWay": true
-    },
-    {
-        "fromId": "overworld_a2",
-        "toId": "overworld_a3",
-        "twoWay": true,
-        "requiredItems": [
-            "Tree Gem"
-        ]
     },
 
     {

@@ -7,7 +7,9 @@ private:
     std::string _reason;
 
 public:
-    explicit RandomizerException(const std::string& reason) : std::exception()
+    explicit RandomizerException(const std::string& reason) :
+        std::exception  (),
+        _reason         (reason)
     {}
 
     [[nodiscard]] const char* what() const noexcept override

@@ -14,8 +14,11 @@
     {
         "name": "Overworld A3",
         "nodeIds": [
-            "overworld_a3",
-            "overworld_a3_megalith"
+            "overworld_a3_left",
+            "overworld_a3_left_behind_power_glove",
+            "overworld_a3_megalith",
+            "overworld_a3_right",
+            "overworld_a3_right_behind_vines"
         ]
     },
     {
@@ -217,6 +220,12 @@
         "nodeIds": [
             "lake_shrine",
             "end"
+        ]
+    },
+    {
+        "name": "River network",
+        "nodeIds": [
+            "river_network"
         ]
     }
 ]

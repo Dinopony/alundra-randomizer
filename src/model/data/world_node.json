@@ -222,12 +222,24 @@
         "hints": []
     },
 
-    "overworld_a3": {
-        "name": "Overworld (A3 - above Fire Manor)",
+    "overworld_a3_left": {
+        "name": "Overworld (A3 - above Fire Manor, left)",
+        "hints": []
+    },
+    "overworld_a3_left_behind_power_glove": {
+        "name": "Overworld (A3 - above Fire Manor, left behind Power Glove)",
         "hints": []
     },
     "overworld_a3_megalith": {
         "name": "Overworld (A3 - above Fire Manor, megalith)",
+        "hints": []
+    },
+    "overworld_a3_right": {
+        "name": "Overworld (A3 - above Fire Manor, right)",
+        "hints": []
+    },
+    "overworld_a3_right_behind_vines": {
+        "name": "Overworld (A3 - above Fire Manor, right behind vines)",
         "hints": []
     },
 
@@ -279,7 +291,6 @@
         "hints": []
     },
 
-
     "overworld_e4": {
         "name": "Overworld (E4 - Cliff of Madness sector)",
         "hints": []
@@ -319,6 +330,11 @@
     },
     "coastal_cave_behind_merman": {
         "name": "Coastal Cave (behind Merman Boots)",
+        "hints": []
+    },
+
+    "river_network": {
+        "name": "River network",
         "hints": []
     },
 
