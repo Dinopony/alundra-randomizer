@@ -6,14 +6,12 @@
 This project is a randomizer for the excellent action RPG Alundra, released on the first PlayStation in 1997.
 It works on a 1.1 US image of the game by randomizing item sources and altering the game to make it more enjoyable in a randomizer format.
 
-## Notable differences compared to original game
-
-### Game flow
+## Game flow
 
 - Game starts inside Jess's house
 - Most cutscenes and scenario-related blockers are removed to put the focus on gameplay & exploration
 - The global goal is to find the 7 crests, open Lake Shrine using those and beat Melzas
-- All arbitrary conditions from the original game tend to stay the same (e.g. Secret Pass to open the Casino)
+- All arbitrary conditions from the original game tend to stay the same whenever relevant (e.g. Secret Pass to open the Casino)
 - Keys (including Elevator Key) are not shuffled to keep the dungeon flow similar to the vanilla game
 
 ## Usage
