@@ -45,6 +45,7 @@ set(SOURCES
 
         # --- Constnats ----------------------------------------
         "src/constants/item_codes.hpp"
+        "src/constants/flags.hpp"
 
         # --- I/O ----------------------------------------
         "src/io/graphviz_writer.cpp"
@@ -76,6 +77,7 @@ set(SOURCES
         "src/patches/patch_neutralize_map_variant_changes.hpp"
         "src/patches/patch_change_flag_checks.hpp"
         "src/patches/patch_allow_using_consumables_while_full.hpp"
+        "src/patches/patch_apply_options_on_world.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"

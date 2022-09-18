@@ -9,6 +9,7 @@
 #include "patch_neutralize_map_variant_changes.hpp"
 #include "patch_change_flag_checks.hpp"
 #include "patch_allow_using_consumables_while_full.hpp"
+#include "patch_apply_options_on_world.hpp"
 
 void execute_patches(const std::vector<GamePatch*>& patches, BinaryFile& data, PsxExeFile& exe, World& world)
 {
@@ -22,7 +23,8 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe, World& world, R
 {
     std::vector<GamePatch*> patches;
 
-    patches.emplace_back(new PatchNewGame(options));
+    patches.emplace_back(new PatchApplyOptionsOnWorld(options));
+    patches.emplace_back(new PatchNewGame());
     patches.emplace_back(new PatchFixMapInconsistencies());
     patches.emplace_back(new PatchApplyItemSources());
     patches.emplace_back(new PatchNeutralizeMapVariantChanges());
