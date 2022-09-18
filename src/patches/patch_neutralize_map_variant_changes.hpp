@@ -23,7 +23,7 @@ public:
         data.set_byte(0x22EAD1F, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
     }
 
-    void alter_exe(PsxExeFile& exe) override
+    void alter_exe(PsxExeFile& exe, const World& world) override
     {
         // Add a "do nothing" event instruction to replace unconvenient instructions (with code 0xC5)
         MipsCode func;

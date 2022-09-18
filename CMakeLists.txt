@@ -75,6 +75,7 @@ set(SOURCES
         "src/patches/patch_original_game_balance.hpp"
         "src/patches/patch_neutralize_map_variant_changes.hpp"
         "src/patches/patch_change_flag_checks.hpp"
+        "src/patches/patch_allow_using_consumables_while_full.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"

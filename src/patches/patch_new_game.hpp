@@ -19,7 +19,7 @@ public:
         _skip_last_dungeon(options.skip_last_dungeon())
     {}
 
-    void alter_exe(PsxExeFile& exe) override
+    void alter_exe(PsxExeFile& exe, const World& world) override
     {
         // Change spawn map ID
         exe.set_word_le(0x12558, MAP_JESS_HOUSE_RONAN_VERSION);
