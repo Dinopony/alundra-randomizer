@@ -31,6 +31,7 @@ public:
 
         // Change the "repeating" slot at Merrick's shop visually into a chest
         data.set_byte(0x1EBF9CE, 0x1E);
+        data.set_long(0x1EBF9D1, 0x00000000);
     }
 
     void alter_exe(PsxExeFile& exe, const World& world) override

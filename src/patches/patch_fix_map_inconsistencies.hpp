@@ -24,5 +24,9 @@ public:
         // Map 407: 01 40 1E 5E 3E 0C 00 00 00 00 00 00 42 05 26
         data.set_byte(0x584D6AB, 0x5F);
         data.set_word(0x584D6B4, 0xD706);
+
+        // Leaving the inn map uses a forced transition to the wrong variant of Inoa, replace
+        // the map ID directly in the events
+        data.set_word_le(0x3A673AE, 0x00F1);
     }
 };
