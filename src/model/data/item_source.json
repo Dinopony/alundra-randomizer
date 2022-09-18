@@ -672,8 +672,7 @@
     {
         "name": "Tarn's Manor: Item on table in final room (Book of Elna)",
         "nodeId": "tarn_manor",
-        "groundItem": true,
-        "address": "1BA5D06"
+        "spriteAddress": "1BA5D06"
     },
 
     {
@@ -975,5 +974,82 @@
         "name": "Tower of the Great Tree (Branches): Right chest on great tree branches (Gilded Falcon)",
         "nodeId": "great_tree_tower",
         "address": "1064DA"
+    },
+
+    {
+        "name": "Merrick Shop: Item traded for 15 Gilded Falcons (Life Vessel)",
+        "nodeId": "overworld_c4",
+        "address": "1EBF67C",
+        "spriteAddress": "1EBF92E",
+        "merrickItemAddress": "7CE7C",
+        "isProgressionAllowed": false
+    },
+    {
+        "name": "Merrick Shop: Item traded for 20 Gilded Falcons (Olga's Ring)",
+        "nodeId": "overworld_c4",
+        "address": "1EBF6B4",
+        "spriteAddress": [
+            "1EBF8A2",
+            "1EBF942",
+            "1EBF9E2"
+        ],
+        "merrickItemAddress": "7CE80"
+    },
+    {
+        "name": "Merrick Shop: Item traded for 25 Gilded Falcons (Life Vessel)",
+        "nodeId": "overworld_c4",
+        "address": "1EBF774",
+        "spriteAddress": "1EBF956",
+        "merrickItemAddress": "7CE84",
+        "isProgressionAllowed": false
+    },
+    {
+        "name": "Merrick Shop: Item traded for 30 Gilded Falcons (Silver Armlet)",
+        "nodeId": "overworld_c4",
+        "address": "1EBF6E4",
+        "spriteAddress": [
+            "1EBF8CA",
+            "1EBF96A",
+            "1EBF9F6"
+        ],
+        "merrickItemAddress": "7CE88"
+    },
+    {
+        "name": "Merrick Shop: Item traded for 35 Gilded Falcons (Life Vessel)",
+        "nodeId": "overworld_c4",
+        "address": "1EBF7AC",
+        "spriteAddress": "1EBF97E",
+        "merrickItemAddress": "7CE8C",
+        "isProgressionAllowed": false
+    },
+    {
+        "name": "Merrick Shop: Item traded for 40 Gilded Falcons (Recovery Ring)",
+        "nodeId": "overworld_c4",
+        "address": "1EBF714",
+        "spriteAddress": [
+            "1EBF8F2",
+            "1EBF992",
+            "1EBFA0A"
+        ],
+        "merrickItemAddress": "7CE90",
+        "isProgressionAllowed": false
+    },
+    {
+        "name": "Merrick Shop: Item traded for 45 Gilded Falcons (Life Vessel)",
+        "nodeId": "overworld_c4",
+        "address": "1EBF7E4",
+        "spriteAddress": "1EBF9A6",
+        "merrickItemAddress": "7CE94",
+        "isProgressionAllowed": false
+    },
+    {
+        "name": "Merrick Shop: Item traded for 50 Gilded Falcons (Spirit Wand)",
+        "nodeId": "overworld_c4",
+        "address": "1EBF742",
+        "spriteAddress": [
+            "1EBF9BA"
+        ],
+        "merrickItemAddress": "7CE98",
+        "isProgressionAllowed": false
     }
 ]
