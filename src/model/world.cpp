@@ -22,7 +22,7 @@ Item* World::item(const std::string& name) const
         return nullptr;
 
     for (Item* item : _items)
-        if(item->name() == name)
+        if(item && item->name() == name)
             return item;
 
     return nullptr;

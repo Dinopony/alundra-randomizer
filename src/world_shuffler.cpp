@@ -41,11 +41,6 @@ void WorldShuffler::randomize_items()
         // Run a solver step to reach a "blocked" state where something needs to be placed in order to continue
         explored_new_nodes = _solver.run_until_blocked();
 
-        // Place all "scheduled" item placements, which correspond to "itemPlacedWhenCrossing" attributes of WorldPaths
-        // solver encountered during last step
-        for(auto& [item, item_sources] : _solver.scheduled_item_placements())
-            this->place_item_randomly(item, item_sources);
-
         // Place one or several key items in order to open a blocked path
         this->open_random_blocked_path();
 
@@ -142,12 +137,12 @@ void WorldShuffler::init_item_pool()
  * @throw RandomizerException if item could not be placed in any of the possible item sources
  * @throw RandomizerException if item could not be found inside item pool
  */
-ItemSource* WorldShuffler::place_item_randomly(Item* item, std::vector<ItemSource*> possible_sources)
+ItemSource* WorldShuffler::place_progression_item_randomly(Item* item, std::vector<ItemSource*> possible_sources)
 {
     if(_item_pool_quantities[item->id()] == 0)
     {
-        std::cout << "Ignored placement of " << item->name() << " after crossing path because there are no more"
-                                                                " instances of it inside the item pool." << std::endl;
+        std::cout << "Ignored placement of " << item->name() 
+                 << " because there are no more instances of it inside the item pool." << std::endl;
         return nullptr;
     }
 
@@ -156,12 +151,16 @@ ItemSource* WorldShuffler::place_item_randomly(Item* item, std::vector<ItemSourc
     ItemSource* picked_item_source = nullptr;
     for(ItemSource* source : possible_sources)
     {
-        if(source->empty() && test_item_source_compatibility(source, item))
-        {
-            source->item(item);
-            picked_item_source = source;
-            break;
-        }
+        if(!source->empty())
+            throw RandomizerException("Received a non-empty ItemSource in WorldShuffler::place_progression_item_randomly");
+        if(!source->can_contain_progression())
+            continue;
+        if(!test_item_source_compatibility(source, item))
+            continue;
+    
+        source->item(item);
+        picked_item_source = source;
+        break;
     }
 
     if(!picked_item_source)
@@ -307,7 +306,7 @@ void WorldShuffler::open_random_blocked_path()
     {
         while(_item_pool_quantities[item->id()] > 0)
         {
-            ItemSource* source = this->place_item_randomly(item, _solver.empty_reachable_item_sources());
+            ItemSource* source = this->place_progression_item_randomly(item, _solver.empty_reachable_item_sources());
             _logical_playthrough.emplace_back(source);
             debug_log["placedKeyItems"][source->name()] = item->name();
         }
