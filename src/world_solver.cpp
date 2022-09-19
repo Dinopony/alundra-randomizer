@@ -287,7 +287,7 @@ void WorldSolver::expand_exploration_zone()
         _nodes_to_explore.erase(_nodes_to_explore.begin());
 
         if(vectools::contains(_explored_nodes, node))
-            throw RandomizerException("Exploring the same node '" + node->name() + "' twice");
+            throw RandomizerException("Exploring the same node '" + node->id() + "' twice");
         _explored_nodes.emplace_back(node);
 
         debug_log["exploration"].emplace_back("Explored " + node->id());

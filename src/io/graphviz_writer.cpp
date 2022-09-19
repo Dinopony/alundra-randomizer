@@ -40,7 +40,7 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& path)
             
         if(json.contains("requiredNodes"))
             for(const std::string node_id : json.at("requiredNodes"))
-                required_names.emplace_back("Access to " + world.node(node_id)->name());
+                required_names.emplace_back("Access to " + world.node(node_id)->id());
 
         if(!required_names.empty())
         {

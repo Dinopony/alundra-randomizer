@@ -4,6 +4,7 @@
 
 #include "../model/world_node.hpp"
 #include "../model/world_region.hpp"
+#include "../model/world_path.hpp"
 #include "../model/item_distribution.hpp"
 #include "../model/randomizer_world.hpp"
 

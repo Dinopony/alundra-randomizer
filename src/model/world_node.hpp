@@ -4,16 +4,15 @@
 #include <vector>
 
 #include "item_source.hpp"
-
-#include "world_path.hpp"
+#include "../tools/exception.hpp"
 
 class WorldRegion;
+class WorldPath;
 
 class WorldNode
 {
 private:
     std::string _id;
-    std::string _name;
     std::vector<ItemSource*> _item_sources;
     std::vector<WorldPath*> _outgoing_paths;
     std::vector<WorldPath*> _ingoing_paths;
@@ -21,16 +20,9 @@ private:
     WorldRegion* _region = nullptr;
 
 public:
-    WorldNode(std::string id, std::string name, std::vector<std::string> hints = {}) :
-        _id             (std::move(id)),
-        _name           (std::move(name)),
-        _hints          (std::move(hints))
-    {}
+    WorldNode() = default;
 
     [[nodiscard]] const std::string& id() const { return _id; }
-
-    [[nodiscard]] const std::string& name() const { return _name; }
-    void name(const std::string& name) { _name = name; }
 
     [[nodiscard]] const std::vector<ItemSource*>& item_sources() const { return _item_sources; }
     void add_item_source(ItemSource* source) {  _item_sources.emplace_back(source); }
@@ -50,7 +42,7 @@ public:
     [[nodiscard]] Json to_json() const
     {
         Json json;
-        json["name"] = _name;
+
         if(!_hints.empty())
             json["hints"] = _hints;
 
@@ -59,12 +51,20 @@ public:
 
     static WorldNode* from_json(const std::string& id, const Json& json)
     {
-        const std::string& name = json.at("name");
+        WorldNode* node = new WorldNode();
+        
+        node->_id = id;
+        
+        for(auto& [key, value] : json.items())
+        {
+            if(key == "hints")                        
+                value.get_to(node->_hints);
+            else
+                throw RandomizerException("Unknown key '" + key + "' in WorldNode JSON");
+        }
 
-        std::vector<std::string> hints;
-        if(json.contains("hints")) 
-            json.at("hints").get_to(hints);
-
-        return new WorldNode(id, name, hints);
+        return node;
     }
+
+    
 };
