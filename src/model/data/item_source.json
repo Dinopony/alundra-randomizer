@@ -1156,7 +1156,7 @@
 
     {
         "name": "Merrick Shop: Item traded for 15 Gilded Falcons",
-        "nodeId": "overworld_c4",
+        "nodeId": "merrick_shop_1",
         "address": "1EBF67C",
         "spriteAddress": "1EBF92E",
         "merrickItemAddress": "7CE7C",
@@ -1165,7 +1165,7 @@
 	},
     {
         "name": "Merrick Shop: Item traded for 20 Gilded Falcons",
-        "nodeId": "overworld_c4",
+        "nodeId": "merrick_shop_2",
         "address": "1EBF6B4",
         "spriteAddress": [
             "1EBF8A2",
@@ -1177,7 +1177,7 @@
 	},
     {
         "name": "Merrick Shop: Item traded for 25 Gilded Falcons",
-        "nodeId": "overworld_c4",
+        "nodeId": "merrick_shop_3",
         "address": "1EBF774",
         "spriteAddress": "1EBF956",
         "merrickItemAddress": "7CE84",
@@ -1186,7 +1186,7 @@
 	},
     {
         "name": "Merrick Shop: Item traded for 30 Gilded Falcons",
-        "nodeId": "overworld_c4",
+        "nodeId": "merrick_shop_4",
         "address": "1EBF6E4",
         "spriteAddress": [
             "1EBF8CA",
@@ -1198,7 +1198,7 @@
 	},
     {
         "name": "Merrick Shop: Item traded for 35 Gilded Falcons",
-        "nodeId": "overworld_c4",
+        "nodeId": "merrick_shop_5",
         "address": "1EBF7AC",
         "spriteAddress": "1EBF97E",
         "merrickItemAddress": "7CE8C",
@@ -1207,7 +1207,7 @@
 	},
     {
         "name": "Merrick Shop: Item traded for 40 Gilded Falcons",
-        "nodeId": "overworld_c4",
+        "nodeId": "merrick_shop_6",
         "address": "1EBF714",
         "spriteAddress": [
             "1EBF8F2",
@@ -1220,7 +1220,7 @@
 	},
     {
         "name": "Merrick Shop: Item traded for 45 Gilded Falcons",
-        "nodeId": "overworld_c4",
+        "nodeId": "merrick_shop_7",
         "address": "1EBF7E4",
         "spriteAddress": "1EBF9A6",
         "merrickItemAddress": "7CE94",
@@ -1229,7 +1229,7 @@
 	},
     {
         "name": "Merrick Shop: Item traded for 50 Gilded Falcons",
-        "nodeId": "overworld_c4",
+        "nodeId": "merrick_shop_8",
         "address": "1EBF742",
         "spriteAddress": [
             "1EBF9BA"

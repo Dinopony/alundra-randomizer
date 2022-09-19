@@ -225,6 +225,19 @@
         ]
     },
     {
+        "name": "Merrick's shop",
+        "nodeIds": [
+            "merrick_shop_1",
+            "merrick_shop_2",
+            "merrick_shop_3",
+            "merrick_shop_4",
+            "merrick_shop_5",
+            "merrick_shop_6",
+            "merrick_shop_7",
+            "merrick_shop_8"
+        ]
+    },
+    {
         "name": "Lake Shrine",
         "nodeIds": [
             "lake_shrine",

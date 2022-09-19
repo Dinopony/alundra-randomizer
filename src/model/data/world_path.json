@@ -791,6 +791,70 @@
     },
 
     {
+        "fromId": "overworld_c4",
+        "toId": "merrick_shop_1",
+        "twoWay": true,
+        "requiredItems": [
+            { "name": "Gilded Falcon", "quantity": 15 }
+        ]
+    },
+    {
+        "fromId": "merrick_shop_1",
+        "toId": "merrick_shop_2",
+        "twoWay": true,
+        "requiredItems": [
+            { "name": "Gilded Falcon", "quantity": 20 }
+        ]
+    },
+    {
+        "fromId": "merrick_shop_2",
+        "toId": "merrick_shop_3",
+        "twoWay": true,
+        "requiredItems": [
+            { "name": "Gilded Falcon", "quantity": 25 }
+        ]
+    },
+    {
+        "fromId": "merrick_shop_3",
+        "toId": "merrick_shop_4",
+        "twoWay": true,
+        "requiredItems": [
+            { "name": "Gilded Falcon", "quantity": 30 }
+        ]
+    },
+    {
+        "fromId": "merrick_shop_4",
+        "toId": "merrick_shop_5",
+        "twoWay": true,
+        "requiredItems": [
+            { "name": "Gilded Falcon", "quantity": 35 }
+        ]
+    },
+    {
+        "fromId": "merrick_shop_5",
+        "toId": "merrick_shop_6",
+        "twoWay": true,
+        "requiredItems": [
+            { "name": "Gilded Falcon", "quantity": 40 }
+        ]
+    },
+    {
+        "fromId": "merrick_shop_6",
+        "toId": "merrick_shop_7",
+        "twoWay": true,
+        "requiredItems": [
+            { "name": "Gilded Falcon", "quantity": 45 }
+        ]
+    },
+    {
+        "fromId": "merrick_shop_7",
+        "toId": "merrick_shop_8",
+        "twoWay": true,
+        "requiredItems": [
+            { "name": "Gilded Falcon", "quantity": 50 }
+        ]
+    },
+    {
         "fromId": "lake_shrine",
         "toId": "end"
     }
