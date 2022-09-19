@@ -240,6 +240,12 @@
     {
         "name": "Lake Shrine",
         "nodeIds": [
+            "crest_1",
+            "crest_2",
+            "crest_3",
+            "crest_4",
+            "crest_5",
+            "crest_6",
             "lake_shrine",
             "end"
         ]

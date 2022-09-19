@@ -639,25 +639,6 @@
             "Fire Wand"
         ]
     },
-
-    {
-        "fromId": "overworld_b1",
-        "toId": "lake_shrine",
-        "twoWay": true,
-        "requiredItems": [
-            "Ruby Crest",
-            "Sapphire Crest",
-            "Topaz Crest",
-            "Emerald Crest",
-            "Agate Crest",
-            "Garnet Crest",
-            "Diamond Crest"
-        ],
-        "requiredNodes": [
-            "overworld_b1_left",
-            "overworld_b1_island"
-        ]
-    },
     {
         "fromId": "overworld_b1",
         "toId": "overworld_b1_island",
@@ -842,6 +823,53 @@
         "twoWay": true,
         "requiredItems": [
             { "name": "Gilded Falcon", "quantity": 50 }
+        ]
+    },
+
+    {
+        "fromId": "overworld_b1",
+        "toId": "crest_1",
+        "twoWay": true,
+        "requiredItems": [ "Ruby Crest" ]
+    },
+    {
+        "fromId": "crest_1",
+        "toId": "crest_2",
+        "twoWay": true,
+        "requiredItems": [ "Sapphire Crest" ]
+    },
+    {
+        "fromId": "crest_2",
+        "toId": "crest_3",
+        "twoWay": true,
+        "requiredItems": [ "Topaz Crest" ]
+    },
+    {
+        "fromId": "crest_3",
+        "toId": "crest_4",
+        "twoWay": true,
+        "requiredItems": [ "Emerald Crest" ]
+    },
+    {
+        "fromId": "crest_4",
+        "toId": "crest_5",
+        "twoWay": true,
+        "requiredItems": [ "Agate Crest" ]
+    },
+    {
+        "fromId": "crest_5",
+        "toId": "crest_6",
+        "twoWay": true,
+        "requiredItems": [ "Garnet Crest" ]
+    },
+    {
+        "fromId": "crest_6",
+        "toId": "lake_shrine",
+        "twoWay": true,
+        "requiredItems": [ "Diamond Crest" ],
+        "requiredNodes": [
+            "overworld_b1_left",
+            "overworld_b1_island"
         ]
     },
     {
