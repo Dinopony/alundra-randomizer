@@ -328,11 +328,23 @@
         "vanillaItem": "Life Vessel"
 	},
     {
+        "name": "Riverside Casino: 'Roulette' x3 reward",
+        "nodeId": "riverside_casino",
+        "address": "65FD0C1",
+        "vanillaItem": "Gilded Falcon"
+    },
+    {
         "name": "Riverside Casino: 'Hit Your Mark' chest",
         "nodeId": "riverside_casino_shooting_range",
         "address": "65C7BD6",
         "vanillaItem": "Life Vessel"
 	},
+    {
+        "name": "Riverside Casino: 'Hit Your Mark' x3 reward",
+        "nodeId": "riverside_casino_shooting_range",
+        "address": "65C7A80",
+        "vanillaItem": "Gilded Falcon"
+    },
     {
         "name": "Riverside Casino: 'Slime Smash' chest",
         "nodeId": "riverside_casino",
@@ -340,6 +352,12 @@
         "vanillaItem": "Life Vessel"
 	},
 
+    {
+        "name": "Riverside Casino: 'Slime Smash' x3 reward",
+        "nodeId": "riverside_casino",
+        "address": "65978F9",
+        "vanillaItem": "Gilded Falcon"
+    },
     {
         "name": "Overworld B2: Chest hidden behind musician's house",
         "nodeId": "overworld_b2",
