@@ -29,9 +29,11 @@ public:
 
     [[nodiscard]] const std::vector<WorldPath*>& outgoing_paths() const { return _outgoing_paths; }
     void add_outgoing_path(WorldPath* path) { _outgoing_paths.emplace_back(path); }
+    void remove_outgoing_path(WorldPath* path);
 
     [[nodiscard]] const std::vector<WorldPath*>& ingoing_paths() const { return _ingoing_paths; }
     void add_ingoing_path(WorldPath* path) { _ingoing_paths.emplace_back(path); }
+    void remove_ingoing_path(WorldPath* path);
 
     [[nodiscard]] const std::vector<std::string>& hints() const { return _hints; }
     void add_hint(const std::string& hint) { _hints.emplace_back(hint); }
@@ -39,32 +41,6 @@ public:
     [[nodiscard]] WorldRegion* region() const { return _region; }
     void region(WorldRegion* region) { _region = region; }
 
-    [[nodiscard]] Json to_json() const
-    {
-        Json json;
-
-        if(!_hints.empty())
-            json["hints"] = _hints;
-
-        return json;
-    }
-
-    static WorldNode* from_json(const std::string& id, const Json& json)
-    {
-        WorldNode* node = new WorldNode();
-        
-        node->_id = id;
-        
-        for(auto& [key, value] : json.items())
-        {
-            if(key == "hints")                        
-                value.get_to(node->_hints);
-            else
-                throw RandomizerException("Unknown key '" + key + "' in WorldNode JSON");
-        }
-
-        return node;
-    }
-
-    
+    [[nodiscard]] Json to_json() const;
+    static WorldNode* from_json(const std::string& id, const Json& json);  
 };

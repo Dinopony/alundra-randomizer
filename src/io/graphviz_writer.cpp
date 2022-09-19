@@ -6,6 +6,7 @@
 
 #include "../model/data/world_path.json.hxx"
 #include "../model/world_node.hpp"
+#include "../model/world_path.hpp"
 #include "../model/world_region.hpp"
 #include "../model/randomizer_world.hpp"
 
@@ -23,26 +24,49 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& path)
     graphviz << "\tgraph [pad=0.5, nodesep=1, ranksep=1.5];\n";
     graphviz << "\tnode[shape=rect];\n\n";
 
+    std::map<WorldPath*, bool> _paths_two_way;
+
     Json paths_json = Json::parse(WORLD_PATHS_JSON);
     uint32_t path_i = 0;
-    for(const Json& json : paths_json)
+    for(auto& [nodes_pair, path] : world.paths())
     {
-        WorldNode* from = world.node(json["fromId"]);
-        WorldNode* to = world.node(json["toId"]);
-        graphviz << "\t" << from->id() << " -> " << to->id() << " [";
-        if(json.contains("twoWay") && json.at("twoWay"))
+        bool found_opposite = false;
+        for (auto& [path_2, two_way] : _paths_two_way)
+        {
+            if (path->is_perfect_opposite_of(path_2))
+            {
+                two_way = true;
+                found_opposite = true;
+                break;
+            }
+        }
+
+        if (!found_opposite)
+            _paths_two_way[path] = false;
+    }
+
+    for (auto& [path, two_way] : _paths_two_way)
+    {
+        graphviz << "\t" << path->origin()->id() << " -> " << path->destination()->id() << " [";
+        if (two_way)
             graphviz << "dir=both ";
 
         std::vector<std::string> required_names;
-        if(json.contains("requiredItems"))
-            for(const std::string item_name : json.at("requiredItems"))
-                required_names.emplace_back(item_name);
-            
-        if(json.contains("requiredNodes"))
-            for(const std::string node_id : json.at("requiredNodes"))
-                required_names.emplace_back("Access to " + world.node(node_id)->id());
+        if (!path->required_items().empty())
+        {
+            for (auto& [item, qty] : path->required_items_and_quantity())
+            {
+                std::string item_descriptor = item->name();
+                if (qty > 1)
+                    item_descriptor += " x" + std::to_string(qty);
+                required_names.emplace_back(item_descriptor);
+            }
+        }
 
-        if(!required_names.empty())
+        for (WorldNode* node : path->required_nodes())
+            required_names.emplace_back("Access to " + node->id());
+
+        if (!required_names.empty())
         {
             const char* current_color = COLORS[path_i % COLORS_SIZE];
             graphviz << "color=" << current_color << " ";

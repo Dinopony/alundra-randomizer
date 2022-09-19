@@ -63,6 +63,7 @@ set(SOURCES
         "src/model/world.hpp"
         "src/model/world.cpp"
         "src/model/world_node.hpp"
+        "src/model/world_node.cpp"
         "src/model/world_path.hpp"
         "src/model/world_path.cpp"
         "src/model/world_region.hpp"
@@ -100,6 +101,7 @@ set(SOURCES
         "src/tools/mips_tools.cpp"
         "src/tools/stringtools.hpp"
         "src/tools/vectools.hpp"
+        "src/tools/json_tools.hpp"
         "src/tools/psxexe_file.hpp"
 
         # --- Project root ----------------------------------------

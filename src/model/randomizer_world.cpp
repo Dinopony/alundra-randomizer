@@ -176,15 +176,10 @@ void RandomizerWorld::load_paths()
     Json paths_json = Json::parse(WORLD_PATHS_JSON);
     for(const Json& path_json : paths_json)
     {
-        this->add_path(WorldPath::from_json(path_json, _nodes, this->items()));
-
-        if(path_json.contains("twoWay") && path_json.at("twoWay"))
-        {
-            Json inverted_json = path_json;
-            inverted_json["fromId"] = path_json.at("toId");
-            inverted_json["toId"] = path_json.at("fromId");
-            this->add_path(WorldPath::from_json(inverted_json, _nodes, this->items()));
-        }
+        std::pair<WorldPath*, WorldPath*> paths = WorldPath::from_json(path_json, _nodes, this->items());
+        this->add_path(paths.first);
+        if(paths.second)
+            this->add_path(paths.second);
     }
 
 #ifdef DEBUG

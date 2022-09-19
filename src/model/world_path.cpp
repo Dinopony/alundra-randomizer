@@ -4,16 +4,34 @@
 #include "../tools/exception.hpp"
 #include <utility>
 
-WorldPath::WorldPath(WorldNode* from_node, WorldNode* to_node, uint16_t weight, std::vector<Item*> required_items,
-                    std::vector<WorldNode*> required_nodes, std::vector<Item*> items_placed_when_crossing) :
-    _from_node                  (from_node),
-    _to_node                    (to_node),
-    _weight                     (weight),
-    _required_items             (std::move(required_items)),
-    _required_nodes             (std::move(required_nodes))
+void WorldPath::origin(WorldNode* node)
 {
-    _from_node->add_outgoing_path(this);
-    _to_node->add_ingoing_path(this);
+    if(_from_node)
+        _from_node->remove_outgoing_path(this);
+    _from_node = node;
+    node->add_outgoing_path(this);
+}
+
+void WorldPath::destination(WorldNode* node)
+{
+    if(_to_node)
+        _to_node->remove_ingoing_path(this);
+    _to_node = node;
+    node->add_ingoing_path(this);
+}
+
+std::map<Item*, uint16_t> WorldPath::required_items_and_quantity() const
+{
+    std::map<Item*, uint16_t> items_and_quantities;
+    for (Item* item : _required_items)
+    {
+        if (items_and_quantities.contains(item))
+            items_and_quantities[item]++;
+        else
+            items_and_quantities[item] = 1;
+    }
+
+    return items_and_quantities;
 }
 
 bool WorldPath::has_explored_required_nodes(const std::vector<WorldNode*>& explored_nodes) const
@@ -77,25 +95,60 @@ static Item* find_item_from_name(const std::vector<Item*>& items, const std::str
     throw RandomizerException("Could not find item with name '" + name + "' from required items in world paths JSON.");
 }
 
-WorldPath* WorldPath::from_json(const Json& json, const std::map<std::string, WorldNode*>& nodes, const std::vector<Item*>& items)
+std::pair<WorldPath*, WorldPath*> WorldPath::from_json(const Json& json, const std::map<std::string, WorldNode*>& nodes, const std::vector<Item*>& items)
 {
-    const std::string& from_id = json.at("fromId");
-    WorldNode* from_node = nodes.at(from_id);
+    WorldPath* path = new WorldPath();
+    bool create_opposite_path = false;
 
-    const std::string& to_id = json.at("toId");
-    WorldNode* to_node = nodes.at(to_id);
+    for(auto& [key, value] : json.items())
+    {
+        if(key == "fromId")
+            path->origin(nodes.at(value));
+        else if(key == "toId")
+            path->destination(nodes.at(value));
+        else if(key == "requiredNodes")
+        {
+            for(const std::string& node_id : value)
+                path->_required_nodes.emplace_back(nodes.at(node_id));
+        }
+        else if(key == "requiredItems")        
+        {
+            for(const Json& item_json : value)
+            {
+                Item* required_item;
+                size_t quantity;
 
-    uint16_t weight = json.value("weight", 1);
+                if(item_json.is_object())
+                {
+                    required_item = find_item_from_name(items, item_json.at("name"));
+                    quantity = item_json.at("quantity");
+                }
+                else
+                {
+                    required_item = find_item_from_name(items, item_json);
+                    quantity = 1;
+                }
 
-    std::vector<Item*> required_items;
-    if(json.contains("requiredItems"))
-        for(const std::string& item_name : json.at("requiredItems"))
-            required_items.emplace_back(find_item_from_name(items, item_name));
+                for(size_t i=0 ; i<quantity ; ++i)
+                    path->_required_items.emplace_back(required_item);
+            }
+        }
+        else if(key == "twoWay")
+            create_opposite_path = value;
+        else
+            throw RandomizerException("Unknown key '" + key + "' in WorldPath JSON");
+    }
 
-    std::vector<WorldNode*> required_nodes;
-    if(json.contains("requiredNodes"))
-        for(const std::string& node_id : json.at("requiredNodes"))
-            required_nodes.emplace_back(nodes.at(node_id));
-        
-    return new WorldPath(from_node, to_node, weight, required_items, required_nodes);
+    WorldPath* path_opposite = nullptr;
+    if(create_opposite_path)
+    {
+        path_opposite = new WorldPath();
+        path_opposite->origin(path->destination());
+        path_opposite->destination(path->origin());
+        path_opposite->_required_items = path->_required_items;
+        path_opposite->_required_nodes = path->_required_nodes;
+        path_opposite->_weight = path->_weight;
+    }
+
+    return std::make_pair(path, path_opposite);
 }
