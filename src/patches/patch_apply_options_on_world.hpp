@@ -8,10 +8,10 @@
 class PatchApplyOptionsOnWorld : public GamePatch
 {
 private:
-    RandomizerOptions& _options;
+    const RandomizerOptions& _options;
 
 public:
-    explicit PatchApplyOptionsOnWorld(RandomizerOptions& options) : _options(options)
+    explicit PatchApplyOptionsOnWorld(const RandomizerOptions& options) : _options(options)
     {}
 
     void alter_world(World& world) override

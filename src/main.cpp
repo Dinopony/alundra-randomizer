@@ -154,6 +154,46 @@ Json randomize(RandomizerWorld& world, RandomizerOptions& options, PersonalSetti
     return spoiler_json;
 }
 
+void build_patched_rom(const std::string& input_path, const std::string& output_path, RandomizerWorld& world, const RandomizerOptions& options)
+{
+    // Dump the input ROM into a "base_dump" folder if it was not already done on a previous generation
+    if(!std::filesystem::exists("./base_dump/DATA/DATAS.BIN"))
+    {
+        BinaryFile image_file(input_path);
+        uint64_t checksum = image_file.checksum();
+        if(checksum != 51532940438)
+            throw RandomizerException("Invalid checksum (" + std::to_string(checksum) + ") on the image file. Make sure you are using a 1.1 US image.");
+
+        std::cout << "Performing the initial image dump (" << checksum << ")...\n\n";
+        dump_iso(input_path, "./base_dump/");
+    }
+
+    // Copy the base_dump into a tmp_dump that will be manipulated to generate this seed's ROM
+    std::cout << "Copying game files...\n";
+    std::filesystem::remove_all("./tmp_dump/");
+    std::filesystem::copy("./base_dump/", "./tmp_dump/", std::filesystem::copy_options::recursive);
+
+    // Apply patches to relevant files that were extracted from the game ROM
+    std::cout << "Editing game files...\n";
+    BinaryFile datas_file("./tmp_dump/DATA/DATAS.BIN");
+    PsxExeFile exe_file("./tmp_dump/ALUN_CD.EXE");
+    apply_randomizer_patches(datas_file, exe_file, world, options);
+
+    // Save those files to disk
+    std::cout << "Writing edited files to disk...\n\n";
+    datas_file.save();
+    exe_file.save();
+
+    // Use an external tool to repack the files into a PS1 disc image
+    std::cout << "Building a disc image...\n\n";
+    rebuild_iso("./tmp_dump/", output_path);
+#ifndef DEBUG
+        std::filesystem::remove_all("./tmp_dump/");
+#endif
+
+    std::cout << "Randomized game outputted to \"" << output_path << "\".\n";
+}
+
 void generate(const ArgumentDictionary& args)
 {
     RandomizerWorld world;
@@ -164,55 +204,17 @@ void generate(const ArgumentDictionary& args)
 
     PersonalSettings personal_settings(args);
 
-    if(args.contains("graph"))
-    {
-        GraphvizWriter::write_logic_as_dot(world, "./logic.dot");
-    }
-
     Json spoiler_json = randomize(world, options, personal_settings, args);
 
     // Parse output paths from args
-    std::string output_image_path, spoiler_log_path;
-    process_paths(args, options, output_image_path, spoiler_log_path);
+    std::string output_rom_path, spoiler_log_path;
+    process_paths(args, options, output_rom_path, spoiler_log_path);
 
+    // Don't perform the patching process if "only-logic" option was provided
     if(!args.contains("only-logic"))
     {
         std::string input_rom_path = args.get_string("input", "./input.bin");
-
-        if(!std::filesystem::exists("./base_dump/DATA/DATAS.BIN"))
-        {
-            BinaryFile image_file(input_rom_path);
-            uint64_t checksum = image_file.checksum();
-            if(checksum != 51532940438)
-                throw RandomizerException("Invalid checksum (" + std::to_string(checksum) + ") on the image file. Make sure you are using a 1.1 US image.");
-
-            std::cout << "Performing the initial image dump (" << checksum << ")...\n\n";
-            dump_iso(input_rom_path, "./base_dump/");
-        }
-
-        std::cout << "Loading game files...\n";
-        std::filesystem::remove_all("./tmp_dump/");
-        std::filesystem::copy("./base_dump/", "./tmp_dump/", std::filesystem::copy_options::recursive);
-
-        BinaryFile datas_file("./tmp_dump/DATA/DATAS.BIN");
-        PsxExeFile exe_file("./tmp_dump/ALUN_CD.EXE");
-
-        // Apply patches to the game ROM to alter various things that are not directly part of the game world randomization
-        std::cout << "Applying game patches...\n";
-        apply_randomizer_patches(datas_file, exe_file, world, options);
-
-        // Save the edited DATAS.BIN and ALUN_CD.EXE files to disk
-        std::cout << "Writing edited files to disk...\n\n";
-        datas_file.save();
-        exe_file.save();
-
-        std::cout << "Building a disc image...\n\n";
-        rebuild_iso("./tmp_dump/", output_image_path);
-#ifndef DEBUG
-        std::filesystem::remove_all("./tmp_dump/");
-#endif
-
-        std::cout << "Randomized game outputted to \"" << output_image_path << "\".\n";
+        build_patched_rom(input_rom_path, output_rom_path, world, options);
     }
     
     // Write a spoiler log to help the player
@@ -229,6 +231,9 @@ void generate(const ArgumentDictionary& args)
         else
             std::cout << "Generation log written into \"" << spoiler_log_path << "\".\n";
     }
+
+    if(args.contains("graph"))
+        GraphvizWriter::write_logic_as_dot(world, "./logic.dot");
 
     std::cout << "\nHash sentence: " << options.hash_sentence() << "\n";
     std::cout << "\nPermalink: " << options.permalink() << "\n";
