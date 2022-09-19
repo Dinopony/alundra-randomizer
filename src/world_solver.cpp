@@ -150,7 +150,7 @@ std::vector<ItemSource*> WorldSolver::empty_reachable_item_sources() const
     empty_item_sources.reserve(_reachable_item_sources.size());
 
     for(ItemSource* source : _reachable_item_sources)
-        if(source->empty())
+        if(source->is_empty())
             empty_item_sources.emplace_back(source);
     
     return empty_item_sources;

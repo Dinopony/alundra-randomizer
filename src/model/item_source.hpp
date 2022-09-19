@@ -28,6 +28,9 @@ private:
     bool _can_contain_progression = true;
     /// An array of hints which can be used to subtly point at this ItemSource
     std::vector<std::string> _hints;
+    /// If set to true, this ItemSource cannot contain "precious items" (items that would break the game if taken
+    /// repeatedly). This is usually set for ItemSources that can be taken an infinite amount of times.
+    bool _forbid_precious_items = false;
 
 public:
     ItemSource() = default;
@@ -39,10 +42,12 @@ public:
 
     [[nodiscard]] Item* item() const { return _item; }
     virtual void item(Item* item) { _item = item; }
+
     /// A source is empty if it contains no item, but not if it contains ITEM_NONE
-    [[nodiscard]] bool empty() const { return _item == nullptr; }
+    [[nodiscard]] bool is_empty() const { return _item == nullptr; }
 
     [[nodiscard]] Item* vanilla_item() const { return _vanilla_item; }
+    void vanilla_item(Item* item) { _vanilla_item = item; }
 
     [[nodiscard]] const std::string& node_id() const { return _node_id; }
     void node_id(const std::string& node_id) { _node_id = node_id; }
@@ -50,17 +55,22 @@ public:
     [[nodiscard]] const std::vector<std::string>& hints() const { return _hints; }
     void add_hint(const std::string& hint) { _hints.emplace_back(hint); }
 
-    bool can_contain_progression() const { return _can_contain_progression; }
+    [[nodiscard]] bool can_contain_progression() const { return _can_contain_progression; }
     void can_contain_progression(bool value) { _can_contain_progression = value; }
 
     [[nodiscard]] const std::vector<uint32_t>& addresses() const { return _addresses; }
+    void addresses(const std::vector<uint32_t>& addresses) { _addresses = addresses; }
     void add_address(uint32_t address) { _addresses.emplace_back(address); }
 
     [[nodiscard]] const std::vector<uint32_t>& sprite_addresses() const { return _sprite_addresses; }
+    void sprite_addresses(const std::vector<uint32_t>& addresses) { _sprite_addresses = addresses; }
     void add_sprite_address(uint32_t address) { _sprite_addresses.emplace_back(address); }
 
     [[nodiscard]] uint32_t merrick_item_address() const { return _merrick_item_address; }
     void merrick_item_address(uint32_t addr) { _merrick_item_address = addr; }
+
+    [[nodiscard]] bool forbid_precious_items() const { return _forbid_precious_items; }
+    void forbid_precious_items(bool value) { _forbid_precious_items = value; }
 
     [[nodiscard]] virtual Json to_json() const;
     static ItemSource* from_json(const Json& json, const World& world);

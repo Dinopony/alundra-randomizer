@@ -45,7 +45,7 @@ private:
     void randomize_items();
     void init_item_pool();
     ItemSource* place_progression_item_randomly(Item* item, std::vector<ItemSource*> possible_sources);
-    Item* fill_item_source_randomly(ItemSource* source);
+    void fill_item_source_randomly(ItemSource* source);
     [[nodiscard]] bool test_item_source_compatibility(ItemSource* source, Item* item) const;
     [[nodiscard]] std::vector<WorldPath*> build_weighted_blocked_paths_list();
     void open_random_blocked_path();

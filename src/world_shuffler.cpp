@@ -72,7 +72,7 @@ void WorldShuffler::init_item_pool()
 
     size_t filled_item_sources_count = 0;
     for(ItemSource* source : _world.item_sources())
-        if(!source->empty())
+        if(!source->is_empty())
             filled_item_sources_count++;
     if(filled_item_sources_count == _world.item_sources().size())
         return;
@@ -83,7 +83,7 @@ void WorldShuffler::init_item_pool()
     // Count quantities already in place
     for(ItemSource* source : _world.item_sources())
     {
-        if(source->empty())
+        if(source->is_empty())
             continue;
 
         uint8_t item_id = source->item()->id();
@@ -107,7 +107,7 @@ void WorldShuffler::init_item_pool()
     size_t empty_item_sources_count = 0;
     for(ItemSource* source : _world.item_sources())
     {
-        if(source->empty())
+        if(source->is_empty())
             empty_item_sources_count += 1;
     }
 
@@ -151,7 +151,7 @@ ItemSource* WorldShuffler::place_progression_item_randomly(Item* item, std::vect
     ItemSource* picked_item_source = nullptr;
     for(ItemSource* source : possible_sources)
     {
-        if(!source->empty())
+        if(!source->is_empty())
             throw RandomizerException("Received a non-empty ItemSource in WorldShuffler::place_progression_item_randomly");
         if(!source->can_contain_progression())
             continue;
@@ -180,7 +180,7 @@ ItemSource* WorldShuffler::place_progression_item_randomly(Item* item, std::vect
  * @param source the ItemSource to fill
  * @return the Item that was used to fill the ItemSource
  */
-Item* WorldShuffler::fill_item_source_randomly(ItemSource* source)
+void WorldShuffler::fill_item_source_randomly(ItemSource* source)
 {
     for(auto it = _item_pool.begin() ; it != _item_pool.end() ; ++it)
     {
@@ -190,12 +190,11 @@ Item* WorldShuffler::fill_item_source_randomly(ItemSource* source)
             source->item(item);
             _item_pool.erase(it);
             _item_pool_quantities[item->id()] -= 1;
-            return item;
+            return;
         }
     }
 
     std::cout << "[WARNING] Item source '" << source->name() << "' could not be filled with any item of the item pool.\n";
-    return nullptr;
 }
 
 /**
@@ -206,29 +205,8 @@ Item* WorldShuffler::fill_item_source_randomly(ItemSource* source)
  */
 bool WorldShuffler::test_item_source_compatibility(ItemSource* source, Item* item) const
 {
-    /*
-    if(source->is_chest() || source->is_npc_reward())
-        return true;
-
-    ItemSourceOnGround* cast_source = reinterpret_cast<ItemSourceOnGround*>(source);
-    if(item->id() >= ITEM_GOLDS_START)
+    if(source->forbid_precious_items() && item->is_precious())
         return false;
-    if(!cast_source->can_be_taken_only_once() && !_world.item_distribution(item->id())->allowed_on_ground())
-        return false;
-
-    if(source->is_shop_item())
-    {
-        if(item->id() == ITEM_NONE)
-            return false;
-
-        // If another shop source in the same node contains the same item, deny item placement
-        WorldNode* shop_node = _world.node(source->node_id());
-        const std::vector<ItemSource*> sources_in_node = shop_node->item_sources();
-        for(ItemSource* source_in_node : sources_in_node)
-            if(source_in_node != source && source_in_node->is_shop_item() && source_in_node->item() == item)
-                return false;
-    }
-    */
     return true;
 }
 
@@ -325,7 +303,7 @@ void WorldShuffler::place_remaining_items()
     std::vector<ItemSource*> unrestricted_item_sources;
     for(ItemSource* source : _world.item_sources())
     {
-        if(!source->empty())
+        if(!source->is_empty())
             continue;
 
         unrestricted_item_sources.emplace_back(source);

@@ -108,7 +108,7 @@ std::pair<WorldPath*, WorldPath*> WorldPath::from_json(const Json& json, const s
             path->destination(nodes.at(value));
         else if(key == "requiredNodes")
         {
-            for(const std::string& node_id : value)
+            for(std::string node_id : value)
                 path->_required_nodes.emplace_back(nodes.at(node_id));
         }
         else if(key == "requiredItems")        

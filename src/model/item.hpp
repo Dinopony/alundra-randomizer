@@ -7,22 +7,27 @@
 class Item
 {
 private:
-    uint8_t     _id = 0xFF;
+    /// The in-game ID of the item
+    uint8_t _id;
+    /// The name of the item
     std::string _name;
-    uint8_t     _max_quantity = 0;
-    uint8_t     _starting_quantity = 0;
-    uint16_t    _gold_value = 0;
+    /// The maximum amount of this item the player can carry at any given point
+    uint8_t _max_quantity = 1;
+    /// The amount possessed by player on game start
+    uint8_t _starting_quantity = 0;
+    /// The value of this item in shops
+    uint16_t _gold_value = 0;
+
+    /**
+     * If true, this item is considered as precious and cannot be put inside ItemSources which forbid precious
+     * items. This is used on ItemSources than can be taken an infinite amount of times to avoid putting
+     * abusable items such as Life Vessels or Magic Seeds.
+     */
+    bool _is_precious = false;
 
 public:
     Item() = default;
-    Item(uint8_t id, std::string name, uint8_t max_quantity, uint8_t starting_quantity, uint16_t gold_value) :
-        _id                 (id),
-        _name               (std::move(name)),
-        _max_quantity       (max_quantity),
-        _starting_quantity  (starting_quantity),
-        _gold_value         (gold_value)
-    {}
-    
+
     [[nodiscard]] uint8_t id() const { return _id; }
     Item& id(uint8_t id) { _id = id; return *this; }
 
@@ -37,6 +42,9 @@ public:
 
     [[nodiscard]] uint16_t gold_value() const { return _gold_value; }
     virtual Item& gold_value(uint16_t value) { _gold_value = value; return *this; }
+
+    [[nodiscard]] bool is_precious() const { return _is_precious; }
+    void is_precious(bool value) { _is_precious = value; }
 
     [[nodiscard]] Json to_json() const;
     static Item* from_json(uint8_t id, const Json& json);

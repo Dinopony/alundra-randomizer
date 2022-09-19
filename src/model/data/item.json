@@ -1,9 +1,11 @@
 {
     "0": {
-        "name": "Nothing"
+        "name": "Nothing",
+        "maxQuantity": 0
     },
     "1": {
-        "name": "Dagger"
+        "name": "Dagger",
+        "startingQuantity": 1
     },
     "2": {
         "name": "Sword"
@@ -75,7 +77,8 @@
         "name": "Bomb"
     },
     "36": {
-        "name": "Herbs"
+        "name": "Herbs",
+        "maxQuantity": 9
     },
     "37": {
         "name": "Strength Elixyr"
@@ -144,7 +147,9 @@
         "name": "Elevator Key"
     },
     "61": {
-        "name": "Key"
+        "name": "Key",
+        "maxQuantity": 99,
+        "precious": true
     },
     "62": {
         "name": "Ruby Crest"
@@ -168,16 +173,22 @@
         "name": "Diamond Crest"
     },
     "69": {
-        "name": "1 Gilder"
+        "name": "1 Gilder",
+        "maxQuantity": 0
     },
     "70": {
-        "name": "5 Gilder"
+        "name": "5 Gilder",
+        "maxQuantity": 0
     },
     "71": {
-        "name": "10 Gilder"
+        "name": "10 Gilder",
+        "maxQuantity": 0,
+        "precious": true
     },
     "72": {
-        "name": "30 Gilder"
+        "name": "30 Gilder",
+        "maxQuantity": 0,
+        "precious": true
     },
     "73": {
         "name": "Sluice Key"
@@ -198,13 +209,19 @@
         "name": "Zolist's Stone"
     },
     "79": {
-        "name": "Gilded Falcon"
+        "name": "Gilded Falcon",
+        "maxQuantity": 0,
+        "precious": true
     },
     "80": {
-        "name": "Magic Seed"
+        "name": "Magic Seed",
+        "maxQuantity": 0,
+        "precious": true
     },
     "83": {
-        "name": "Life Vessel"
+        "name": "Life Vessel",
+        "maxQuantity": 0,
+        "precious": true
     },
     "88": {
         "name": "Book of Elna"

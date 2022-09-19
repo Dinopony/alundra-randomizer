@@ -31,6 +31,8 @@ Json ItemSource::to_json() const
         json["hints"] = _hints;
     if(_vanilla_item)
         json["vanillaItem"] = _vanilla_item->name();
+    if(_forbid_precious_items)
+        json["forbidPreciousItems"] = _forbid_precious_items;
 
     return json;
 }
@@ -42,21 +44,23 @@ ItemSource* ItemSource::from_json(const Json& json, const World& world)
     for(auto& [key, value] : json.items())
     {
         if(key == "name")                        
-            source->_name = value;
+            source->name(value);
         else if(key == "nodeId")
-            source->_node_id = value;
+            source->node_id(value);
         else if(key == "address")
-            source->_addresses = parse_addresses_from_json(value);
+            source->addresses(parse_addresses_from_json(value));
         else if(key == "spriteAddress")
-            source->_sprite_addresses = parse_addresses_from_json(value);
+            source->sprite_addresses(parse_addresses_from_json(value));
         else if(key == "merrickItemAddress")
-            source->_merrick_item_address = parse_addresses_from_json(value)[0];
+            source->merrick_item_address(parse_addresses_from_json(value)[0]);
         else if(key == "hints")
             value.get_to(source->_hints);
         else if(key == "canContainProgression")
-            source->_can_contain_progression = value;
+            source->can_contain_progression(value);
         else if(key == "vanillaItem")
-            source->_vanilla_item = world.item(std::string(value));
+            source->vanilla_item(world.item(std::string(value)));
+        else if(key == "forbidPreciousItems")
+            source->forbid_precious_items(value);
         else
             throw RandomizerException("Unknown key '" + key + "' in ItemSource JSON");
     }

@@ -24,7 +24,7 @@ public:
 #ifdef DEBUG
                 // In debug builds, check that the data file contains the expected vanilla item ID to avoid any address mistake
                 if(source->vanilla_item() && data.get_byte(addr) != source->vanilla_item()->id())
-                    throw RandomizerException("ItemSource '" + source->name() + "' doesn't contain the expected vanilla item");
+                    std::cerr << "ItemSource '" << source->name() << "' doesn't contain the expected vanilla item";
 #endif
                 data.set_byte(addr, item_id);
             }
@@ -35,7 +35,7 @@ public:
 #ifdef DEBUG
                 // In debug builds, check that the data file contains the expected vanilla sprite ID to avoid any address mistake
                 if(source->vanilla_item() && data.get_byte(addr) != source->vanilla_item()->id() + 0x1E)
-                    throw RandomizerException("ItemSource '" + source->name() + "' doesn't contain the expected vanilla item");
+                    std::cerr << "ItemSource '" << source->name() << "' doesn't contain the expected vanilla item";
 #endif
                 data.set_byte(addr, item_sprite_id);
             }
