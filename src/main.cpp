@@ -72,6 +72,7 @@ void rebuild_iso(const std::filesystem::path& input_dir, const std::filesystem::
 
 void process_paths(const ArgumentDictionary& args, const RandomizerOptions& options, std::string& output_rom_path, std::string& spoiler_log_path)
 {
+    // TODO: Rewrite this with the <filesystem> standard lib
     output_rom_path = args.get_string("outputrom", "./");
     spoiler_log_path = args.get_string("outputlog", "./");
 
@@ -79,7 +80,7 @@ void process_paths(const ArgumentDictionary& args, const RandomizerOptions& opti
     if(output_rom_path.empty())
         output_rom_path = "./";
 
-    bool output_path_is_a_directory = !output_rom_path.ends_with(".md") && !output_rom_path.ends_with(".bin");
+    bool output_path_is_a_directory = !output_rom_path.ends_with(".cue") && !output_rom_path.ends_with(".bin");
     if(output_path_is_a_directory && *output_rom_path.rbegin() != '/')
         output_rom_path += "/";
 
@@ -91,7 +92,7 @@ void process_paths(const ArgumentDictionary& args, const RandomizerOptions& opti
             spoiler_log_path = output_rom_path;
 
         // outputRomPath points to a file, change its extension to ".json"
-        else if(output_rom_path.ends_with(".md"))
+        else if(output_rom_path.ends_with(".cue"))
             spoiler_log_path = output_rom_path.substr(0, output_rom_path.size() - 2) + "json";
         else if(output_rom_path.ends_with(".bin"))
             spoiler_log_path = output_rom_path.substr(0, output_rom_path.size() - 3) + "json";
@@ -155,7 +156,6 @@ Json randomize(RandomizerWorld& world, RandomizerOptions& options, PersonalSetti
 
 void generate(const ArgumentDictionary& args)
 {
-    // Parse options from command-line args, preset file, plando file...
     RandomizerWorld world;
     world.load_model_from_json();
 
@@ -167,52 +167,54 @@ void generate(const ArgumentDictionary& args)
     if(args.contains("graph"))
     {
         GraphvizWriter::write_logic_as_dot(world, "./logic.dot");
-        return;
     }
 
     Json spoiler_json = randomize(world, options, personal_settings, args);
-
-    std::string input_rom_path = args.get_string("input", "./input.bin");
-
-    if(!std::filesystem::exists("./base_dump/DATA/DATAS.BIN"))
-    {
-        BinaryFile image_file(input_rom_path);
-        uint64_t checksum = image_file.checksum();
-        if(checksum != 51532940438)
-            throw RandomizerException("Invalid checksum (" + std::to_string(checksum) + ") on the image file. Make sure you are using a 1.1 US image.");
-
-        std::cout << "Performing the initial image dump (" << checksum << ")...\n\n";
-        dump_iso(input_rom_path, "./base_dump/");
-    }
-
-    std::cout << "Loading game files...\n";
-    std::filesystem::remove_all("./tmp_dump/");
-    std::filesystem::copy("./base_dump/", "./tmp_dump/", std::filesystem::copy_options::recursive);
-
-    BinaryFile datas_file("./tmp_dump/DATA/DATAS.BIN");
-    PsxExeFile exe_file("./tmp_dump/ALUN_CD.EXE");
-
-    // Apply patches to the game ROM to alter various things that are not directly part of the game world randomization
-    std::cout << "Applying game patches...\n";
-    apply_randomizer_patches(datas_file, exe_file, world, options);
 
     // Parse output paths from args
     std::string output_image_path, spoiler_log_path;
     process_paths(args, options, output_image_path, spoiler_log_path);
 
-    // Save the edited DATAS.BIN and ALUN_CD.EXE files to disk
-    std::cout << "Writing edited files to disk...\n\n";
-    datas_file.save();
-    exe_file.save();
+    if(!args.contains("only-logic"))
+    {
+        std::string input_rom_path = args.get_string("input", "./input.bin");
 
-    std::cout << "Building a disc image...\n\n";
-    rebuild_iso("./tmp_dump/", output_image_path);
+        if(!std::filesystem::exists("./base_dump/DATA/DATAS.BIN"))
+        {
+            BinaryFile image_file(input_rom_path);
+            uint64_t checksum = image_file.checksum();
+            if(checksum != 51532940438)
+                throw RandomizerException("Invalid checksum (" + std::to_string(checksum) + ") on the image file. Make sure you are using a 1.1 US image.");
+
+            std::cout << "Performing the initial image dump (" << checksum << ")...\n\n";
+            dump_iso(input_rom_path, "./base_dump/");
+        }
+
+        std::cout << "Loading game files...\n";
+        std::filesystem::remove_all("./tmp_dump/");
+        std::filesystem::copy("./base_dump/", "./tmp_dump/", std::filesystem::copy_options::recursive);
+
+        BinaryFile datas_file("./tmp_dump/DATA/DATAS.BIN");
+        PsxExeFile exe_file("./tmp_dump/ALUN_CD.EXE");
+
+        // Apply patches to the game ROM to alter various things that are not directly part of the game world randomization
+        std::cout << "Applying game patches...\n";
+        apply_randomizer_patches(datas_file, exe_file, world, options);
+
+        // Save the edited DATAS.BIN and ALUN_CD.EXE files to disk
+        std::cout << "Writing edited files to disk...\n\n";
+        datas_file.save();
+        exe_file.save();
+
+        std::cout << "Building a disc image...\n\n";
+        rebuild_iso("./tmp_dump/", output_image_path);
 #ifndef DEBUG
-    std::filesystem::remove_all("./tmp_dump/");
+        std::filesystem::remove_all("./tmp_dump/");
 #endif
 
-    std::cout << "Randomized game outputted to \"" << output_image_path << "\".\n";
-
+        std::cout << "Randomized game outputted to \"" << output_image_path << "\".\n";
+    }
+    
     // Write a spoiler log to help the player
     if(!spoiler_log_path.empty())
     {
@@ -228,7 +230,6 @@ void generate(const ArgumentDictionary& args)
             std::cout << "Generation log written into \"" << spoiler_log_path << "\".\n";
     }
 
-    //std::cout << "Settings: " << options.to_json().dump(2) << "\n\n";
     std::cout << "\nHash sentence: " << options.hash_sentence() << "\n";
     std::cout << "\nPermalink: " << options.permalink() << "\n";
     std::cout << "\nShare the permalink above with other people to enable them building the exact same seed.\n" << std::endl;
