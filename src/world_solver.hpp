@@ -43,8 +43,6 @@ private:
     std::vector<Item*> _starting_inventory;
     std::vector<Item*> _inventory;
 
-    std::vector<std::pair<Item*, std::vector<ItemSource*>>> _scheduled_item_placements;
-
     uint32_t _step_count = 0;
     Json _debug_log;
 
@@ -71,8 +69,6 @@ public:
     [[nodiscard]] bool can_take_path(WorldPath* path) const;
     [[nodiscard]] std::vector<Item*> missing_items_to_take_path(WorldPath* path) const;
     [[nodiscard]] std::vector<WorldNode*> missing_nodes_to_take_path(WorldPath* path) const;
-
-    [[nodiscard]] const std::vector<std::pair<Item*, std::vector<ItemSource*>>>& scheduled_item_placements() const { return _scheduled_item_placements; }
 
     [[nodiscard]] bool reached_end() const { return vectools::contains(_explored_nodes, _end_node); }
     [[nodiscard]] std::vector<Item*> find_minimal_inventory();

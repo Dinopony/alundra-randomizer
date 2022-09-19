@@ -84,7 +84,6 @@ bool WorldSolver::try_to_solve(WorldNode* start_node, WorldNode* end_node, const
 bool WorldSolver::run_until_blocked()
 {
     _step_count++;
-    _scheduled_item_placements.clear();
     size_t explored_nodes_count_at_start = _explored_nodes.size();
     size_t blocked_paths_count_at_start = _blocked_paths.size();
 
@@ -369,12 +368,5 @@ void WorldSolver::take_path(WorldPath* path)
 
         Json& debug_log = this->debug_log_for_current_step();
         debug_log["exploration"].emplace_back("Added " + destination->id() + " to accessible nodes");
-    }
-
-    for(Item* item : path->items_placed_when_crossing())
-    {
-        _scheduled_item_placements.emplace_back(std::make_pair(
-                item, this->empty_reachable_item_sources()
-        ));
     }
 }
