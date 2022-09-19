@@ -136,8 +136,7 @@
         "toId": "overworld_d3_behind_bricks",
         "twoWay": true,
         "requiredItems": [
-            "Iron Flail",
-            "Steel Flail"
+            "Iron Flail"
         ]
     },
     {
@@ -201,8 +200,7 @@
         "toId": "coastal_cave",
         "twoWay": true,
         "requiredItems": [
-            "Iron Flail",
-            "Steel Flail"
+            "Iron Flail"
         ]
     },
     {
@@ -236,16 +234,14 @@
         "fromId": "overworld_c1",
         "toId": "overworld_b1",
         "requiredItems": [
-            "Iron Flail",
-            "Steel Flail"
+            "Iron Flail"
         ]
     },
     {
         "fromId": "overworld_c1",
         "toId": "overworld_c1_right_sector",
         "requiredItems": [
-            "Iron Flail",
-            "Steel Flail"
+            "Iron Flail"
         ]
     },
     {
@@ -318,8 +314,7 @@
         "toId": "overworld_b3_megalith",
         "twoWay": true,
         "requiredItems": [
-            "Iron Flail",
-            "Steel Flail"
+            "Iron Flail"
         ]
     },
     {
@@ -327,8 +322,7 @@
         "toId": "overworld_b3_elevated",
         "twoWay": true,
         "requiredItems": [
-            "Iron Flail",
-            "Steel Flail"
+            "Iron Flail"
         ]
     },
 
@@ -361,8 +355,7 @@
         "fromId": "overworld_b3_top_left",
         "toId": "overworld_b3_megalith",
         "requiredItems": [
-            "Iron Flail",
-            "Steel Flail"
+            "Iron Flail"
         ]
     },
     {
@@ -553,8 +546,7 @@
         "fromId": "overworld_b2",
         "toId": "overworld_b1",
         "requiredItems": [
-            "Iron Flail",
-            "Steel Flail"
+            "Iron Flail"
         ]
     },
     {
@@ -586,8 +578,7 @@
         "toId": "overworld_b2_upper_mines",
         "requiredItems": [
             "Bomb",
-            "Iron Flail",
-            "Steel Flail"
+            "Iron Flail"
         ]
     },
 
@@ -687,8 +678,7 @@
         "toId": "overworld_e4",
         "twoWay": true,
         "requiredItems": [
-            "Iron Flail",
-            "Steel Flail"
+            "Iron Flail"
         ]
     },
 
