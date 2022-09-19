@@ -5,6 +5,14 @@
 #include "../tools/exception.hpp"
 #include "../tools/json_tools.hpp"
 
+std::string ItemSource::pretty_name() const
+{
+    std::string pretty_name = _name;
+    if(_vanilla_item)
+        pretty_name += " (" + _vanilla_item->name() + ")";
+    return pretty_name;
+}
+
 Json ItemSource::to_json() const
 {
     Json json;

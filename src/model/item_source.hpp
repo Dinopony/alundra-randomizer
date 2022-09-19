@@ -35,6 +35,7 @@ public:
 
     [[nodiscard]] const std::string& name() const { return _name; }
     void name(const std::string& name) { _name = name; }
+    [[nodiscard]] std::string pretty_name() const;
 
     [[nodiscard]] Item* item() const { return _item; }
     virtual void item(Item* item) { _item = item; }

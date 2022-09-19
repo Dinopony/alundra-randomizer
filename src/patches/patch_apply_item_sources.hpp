@@ -5,6 +5,7 @@
 #include "../model/randomizer_world.hpp"
 #include "../model/item_source.hpp"
 #include "../model/item.hpp"
+#include "../tools/exception.hpp"
 
 /**
  * This patch applies the content of the item sources inside the datas files
@@ -19,11 +20,25 @@ public:
         {
             uint8_t item_id = source->item() ? source->item()->id() : ITEM_NONE;
             for(uint32_t addr : source->addresses())
+            {
+#ifdef DEBUG
+                // In debug builds, check that the data file contains the expected vanilla item ID to avoid any address mistake
+                if(source->vanilla_item() && data.get_byte(addr) != source->vanilla_item()->id())
+                    throw RandomizerException("ItemSource '" + source->name() + "' doesn't contain the expected vanilla item");
+#endif
                 data.set_byte(addr, item_id);
+            }
 
             uint8_t item_sprite_id = item_id + 0x1E;
             for(uint32_t addr : source->sprite_addresses())
+            {
+#ifdef DEBUG
+                // In debug builds, check that the data file contains the expected vanilla sprite ID to avoid any address mistake
+                if(source->vanilla_item() && data.get_byte(addr) != source->vanilla_item()->id() + 0x1E)
+                    throw RandomizerException("ItemSource '" + source->name() + "' doesn't contain the expected vanilla item");
+#endif
                 data.set_byte(addr, item_sprite_id);
+            }
         }
 
         // Fix ground Book of Elna byte causing trouble
