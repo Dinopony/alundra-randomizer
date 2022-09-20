@@ -37,7 +37,10 @@ void GameData::init_starting_flags(const RandomizerOptions& options)
     _starting_flags.emplace_back(FLAG_TALKED_WITH_MERRICK);
     _starting_flags.emplace_back(FLAG_TALKED_WITH_MERRICK_ABOUT_FALCONS);
     _starting_flags.emplace_back(FLAG_ACCEPTED_MERRICK_DEAL_ABOUT_FALCONS);
-    
+
+    // Allow entering the Crypt by placing flowers in the graveyard since game start
+    _starting_flags.emplace_back(FLAG_CAN_PUT_FLOWERS_IN_GRAVEYARD);
+
     if(options.megaliths_enabled_on_start())
         _starting_flags.emplace_back(FLAG_CAN_ACTIVATE_MEGALITHS);
 

@@ -53,5 +53,10 @@
         "name": "Tower of the Great Tree (Branches): Chest in locked shack (Elevator Key)",
         "nodeId": "great_tree_tower",
         "address": "232A1D6"
+    },
+    {
+        "name": "Lars Crypt: First key chest",
+        "nodeId": "lars_crypt",
+        "address": "6BA6EE"
     }
 ]

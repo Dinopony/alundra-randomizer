@@ -234,6 +234,12 @@
         ]
     },
     {
+        "name": "Lars Crypt",
+        "nodeIds": [
+            "lars_crypt"
+        ]
+    },
+    {
         "name": "Merrick's shop",
         "nodeIds": [
             "merrick_shop_1",

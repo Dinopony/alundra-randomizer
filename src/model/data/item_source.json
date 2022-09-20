@@ -1211,6 +1211,67 @@
         "vanillaItem": "Herbs"
     },
     {
+        "name": "Lars Crypt: Left chest after bridge",
+        "nodeId": "lars_crypt",
+        "address": "63ADD6",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lars Crypt: Right chest after bridge",
+        "nodeId": "lars_crypt",
+        "address": "63AE4E",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lars Crypt: Chest in zombies' pit",
+        "nodeId": "lars_crypt",
+        "address": "6797B6",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lars Crypt: Corner chest after climbing stairs from zombies' pit",
+        "nodeId": "lars_crypt",
+        "address": "67964E",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lars Crypt: Chest in top-left corner of second pit",
+        "nodeId": "lars_crypt",
+        "address": "6F1366",
+        "vanillaItem": "Gilded Falcon"
+    },
+    {
+        "name": "Lars Crypt: Chest at the bottom of moving platforms vertical room",
+        "nodeId": "lars_crypt",
+        "address": "6F12DA",
+        "vanillaItem": "Strength Tonic"
+    },
+    {
+        "name": "Lars Crypt: Upper boss reward chest",
+        "nodeId": "lars_crypt",
+        "address": "72E61A",
+        "vanillaItem": "Magic Seed"
+    },
+    {
+        "name": "Lars Crypt: Middle boss reward chest",
+        "nodeId": "lars_crypt",
+        "address": "72E62E",
+        "vanillaItem": "Earth Scroll"
+    },
+    {
+        "name": "Lars Crypt: Lower boss reward chest",
+        "nodeId": "lars_crypt",
+        "address": "72E642",
+        "vanillaItem": "Life Vessel"
+    },
+    {
+        "name": "Lars Crypt: Boss reward chest isolated to the left",
+        "nodeId": "lars_crypt",
+        "address": "72E656",
+        "vanillaItem": "Ruby Crest"
+    },
+
+    {
         "name": "Merrick Shop: Item traded for 15 Gilded Falcons",
         "nodeId": "merrick_shop_1",
         "address": "1EBF67C",

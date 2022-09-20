@@ -27,6 +27,11 @@
     },
     {
         "fromId": "overworld_c2",
+        "toId": "lars_crypt",
+        "twoWay": true
+    },
+    {
+        "fromId": "overworld_c2",
         "toId": "overworld_c2_cave_behind_spring",
         "requiredItems": [
             "Spring Bean"
