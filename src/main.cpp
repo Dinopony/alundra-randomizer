@@ -26,15 +26,22 @@
 #include "patches/patches.hpp"
 #include "tools/psxexe_file.hpp"
 
-void dump_iso(const std::filesystem::path& input_path, const std::filesystem::path& output_dir)
+/**
+ * Calls the external tool `dumpsxiso` in order to dump the game image into a folder containing
+ * all game files.
+ * 
+ * @param input_file_path the path to the disc image file
+ * @param output_dir_path the path to the output directory where game files will be extracted
+ */
+void dump_iso(const std::filesystem::path& input_file_path, const std::filesystem::path& output_dir_path)
 {
 #ifdef WIN32
-    std::string command = "tools\\dumpsxiso.exe \"" + input_path.string() + "\"";
+    std::string command = "tools\\dumpsxiso.exe \"" + input_file_path.string() + "\"";
 #else
-    std::string command = "./tools/dumpsxiso \"" + input_path.string() + "\"";
+    std::string command = "./tools/dumpsxiso \"" + input_file_path.string() + "\"";
 #endif
-    command += " -x \"" + output_dir.string() + "\"";
-    command += " -s \"" + output_dir.string() + "/build.xml\"";
+    command += " -x \"" + output_dir_path.string() + "\"";
+    command += " -s \"" + output_dir_path.string() + "/build.xml\"";
 
     // Remove standard output for this command
 #ifdef WIN32
@@ -46,18 +53,25 @@ void dump_iso(const std::filesystem::path& input_path, const std::filesystem::pa
     system(command.c_str());
 }
 
-void rebuild_iso(const std::filesystem::path& input_dir, const std::filesystem::path& output_file)
+/**
+ * Calls the external tool `mkpsxiso` in order to re-pack the game image from a folder containing
+ * all game files.
+ * 
+ * @param input_dir_path the path to the directory containing game files
+ * @param output_file_path the path to the output disc image file that will be created
+ */
+void rebuild_iso(const std::filesystem::path& input_dir_path, const std::filesystem::path& output_file_path)
 {
-    std::filesystem::path cue_file_path = output_file;
+    std::filesystem::path cue_file_path = output_file_path;
     cue_file_path.replace_extension("cue");
 
 #ifdef WIN32
-    std::string command = "tools\\mkpsxiso.exe \"" + input_dir.string() + "build.xml\"";
+    std::string command = "tools\\mkpsxiso.exe \"" + input_dir_path.string() + "build.xml\"";
 #else
-    std::string command = "./tools/mkpsxiso \"" + input_dir.string() + "build.xml\"";
+    std::string command = "./tools/mkpsxiso \"" + input_dir_path.string() + "build.xml\"";
 #endif
 
-    command += " -o \"" + output_file.string() + "\"";
+    command += " -o \"" + output_file_path.string() + "\"";
     command += " -c \"" + cue_file_path.string() + "\"";
 
     // Remove standard output for this command
@@ -70,41 +84,34 @@ void rebuild_iso(const std::filesystem::path& input_dir, const std::filesystem::
     system(command.c_str());
 }
 
-void process_paths(const ArgumentDictionary& args, const RandomizerOptions& options, std::string& output_rom_path, std::string& spoiler_log_path)
+/**
+ * Process the given output paths (input by the user) to alter them following a bunch of rules.
+ * 
+ * @param output_rom_path a reference on the path that will be used for the output ROM
+ * @param spoiler_log_path a reference on the path that will be used for the spoiler log
+ * @param hash_sentence the seed unique "hash sentence", used as a default filename if none was given
+ */
+void process_paths(std::filesystem::path& output_rom_path, std::filesystem::path& spoiler_log_path,
+                   const std::string& hash_sentence)
 {
-    // TODO: Rewrite this with the <filesystem> standard lib
-    output_rom_path = args.get_string("outputrom", "./");
-    spoiler_log_path = args.get_string("outputlog", "./");
-
-    // Clean output ROM path and determine if it's a directory or a file
+    // If output ROM path was not specified, put it in the current working directory
     if(output_rom_path.empty())
         output_rom_path = "./";
-
-    bool output_path_is_a_directory = !output_rom_path.ends_with(".cue") && !output_rom_path.ends_with(".bin");
-    if(output_path_is_a_directory && *output_rom_path.rbegin() != '/')
-        output_rom_path += "/";
-
-    // If output log path wasn't specified, put it along with the ROM
-    if(!args.contains("outputlog"))
+    
+    // If output log path wasn't specified, put it alongside the ROM
+    if(spoiler_log_path.empty())
     {
-        // outputRomPath points to a directory, use the same for the spoiler log
-        if(output_path_is_a_directory)
-            spoiler_log_path = output_rom_path;
-
-        // outputRomPath points to a file, change its extension to ".json"
-        else if(output_rom_path.ends_with(".cue"))
-            spoiler_log_path = output_rom_path.substr(0, output_rom_path.size() - 2) + "json";
-        else if(output_rom_path.ends_with(".bin"))
-            spoiler_log_path = output_rom_path.substr(0, output_rom_path.size() - 3) + "json";
+        spoiler_log_path = output_rom_path;
+        if(spoiler_log_path.has_extension())
+            spoiler_log_path.replace_extension(".json");
     }
-    else if(!spoiler_log_path.empty() && !spoiler_log_path.ends_with(".json") && !spoiler_log_path.ends_with('/'))
-        spoiler_log_path += "/";
 
-    // Add the filename afterwards if required
-    if(!output_rom_path.empty() && *output_rom_path.rbegin() == '/')
-        output_rom_path += options.hash_sentence() + ".bin";
-    if(!spoiler_log_path.empty() && *spoiler_log_path.rbegin() == '/')
-        spoiler_log_path += options.hash_sentence() + ".json";
+    // If path was not containing the appropriate file extension, it is considered as a directory path,
+    // so append a default filename to it.
+    if(output_rom_path.extension() != ".bin")
+        output_rom_path = output_rom_path / (hash_sentence + ".bin");
+    if(spoiler_log_path.extension() != ".json")
+        spoiler_log_path = spoiler_log_path / (hash_sentence + ".json");
 }
 
 Json randomize(RandomizerWorld& world, RandomizerOptions& options, PersonalSettings& personal_settings, const ArgumentDictionary& args)
@@ -154,7 +161,8 @@ Json randomize(RandomizerWorld& world, RandomizerOptions& options, PersonalSetti
     return spoiler_json;
 }
 
-void build_patched_rom(const std::string& input_path, const std::string& output_path, RandomizerWorld& world, const RandomizerOptions& options)
+void build_patched_rom(const std::filesystem::path& input_path, const std::filesystem::path& output_path, 
+                       RandomizerWorld& world, const RandomizerOptions& options)
 {
     // Dump the input ROM into a "base_dump" folder if it was not already done on a previous generation
     if(!std::filesystem::exists("./base_dump/DATA/DATAS.BIN"))
@@ -187,8 +195,10 @@ void build_patched_rom(const std::string& input_path, const std::string& output_
     // Use an external tool to repack the files into a PS1 disc image
     std::cout << "Building a disc image...\n\n";
     rebuild_iso("./tmp_dump/", output_path);
+
 #ifndef DEBUG
-        std::filesystem::remove_all("./tmp_dump/");
+    // Remove the tmp_dump folder in release builds, keep it in debug releases for debugging purpose
+    std::filesystem::remove_all("./tmp_dump/");
 #endif
 
     std::cout << "Randomized game outputted to \"" << output_path << "\".\n";
@@ -207,8 +217,9 @@ void generate(const ArgumentDictionary& args)
     Json spoiler_json = randomize(world, options, personal_settings, args);
 
     // Parse output paths from args
-    std::string output_rom_path, spoiler_log_path;
-    process_paths(args, options, output_rom_path, spoiler_log_path);
+    std::filesystem::path output_rom_path = args.get_string("outputrom", "");
+    std::filesystem::path spoiler_log_path = args.get_string("outputlog", "");
+    process_paths(output_rom_path, spoiler_log_path, options.hash_sentence());
 
     // Don't perform the patching process if "only-logic" option was provided
     if(!args.contains("only-logic"))
@@ -222,14 +233,14 @@ void generate(const ArgumentDictionary& args)
     {
         std::ofstream spoiler_file(spoiler_log_path);
         if(!spoiler_file)
-            throw RandomizerException("Could not open output log file for writing at path '" + spoiler_log_path + "'");
+            throw RandomizerException("Could not open output log file for writing at path '" + spoiler_log_path.string() + "'");
 
         spoiler_file << spoiler_json.dump(4);
         spoiler_file.close();
         if(options.allow_spoiler_log())
-            std::cout << "Spoiler log written into \"" << spoiler_log_path << "\".\n";
+            std::cout << "Spoiler log written into " << spoiler_log_path << ".\n";
         else
-            std::cout << "Generation log written into \"" << spoiler_log_path << "\".\n";
+            std::cout << "Generation log written into " << spoiler_log_path << ".\n";
     }
 
     if(args.contains("graph"))

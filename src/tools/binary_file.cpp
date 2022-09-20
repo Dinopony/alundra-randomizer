@@ -4,13 +4,13 @@
 
 #include <iostream>
 
-BinaryFile::BinaryFile(const std::string& input_path) :
+BinaryFile::BinaryFile(const std::filesystem::path& input_path) :
     ByteArray   (),
     _input_path (input_path)
 {
     std::ifstream file(input_path, std::ios::binary);
     if (!file.is_open())
-        throw RandomizerException("Could not open binary file '" + input_path + "'");
+        throw RandomizerException("Could not open binary file '" + input_path.string() + "'");
 
     file.seekg(0, std::ios::end);
     std::streamsize file_size = file.tellg();
@@ -32,11 +32,11 @@ BinaryFile::BinaryFile(const uint8_t* buffer, size_t size)
     this->set_bytes(0, buffer, size);
 }
 
-void BinaryFile::save_as(const std::string& output_path)
+void BinaryFile::save_as(const std::filesystem::path& output_path)
 {
     std::ofstream output_file(output_path, std::ios::binary);
     if(!output_file)
-        throw RandomizerException("Could not output binary file at '" + output_path + "'");
+        throw RandomizerException("Could not output binary file at '" + output_path.string() + "'");
 
     output_file.write((char*)this->buffer_pointer(), (int32_t)this->size());
     output_file.close();

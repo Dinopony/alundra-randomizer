@@ -13,7 +13,7 @@ private:
     std::vector<uint8_t> _prepended_bytes;
 
 public:
-    explicit PsxExeFile(const std::string& input_path) : BinaryFile(input_path)
+    explicit PsxExeFile(const std::filesystem::path& input_path) : BinaryFile(input_path)
     {
         _initial_code_start_addr = this->get_long_le(0x18);
 
@@ -21,7 +21,7 @@ public:
         _prepended_bytes.resize(FILE_SIZE_INCREMENT, 0x0000);
     }
 
-    void save_as(const std::string& output_path) override
+    void save_as(const std::filesystem::path& output_path) override
     {
         // First, update the PSX-EXE header to expand the file
         this->update_psx_header();
