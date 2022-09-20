@@ -14,30 +14,30 @@
 class PatchFixThrowables : public GamePatch
 {
 public:
-    void alter_datas_file(BinaryFile& data, const GameData& game_data, const RandomizerWorld& world) override
+    static uint32_t get_object_properties_addr(BinaryFile& data, uint8_t item_id)
     {
         constexpr uint32_t OBJECT_PROPERTIES_TABLE_START = 0x800;
+
+        uint8_t item_object_id = item_id + 0x1E;
+        uint32_t offset_1 = data.get_long_le(OBJECT_PROPERTIES_TABLE_START + (item_object_id * 4));
+        uint32_t offset_2 = data.get_long_le(OBJECT_PROPERTIES_TABLE_START + offset_1);
+        return OBJECT_PROPERTIES_TABLE_START + offset_2;
+    }
+    
+    // TODO: This patch doesn't work for now
+    void alter_datas_file(BinaryFile& data, const GameData& game_data, const RandomizerWorld& world) override
+    {
         constexpr uint8_t VALID_THROWABLE_ITEM_ID = ITEM_HERBS;
-        constexpr uint8_t VALID_THROWABLE_OBJECT_ID = VALID_THROWABLE_ITEM_ID + 0x1E;
 
-        // Read offsets to reach the object properties for an item object that can be thrown properly (e.g. Herbs)
-        uint32_t valid_item_offset_addr = OBJECT_PROPERTIES_TABLE_START + (VALID_THROWABLE_OBJECT_ID * 4);
-        uint32_t valid_item_offset = data.get_long_le(valid_item_offset_addr);
-        uint32_t valid_item_addr = OBJECT_PROPERTIES_TABLE_START + valid_item_offset;
-
-        // Once inside the object properties, go to the first section and extract the first 8 bytes
-        uint32_t sub_offset = data.get_long_le(valid_item_addr);
-        uint32_t object_infos_addr = valid_item_addr + sub_offset;
-        ByteArray valid_bytes = data.get_bytes(object_infos_addr, object_infos_addr + 8);
+        // Extract the first 8 bytes of object properties for a valid item object
+        uint32_t valid_bytes_addr = get_object_properties_addr(data, ITEM_HERBS);
+        ByteArray valid_bytes = data.get_bytes(valid_bytes_addr, valid_bytes_addr + 8);
 
         // Now, we apply those "valid bytes" to every item object
         for(uint8_t item_id = ITEM_DAGGER ; item_id <= ITEM_CURIOUS_KEY ; ++item_id)
         {
-            uint8_t object_id = item_id + 0x1E;
-            uint32_t object_addr = OBJECT_PROPERTIES_TABLE_START + (object_id * 4);
-            sub_offset = data.get_long_le(object_addr);
-            object_infos_addr = object_addr + sub_offset;
-            data.set_bytes(object_infos_addr, valid_bytes);
+            uint32_t bytes_addr = get_object_properties_addr(data, item_id);
+            data.set_bytes(bytes_addr, valid_bytes);
         }
     }
 };
