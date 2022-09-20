@@ -5,12 +5,15 @@
     "randomizerSettings": {
         "allowSpoilerLog": true,
         "itemsDistribution": {
-            "Herbs": 25,
-            "Strength Tonic": 5,
-            "Strength Elixyr": 2,
+            "Herbs": 40,
+            "Strength Tonic": 10,
+            "Strength Elixyr": 6,
+            "Magic Elixyr": 6,
+            "Wonder Essence": 3,
 
             "Life Vessel": 40,
             "Magic Seed": 4,
+            "Gilded Falcon": 50,
 
             "Sword": 1,
             "Fiend Blade": 1,
@@ -22,6 +25,12 @@
 
             "Hunter's Bow": 1,
             "Willow Bow": 1,
+
+            "Olga's Ring": 1,
+            "Silver Armlet": 1,
+            "Recovery Ring": 1,
+            "Nava's Charm": 1,
+            "Spirit Wand": 1,
 
             "Long Boots": 1,
             "Merman Boots": 1,
