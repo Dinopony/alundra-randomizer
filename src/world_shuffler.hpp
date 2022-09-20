@@ -23,7 +23,7 @@ private:
     std::mt19937 _rng;
 
     std::vector<Item*> _item_pool;
-    std::map<uint8_t, uint16_t> _item_pool_quantities;
+    std::map<uint8_t, uint8_t> _item_pool_quantities;
 
     std::vector<Item*> _minimal_items_to_complete;
     std::vector<ItemSource*> _logical_playthrough;

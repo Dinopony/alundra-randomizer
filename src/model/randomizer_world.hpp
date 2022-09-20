@@ -5,7 +5,6 @@
 #include <string>
 #include "../constants/item_codes.hpp"
 #include "world.hpp"
-#include "item_distribution.hpp"
 
 class WorldNode;
 class WorldPath;
@@ -21,15 +20,11 @@ private:
     std::map<std::pair<WorldNode*, WorldNode*>, WorldPath*> _paths;
     std::vector<WorldRegion*> _regions;
 
-    std::array<ItemDistribution, ITEM_COUNT> _item_distributions;
+    std::array<uint8_t, ITEM_COUNT> _item_distribution;
 
 public:
-    RandomizerWorld() = default;
+    explicit RandomizerWorld(const RandomizerOptions& options);
     ~RandomizerWorld();
-
-    void apply_options(const RandomizerOptions& options);
-
-    [[nodiscard]] std::array<std::string, ITEM_COUNT> item_names() const;
 
     [[nodiscard]] const std::vector<ItemSource*>& item_sources() const { return _item_sources; }
     [[nodiscard]] std::vector<ItemSource*>& item_sources() { return _item_sources; }
@@ -47,17 +42,14 @@ public:
     [[nodiscard]] const std::vector<WorldRegion*>& regions() const { return _regions; }
     [[nodiscard]] WorldRegion* region(const std::string& name) const;
 
-    [[nodiscard]] const std::array<ItemDistribution, ITEM_COUNT>& item_distributions() const { return _item_distributions; }
-    [[nodiscard]] const ItemDistribution* item_distribution(uint8_t item_id) const { return &_item_distributions[item_id]; }
-    [[nodiscard]] ItemDistribution* item_distribution(uint8_t item_id) { return &_item_distributions[item_id]; }
-    [[nodiscard]] std::map<uint8_t, uint16_t> item_quantities() const;
+    [[nodiscard]] uint8_t item_quantity_in_distribution(uint8_t item_id) const { return _item_distribution[item_id]; }
+    [[nodiscard]] std::map<uint8_t, uint8_t> item_quantities_in_distribution() const;
 
     [[nodiscard]] WorldNode* spawn_node() const { return _nodes.at("inoa"); }
     [[nodiscard]] WorldNode* end_node() const { return _nodes.at("end"); }
 
+private:    
     void load_model_from_json();
-
-private:
     void load_items();
     void load_item_sources();
     void load_nodes();

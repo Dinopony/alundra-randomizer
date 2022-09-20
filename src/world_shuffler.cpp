@@ -10,7 +10,6 @@
 #include "model/world_node.hpp"
 #include "model/world_path.hpp"
 #include "model/world_region.hpp"
-#include "model/item_distribution.hpp"
 
 #include "world_solver.hpp"
 
@@ -78,7 +77,7 @@ void WorldShuffler::init_item_pool()
         return;
 
     _item_pool.reserve(_world.item_sources().size());
-    _item_pool_quantities = _world.item_quantities();
+    _item_pool_quantities = _world.item_quantities_in_distribution();
 
     // Count quantities already in place
     for(ItemSource* source : _world.item_sources())

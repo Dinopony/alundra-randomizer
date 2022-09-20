@@ -207,12 +207,9 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
 void generate(const ArgumentDictionary& args)
 {
     RandomizerOptions options(args);
-
-    RandomizerWorld world;
-    world.load_model_from_json();
-    world.apply_options(options);
-
     PersonalSettings personal_settings(args);
+
+    RandomizerWorld world(options);
 
     Json spoiler_json = randomize(world, options, personal_settings, args);
 

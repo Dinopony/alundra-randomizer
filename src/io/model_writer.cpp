@@ -5,7 +5,6 @@
 #include "../model/world_node.hpp"
 #include "../model/world_region.hpp"
 #include "../model/world_path.hpp"
-#include "../model/item_distribution.hpp"
 #include "../model/randomizer_world.hpp"
 
 void ModelWriter::write_logic_model(const RandomizerWorld& world)
@@ -49,10 +48,4 @@ void ModelWriter::write_logic_model(const RandomizerWorld& world)
     for(WorldRegion* region : world.regions())
         regions_json.emplace_back(region->to_json());
     dump_json_to_file(regions_json, "./json_data/world_region.json");
-
-    Json distribs_json = Json::object();
-    auto item_names = world.item_names();
-    for(uint8_t i=0 ; i<ITEM_COUNT ; ++i)
-        distribs_json[item_names[i]] = world.item_distribution(i)->to_json();
-    dump_json_to_file(distribs_json, "./json_data/item_distribution.json");
 }

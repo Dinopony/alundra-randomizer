@@ -59,7 +59,6 @@ set(SOURCES
         # --- Logic model ----------------------------------------
         "src/model/item.hpp"
         "src/model/item.cpp"
-        "src/model/item_distribution.hpp"
         "src/model/item_source.hpp"
         "src/model/item_source.cpp"
         "src/model/world.hpp"

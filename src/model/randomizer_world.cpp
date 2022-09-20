@@ -4,7 +4,6 @@
 #include "world_node.hpp"
 #include "world_path.hpp"
 #include "world_region.hpp"
-#include "item_distribution.hpp"
 #include "../randomizer_options.hpp"
 
 // Include headers automatically generated from model json files
@@ -18,13 +17,10 @@
 
 #include <iostream>
 
-void RandomizerWorld::apply_options(const RandomizerOptions& options)
+RandomizerWorld::RandomizerWorld(const RandomizerOptions& options)
 {
-    // TODO: Refactor this
-    // Apply the global distribution params, if set by the user
-    const std::array<uint8_t, ITEM_COUNT>& distribution_param = options.items_distribution();
-    for(uint8_t i=0 ; i<ITEM_COUNT ; ++i)
-        this->item_distribution(i)->quantity(distribution_param[i]);
+    _item_distribution = options.items_distribution();
+    this->load_model_from_json();
 }
 
 RandomizerWorld::~RandomizerWorld()
@@ -57,20 +53,6 @@ std::vector<ItemSource*> RandomizerWorld::item_sources_with_item(Item* item)
             sources_with_item.emplace_back(source);
 
     return sources_with_item;
-}
-
-std::array<std::string, ITEM_COUNT> RandomizerWorld::item_names() const
-{
-    std::array<std::string, ITEM_COUNT> item_names;
-    for(uint8_t i=0 ; i<ITEM_COUNT ; ++i)
-    {
-        if(this->item(i))
-            item_names[i] = this->item(i)->name();
-        else
-            item_names[i] = "No" + std::to_string(i);
-    }
-
-    return item_names;
 }
 
 void RandomizerWorld::load_item_sources()
@@ -130,11 +112,11 @@ WorldRegion* RandomizerWorld::region(const std::string& name) const
     return nullptr;
 }
 
-std::map<uint8_t, uint16_t> RandomizerWorld::item_quantities() const
+std::map<uint8_t, uint8_t> RandomizerWorld::item_quantities_in_distribution() const
 {
-    std::map<uint8_t, uint16_t> item_quantities;
-    for(uint8_t i=0 ; i<_item_distributions.size() ; ++i)
-        item_quantities[i] = _item_distributions[i].quantity();
+    std::map<uint8_t, uint8_t> item_quantities;
+    for(uint8_t i=0 ; i<_item_distribution.size() ; ++i)
+        item_quantities[i] = _item_distribution[i];
     return item_quantities;
 }
 
