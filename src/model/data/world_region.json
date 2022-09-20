@@ -1,12 +1,12 @@
 [
     {
-        "name": "Overworld A1",
+        "name": "Overworld A1 (Murgg great tree)",
         "nodeIds": [
             "overworld_a1"
         ]
     },
     {
-        "name": "Overworld A2",
+        "name": "Overworld A2 (Murgg woods)",
         "nodeIds": [
             "overworld_a2",
             "overworld_a2_behind_vines",
@@ -14,7 +14,7 @@
         ]
     },
     {
-        "name": "Overworld A3",
+        "name": "Overworld A3 (Ruins above Fire Manor)",
         "nodeIds": [
             "overworld_a3_left",
             "overworld_a3_left_behind_power_glove",
@@ -24,7 +24,7 @@
         ]
     },
     {
-        "name": "Overworld A4",
+        "name": "Overworld A4 (Fire Manor sector)",
         "nodeIds": [
             "overworld_a4_right",
             "overworld_a4_middle",
@@ -35,7 +35,7 @@
     },
 
     {
-        "name": "Overworld B1",
+        "name": "Overworld B1 (Lake sector)",
         "nodeIds": [
             "overworld_b1",
             "overworld_b1_island",
@@ -43,7 +43,7 @@
         ]
     },
     {
-        "name": "Overworld B2",
+        "name": "Overworld B2 (Coal Mine sector)",
         "nodeIds": [
             "overworld_b2",
             "overworld_b2_left",
@@ -53,7 +53,7 @@
         ]
     },
     {
-        "name": "Overworld B3",
+        "name": "Overworld B3 (Riverside sector)",
         "nodeIds": [
             "overworld_b3",
             "overworld_b3_elevated",
@@ -71,7 +71,7 @@
         ]
     },
     {
-        "name": "Overworld B4",
+        "name": "Overworld B4 (Nava's hut sector)",
         "nodeIds": [
             "overworld_b4",
             "overworld_b4_behind_merman",
@@ -82,7 +82,7 @@
     },
 
     {
-        "name": "Overworld C1",
+        "name": "Overworld C1 (Magyscar sector)",
         "nodeIds": [
             "overworld_c1",
             "overworld_c1_right_sector",
@@ -91,7 +91,7 @@
         ]
     },
     {
-        "name": "Overworld C2",
+        "name": "Overworld C2 (Sanctuary sector)",
         "nodeIds": [
             "overworld_c2",
             "overworld_c2_cave_behind_spring",
@@ -105,7 +105,7 @@
         ]
     },
     {
-        "name": "Overworld C4",
+        "name": "Overworld C4 (Merrick's shop sector)",
         "nodeIds": [
             "overworld_c4",
             "overworld_c4_behind_spring",
@@ -115,14 +115,14 @@
     },
 
     {
-        "name": "Overworld D1",
+        "name": "Overworld D1 (Torla sector)",
         "nodeIds": [
             "overworld_d1",
             "overworld_d1_cliff_maze"
         ]
     },
     {
-        "name": "Overworld D2",
+        "name": "Overworld D2 (Watermill sector)",
         "nodeIds": [
             "overworld_d2",
             "overworld_d2_behind_spring",
@@ -132,7 +132,7 @@
         ]
     },
     {
-        "name": "Overworld D3",
+        "name": "Overworld D3 (Tarn Manor sector)",
         "nodeIds": [
             "overworld_d3",
             "overworld_d3_behind_vines",
@@ -142,7 +142,7 @@
         ]
     },
     {
-        "name": "Overworld D4",
+        "name": "Overworld D4 (Reptiles Lair sector)",
         "nodeIds": [
             "overworld_d4",
             "overworld_d4_behind_long_boots"
@@ -150,13 +150,13 @@
     },
 
     {
-        "name": "Overworld E1",
+        "name": "Overworld E1 (Nirude sector)",
         "nodeIds": [
             "overworld_e1"
         ]
     },
     {
-        "name": "Overworld E2",
+        "name": "Overworld E2 (Upper desert)",
         "nodeIds": [
             "overworld_e2",
             "overworld_e2_behind_long_boots",
@@ -164,7 +164,7 @@
         ]
     },
     {
-        "name": "Overworld E3",
+        "name": "Overworld E3 (Lower desert)",
         "nodeIds": [
             "overworld_e3",
             "overworld_e3_bottom_left",
@@ -174,7 +174,7 @@
         ]
     },
     {
-        "name": "Overworld E4",
+        "name": "Overworld E4 (Cliffs of Madness)",
         "nodeIds": [
             "overworld_e4",
             "overworld_e4_well",
