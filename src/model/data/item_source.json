@@ -724,13 +724,13 @@
         "vanillaItem": "Gilded Falcon"
     },
     {
-        "name": "Overworld B2: first chest in cave to lake",
+        "name": "Overworld B2: First chest in cave to lake",
         "nodeId": "overworld_b2_cave_to_lake",
         "address": "205504E",
         "vanillaItem": "10 Gilder"
     },
     {
-        "name": "Overworld B2: chest behind deep water in cave to lake",
+        "name": "Overworld B2: Chest behind deep water in cave to lake",
         "nodeId": "overworld_b2_cave_to_lake_behind_merman",
         "address": "2055062",
         "vanillaItem": "Wonder Essence"
@@ -893,43 +893,43 @@
         "vanillaItem": "Fiend Blade"
     },
     {
-        "name": "Ancient Shrine: chest in left aisle of main entrance room",
+        "name": "Ancient Shrine: Chest in left aisle of main entrance room",
         "nodeId": "ancient_shrine",
         "address": "769FFE",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Ancient Shrine: chest in right aisle of main entrance room",
+        "name": "Ancient Shrine: Chest in right aisle of main entrance room",
         "nodeId": "ancient_shrine",
         "address": "76A012",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Ancient Shrine: chest in room with sandcape holes and jars",
+        "name": "Ancient Shrine: Chest in room with sandcape holes and jars",
         "nodeId": "ancient_shrine",
         "address": "89ED1E",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Ancient Shrine: chest near left exterior statue",
+        "name": "Ancient Shrine: Chest near left exterior statue",
         "nodeId": "ancient_shrine",
         "address": "866AD2",
         "vanillaItem": "Gilded Falcon"
     },
     {
-        "name": "Ancient Shrine: left reward chest after beating boss",
+        "name": "Ancient Shrine: Left reward chest after beating boss",
         "nodeId": "ancient_shrine",
         "address": "82F0DE",
         "vanillaItem": "Sword"
     },
     {
-        "name": "Ancient Shrine: middle reward chest after beating boss",
+        "name": "Ancient Shrine: Middle reward chest after beating boss",
         "nodeId": "ancient_shrine",
         "address": "82F08E",
         "vanillaItem": "Long Boots"
     },
     {
-        "name": "Ancient Shrine: right reward chest after beating boss",
+        "name": "Ancient Shrine: Right reward chest after beating boss",
         "nodeId": "ancient_shrine",
         "address": "82F0F2",
         "vanillaItem": "Life Vessel"
@@ -1001,139 +1001,139 @@
         "vanillaItem": "Water Scroll"
     },
     {
-        "name": "Tower of the Great Tree (basement): bottom chest",
+        "name": "Tower of the Great Tree (basement): Bottom chest",
         "nodeId": "great_tree_tower",
         "address": "2363162",
         "vanillaItem": "Wonder Essence"
     },
     {
-        "name": "Tower of the Great Tree (basement): top-left chest",
+        "name": "Tower of the Great Tree (basement): Top-left chest",
         "nodeId": "great_tree_tower",
         "address": "2363176",
         "vanillaItem": "30 Gilder"
     },
     {
-        "name": "Tower of the Great Tree (basement): left chest among the two top chests",
+        "name": "Tower of the Great Tree (basement): Left chest among the two top chests",
         "nodeId": "great_tree_tower",
         "address": "236318A",
         "vanillaItem": "Strength Tonic"
     },
     {
-        "name": "Tower of the Great Tree (basement): right chest among the two top chests",
+        "name": "Tower of the Great Tree (basement): Right chest among the two top chests",
         "nodeId": "great_tree_tower",
         "address": "236319E",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Tower of the Great Tree (ground): chest in arena",
+        "name": "Tower of the Great Tree (ground): Chest in arena",
         "nodeId": "great_tree_tower",
         "address": "21CE702",
         "vanillaItem": "1 Gilder"
     },
     {
-        "name": "Tower of the Great Tree (ground): chest near left aisle entrance",
+        "name": "Tower of the Great Tree (ground): Chest near left aisle entrance",
         "nodeId": "great_tree_tower",
         "address": "21CE586",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Tower of the Great Tree (ground): chest near right aisle entrance",
+        "name": "Tower of the Great Tree (ground): Chest near right aisle entrance",
         "nodeId": "great_tree_tower",
         "address": "21CE496",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Tower of the Great Tree (1F): middle chest",
+        "name": "Tower of the Great Tree (1F): Middle chest",
         "nodeId": "great_tree_tower",
         "address": "220BAAE",
         "vanillaItem": "Wonder Essence"
     },
     {
-        "name": "Tower of the Great Tree (1F): left chest in top-right room",
+        "name": "Tower of the Great Tree (1F): Left chest in top-right room",
         "nodeId": "great_tree_tower",
         "address": "220BB3A",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Tower of the Great Tree (1F): right chest in top-right room",
+        "name": "Tower of the Great Tree (1F): Right chest in top-right room",
         "nodeId": "great_tree_tower",
         "address": "220BAEA",
         "vanillaItem": "Strength Tonic"
     },
     {
-        "name": "Tower of the Great Tree (2F): left chest in top row of storage room",
+        "name": "Tower of the Great Tree (2F): Left chest in top row of storage room",
         "nodeId": "great_tree_tower",
         "address": "224388A",
         "vanillaItem": "10 Gilder"
     },
     {
-        "name": "Tower of the Great Tree (2F): right chest in top row of storage room",
+        "name": "Tower of the Great Tree (2F): Right chest in top row of storage room",
         "nodeId": "great_tree_tower",
         "address": "224389E",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Tower of the Great Tree (2F): left chest in bottom row of storage room",
+        "name": "Tower of the Great Tree (2F): Left chest in bottom row of storage room",
         "nodeId": "great_tree_tower",
         "address": "22438B2",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Tower of the Great Tree (2F): right chest in bottom row of storage room",
+        "name": "Tower of the Great Tree (2F): Right chest in bottom row of storage room",
         "nodeId": "great_tree_tower",
         "address": "22436BE",
         "vanillaItem": "Strength Tonic"
     },
     {
-        "name": "Tower of the Great Tree (2F): middle chest",
+        "name": "Tower of the Great Tree (2F): Middle chest",
         "nodeId": "great_tree_tower",
         "address": "2243812",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Tower of the Great Tree (2F): top chest in bottom-right room",
+        "name": "Tower of the Great Tree (2F): Top chest in bottom-right room",
         "nodeId": "great_tree_tower",
         "address": "22437D6",
         "vanillaItem": "30 Gilder"
     },
     {
-        "name": "Tower of the Great Tree (2F): left chest in bottom-right room",
+        "name": "Tower of the Great Tree (2F): Left chest in bottom-right room",
         "nodeId": "great_tree_tower",
         "address": "22437EA",
         "vanillaItem": "1 Gilder"
     },
     {
-        "name": "Tower of the Great Tree (2F): right chest in bottom-right room",
+        "name": "Tower of the Great Tree (2F): Right chest in bottom-right room",
         "nodeId": "great_tree_tower",
         "address": "22437FE",
         "vanillaItem": "Life Vessel"
     },
     {
-        "name": "Tower of the Great Tree (3F): left chest in top-right room",
+        "name": "Tower of the Great Tree (3F): Left chest in top-right room",
         "nodeId": "great_tree_tower",
         "address": "227B1B2",
         "vanillaItem": "30 Gilder"
     },
     {
-        "name": "Tower of the Great Tree (3F): right chest in top-right room",
+        "name": "Tower of the Great Tree (3F): Right chest in top-right room",
         "nodeId": "great_tree_tower",
         "address": "227B1C6",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Tower of the Great Tree (4F): chest in fireball launcher room",
+        "name": "Tower of the Great Tree (4F): Chest in fireball launcher room",
         "nodeId": "great_tree_tower",
         "address": "22B23DA",
         "vanillaItem": "30 Gilder"
     },
     {
-        "name": "Tower of the Great Tree (Summit): left boss reward chest",
+        "name": "Tower of the Great Tree (Summit): Left boss reward chest",
         "nodeId": "great_tree_tower",
         "address": "22EAE3E",
         "vanillaItem": "Agate Crest"
     },
     {
-        "name": "Tower of the Great Tree (Summit): right boss reward chest",
+        "name": "Tower of the Great Tree (Summit): Right boss reward chest",
         "nodeId": "great_tree_tower",
         "address": "22EAE52",
         "vanillaItem": "Garnet Crest"
