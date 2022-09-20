@@ -55,7 +55,6 @@ void WorldSolver::setup(WorldNode* start_node, WorldNode* end_node, const std::v
     _explored_nodes.clear();
     _blocked_paths.clear();
     _reachable_item_sources.clear();
-    _relevant_items.clear();
     _starting_inventory.clear();
     _inventory.clear();
     _step_count = 0;
@@ -124,10 +123,6 @@ void WorldSolver::update_current_inventory()
 
         const Item* item = source->item();
         if(!item)
-            continue;
-
-        // If item isn't useful for opening something, don't bother putting it in our inventory
-        if(!vectools::contains(_relevant_items, item))
             continue;
 
         if(forbidden_items_copy.count(item) && forbidden_items_copy.at(item) > 0)
@@ -239,10 +234,6 @@ std::vector<const Item*> WorldSolver::find_minimal_inventory()
 
     for(const Item* item : _inventory)
     {
-        // Item is not a relevant item (e.g. an EkeEke in starting inventory), just ignore it
-        if(!vectools::contains(_relevant_items, item))
-            continue;
-
         std::map<const Item*, uint16_t> forbidden_items_plus_one = forbidden_items;
         if(!forbidden_items_plus_one.count(item))
             forbidden_items_plus_one[item] = 0;
@@ -310,12 +301,6 @@ void WorldSolver::expand_exploration_zone()
 
                 // For uncrossable blocked paths, add them to a pending list
                 _blocked_paths.emplace_back(path);
-
-                // Add required items to the list of relevant items encountered
-                std::vector<const Item*> required_items = path->required_items();
-                for(const Item* item : required_items)
-                    if(!vectools::contains(_relevant_items, item))
-                        _relevant_items.emplace_back(item);
             }
         }
 

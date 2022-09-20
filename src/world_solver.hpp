@@ -37,8 +37,6 @@ private:
     std::vector<WorldPath*> _blocked_paths;
     std::vector<ItemSource*> _reachable_item_sources;
 
-    std::vector<const Item*> _relevant_items;
-    
     std::vector<const Item*> _starting_inventory;
     std::vector<const Item*> _inventory;
 
