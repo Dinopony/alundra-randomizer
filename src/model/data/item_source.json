@@ -217,7 +217,7 @@
     },
     {
         "name": "Overworld C1: Chest on cliff accessible from right map",
-        "nodeId": "overworld_d1",
+        "nodeId": "overworld_c1_cliff",
         "address": "327D2A",
         "vanillaItem": "Gilded Falcon"
     },

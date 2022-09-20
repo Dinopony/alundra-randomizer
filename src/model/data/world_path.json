@@ -253,6 +253,15 @@
         "toId": "overworld_d1",
         "twoWay": true
     },
+    {
+        "fromId": "overworld_d1",
+        "toId": "overworld_c1_cliff",
+        "twoWay": true
+    },
+    {
+        "fromId": "overworld_c1_cliff",
+        "toId": "overworld_c1"
+    },
 
     {
         "fromId": "overworld_b1",
