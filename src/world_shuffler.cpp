@@ -308,6 +308,7 @@ void WorldShuffler::place_remaining_items()
 
         unrestricted_item_sources.emplace_back(source);
     }
+    vectools::shuffle(unrestricted_item_sources, _rng);
 
     for(ItemSource* source : unrestricted_item_sources)
         this->fill_item_source_randomly(source);
