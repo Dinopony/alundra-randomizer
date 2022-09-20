@@ -206,10 +206,10 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
 
 void generate(const ArgumentDictionary& args)
 {
+    RandomizerOptions options(args);
+
     RandomizerWorld world;
     world.load_model_from_json();
-
-    RandomizerOptions options(args, world.item_names());
     world.apply_options(options);
 
     PersonalSettings personal_settings(args);

@@ -16,8 +16,6 @@ class Item;
 class RandomizerOptions 
 {
 private:
-    std::array<std::string, ITEM_COUNT> _item_names;
-
     // ------------- Game patching settings -------------
     // (included in permalink, presets & plandos)
     bool _original_game_balance = true;
@@ -35,7 +33,7 @@ private:
     Json _world_json;
 
 public:
-    explicit RandomizerOptions(const ArgumentDictionary& args, std::array<std::string, ITEM_COUNT>  item_names);
+    explicit RandomizerOptions(const ArgumentDictionary& args);
 
     [[nodiscard]] Json to_json() const;
     void apply_json(const Json& json);

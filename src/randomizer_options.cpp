@@ -7,11 +7,10 @@
 #include "tools/bitstream_writer.hpp"
 #include "tools/bitstream_reader.hpp"
 #include "tools/exception.hpp"
-
 #include "tools/base64.hpp"
+#include "constants/item_names.hpp"
 
-RandomizerOptions::RandomizerOptions(const ArgumentDictionary& args, std::array<std::string, ITEM_COUNT>  item_names) :
-    _item_names(std::move(item_names))
+RandomizerOptions::RandomizerOptions(const ArgumentDictionary& args)
 {
     _items_distribution.fill(0);
 
@@ -77,9 +76,11 @@ Json RandomizerOptions::to_json() const
     for(size_t i=0 ; i < _items_distribution.size() ; ++i)
     {
         uint8_t amount = _items_distribution[i];
-        const std::string& item_name = _item_names[i];
         if(amount > 0)
+        {
+            const std::string& item_name = get_item_name_from_id(i);
             items_distribution_with_names[item_name] = amount;
+        }
     }
     json["randomizerSettings"]["itemsDistributions"] = items_distribution_with_names;
 
@@ -112,10 +113,7 @@ void RandomizerOptions::apply_randomizer_settings_json(const Json& json)
             std::map<std::string, uint8_t> items_distribution = value;
             for(auto& [item_name, quantity] : items_distribution)
             {
-                auto it = std::find(_item_names.begin(), _item_names.end(), item_name);
-                if(it == _item_names.end())
-                    throw RandomizerException("Unknown item name '" + item_name + "' in items distribution section of preset file");
-                uint8_t item_id = std::distance(_item_names.begin(), it);
+                uint8_t item_id = get_item_id_from_name(item_name);
                 _items_distribution[item_id] = quantity;
             }
         }
