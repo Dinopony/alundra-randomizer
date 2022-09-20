@@ -62,6 +62,22 @@
         ]
     },
     {
+        "fromId": "overworld_d2",
+        "toId": "overworld_d2_cave",
+        "twoWay": true,
+        "requiredItems": [
+            "Bomb"
+        ]
+    },
+    {
+        "fromId": "overworld_d2_cave",
+        "toId": "overworld_d2_cave_behind_merman",
+        "twoWay": true,
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
         "fromId": "overworld_d2_behind_spring",
         "toId": "overworld_d2"
     },

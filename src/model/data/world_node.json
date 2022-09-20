@@ -38,6 +38,12 @@
     "overworld_d2_watermill": {
         "hints": []
     },
+    "overworld_d2_cave": {
+        "hints": []
+    },
+    "overworld_d2_cave_behind_merman": {
+        "hints": []
+    },
     "overworld_d3": {
         "hints": []
     },

@@ -14,9 +14,9 @@ constexpr const char* COLORS[] = { "indianred2", "lightslateblue", "limegreen", 
 size_t COLORS_SIZE = 7;
 
 
-void write_logic_as_dot(const RandomizerWorld& world, const std::string& path)
+void write_logic_as_dot(const RandomizerWorld& world, const std::string& output_path)
 {
-    std::ofstream graphviz(path);
+    std::ofstream graphviz(output_path);
     graphviz << "digraph {\n";
 
     graphviz << "\tgraph [pad=0.5, nodesep=1, ranksep=1.5];\n";

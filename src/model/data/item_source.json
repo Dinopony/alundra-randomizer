@@ -72,6 +72,30 @@
         "vanillaItem": "Strength Tonic"
     },
     {
+        "name": "Overworld D2 (Cavern): Chest in left half of cavern",
+        "nodeId": "overworld_d2_cave",
+        "address": "21636B6",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Overworld D2 (Cavern): Chest falling after beating all slimes",
+        "nodeId": "overworld_d2_cave",
+        "address": "21636CA",
+        "vanillaItem": "Wonder Essence"
+    },
+    {
+        "name": "Overworld D2 (Cavern): Upper chest in right half of cavern",
+        "nodeId": "overworld_d2_cave_behind_merman",
+        "address": "216367A",
+        "vanillaItem": "30 Gilder"
+    },
+    {
+        "name": "Overworld D2 (Cavern): Lower chest in right half of cavern",
+        "nodeId": "overworld_d2_cave_behind_merman",
+        "address": "216368E",
+        "vanillaItem": "Gilded Falcon"
+    },
+    {
         "name": "Overworld D3: Elevated chest near bridge",
         "nodeId": "overworld_d3_behind_spring_and_vines",
         "address": "4C39EA",

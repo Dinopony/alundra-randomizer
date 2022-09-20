@@ -128,7 +128,9 @@
             "overworld_d2_behind_spring",
             "overworld_d2_chest_cliff",
             "overworld_d2_arches",
-            "overworld_d2_watermill"
+            "overworld_d2_watermill",
+            "overworld_d2_cave",
+            "overworld_d2_cave_behind_merman"
         ]
     },
     {
