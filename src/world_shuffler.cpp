@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <iostream>
 
-WorldShuffler::WorldShuffler(RandomizerWorld& world, GameData& game_data, const RandomizerOptions& options) :
+WorldShuffler::WorldShuffler(RandomizerWorld& world, const GameData& game_data, const RandomizerOptions& options) :
     _world          (world),
     _game_data      (game_data),
     _solver         (world),
@@ -26,11 +26,6 @@ WorldShuffler::WorldShuffler(RandomizerWorld& world, GameData& game_data, const 
 {}
 
 void WorldShuffler::randomize()
-{
-    this->randomize_items();
-}
-
-void WorldShuffler::randomize_items()
 {
     this->init_item_pool();
 
@@ -79,8 +74,9 @@ void WorldShuffler::init_item_pool()
         return;
 
     _item_pool.reserve(_world.item_sources().size());
-    _item_pool_quantities = _world.item_quantities_in_distribution();
 
+    std::array<uint8_t, ITEM_COUNT> distribution_copy = _options.items_distribution();
+    
     // Count quantities already in place
     for(ItemSource* source : _world.item_sources())
     {
@@ -88,17 +84,18 @@ void WorldShuffler::init_item_pool()
             continue;
 
         uint8_t item_id = source->item()->id();
-        if(_item_pool_quantities[item_id] == 0)
+        if(distribution_copy[item_id] == 0)
         {
             throw RandomizerException("There are more " + source->item()->name() +
                                        " already placed than the expected number in the item pool");
         }
-        _item_pool_quantities[item_id] -= 1;
+        distribution_copy[item_id] -= 1;
     }
 
     // Build the item pool from the quantities read inside the ItemDistribution objects, and shuffle it
-    for(auto& [item_id, quantity] : _item_pool_quantities)
+    for(size_t item_id=0 ; item_id < distribution_copy.size() ; ++item_id)
     {
+        uint8_t quantity = distribution_copy[item_id];
         for(uint16_t i=0 ; i<quantity ; ++i)
             _item_pool.emplace_back(_game_data.item(item_id));
     }
@@ -140,7 +137,7 @@ void WorldShuffler::init_item_pool()
  */
 ItemSource* WorldShuffler::place_progression_item_randomly(const Item* item, std::vector<ItemSource*> possible_sources)
 {
-    if(_item_pool_quantities[item->id()] == 0)
+    if(!vectools::contains(_item_pool, item))
     {
         std::cout << "Ignored placement of " << item->name() 
                  << " because there are no more instances of it inside the item pool." << std::endl;
@@ -171,7 +168,6 @@ ItemSource* WorldShuffler::place_progression_item_randomly(const Item* item, std
     }
 
     _item_pool.erase(std::find(_item_pool.begin(), _item_pool.end(), item));
-    _item_pool_quantities[item->id()] -= 1;
     return picked_item_source;
 }
 
@@ -190,7 +186,6 @@ void WorldShuffler::fill_item_source_randomly(ItemSource* source)
         {
             source->item(item);
             _item_pool.erase(it);
-            _item_pool_quantities[item->id()] -= 1;
             return;
         }
     }
@@ -242,7 +237,7 @@ std::vector<WorldPath*> WorldShuffler::build_weighted_blocked_paths_list()
         bool can_place_all_items = true;
         for(auto& [item_id, quantity_to_place] : quantities_to_place)
         {
-            if(_item_pool_quantities[item_id] < quantity_to_place)
+            if(vectools::count(_item_pool, _game_data.item(item_id)) < quantity_to_place)
             {
                 can_place_all_items = false;
                 break;
@@ -283,7 +278,7 @@ void WorldShuffler::open_random_blocked_path()
     std::vector<const Item*> items_to_place = _solver.missing_items_to_take_path(path_to_open);
     for(const Item* item : items_to_place)
     {
-        while(_item_pool_quantities[item->id()] > 0)
+        while(vectools::contains(_item_pool, item))
         {
             ItemSource* source = this->place_progression_item_randomly(item, _solver.empty_reachable_item_sources());
             _logical_playthrough.emplace_back(source);
@@ -328,11 +323,9 @@ Json WorldShuffler::playthrough_as_json() const
     for(ItemSource* source : _logical_playthrough)
     {
         const Item* key_item_in_source = source->item();
-        if(std::find(_minimal_items_to_complete.begin(), _minimal_items_to_complete.end(), key_item_in_source) != _minimal_items_to_complete.end())
+        if(vectools::contains(_minimal_items_to_complete, key_item_in_source))
             json[source->name()] = key_item_in_source->name();
     }
 
     return json;
 }
-
-

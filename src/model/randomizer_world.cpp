@@ -18,7 +18,6 @@
 
 RandomizerWorld::RandomizerWorld(const RandomizerOptions& options, const GameData& game_data)
 {
-    _item_distribution = options.items_distribution();
     this->load_model_from_json(game_data);
 }
 
@@ -109,14 +108,6 @@ WorldRegion* RandomizerWorld::region(const std::string& name) const
         if(region->name() == name)
             return region;
     return nullptr;
-}
-
-std::map<uint8_t, uint8_t> RandomizerWorld::item_quantities_in_distribution() const
-{
-    std::map<uint8_t, uint8_t> item_quantities;
-    for(uint8_t i=0 ; i<_item_distribution.size() ; ++i)
-        item_quantities[i] = _item_distribution[i];
-    return item_quantities;
 }
 
 void RandomizerWorld::load_model_from_json(const GameData& game_data)

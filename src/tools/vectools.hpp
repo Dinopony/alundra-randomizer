@@ -23,6 +23,17 @@ namespace vectools {
     }
 
     template<typename T>
+    [[nodiscard]] inline size_t count(const std::vector<T>& vector, const T& elem)
+    {
+        size_t count = 0;
+        for(size_t i=0 ; i<vector.size() ; ++i)
+            if(vector[i] == elem)
+                count += 1;
+
+        return count;
+    }
+
+    template<typename T>
     inline void shuffle(std::vector<T>& vector, std::mt19937& rng)
     {
         if (vector.empty())

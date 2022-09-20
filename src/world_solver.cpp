@@ -231,7 +231,6 @@ std::vector<const Item*> WorldSolver::find_minimal_inventory()
 
     std::vector<const Item*> minimal_inventory;
     std::map<const Item*, uint16_t> forbidden_items;
-
     for(const Item* item : _inventory)
     {
         std::map<const Item*, uint16_t> forbidden_items_plus_one = forbidden_items;

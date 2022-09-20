@@ -18,14 +18,15 @@ class RandomizerWorld {
 private:
     /// A list of all item sources (events / locations where to get an item)
     std::vector<ItemSource*> _item_sources;
+    
     /// A list of all logic nodes
     std::map<std::string, WorldNode*> _nodes;
+
     /// A list of all logic paths
     std::map<std::pair<WorldNode*, WorldNode*>, WorldPath*> _paths;
+
     /// A list of all logic regions
     std::vector<WorldRegion*> _regions;
-    /// An array containing the amount of every item type to put in the world
-    std::array<uint8_t, ITEM_COUNT> _item_distribution;
 
 public:
     explicit RandomizerWorld(const RandomizerOptions& options, const GameData& game_data);
@@ -46,9 +47,6 @@ public:
 
     [[nodiscard]] const std::vector<WorldRegion*>& regions() const { return _regions; }
     [[nodiscard]] WorldRegion* region(const std::string& name) const;
-
-    [[nodiscard]] uint8_t item_quantity_in_distribution(uint8_t item_id) const { return _item_distribution[item_id]; }
-    [[nodiscard]] std::map<uint8_t, uint8_t> item_quantities_in_distribution() const;
 
     [[nodiscard]] WorldNode* spawn_node() const { return _nodes.at("inoa"); }
     [[nodiscard]] WorldNode* end_node() const { return _nodes.at("end"); }
