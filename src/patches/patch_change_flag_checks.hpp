@@ -6,7 +6,7 @@
 class PatchChangeFlagChecks : public GamePatch
 {
 public:
-    void alter_data(BinaryFile& data, const World& world) override
+    void alter_datas_file(BinaryFile& data, const GameData& game_data, const RandomizerWorld& world) override
     {
         // Change the condition to open Riverside Bar
         data.set_word_le(0x29B3A6, 0x067E);

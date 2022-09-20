@@ -9,21 +9,23 @@
 #include "patch_neutralize_map_variant_changes.hpp"
 #include "patch_change_flag_checks.hpp"
 #include "patch_allow_using_consumables_while_full.hpp"
-#include "patch_apply_options_on_world.hpp"
 
-void execute_patches(const std::vector<GamePatch*>& patches, BinaryFile& data, PsxExeFile& exe, World& world)
+void execute_patches(const std::vector<GamePatch*>& patches, 
+                     BinaryFile& data_file, PsxExeFile& exe_file, 
+                     GameData& game_data, RandomizerWorld& world)
 {
-    for(GamePatch* patch : patches) patch->alter_world(world);
-    for(GamePatch* patch : patches) patch->alter_data(data, world);
-    for(GamePatch* patch : patches) patch->alter_exe(exe, world);
+    for(GamePatch* patch : patches) patch->alter_game_data(game_data);
+    for(GamePatch* patch : patches) patch->alter_datas_file(data_file, game_data, world);
+    for(GamePatch* patch : patches) patch->alter_exe_file(exe_file, game_data, world);
     for(GamePatch* patch : patches) delete patch;
 }
 
-void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe, World& world, const RandomizerOptions& options)
+void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe, 
+                              GameData& game_data, RandomizerWorld& world,
+                              const RandomizerOptions& options)
 {
     std::vector<GamePatch*> patches;
 
-    patches.emplace_back(new PatchApplyOptionsOnWorld(options));
     patches.emplace_back(new PatchNewGame());
     patches.emplace_back(new PatchFixMapInconsistencies());
     patches.emplace_back(new PatchApplyItemSources());
@@ -33,5 +35,5 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe, World& world, c
     if(options.original_game_balance())
         patches.emplace_back(new PatchOriginalGameBalance());
 
-    execute_patches(patches, data, exe, world);
+    execute_patches(patches, data, exe, game_data, world);
 }

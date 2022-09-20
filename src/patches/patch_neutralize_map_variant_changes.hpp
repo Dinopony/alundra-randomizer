@@ -6,7 +6,7 @@
 class PatchNeutralizeMapVariantChanges : public GamePatch
 {
 public:
-    void alter_data(BinaryFile& data, const World& world) override
+    void alter_datas_file(BinaryFile& data, const GameData& game_data, const RandomizerWorld& world) override
     {
         constexpr uint8_t INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET = 0xC5;
 
@@ -23,7 +23,7 @@ public:
         data.set_byte(0x22EAD1F, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
     }
 
-    void alter_exe(PsxExeFile& exe, const World& world) override
+    void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override
     {
         // Add a "do nothing" event instruction to replace unconvenient instructions (with code 0xC5)
         MipsCode func;

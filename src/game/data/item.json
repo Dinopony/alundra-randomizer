@@ -1,0 +1,41 @@
+{
+    "Nothing": {
+        "maxQuantity": 0
+    },
+    "Dagger": {
+        "startingQuantity": 1
+    },
+    "Herbs": {
+        "maxQuantity": 9
+    },
+    "Key": {
+        "maxQuantity": 99,
+        "precious": true
+    },
+    "1 Gilder": {
+        "maxQuantity": 0
+    },
+    "5 Gilder": {
+        "maxQuantity": 0
+    },
+    "10 Gilder": {
+        "maxQuantity": 0,
+        "precious": true
+    },
+    "30 Gilder": {
+        "maxQuantity": 0,
+        "precious": true
+    },
+    "Gilded Falcon": {
+        "maxQuantity": 0,
+        "precious": true
+    },
+    "Magic Seed": {
+        "maxQuantity": 0,
+        "precious": true
+    },
+    "Life Vessel": {
+        "maxQuantity": 0,
+        "precious": true
+    }
+}

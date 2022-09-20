@@ -2,10 +2,10 @@
 
 #include <string>
 #include <utility>
-#include "item.hpp"
+#include "../game/item.hpp"
 #include "../constants/item_codes.hpp"
 
-class World;
+class GameData;
 
 class ItemSource
 {
@@ -13,9 +13,9 @@ private:
     /// The name used to describe this ItemSource
     std::string _name;
     /// The item contained inside this ItemSource
-    Item* _item = nullptr;
+    const Item* _item = nullptr;
     /// The item contained inside this ItemSource in the base game
-    Item* _vanilla_item = nullptr;
+    const Item* _vanilla_item = nullptr;
     /// The ID of the logic node containing this ItemSource
     std::string _node_id;
     /// Addresses inside DATAS.BIN file where to put the contained item ID
@@ -40,14 +40,14 @@ public:
     void name(const std::string& name) { _name = name; }
     [[nodiscard]] std::string pretty_name() const;
 
-    [[nodiscard]] Item* item() const { return _item; }
-    virtual void item(Item* item) { _item = item; }
+    [[nodiscard]] const Item* item() const { return _item; }
+    virtual void item(const Item* item) { _item = item; }
 
     /// A source is empty if it contains no item, but not if it contains ITEM_NONE
     [[nodiscard]] bool is_empty() const { return _item == nullptr; }
 
-    [[nodiscard]] Item* vanilla_item() const { return _vanilla_item; }
-    void vanilla_item(Item* item) { _vanilla_item = item; }
+    [[nodiscard]] const Item* vanilla_item() const { return _vanilla_item; }
+    void vanilla_item(const Item* item) { _vanilla_item = item; }
 
     [[nodiscard]] const std::string& node_id() const { return _node_id; }
     void node_id(const std::string& node_id) { _node_id = node_id; }
@@ -73,5 +73,5 @@ public:
     void forbid_precious_items(bool value) { _forbid_precious_items = value; }
 
     [[nodiscard]] virtual Json to_json() const;
-    static ItemSource* from_json(const Json& json, const World& world);
+    static ItemSource* from_json(const Json& json, const GameData& world);
 };

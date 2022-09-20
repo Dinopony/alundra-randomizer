@@ -12,7 +12,7 @@
 class PatchAllowUsingConsumablesWhileFull : public GamePatch
 {
 public:
-    void alter_exe(PsxExeFile& exe, const World& world) override
+    void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override
     {
         // Herbs
         exe.set_code(0x15658, MipsCode().nop());

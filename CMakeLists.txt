@@ -30,16 +30,16 @@ endmacro()
 wrapped_dependency(TEXT   src/model/data/world_node.json     WORLD_NODES_JSON)
 wrapped_dependency(TEXT   src/model/data/world_path.json     WORLD_PATHS_JSON)
 wrapped_dependency(TEXT   src/model/data/world_region.json   WORLD_REGIONS_JSON)
-wrapped_dependency(TEXT   src/model/data/item.json           ITEMS_JSON)
+wrapped_dependency(TEXT   src/game/data/item.json            ITEMS_JSON)
 wrapped_dependency(TEXT   src/model/data/item_source.json    ITEM_SOURCES_JSON)
 wrapped_dependency(RAW    src/assets/patched_balance.bin     PATCHED_BALANCE)
 
 set(SOURCES
         # --- Auto-generated dependencies ----------------------------------------
+        "src/game/data/item.json.hxx"
         "src/model/data/world_node.json.hxx"
         "src/model/data/world_path.json.hxx"
         "src/model/data/item_source.json.hxx"
-        "src/model/data/item.json.hxx"
         "src/model/data/world_region.json.hxx"
         "src/assets/patched_balance.bin.hxx"
 
@@ -56,13 +56,15 @@ set(SOURCES
         "src/io/spoiler_writer.cpp"
         "src/io/world_json_parser.cpp"
 
+        # --- Game model ----------------------------------------
+        "src/game/item.hpp"
+        "src/game/item.cpp"
+        "src/game/game_data.hpp"
+        "src/game/game_data.cpp"
+
         # --- Logic model ----------------------------------------
-        "src/model/item.hpp"
-        "src/model/item.cpp"
         "src/model/item_source.hpp"
         "src/model/item_source.cpp"
-        "src/model/world.hpp"
-        "src/model/world.cpp"
         "src/model/world_node.hpp"
         "src/model/world_node.cpp"
         "src/model/world_path.hpp"
@@ -79,7 +81,6 @@ set(SOURCES
         "src/patches/patch_neutralize_map_variant_changes.hpp"
         "src/patches/patch_change_flag_checks.hpp"
         "src/patches/patch_allow_using_consumables_while_full.hpp"
-        "src/patches/patch_apply_options_on_world.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"

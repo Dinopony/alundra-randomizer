@@ -1,7 +1,5 @@
 #include "io.hpp"
 
-
-#include "../model/world.hpp"
 #include "../tools/stringtools.hpp"
 
 #include "../model/data/world_path.json.hxx"

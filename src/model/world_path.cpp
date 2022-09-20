@@ -1,3 +1,4 @@
+#include "../game/game_data.hpp"
 #include "world_path.hpp"
 #include "world_node.hpp"
 #include "../tools/vectools.hpp"
@@ -20,10 +21,10 @@ void WorldPath::destination(WorldNode* node)
     node->add_ingoing_path(this);
 }
 
-std::map<Item*, uint16_t> WorldPath::required_items_and_quantity() const
+std::map<const Item*, uint16_t> WorldPath::required_items_and_quantity() const
 {
-    std::map<Item*, uint16_t> items_and_quantities;
-    for (Item* item : _required_items)
+    std::map<const Item*, uint16_t> items_and_quantities;
+    for (const Item* item : _required_items)
     {
         if (items_and_quantities.contains(item))
             items_and_quantities[item]++;
@@ -72,7 +73,7 @@ Json WorldPath::to_json(bool two_way) const
     if(!_required_items.empty())
     {
         json["requiredItems"] = Json::array();
-        for(Item* item : _required_items)
+        for(const Item* item : _required_items)
             json["requiredItems"].emplace_back(item->name());
     }
 
@@ -86,16 +87,9 @@ Json WorldPath::to_json(bool two_way) const
     return json;
 }
 
-static Item* find_item_from_name(const std::vector<Item*>& items, const std::string& name)
-{
-    for(Item* item : items)
-        if(item && item->name() == name)
-            return item;
-
-    throw RandomizerException("Could not find item with name '" + name + "' from required items in world paths JSON.");
-}
-
-std::pair<WorldPath*, WorldPath*> WorldPath::from_json(const Json& json, const std::map<std::string, WorldNode*>& nodes, const std::vector<Item*>& items)
+std::pair<WorldPath*, WorldPath*> WorldPath::from_json(const Json& json, 
+                                                       const std::map<std::string, WorldNode*>& nodes, 
+                                                       const GameData& game_data)
 {
     WorldPath* path = new WorldPath();
     bool create_opposite_path = false;
@@ -115,17 +109,19 @@ std::pair<WorldPath*, WorldPath*> WorldPath::from_json(const Json& json, const s
         {
             for(const Json& item_json : value)
             {
-                Item* required_item;
+                const Item* required_item;
                 size_t quantity;
 
                 if(item_json.is_object())
                 {
-                    required_item = find_item_from_name(items, item_json.at("name"));
+                    const std::string& item_name = item_json.at("name");
+                    required_item = game_data.item(item_name);
                     quantity = item_json.at("quantity");
                 }
                 else
                 {
-                    required_item = find_item_from_name(items, item_json);
+                    const std::string& item_name = item_json;
+                    required_item = game_data.item(item_name);
                     quantity = 1;
                 }
 

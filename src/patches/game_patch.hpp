@@ -2,16 +2,17 @@
 
 #include "../tools/binary_file.hpp"
 #include "../tools/psx_exe_file.hpp"
-#include "../model/world.hpp"
+#include "../game/game_data.hpp"
+#include "../model/randomizer_world.hpp"
 
 class GamePatch
 {
 public:
     GamePatch() = default;
 
-    virtual void alter_world(World& world) {}
+    virtual void alter_game_data(GameData& game_data) {}
 
-    virtual void alter_data(BinaryFile& data, const World& world) {}
+    virtual void alter_datas_file(BinaryFile& data_file, const GameData& game_data, const RandomizerWorld& world) {}
 
-    virtual void alter_exe(PsxExeFile& exe, const World& world) {}
+    virtual void alter_exe_file(PsxExeFile& exe_file, const GameData& game_data, const RandomizerWorld& world) {}
 };

@@ -1,9 +1,9 @@
 #include "item_source.hpp"
 
 #include <utility>
-#include "world.hpp"
 #include "../tools/exception.hpp"
 #include "../tools/json_tools.hpp"
+#include "../game/game_data.hpp"
 
 std::string ItemSource::pretty_name() const
 {
@@ -37,7 +37,7 @@ Json ItemSource::to_json() const
     return json;
 }
 
-ItemSource* ItemSource::from_json(const Json& json, const World& world)
+ItemSource* ItemSource::from_json(const Json& json, const GameData& game_data)
 {
     ItemSource* source = new ItemSource();
 
@@ -58,7 +58,7 @@ ItemSource* ItemSource::from_json(const Json& json, const World& world)
         else if(key == "canContainProgression")
             source->can_contain_progression(value);
         else if(key == "vanillaItem")
-            source->vanilla_item(world.item(std::string(value)));
+            source->vanilla_item(game_data.item(std::string(value)));
         else if(key == "forbidPreciousItems")
             source->forbid_precious_items(value);
         else

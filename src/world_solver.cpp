@@ -15,7 +15,7 @@ WorldSolver::WorldSolver(const RandomizerWorld& world) : _world (world)
  * to solve the world.
  * @param item_quantities a map containing the amount of each item type that the solver will not take in its inventory
  */
-void WorldSolver::forbid_items(const std::map<Item*, uint16_t>& item_quantities)
+void WorldSolver::forbid_items(const std::map<const Item*, uint16_t>& item_quantities)
 {
     for(auto& [item, quantity] : item_quantities)
         _forbidden_items[item] += quantity;
@@ -25,7 +25,7 @@ void WorldSolver::forbid_items(const std::map<Item*, uint16_t>& item_quantities)
  * Setup a forbidden item type that the solver will restrain itself from taking while trying to solve the world.
  * @param item an item type the solver will never take
  */
-void WorldSolver::forbid_item_type(Item* item)
+void WorldSolver::forbid_item_type(const Item* item)
 {
     _forbidden_items[item] = UINT16_MAX;
 }
@@ -45,7 +45,7 @@ void WorldSolver::forbid_taking_items_from_nodes(const std::vector<WorldNode*>& 
  * @param end_node
  * @param starting_inventory
  */
-void WorldSolver::setup(WorldNode* start_node, WorldNode* end_node, const std::vector<Item*>& starting_inventory)
+void WorldSolver::setup(WorldNode* start_node, WorldNode* end_node, const std::vector<const Item*>& starting_inventory)
 {
     _start_node = start_node;
     _end_node = end_node;
@@ -70,7 +70,7 @@ void WorldSolver::setup(WorldNode* start_node, WorldNode* end_node, const std::v
  * @param starting_inventory a vector containing items owned at start
  * @return true if end_node could be reached, false otherwise
  */
-bool WorldSolver::try_to_solve(WorldNode* start_node, WorldNode* end_node, const std::vector<Item*>& starting_inventory)
+bool WorldSolver::try_to_solve(WorldNode* start_node, WorldNode* end_node, const std::vector<const Item*>& starting_inventory)
 {
     this->setup(start_node, end_node, starting_inventory);
     this->run_until_blocked();
@@ -114,7 +114,7 @@ void WorldSolver::update_current_inventory()
     _inventory = _starting_inventory;
     _inventory.reserve(_reachable_item_sources.size());
 
-    std::map<Item*, uint16_t> forbidden_items_copy = _forbidden_items;
+    std::map<const Item*, uint16_t> forbidden_items_copy = _forbidden_items;
 
     for(ItemSource* source : _reachable_item_sources)
     {
@@ -122,7 +122,7 @@ void WorldSolver::update_current_inventory()
         if(vectools::contains(_forbidden_nodes_to_pick_items, _world.node(source->node_id())))
             continue;
 
-        Item* item = source->item();
+        const Item* item = source->item();
         if(!item)
             continue;
 
@@ -171,13 +171,13 @@ bool WorldSolver::can_take_path(WorldPath* path) const
  * @param path the path to test
  * @return the list of missing items
  */
-std::vector<Item*> WorldSolver::missing_items_to_take_path(WorldPath* path) const
+std::vector<const Item*> WorldSolver::missing_items_to_take_path(WorldPath* path) const
 {
-    const std::vector<Item*>& required_items = path->required_items();
-    std::vector<Item*> inventory_copy = _inventory;
+    const std::vector<const Item*>& required_items = path->required_items();
+    std::vector<const Item*> inventory_copy = _inventory;
 
-    std::vector<Item*> missing_items;
-    for (Item* item : required_items)
+    std::vector<const Item*> missing_items;
+    for (const Item* item : required_items)
     {
         auto it = std::find(inventory_copy.begin(), inventory_copy.end(), item);
 
@@ -224,7 +224,7 @@ std::vector<WorldNode*> WorldSolver::missing_nodes_to_take_path(WorldPath* path)
  * @warning this function computes multiple sub-solves to get its returned value and therefore is rather expensive
  *          to call
  */
-std::vector<Item*> WorldSolver::find_minimal_inventory()
+std::vector<const Item*> WorldSolver::find_minimal_inventory()
 {
     if(!this->reached_end())
     {
@@ -234,16 +234,16 @@ std::vector<Item*> WorldSolver::find_minimal_inventory()
         throw RandomizerException("Tried to find minimal inventory on an incomplete WorldSolver");
     }
 
-    std::vector<Item*> minimal_inventory;
-    std::map<Item*, uint16_t> forbidden_items;
+    std::vector<const Item*> minimal_inventory;
+    std::map<const Item*, uint16_t> forbidden_items;
 
-    for(Item* item : _inventory)
+    for(const Item* item : _inventory)
     {
         // Item is not a relevant item (e.g. an EkeEke in starting inventory), just ignore it
         if(!vectools::contains(_relevant_items, item))
             continue;
 
-        std::map<Item*, uint16_t> forbidden_items_plus_one = forbidden_items;
+        std::map<const Item*, uint16_t> forbidden_items_plus_one = forbidden_items;
         if(!forbidden_items_plus_one.count(item))
             forbidden_items_plus_one[item] = 0;
         forbidden_items_plus_one[item] += 1;
@@ -312,8 +312,8 @@ void WorldSolver::expand_exploration_zone()
                 _blocked_paths.emplace_back(path);
 
                 // Add required items to the list of relevant items encountered
-                std::vector<Item*> required_items = path->required_items();
-                for(Item* item : required_items)
+                std::vector<const Item*> required_items = path->required_items();
+                for(const Item* item : required_items)
                     if(!vectools::contains(_relevant_items, item))
                         _relevant_items.emplace_back(item);
             }

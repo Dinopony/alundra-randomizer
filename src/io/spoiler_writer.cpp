@@ -18,7 +18,7 @@ Json SpoilerWriter::build_spoiler_json(const RandomizerWorld& world, const Rando
         {
             for(ItemSource* source : node->item_sources())
             {
-                Item* item = source->item();
+                const Item* item = source->item();
                 json["itemSources"][region->name()][source->pretty_name()] = item->name();
             }
         }

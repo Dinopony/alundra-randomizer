@@ -114,7 +114,7 @@ void process_paths(std::filesystem::path& output_rom_path, std::filesystem::path
         spoiler_log_path = spoiler_log_path / (hash_sentence + ".json");
 }
 
-Json randomize(RandomizerWorld& world, RandomizerOptions& options, PersonalSettings& personal_settings, const ArgumentDictionary& args)
+Json randomize(RandomizerWorld& world, GameData& game_data, RandomizerOptions& options, PersonalSettings& personal_settings, const ArgumentDictionary& args)
 {
     Json spoiler_json;
 
@@ -122,15 +122,12 @@ Json randomize(RandomizerWorld& world, RandomizerOptions& options, PersonalSetti
     spoiler_json["hashSentence"] = options.hash_sentence();
     spoiler_json.merge_patch(options.to_json());
 
-    // Apply randomizer options to alter World and RandomizerWorld accordingly before starting the actual randomization
-    // apply_randomizer_options(options, world);
-
     // Parse a potential "world" section inside the preset for plandos & half plandos
-    WorldJsonParser::parse_world_json(world, options.world_json());
+    WorldJsonParser::parse_world_json(options.world_json(), world, game_data);
 
     // In rando mode, we rock our little World and shuffle things around to make a brand new experience on each seed.
     std::cout << "\nRandomizing world...\n";
-    WorldShuffler shuffler(world, options);
+    WorldShuffler shuffler(world, game_data, options);
     shuffler.randomize();
 
     if(options.allow_spoiler_log())
@@ -162,7 +159,7 @@ Json randomize(RandomizerWorld& world, RandomizerOptions& options, PersonalSetti
 }
 
 void build_patched_rom(const std::filesystem::path& input_path, const std::filesystem::path& output_path, 
-                       RandomizerWorld& world, const RandomizerOptions& options)
+                       GameData& game_data, RandomizerWorld& world, const RandomizerOptions& options)
 {
     // Dump the input ROM into a "base_dump" folder if it was not already done on a previous generation
     if(!std::filesystem::exists("./base_dump/DATA/DATAS.BIN"))
@@ -185,7 +182,7 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
     std::cout << "Editing game files...\n";
     BinaryFile datas_file("./tmp_dump/DATA/DATAS.BIN");
     PsxExeFile exe_file("./tmp_dump/ALUN_CD.EXE");
-    apply_randomizer_patches(datas_file, exe_file, world, options);
+    apply_randomizer_patches(datas_file, exe_file, game_data, world, options);
 
     // Save those files to disk
     std::cout << "Writing edited files to disk...\n\n";
@@ -209,9 +206,10 @@ void generate(const ArgumentDictionary& args)
     RandomizerOptions options(args);
     PersonalSettings personal_settings(args);
 
-    RandomizerWorld world(options);
+    GameData game_data(options);
+    RandomizerWorld world(options, game_data);
 
-    Json spoiler_json = randomize(world, options, personal_settings, args);
+    Json spoiler_json = randomize(world, game_data, options, personal_settings, args);
 
     // Parse output paths from args
     std::filesystem::path output_rom_path = args.get_string("outputrom", "");
@@ -222,7 +220,7 @@ void generate(const ArgumentDictionary& args)
     if(!args.contains("only-logic"))
     {
         std::string input_rom_path = args.get_string("input", "./input.bin");
-        build_patched_rom(input_rom_path, output_rom_path, world, options);
+        build_patched_rom(input_rom_path, output_rom_path, game_data, world, options);
     }
     
     // Write a spoiler log to help the player

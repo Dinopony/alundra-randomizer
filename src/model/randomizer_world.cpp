@@ -1,13 +1,12 @@
 #include "randomizer_world.hpp"
 
-#include "world.hpp"
+#include "../game/game_data.hpp"
 #include "world_node.hpp"
 #include "world_path.hpp"
 #include "world_region.hpp"
 #include "../randomizer_options.hpp"
 
 // Include headers automatically generated from model json files
-#include "data/item.json.hxx"
 #include "data/item_source.json.hxx"
 #include "data/world_node.json.hxx"
 #include "data/world_path.json.hxx"
@@ -17,10 +16,10 @@
 
 #include <iostream>
 
-RandomizerWorld::RandomizerWorld(const RandomizerOptions& options)
+RandomizerWorld::RandomizerWorld(const RandomizerOptions& options, const GameData& game_data)
 {
     _item_distribution = options.items_distribution();
-    this->load_model_from_json();
+    this->load_model_from_json(game_data);
 }
 
 RandomizerWorld::~RandomizerWorld()
@@ -44,7 +43,7 @@ ItemSource* RandomizerWorld::item_source(const std::string& name) const
     throw std::out_of_range("No source with given name");
 }
 
-std::vector<ItemSource*> RandomizerWorld::item_sources_with_item(Item* item)
+std::vector<ItemSource*> RandomizerWorld::item_sources_with_item(const Item* item)
 {
     std::vector<ItemSource*> sources_with_item;
 
@@ -55,12 +54,12 @@ std::vector<ItemSource*> RandomizerWorld::item_sources_with_item(Item* item)
     return sources_with_item;
 }
 
-void RandomizerWorld::load_item_sources()
+void RandomizerWorld::load_item_sources(const GameData& game_data)
 {
     Json item_sources_json = Json::parse(ITEM_SOURCES_JSON);
     for(const Json& source_json : item_sources_json)
     {
-        _item_sources.emplace_back(ItemSource::from_json(source_json, *this));
+        _item_sources.emplace_back(ItemSource::from_json(source_json, game_data));
     }
 
 #ifdef DEBUG
@@ -120,12 +119,11 @@ std::map<uint8_t, uint8_t> RandomizerWorld::item_quantities_in_distribution() co
     return item_quantities;
 }
 
-void RandomizerWorld::load_model_from_json()
+void RandomizerWorld::load_model_from_json(const GameData& game_data)
 {
-    this->load_items();
-    this->load_item_sources();
+    this->load_item_sources(game_data);
     this->load_nodes();
-    this->load_paths();
+    this->load_paths(game_data);
     this->load_regions();
 }
 
@@ -153,12 +151,12 @@ void RandomizerWorld::load_nodes()
 #endif
 }
 
-void RandomizerWorld::load_paths()
+void RandomizerWorld::load_paths(const GameData& game_data)
 {
     Json paths_json = Json::parse(WORLD_PATHS_JSON);
     for(const Json& path_json : paths_json)
     {
-        std::pair<WorldPath*, WorldPath*> paths = WorldPath::from_json(path_json, _nodes, this->items());
+        std::pair<WorldPath*, WorldPath*> paths = WorldPath::from_json(path_json, _nodes, game_data);
         this->add_path(paths.first);
         if(paths.second)
             this->add_path(paths.second);
@@ -182,14 +180,4 @@ void RandomizerWorld::load_regions()
     for(auto& [id, node] : _nodes)
         if(node->region() == nullptr)
             throw RandomizerException("Node '" + node->id() + "' doesn't belong to any region");
-}
-
-void RandomizerWorld::load_items()
-{
-    Json items_json = Json::parse(ITEMS_JSON);
-    for(auto& [id_string, item_json] : items_json.items())
-    {
-        uint8_t id = std::stoi(id_string);
-        this->add_item(Item::from_json(id, item_json));
-    }
 }

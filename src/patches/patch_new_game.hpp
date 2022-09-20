@@ -10,7 +10,7 @@ constexpr uint16_t MAP_JESS_HOUSE_RONAN_VERSION = 0x00F2;
 class PatchNewGame : public GamePatch
 {
 public:
-    void alter_exe(PsxExeFile& exe, const World& world) override
+    void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override
     {
         // Change spawn map ID
         exe.set_word_le(0x12558, MAP_JESS_HOUSE_RONAN_VERSION);
@@ -20,18 +20,18 @@ public:
 
         // Inject and call a custom "init game" function setting up flags properly
         uint32_t return_addr = 0x1253c + CODE_BASE_ADDR;
-        uint32_t func_addr = inject_func_init_game(exe, return_addr, world);
+        uint32_t func_addr = inject_func_init_game(exe, return_addr, game_data);
         exe.set_code(0x12534, MipsCode().j(func_addr, false));
     }
 
 private:
-    static uint32_t inject_func_init_game(PsxExeFile& exe, uint32_t return_addr, const World& world)
+    static uint32_t inject_func_init_game(PsxExeFile& exe, uint32_t return_addr, const GameData& game_data)
     {
         // Build a memory map of starting flags in order to know which
         // words we need to edit
         ByteArray flag_bytes;
         flag_bytes.resize(0x1000, 0);
-        for(const Flag& flag : world.starting_flags())
+        for(const Flag& flag : game_data.starting_flags())
         {
             uint16_t mask = 0x0001 << flag.bit();
             flag_bytes[flag.offset() - 0xD000] |= mask;

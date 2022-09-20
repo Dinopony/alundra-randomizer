@@ -3,19 +3,11 @@
 #include "../model/world_node.hpp"
 #include "../model/world_region.hpp"
 #include "../model/randomizer_world.hpp"
+#include "../game/game_data.hpp"
 #include "../tools/stringtools.hpp"
 #include "../tools/exception.hpp"
 
-static Item* parse_item_from_name_in_json(const std::string& item_name, RandomizerWorld& world)
-{
-    Item* item = world.item(item_name);
-    if(item)
-        return item;
-
-    throw RandomizerException("Item name '" + item_name + "' is invalid in plando JSON.");
-}
-
-static void parse_item_sources_from_json(RandomizerWorld& world, const Json& json)
+static void parse_item_sources_from_json(const Json& json, RandomizerWorld& world, GameData& game_data)
 {
     if(!json.count("itemSources"))
         return;
@@ -27,11 +19,12 @@ static void parse_item_sources_from_json(RandomizerWorld& world, const Json& jso
             WorldRegion* region = world.region(region_id);
             std::map<std::string, ItemSource*> region_item_sources = region->item_sources();
 
-            for(auto&[source_name, item_name] : item_sources_in_region_json.items())
+            for(auto&[source_name, item_name_json] : item_sources_in_region_json.items())
             {
                 try {
                     ItemSource* source = region_item_sources.at(source_name);
-                    Item* item = parse_item_from_name_in_json(item_name, world);
+                    const std::string& item_name = item_name_json;
+                    const Item* item = game_data.item(item_name);
                     source->item(item);
                 } catch(std::out_of_range&) {
                     throw RandomizerException("Item source '" + source_name + "' could not be found in region '" + region_id +  "'");
@@ -43,7 +36,7 @@ static void parse_item_sources_from_json(RandomizerWorld& world, const Json& jso
     }
 }
 
-void WorldJsonParser::parse_world_json(RandomizerWorld& world, const Json& json)
+void WorldJsonParser::parse_world_json(const Json& json, RandomizerWorld& world, GameData& game_data)
 {
-    parse_item_sources_from_json(world, json);
+    parse_item_sources_from_json(json, world, game_data);
 }

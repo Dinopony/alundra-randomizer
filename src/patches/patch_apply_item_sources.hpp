@@ -2,9 +2,8 @@
 
 #include <iostream>
 #include "game_patch.hpp"
-#include "../model/randomizer_world.hpp"
 #include "../model/item_source.hpp"
-#include "../model/item.hpp"
+#include "../game/item.hpp"
 #include "../tools/exception.hpp"
 
 /**
@@ -13,10 +12,9 @@
 class PatchApplyItemSources : public GamePatch
 {
 public:
-    void alter_data(BinaryFile& data, const World& world) override
+    void alter_datas_file(BinaryFile& data, const GameData& game_data, const RandomizerWorld& world) override
     {
-        const RandomizerWorld& randomizer_world = reinterpret_cast<const RandomizerWorld&>(world);
-        for(ItemSource* source : randomizer_world.item_sources())
+        for(ItemSource* source : world.item_sources())
         {
             uint8_t item_id = source->item() ? source->item()->id() : ITEM_NONE;
             for(uint32_t addr : source->addresses())
@@ -49,13 +47,12 @@ public:
         data.set_long(0x1EBF9D1, 0x00000000);
     }
 
-    void alter_exe(PsxExeFile& exe, const World& world) override
+    void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override
     {
         constexpr uint32_t ITEM_INFO_TABLE_ADDR = 0x800C7DE4;
-        const RandomizerWorld& randomizer_world = reinterpret_cast<const RandomizerWorld&>(world);
 
         // Handle Merrick shop item table, located inside the code. This is necessary to change the item name.
-        for(ItemSource* source : randomizer_world.item_sources())
+        for(ItemSource* source : world.item_sources())
         {
             uint32_t merrick_item_address = source->merrick_item_address();
             if(merrick_item_address)

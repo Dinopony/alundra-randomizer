@@ -5,6 +5,7 @@
 
 class RandomizerWorld;
 class RandomizerOptions;
+class GameData;
 
 namespace ModelWriter {
     void write_logic_model(const RandomizerWorld& world);
@@ -16,9 +17,8 @@ namespace SpoilerWriter {
 
 namespace GraphvizWriter {
     void write_logic_as_dot(const RandomizerWorld& world, const std::string& path);
-    void write_maps_as_dot(const RandomizerWorld& world, const std::string& path);
 }
 
 namespace WorldJsonParser {
-    void parse_world_json(RandomizerWorld& world, const Json& json);
+    void parse_world_json(const Json& json, RandomizerWorld& world, GameData& game_data);
 }

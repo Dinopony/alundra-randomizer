@@ -1,5 +1,6 @@
 #include "world_shuffler.hpp"
 
+#include "game/game_data.hpp"
 #include "constants/item_codes.hpp"
 
 #include "tools/stringtools.hpp"
@@ -16,8 +17,9 @@
 #include <algorithm>
 #include <iostream>
 
-WorldShuffler::WorldShuffler(RandomizerWorld& world, const RandomizerOptions& options) :
+WorldShuffler::WorldShuffler(RandomizerWorld& world, GameData& game_data, const RandomizerOptions& options) :
     _world          (world),
+    _game_data      (game_data),
     _solver         (world),
     _options        (options),
     _rng            (_options.seed())
@@ -54,7 +56,7 @@ void WorldShuffler::randomize_items()
     Json& debug_log = _solver.debug_log();
     _minimal_items_to_complete = _solver.find_minimal_inventory();
     debug_log["requiredItems"] = Json::array();
-    for (Item* item : _minimal_items_to_complete)
+    for (const Item* item : _minimal_items_to_complete)
         debug_log["requiredItems"].emplace_back(item->name());
 }
 
@@ -98,7 +100,7 @@ void WorldShuffler::init_item_pool()
     for(auto& [item_id, quantity] : _item_pool_quantities)
     {
         for(uint16_t i=0 ; i<quantity ; ++i)
-            _item_pool.emplace_back(_world.item(item_id));
+            _item_pool.emplace_back(_game_data.item(item_id));
     }
     vectools::shuffle(_item_pool, _rng);
 
@@ -124,7 +126,7 @@ void WorldShuffler::init_item_pool()
                                             << "Remaining sources will remain empty.\n\n";
 
         for(size_t i=0 ; i<missing_item_count ; ++i)
-            _item_pool.emplace_back(_world.item(ITEM_NONE));
+            _item_pool.emplace_back(_game_data.item(ITEM_NONE));
     }
 }
 
@@ -136,7 +138,7 @@ void WorldShuffler::init_item_pool()
  * @throw RandomizerException if item could not be placed in any of the possible item sources
  * @throw RandomizerException if item could not be found inside item pool
  */
-ItemSource* WorldShuffler::place_progression_item_randomly(Item* item, std::vector<ItemSource*> possible_sources)
+ItemSource* WorldShuffler::place_progression_item_randomly(const Item* item, std::vector<ItemSource*> possible_sources)
 {
     if(_item_pool_quantities[item->id()] == 0)
     {
@@ -183,7 +185,7 @@ void WorldShuffler::fill_item_source_randomly(ItemSource* source)
 {
     for(auto it = _item_pool.begin() ; it != _item_pool.end() ; ++it)
     {
-        Item* item = *it;
+        const Item* item = *it;
         if(test_item_source_compatibility(source, item))
         {
             source->item(item);
@@ -202,7 +204,7 @@ void WorldShuffler::fill_item_source_randomly(ItemSource* source)
  * @param item the Item to test
  * @return true if the Item can be placed inside the ItemSource, false otherwise
  */
-bool WorldShuffler::test_item_source_compatibility(ItemSource* source, Item* item) const
+bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Item* item) const
 {
     if(source->forbid_precious_items() && item->is_precious())
         return false;
@@ -228,9 +230,9 @@ std::vector<WorldPath*> WorldShuffler::build_weighted_blocked_paths_list()
         // If all items cannot be placed since the item pool is running out of that item type,
         // do not try to open this path. It will open by itself once the item (as placed inside plando)
         // will be reached.
-        std::vector<Item*> items_to_place = _solver.missing_items_to_take_path(path);
+        std::vector<const Item*> items_to_place = _solver.missing_items_to_take_path(path);
         std::map<uint8_t, uint16_t> quantities_to_place;
-        for(Item* item : items_to_place)
+        for(const Item* item : items_to_place)
         {
             if(!quantities_to_place.count(item->id()))
                 quantities_to_place[item->id()] = 0;
@@ -278,8 +280,8 @@ void WorldShuffler::open_random_blocked_path()
     debug_log["chosenPath"].emplace_back(path_to_open->origin()->id() + " --> " + path_to_open->destination()->id());
 
     // Place all missing key items for the player to be able to open this blocking path
-    std::vector<Item*> items_to_place = _solver.missing_items_to_take_path(path_to_open);
-    for(Item* item : items_to_place)
+    std::vector<const Item*> items_to_place = _solver.missing_items_to_take_path(path_to_open);
+    for(const Item* item : items_to_place)
     {
         while(_item_pool_quantities[item->id()] > 0)
         {
@@ -312,7 +314,7 @@ void WorldShuffler::place_remaining_items()
     for(ItemSource* source : unrestricted_item_sources)
         this->fill_item_source_randomly(source);
 
-    for(Item* item : _item_pool)
+    for(const Item* item : _item_pool)
         std::cout << "[WARNING] Item '" << item->name() << "' is remaining in the item pool at end of generation.\n";
 
     _item_pool.clear();
@@ -325,7 +327,7 @@ Json WorldShuffler::playthrough_as_json() const
     // Filter the logical playthrough to keep only strictly needed key items
     for(ItemSource* source : _logical_playthrough)
     {
-        Item* key_item_in_source = source->item();
+        const Item* key_item_in_source = source->item();
         if(std::find(_minimal_items_to_complete.begin(), _minimal_items_to_complete.end(), key_item_in_source) != _minimal_items_to_complete.end())
             json[source->name()] = key_item_in_source->name();
     }
