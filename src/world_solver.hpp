@@ -25,22 +25,47 @@ class WorldSolver
 private:
     const RandomizerWorld& _world;
 
-    WorldNode* _start_node = nullptr;
-    WorldNode* _end_node = nullptr;
+    // ------------- Solver input settings -------------
 
+    /// The node where to start from
+    WorldNode* _start_node = nullptr;
+
+    /// The node to reach to consider the exploration as complete
+    WorldNode* _end_node = nullptr;
+    
+    /// The starting inventory when beginning to explore from the starting node
+    std::vector<const Item*> _starting_inventory;
+
+    /// A list of item quantities for each type we refrain from taking. This is typically
+    /// used to determine if a seed is completable without using a specific item.
     std::map<const Item*, uint16_t> _forbidden_items;
+
+    /// A list of nodes where it is forbidden to take any item from any item source.
+    /// This is typically used to determine if a region is barren or not.
     std::vector<WorldNode*> _forbidden_nodes_to_pick_items;
 
-    std::vector<WorldNode*> _explored_nodes;
-    std::vector<WorldNode*> _nodes_to_explore;
+    // ------------- Solver state variables -------------
 
-    std::vector<WorldPath*> _blocked_paths;
-    std::vector<ItemSource*> _reachable_item_sources;
-
-    std::vector<const Item*> _starting_inventory;
+    /// The current inventory during exploration
     std::vector<const Item*> _inventory;
 
+    /// A list of all nodes already explored by the solver
+    std::vector<WorldNode*> _explored_nodes;
+    
+    /// A list of all nodes to explore during the exploration step. This is filled with new nodes
+    /// when crossable paths are encountered.
+    std::vector<WorldNode*> _nodes_to_explore;
+    
+    /// A list of all paths we cannot take yet because we are missing an item / a visited node
+    std::vector<WorldPath*> _blocked_paths;
+    
+    /// A list of all currently reachable item sources encountered during our exploration
+    std::vector<ItemSource*> _reachable_item_sources;
+
+    /// The current exploration step
     uint32_t _step_count = 0;
+
+    /// A debug log under the form of a dumpable JSON object
     Json _debug_log;
 
 public:
