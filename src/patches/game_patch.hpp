@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../tools/binary_file.hpp"
-#include "../tools/psxexe_file.hpp"
+#include "../tools/psx_exe_file.hpp"
 #include "../model/world.hpp"
 
 class GamePatch

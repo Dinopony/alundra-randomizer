@@ -23,8 +23,8 @@
 #include "tools/json.hpp"
 #include "tools/base64.hpp"
 #include "tools/binary_file.hpp"
+#include "tools/psx_exe_file.hpp"
 #include "patches/patches.hpp"
-#include "tools/psxexe_file.hpp"
 
 /**
  * Calls the external tool `dumpsxiso` in order to dump the game image into a folder containing

@@ -102,7 +102,7 @@ set(SOURCES
         "src/tools/stringtools.hpp"
         "src/tools/vectools.hpp"
         "src/tools/json_tools.hpp"
-        "src/tools/psxexe_file.hpp"
+        "src/tools/psx_exe_file.hpp"
 
         # --- Project root ----------------------------------------
         "src/personal_settings.hpp"
