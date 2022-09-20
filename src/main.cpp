@@ -126,7 +126,7 @@ Json randomize(RandomizerWorld& world, RandomizerOptions& options, PersonalSetti
     // apply_randomizer_options(options, world);
 
     // Parse a potential "world" section inside the preset for plandos & half plandos
-    // WorldJsonParser::parse_world_json(world, options.world_json());
+    WorldJsonParser::parse_world_json(world, options.world_json());
 
     // In rando mode, we rock our little World and shuffle things around to make a brand new experience on each seed.
     std::cout << "\nRandomizing world...\n";

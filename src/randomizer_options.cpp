@@ -142,6 +142,8 @@ void RandomizerOptions::apply_json(const Json& json)
             this->apply_randomizer_settings_json(value);
         else if(key == "gameSettings")
             this->apply_game_settings_json(value);
+        else if(key == "world")
+            _world_json = value;
         else
             throw RandomizerException("Unknown key '" + key + "' in preset JSON");
     }
@@ -187,6 +189,8 @@ std::string RandomizerOptions::permalink() const
     bitpack.pack(_megaliths_enabled_on_start);
     bitpack.pack(_skip_last_dungeon);
 
+    bitpack.pack(_world_json.dump());
+
     return "a" + base64_encode(bitpack.bytes()) + "/";
 }
 
@@ -210,4 +214,6 @@ void RandomizerOptions::parse_permalink(std::string permalink)
     _original_game_balance = bitpack.unpack<bool>();
     _megaliths_enabled_on_start = bitpack.unpack<bool>();
     _skip_last_dungeon = bitpack.unpack<bool>();
+
+    _world_json = Json::parse(bitpack.unpack<std::string>());
 }

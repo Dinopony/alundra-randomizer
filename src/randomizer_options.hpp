@@ -30,6 +30,10 @@ private:
     bool _allow_spoiler_log = true;
     std::array<uint8_t, ITEM_COUNT> _items_distribution {};
 
+    // ------------- World descriptor -------------
+    // (used by plandos to put fixed item source contents, hints, etc...)
+    Json _world_json;
+
 public:
     explicit RandomizerOptions(const ArgumentDictionary& args, std::array<std::string, ITEM_COUNT>  item_names);
 
@@ -49,6 +53,7 @@ public:
     [[nodiscard]] std::string hash_sentence() const { return stringtools::join(this->hash_words(), " "); }
     [[nodiscard]] std::string permalink() const;
 
+    [[nodiscard]] const Json& world_json() const { return _world_json; }
 private:
     void apply_game_settings_json(const Json& json);
     void apply_randomizer_settings_json(const Json& json);
