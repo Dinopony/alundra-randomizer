@@ -771,6 +771,30 @@
     },
 
     {
+        "fromId": "overworld_d2",
+        "toId": "underground_waterway",
+        "requiredItems": [
+            "Merman Boots",
+            "Spring Bean"
+        ]
+    },
+    {
+        "fromId": "underground_waterway",
+        "toId": "overworld_d2",
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "underground_waterway",
+        "toId": "overworld_e1",
+        "twoWay": true,
+        "requiredItems": [
+            "Merman Boots"
+        ] 
+    },
+
+    {
         "fromId": "overworld_c4",
         "toId": "merrick_shop_1",
         "twoWay": true,

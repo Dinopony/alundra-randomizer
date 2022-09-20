@@ -226,6 +226,12 @@
         ]
     },
     {
+        "name": "Undeground Waterway",
+        "nodeIds": [
+            "underground_waterway"
+        ]
+    },
+    {
         "name": "Merrick's shop",
         "nodeIds": [
             "merrick_shop_1",
