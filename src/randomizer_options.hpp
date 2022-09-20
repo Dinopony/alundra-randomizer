@@ -34,7 +34,7 @@ public:
     explicit RandomizerOptions(const ArgumentDictionary& args, std::array<std::string, ITEM_COUNT>  item_names);
 
     [[nodiscard]] Json to_json() const;
-    void parse_json(const Json& json);
+    void apply_json(const Json& json);
 
     // Randomization options
     [[nodiscard]] uint32_t seed() const { return _seed; }
@@ -50,6 +50,9 @@ public:
     [[nodiscard]] std::string permalink() const;
 
 private:
+    void apply_game_settings_json(const Json& json);
+    void apply_randomizer_settings_json(const Json& json);
+
     void parse_permalink(std::string permalink);
     void validate() const;
 };

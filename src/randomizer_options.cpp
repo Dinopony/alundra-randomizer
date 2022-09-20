@@ -55,7 +55,7 @@ RandomizerOptions::RandomizerOptions(const ArgumentDictionary& args, std::array<
 
         Json preset_json;
         preset_file >> preset_json;
-        this->parse_json(preset_json);
+        this->apply_json(preset_json);
     }
 
     this->validate();
@@ -86,7 +86,45 @@ Json RandomizerOptions::to_json() const
     return json;
 }
 
-void RandomizerOptions::parse_json(const Json& json)
+void RandomizerOptions::apply_game_settings_json(const Json& json)
+{
+    for(auto& [key, value] : json.items())
+    {
+        if(key == "originalGameBalance")                        
+            _original_game_balance = value;
+        else if(key == "megalithsEnabledOnStart")
+            _megaliths_enabled_on_start = value;
+        else if(key == "skipLastDungeon")
+            _skip_last_dungeon = value;
+        else
+            throw RandomizerException("Unknown key '" + key + "' in preset game settings JSON");
+    }
+}
+
+void RandomizerOptions::apply_randomizer_settings_json(const Json& json)
+{
+    for(auto& [key, value] : json.items())
+    {
+        if(key == "allowSpoilerLog")                        
+            _allow_spoiler_log = true;
+        else if(key == "itemsDistribution")
+        {
+            std::map<std::string, uint8_t> items_distribution = value;
+            for(auto& [item_name, quantity] : items_distribution)
+            {
+                auto it = std::find(_item_names.begin(), _item_names.end(), item_name);
+                if(it == _item_names.end())
+                    throw RandomizerException("Unknown item name '" + item_name + "' in items distribution section of preset file");
+                uint8_t item_id = std::distance(_item_names.begin(), it);
+                _items_distribution[item_id] = quantity;
+            }
+        }
+        else
+            throw RandomizerException("Unknown key '" + key + "' in preset randomizer settings JSON");
+    }
+}
+
+void RandomizerOptions::apply_json(const Json& json)
 {
     if(json.contains("permalink"))
     {
@@ -94,41 +132,19 @@ void RandomizerOptions::parse_json(const Json& json)
         return;
     }
 
-    if(json.contains("gameSettings"))
+    for(auto& [key, value] : json.items())
     {
-        const Json& game_settings_json = json.at("gameSettings");
-
-        if(game_settings_json.contains("originalGameBalance"))
-            _original_game_balance = game_settings_json.at("originalGameBalance");
-        if(game_settings_json.contains("megalithsEnabledOnStart"))
-            _megaliths_enabled_on_start = game_settings_json.at("megalithsEnabledOnStart");
-        if(game_settings_json.contains("skipLastDungeon"))
-            _skip_last_dungeon = game_settings_json.at("skipLastDungeon");
+        if(key == "permalink")
+            continue;
+        if(key == "seed")
+            _seed = value;
+        if(key == "randomizerSettings")                        
+            this->apply_randomizer_settings_json(value);
+        else if(key == "gameSettings")
+            this->apply_game_settings_json(value);
+        else
+            throw RandomizerException("Unknown key '" + key + "' in preset JSON");
     }
-
-    if(json.contains("randomizerSettings"))
-    {
-        const Json& randomizer_settings_json = json.at("randomizerSettings");
-
-        if(randomizer_settings_json.contains("allowSpoilerLog"))
-            _allow_spoiler_log = randomizer_settings_json.at("allowSpoilerLog");
-
-      if(randomizer_settings_json.contains("itemsDistribution"))
-      {
-          std::map<std::string, uint8_t> items_distribution = randomizer_settings_json.at("itemsDistribution");
-          for(auto& [item_name, quantity] : items_distribution)
-          {
-              auto it = std::find(_item_names.begin(), _item_names.end(), item_name);
-              if(it == _item_names.end())
-                  throw RandomizerException("Unknown item name '" + item_name + "' in items distribution section of preset file.");
-              uint8_t item_id = std::distance(_item_names.begin(), it);
-              _items_distribution[item_id] = quantity;
-          }
-      }
-    }
-
-    if(json.contains("seed"))
-        _seed = json.at("seed");
 }
 
 void RandomizerOptions::validate() const
