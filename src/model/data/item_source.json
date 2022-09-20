@@ -1151,6 +1151,42 @@
         "vanillaItem": "Gilded Falcon"
     },
     {
+        "name": "Underground Waterway: First chest in entrance room",
+        "nodeId": "underground_waterway",
+        "address": "12B0486",
+        "vanillaItem": "Life Vessel"
+    },
+    {
+        "name": "Underground Waterway: Second chest in entrance room",
+        "nodeId": "underground_waterway",
+        "address": "12B049A",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Underground Waterway: Chest on pillar accessible by falling from engine room",
+        "nodeId": "underground_waterway",
+        "address": "12DFB96",
+        "vanillaItem": "Gilded Falcon"
+    },
+    {
+        "name": "Underground Waterway: Chest in room behind waterfall",
+        "nodeId": "underground_waterway",
+        "address": [
+            "1318B76",
+            "1318BC6"
+        ],
+        "vanillaItem": "Wonder Essence"
+    },
+    {
+        "name": "Underground Waterway: Chest in last room top-right corner",
+        "nodeId": "underground_waterway",
+        "address": [
+            "1318BEE",
+            "1318C02"
+        ],
+        "vanillaItem": "Herbs"
+    },
+    {
         "name": "Merrick Shop: Item traded for 15 Gilded Falcons",
         "nodeId": "merrick_shop_1",
         "address": "1EBF67C",
