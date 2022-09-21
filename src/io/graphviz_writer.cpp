@@ -24,29 +24,12 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& output_
 
     std::map<WorldPath*, bool> _paths_two_way;
 
-    Json paths_json = Json::parse(WORLD_PATHS_JSON);
-    uint32_t path_i = 0;
-    for(auto& [nodes_pair, path] : world.paths())
+    std::vector<WorldPath*> paths = world.paths();
+    for(size_t i=0 ; i<paths.size() ; ++i)
     {
-        bool found_opposite = false;
-        for (auto& [path_2, two_way] : _paths_two_way)
-        {
-            if (path->is_perfect_opposite_of(path_2))
-            {
-                two_way = true;
-                found_opposite = true;
-                break;
-            }
-        }
-
-        if (!found_opposite)
-            _paths_two_way[path] = false;
-    }
-
-    for (auto& [path, two_way] : _paths_two_way)
-    {
+        WorldPath* path = paths[i];
         graphviz << "\t" << path->origin()->id() << " -> " << path->destination()->id() << " [";
-        if (two_way)
+        if (path->is_two_way())
             graphviz << "dir=both ";
 
         std::vector<std::string> required_names;
@@ -66,14 +49,13 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& output_
 
         if (!required_names.empty())
         {
-            const char* current_color = COLORS[path_i % COLORS_SIZE];
+            const char* current_color = COLORS[i % COLORS_SIZE];
             graphviz << "color=" << current_color << " ";
             graphviz << "fontcolor=" << current_color << " ";
             graphviz << "label=\"" << stringtools::join(required_names, "\\n") << "\" ";
         }
 
         graphviz << "]\n";
-        path_i++;
     }
 
     graphviz << "\n";

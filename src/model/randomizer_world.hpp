@@ -22,10 +22,14 @@ private:
     /// A list of all logic nodes
     std::map<std::string, WorldNode*> _nodes;
 
-    /// A list of all logic paths
-    std::map<std::pair<WorldNode*, WorldNode*>, WorldPath*> _paths;
+    /// A list of all logic paths, which connect nodes to form an explorable graph
+    std::vector<WorldPath*> _paths;
 
-    /// A list of all logic regions
+    /**
+     * A list of all logic regions, used to group nodes into coherent sets that represent
+     * a concrete location inside the game. Mostly used to group item sources in categories
+     * inside the spoiler log.
+     */
     std::vector<WorldRegion*> _regions;
 
 public:
@@ -40,10 +44,9 @@ public:
     [[nodiscard]] const std::map<std::string, WorldNode*>& nodes() const { return _nodes; }
     [[nodiscard]] WorldNode* node(const std::string& id) const { return _nodes.at(id); }
 
-    [[nodiscard]] const std::map<std::pair<WorldNode*, WorldNode*>, WorldPath*>& paths() const { return _paths; }
-    [[nodiscard]] WorldPath* path(WorldNode* origin, WorldNode* destination);
-    [[nodiscard]] WorldPath* path(const std::string& origin_name, const std::string& destination_name);
-    void add_path(WorldPath* path);
+    [[nodiscard]] const std::vector<WorldPath*>& paths() const { return _paths; }
+    void add_path(WorldPath* path) { _paths.emplace_back(path); }
+    [[nodiscard]] std::vector<WorldPath*> paths_starting_from_node(const WorldNode* node) const;
 
     [[nodiscard]] const std::vector<WorldRegion*>& regions() const { return _regions; }
     [[nodiscard]] WorldRegion* region(const std::string& name) const;
@@ -52,9 +55,8 @@ public:
     [[nodiscard]] WorldNode* end_node() const { return _nodes.at("end"); }
 
 private:    
-    void load_model_from_json(const GameData& game_data);
-    void load_item_sources(const GameData& game_data);
-    void load_nodes();
-    void load_paths(const GameData& game_data);
-    void load_regions();
+    void init_item_sources(const GameData& game_data);
+    void init_nodes();
+    void init_paths(const GameData& game_data);
+    void init_regions();
 };
