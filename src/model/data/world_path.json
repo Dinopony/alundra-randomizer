@@ -260,6 +260,22 @@
     },
     {
         "fromId": "overworld_c1",
+        "toId": "magyscar",
+        "twoWay": true,
+        "requiredItems": [
+            "Iron Flail"
+        ]
+    },
+    {
+        "fromId": "magyscar",
+        "toId": "magyscar_behind_bomb",
+        "twoWay": true,
+        "requiredItems": [
+            "Bomb"
+        ]
+    },
+    {
+        "fromId": "overworld_c1",
         "toId": "overworld_c1_right_sector",
         "requiredItems": [
             "Iron Flail"

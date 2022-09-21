@@ -58,5 +58,41 @@
         "name": "Lars Crypt: First key chest",
         "nodeId": "lars_crypt",
         "address": "6BA6EE"
+    },
+    {
+        "name": "Magyscar: First key chest",
+        "nodeId": "magyscar",
+        "address": "14AE43A",
+        "vanillaItem": "Key"
+    },
+    {
+        "name": "Magyscar: Second key chest",
+        "nodeId": "magyscar",
+        "address": "151BCA6",
+        "vanillaItem": "Key"
+    },
+    {
+        "name": "Magyscar: Third key chest",
+        "nodeId": "magyscar",
+        "address": "15C1FF6",
+        "vanillaItem": "Key"
+    },
+    {
+        "name": "Magyscar: Fourth key chest",
+        "nodeId": "magyscar",
+        "address": "155500A",
+        "vanillaItem": "Key"
+    },
+    {
+        "name": "Magyscar: Last key chest",
+        "nodeId": "magyscar_behind_bomb",
+        "address": "165C4B6",
+        "vanillaItem": "Key"
+    },
+    {
+        "name": "Magyscar: Left boss reward chest",
+        "nodeId": "magyscar_behind_bomb",
+        "address": "1683DDE",
+        "vanillaItem": "Nothing"
     }
 ]

@@ -1270,6 +1270,84 @@
         "address": "72E656",
         "vanillaItem": "Ruby Crest"
     },
+    {
+        "name": "Magyscar: Left chest in watery triple chest room",
+        "nodeId": "magyscar",
+        "address": "151BA8A",
+        "vanillaItem": "30 Gilder"
+    },
+    {
+        "name": "Magyscar: Top-right chest in watery triple chest room",
+        "nodeId": "magyscar",
+        "address": "151BA76",
+        "vanillaItem": "30 Gilder"
+    },
+    {
+        "name": "Magyscar: Bottom-right chest in watery triple chest room",
+        "nodeId": "magyscar",
+        "address": "151BDFA",
+        "vanillaItem": "Strength Tonic"
+    },
+    {
+        "name": "Magyscar: Chest behind vines in switchable platforms room",
+        "nodeId": "magyscar",
+        "address": "14E252A",
+        "vanillaItem": "Gilded Falcon"
+    },
+    {
+        "name": "Magyscar: Chest in room with pillars and smashing spikeballs",
+        "nodeId": "magyscar",
+        "address": "14E249E",
+        "vanillaItem": "Life Vessel"
+    },
+    {
+        "name": "Magyscar: Elevated chest in small room with spinning spikeballs",
+        "nodeId": "magyscar",
+        "address": "151BA9E",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Magyscar: Chest between teleporters",
+        "nodeId": "magyscar",
+        "address": "155514A",
+        "vanillaItem": "30 Gilder"
+    },
+    {
+        "name": "Magyscar: Chest in room with elevator controlled by switch",
+        "nodeId": "magyscar",
+        "address": "15551D6",
+        "vanillaItem": "Magic Elixyr"
+    },
+    {
+        "name": "Magyscar: Chest behind vines in room with switch giving torch and lowering platforms",
+        "nodeId": "magyscar",
+        "address": "158F052",
+        "vanillaItem": "30 Gilder"
+    },
+    {
+        "name": "Magyscar: First chest in vines hallway after room with 4 magic switches",
+        "nodeId": "magyscar_behind_bomb",
+        "address": "1627B7E",
+        "vanillaItem": "Magic Elixyr"
+    },
+    {
+        "name": "Magyscar: Second chest in vines hallway after room with 4 magic switches",
+        "nodeId": "magyscar_behind_bomb",
+        "address": "1627B92",
+        "vanillaItem": "Wonder Essence"
+    },
+    {
+        "name": "Magyscar: Third chest in vines hallway after room with 4 magic switches",
+        "nodeId": "magyscar_behind_bomb",
+        "address": "1627BA6",
+        "vanillaItem": "Strength Elixyr"
+    },
+    {
+        "name": "Magyscar: Right boss reward chest",
+        "nodeId": "magyscar_behind_bomb",
+        "address": "1683DF2",
+        "vanillaItem": "Wind Scroll"
+    },
 
     {
         "name": "Merrick Shop: Item traded for 15 Gilded Falcons",

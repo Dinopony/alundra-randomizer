@@ -41,6 +41,9 @@ void GameData::init_starting_flags(const RandomizerOptions& options)
     // Allow entering the Crypt by placing flowers in the graveyard since game start
     _starting_flags.emplace_back(FLAG_CAN_PUT_FLOWERS_IN_GRAVEYARD);
 
+    // Allow entering in Magyscar using a Bomb
+    _starting_flags.emplace_back(FLAG_MAGYSCAR_WALL_IS_CRACKED);
+
     if(options.megaliths_enabled_on_start())
         _starting_flags.emplace_back(FLAG_CAN_ACTIVATE_MEGALITHS);
 
