@@ -9,11 +9,27 @@ class WorldNode;
 class WorldPath
 {
 private:
+    /// Node where the path starts from
     WorldNode* _from_node;
+
+    /// Node where the path ends up
     WorldNode* _to_node;
+
+    /// If true, path can be taken both ways (including from destination to origin)
     bool _two_way = false;
+
+    /// A list of items required to cross the path
     std::vector<const Item*> _required_items;
+
+    /// A list of nodes which must have been visited before crossing the path
     std::vector<WorldNode*> _required_nodes;
+
+    /**
+     * The weight of the path, a higher value means it has a higher chance to be selected
+     * by the WorldShuffler to be opened (by placing required items associated with it somewhere
+     * inside the world). Ideally, this should only be used to finetune extreme cases where the
+     * algorithm ignores reliably an important path, creating monotonous and uninteresting seeds.
+     */
     uint16_t _weight = 1;
 
 public:
