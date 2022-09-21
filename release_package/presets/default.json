@@ -5,18 +5,18 @@
     "randomizerSettings": {
         "allowSpoilerLog": true,
         "itemsDistribution": {
-            "Herbs": 35,
-            "Strength Tonic": 8,
+            "Herbs": 50,
+            "Strength Tonic": 10,
             "Strength Elixyr": 5,
             "Magic Elixyr": 6,
             "Wonder Essence": 3,
 
             "1 Gilder": 2,
-            "5 Gilder": 3,
-            "10 Gilder": 5,
-            "30 Gilder": 8,
+            "5 Gilder": 6,
+            "10 Gilder": 9,
+            "30 Gilder": 15,
 
-            "Life Vessel": 40,
+            "Life Vessel": 39,
             "Magic Seed": 4,
             "Gilded Falcon": 50,
 
@@ -52,6 +52,7 @@
             "Aqua Cape": 1,
             "Power Glove": 1,
             "Secret Pass": 1,
+            "Bouquet": 1,
 
             "Earth Scroll": 1,
             "Earth Book": 1,
