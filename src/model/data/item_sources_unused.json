@@ -121,5 +121,11 @@
             "5932366"
         ],
         "vanillaItem": "Key"
+    },
+    {
+        "name": "Torla Mountain: Left chest in checkpoint teleporter room",
+        "nodeId": "torla_mountain",
+        "address": "60B048A",
+        "vanillaItem": "Key"
     }
 ]

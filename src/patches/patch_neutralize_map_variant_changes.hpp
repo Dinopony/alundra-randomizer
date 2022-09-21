@@ -28,6 +28,9 @@ public:
         // Neutralize the Inoa variant replacement when finishing Reptile's Lair
         data.set_byte(0x1442734, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
         data.set_byte(0x5931734, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
+
+        // Neutralize the Inoa variant replacement when finishing Torla Mountain
+        data.set_byte(0x4817A26, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
     }
 
     void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override

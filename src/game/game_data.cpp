@@ -69,6 +69,10 @@ void GameData::init_starting_flags(const RandomizerOptions& options)
     // Allow entering in Magyscar using a Bomb
     _starting_flags.emplace_back(FLAG_MAGYSCAR_WALL_IS_CRACKED);
 
+    // Activate Torla geysers on game start, giving access to Torla Mountain
+    _starting_flags.emplace_back(FLAG_TORLA_GEYSERS_1);
+    _starting_flags.emplace_back(FLAG_TORLA_GEYSERS_2);
+
     if(options.megaliths_enabled_on_start())
         _starting_flags.emplace_back(FLAG_CAN_ACTIVATE_MEGALITHS);
 

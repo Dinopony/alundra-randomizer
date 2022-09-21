@@ -159,6 +159,14 @@
         ]
     },
     {
+        "name": "Torla Mountain",
+        "nodeIds": [
+            "torla_mountain",
+            "torla_mountain_behind_charm_boots",
+            "torla_mountain_behind_spring"
+        ]
+    },
+    {
         "name": "Ice Manor",
         "nodeIds": [
             "ice_manor"

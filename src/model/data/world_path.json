@@ -328,6 +328,32 @@
         "twoWay": true
     },
     {
+        "fromId": "overworld_d1",
+        "toId": "torla_mountain",
+        "twoWay": true,
+        "requiredItems": [
+            "Fire Wand",
+            "Ice Wand",
+            "Iron Flail"
+        ]
+    },
+    {
+        "fromId": "torla_mountain",
+        "toId": "torla_mountain_behind_charm_boots",
+        "twoWay": true,
+        "requiredItems": [
+            "Charm Boots"
+        ]
+    },
+    {
+        "fromId": "torla_mountain_behind_charm_boots",
+        "toId": "torla_mountain_behind_spring",
+        "twoWay": true,
+        "requiredItems": [
+            "Spring Bean"
+        ]
+    },
+    {
         "fromId": "overworld_c1_cliff",
         "toId": "overworld_c1"
     },

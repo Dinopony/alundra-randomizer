@@ -39,3 +39,6 @@ constexpr Flag FLAG_CAN_PUT_FLOWERS_IN_GRAVEYARD = Flag(0xD351, 1);
 constexpr Flag FLAG_CAN_EXIT_LARS_CRYPT = Flag(0xD34E, 0);
 
 constexpr Flag FLAG_MAGYSCAR_WALL_IS_CRACKED = Flag(0xD357, 5);
+
+constexpr Flag FLAG_TORLA_GEYSERS_1 = Flag(0xD34F, 5);
+constexpr Flag FLAG_TORLA_GEYSERS_2 = Flag(0xD37A, 3);

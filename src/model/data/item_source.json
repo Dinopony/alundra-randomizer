@@ -1431,13 +1431,55 @@
         "vanillaItem": "Sapphire Crest"
     },
     {
-        "name": " Lair: Right chest in boss reward room",
+        "name": "Reptiles Lair: Right chest in boss reward room",
         "nodeId": "reptiles_lair_behind_flail",
         "address": [
             "14430E6",
             "59320E6"
         ],
         "vanillaItem": "Fire Scroll"
+    },
+    {
+        "name": "Torla Mountain: Chest bathing in lava",
+        "nodeId": "torla_mountain",
+        "address": "6034C66",
+        "vanillaItem": "Life Vessel"
+    },
+    {
+        "name": "Torla Mountain: Chest in stompable flamethrowers hallway",
+        "nodeId": "torla_mountain",
+        "address": "6034D7E",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Torla Mountain: Chest in top-right corner of room with phoenixes and flamethrowers",
+        "nodeId": "torla_mountain",
+        "address": "60723FE",
+        "vanillaItem": "Wonder Essence"
+    },
+    {
+        "name": "Torla Mountain: Right chest in checkpoint teleporter room",
+        "nodeId": "torla_mountain",
+        "address": "60B049E",
+        "vanillaItem": "Charm Boots"
+    },
+    {
+        "name": "Torla Mountain: Chest in pit below wooden bridge",
+        "nodeId": "torla_mountain_behind_spring",
+        "address": "6132702",
+        "vanillaItem": "Gilded Falcon"
+    },
+    {
+        "name": "Torla Mountain: Chest before boss",
+        "nodeId": "torla_mountain_behind_charm_boots",
+        "address": "6170092",
+        "vanillaItem": "Fire Book"
+    },
+    {
+        "name": "Torla Mountain: Boss reward chest",
+        "nodeId": "torla_mountain_behind_charm_boots",
+        "address": "4817B36",
+        "vanillaItem": "Emerald Crest"
     },
     {
         "name": "Merrick Shop: Item traded for 15 Gilded Falcons",
