@@ -1,63 +1,75 @@
 [
     {
-        "name": "Tarn's Manor: Chest in underground pillars room (Key)",
+        "name": "Tarn's Manor: Chest in underground pillars room",
         "nodeId": "tarn_manor",
-        "address": "1BA5CFE"
+        "address": "1BA5CFE",
+        "vanillaItem": "Key"
     },
     {
-        "name": "Coal Mine: Lyman's dead body (Key)",
+        "name": "Coal Mine: Lyman's dead body",
         "nodeId": "coal_mine",
-        "address": "???"
+        "address": "???",
+        "vanillaItem": "Key"
     },
     {
-        "name": "Coal Mine: Jaylen's dead body (Key)",
+        "name": "Coal Mine: Jaylen's dead body",
         "nodeId": "coal_mine",
-        "address": "???"
+        "address": "???",
+        "vanillaItem": "Key"
     },
     {
-        "name": "Coal Mine: Chest near Zane's dead body (Key)",
+        "name": "Coal Mine: Chest near Zane's dead body",
         "nodeId": "coal_mine",
-        "address": "F7455E"
+        "address": "F7455E",
+        "vanillaItem": "Key"
     },
     {
-        "name": "Ancient Shrine: Falling chest in room with symbols in grass (Key)",
+        "name": "Ancient Shrine: Falling chest in room with symbols in grass",
         "nodeId": "ancient_shrine",
-        "address": "82EF9E"
+        "address": "82EF9E",
+        "vanillaItem": "Key"
     },
     {
-        "name": "Coastal Cave: First key chest (Key)",
+        "name": "Coastal Cave: First key chest",
         "nodeId": "coastal_cave",
-        "address": "1126532"
+        "address": "1126532",
+        "vanillaItem": "Key"
     },
     {
-        "name": "Coastal Cave: Second key chest (Key)",
+        "name": "Coastal Cave: Second key chest",
         "nodeId": "coastal_cave",
-        "address": "1192076"
+        "address": "1192076",
+        "vanillaItem": "Key"
     },
     {
-        "name": "Coastal Cave: Third key chest (Key)",
+        "name": "Coastal Cave: Third key chest",
         "nodeId": "coastal_cave",
-        "address": "11CE2FE"
+        "address": "11CE2FE",
+        "vanillaItem": "Key"
     },
     {
-        "name": "Coastal Cave: Right boss reward chest (Nothing)",
+        "name": "Coastal Cave: Right boss reward chest",
         "nodeId": "coastal_cave",
-        "address": "127B1A2"
+        "address": "127B1A2",
+        "vanillaItem": "Nothing"
     },
     {
-        "name": "Tower of the Great Tree (2F): Chest behind gate (Key)",
+        "name": "Tower of the Great Tree (2F): Chest behind gate",
         "nodeId": "great_tree_tower",
-        "address": "2243826"
+        "address": "2243826",
+        "vanillaItem": "Key"
     },
     {
-        "name": "Tower of the Great Tree (Branches): Chest in locked shack (Elevator Key)",
+        "name": "Tower of the Great Tree (Branches): Chest in locked shack",
         "nodeId": "great_tree_tower",
-        "address": "232A1D6"
+        "address": "232A1D6",
+        "vanillaItem": "Elevator Key"
     },
     {
         "name": "Lars Crypt: First key chest",
         "nodeId": "lars_crypt",
-        "address": "6BA6EE"
+        "address": "6BA6EE",
+        "vanillaItem": "Key"
     },
     {
         "name": "Magyscar: First key chest",
