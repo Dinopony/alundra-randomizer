@@ -14,7 +14,9 @@ class RandomizerOptions;
 class GameData
 {
 private:
+    /// An array with structures representing the various items that can be found in the game 
     std::array<Item, ITEM_COUNT> _items;
+    /// A list of starting flags that are activated on New Game
     std::vector<Flag> _starting_flags;
 
 public:

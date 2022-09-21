@@ -11,6 +11,31 @@ GameData::GameData(const RandomizerOptions& options)
     this->init_starting_flags(options);
 }
 
+/**
+ * Setup the Item objects representing in-game items
+ */
+void GameData::init_items()
+{   
+    for(size_t i=0 ; i<_items.size() ; ++i)
+    {
+        Item& item = _items[i];
+        item.id(i);
+        item.name(get_item_name_from_id(i));
+    }
+
+    Json items_json = Json::parse(ITEMS_JSON);
+    for(auto& [item_name, item_json] : items_json.items())
+    {
+        uint8_t item_id = get_item_id_from_name(item_name);
+        _items[item_id].apply_json(item_json);
+    }
+}
+
+/**
+ * Setup the starting flags set on New Game, depending on the randomizer options.
+ * 
+ * @param options the randomizer options
+ */
 void GameData::init_starting_flags(const RandomizerOptions& options)
 {
     // Mark HUD as allowed (0x40 -> 0x1DD403)
@@ -58,22 +83,5 @@ void GameData::init_starting_flags(const RandomizerOptions& options)
         _starting_flags.emplace_back(FLAG_LAKE_SHRINE_SE_SEAL_BROKEN);
         _starting_flags.emplace_back(FLAG_LAKE_SHRINE_E_SEAL_BROKEN);
         _starting_flags.emplace_back(FLAG_LAKE_SHRINE_NE_SEAL_BROKEN);
-    }
-}
-
-void GameData::init_items()
-{   
-    for(size_t i=0 ; i<_items.size() ; ++i)
-    {
-        Item& item = _items[i];
-        item.id(i);
-        item.name(get_item_name_from_id(i));
-    }
-
-    Json items_json = Json::parse(ITEMS_JSON);
-    for(auto& [item_name, item_json] : items_json.items())
-    {
-        uint8_t item_id = get_item_id_from_name(item_name);
-        _items[item_id].apply_json(item_json);
     }
 }

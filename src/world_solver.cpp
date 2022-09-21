@@ -283,7 +283,7 @@ void WorldSolver::expand_exploration_zone()
         debug_log["exploration"].emplace_back("Explored " + node->id());
 
         // Process all outgoing paths
-        for (WorldPath* path : node->outgoing_paths())
+        for (WorldPath* path : _world.paths_starting_from_node(node))
         {
             if(this->can_take_path(path))
             {

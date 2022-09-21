@@ -14,28 +14,21 @@ void ModelWriter::write_logic_model(const RandomizerWorld& world)
         nodes_json[id] = node->to_json();
     dump_json_to_file(nodes_json, "./json_data/world_node.json");
 
-    auto paths_copy = world.paths();
     Json paths_json = Json::array();
-    while(!paths_copy.empty())
+    std::vector<WorldPath*> paths = world.paths();
+    for(size_t i=0 ; i<paths.size() ; ++i)
     {
-        auto it = paths_copy.begin();
-        std::pair<WorldNode*, WorldNode*> node_pair = it->first;
-        WorldPath* path = it->second;
-        paths_copy.erase(it);
-
-        bool two_way = false;
-        std::pair<WorldNode*, WorldNode*> reverse_pair = std::make_pair(node_pair.second, node_pair.first);
-        if(paths_copy.count(reverse_pair))
+        bool is_two_way = false;
+        for(size_t j=i+1 ; j<paths.size() ; ++j)
         {
-            WorldPath* reverse_path = paths_copy.at(reverse_pair);
-            if(path->is_perfect_opposite_of(reverse_path))
+            if(paths[i]->is_perfect_opposite_of(paths[j]))
             {
-                two_way = true;
-                paths_copy.erase(reverse_pair);
+                is_two_way = true;
+                paths.erase(paths.begin() + j);
+                break;
             }
         }
-        
-        paths_json.emplace_back(path->to_json(two_way));
+        paths_json.emplace_back(paths[i]->to_json(is_two_way));
     }
     dump_json_to_file(paths_json, "./json_data/world_path.json");
 

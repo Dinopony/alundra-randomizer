@@ -19,10 +19,10 @@ public:
     WorldPath() = default;
 
     [[nodiscard]] WorldNode* origin() const { return _from_node; }
-    void origin(WorldNode* node);
+    void origin(WorldNode* node) { _from_node = node; }
 
     [[nodiscard]] WorldNode* destination() const { return _to_node; }
-    void destination(WorldNode* node);
+    void destination(WorldNode* node) { _to_node = node; }
 
     [[nodiscard]] const std::vector<const Item*>& required_items() const { return _required_items; }
     [[nodiscard]] std::vector<const Item*>& required_items() { return _required_items; }

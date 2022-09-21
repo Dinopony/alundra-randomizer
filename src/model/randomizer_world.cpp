@@ -18,7 +18,10 @@
 
 RandomizerWorld::RandomizerWorld(const RandomizerOptions& options, const GameData& game_data)
 {
-    this->load_model_from_json(game_data);
+    this->init_item_sources(game_data);
+    this->init_nodes();
+    this->init_paths(game_data);
+    this->init_regions();
 }
 
 RandomizerWorld::~RandomizerWorld()
@@ -27,7 +30,7 @@ RandomizerWorld::~RandomizerWorld()
         delete source;
     for (auto& [key, node] : _nodes)
         delete node;
-    for (auto& [key, path] : _paths)
+    for (WorldPath* path : _paths)
         delete path;
     for (WorldRegion* region : _regions)
         delete region;
@@ -53,53 +56,13 @@ std::vector<ItemSource*> RandomizerWorld::item_sources_with_item(const Item* ite
     return sources_with_item;
 }
 
-void RandomizerWorld::load_item_sources(const GameData& game_data)
+std::vector<WorldPath*> RandomizerWorld::paths_starting_from_node(const WorldNode* node) const
 {
-    Json item_sources_json = Json::parse(ITEM_SOURCES_JSON);
-    for(const Json& source_json : item_sources_json)
-    {
-        _item_sources.emplace_back(ItemSource::from_json(source_json, game_data));
-    }
-
-#ifdef DEBUG
-    std::cout << _item_sources.size() << " item sources loaded." << std::endl;
-#endif
-
-    // The following chests are absent from the game on release or modded out of the game for the rando, and their IDs are therefore free:
-    // 0x0E (14): Mercator Kitchen (variant?)
-    // 0x1E (30): King Nole's Cave spiral staircase (variant with enemies?) ---> 29 is the one used in rando
-    // 0x20 (32): Boulder chase hallway (variant with enemies?) ---> 31 is the one used in rando
-    // 0x25 (37): Thieves Hideout entrance (variant with water)
-    // 0x27 (39): Thieves Hideout entrance (waterless variant)
-    // 0x28 (40): Thieves Hideout entrance (waterless variant)
-    // 0x33 (51): Thieves Hideout second room (waterless variant)
-    // 0x3D (61): Thieves Hideout reward room (Kayla cutscene variant)
-    // 0x3E (62): Thieves Hideout reward room (Kayla cutscene variant)
-    // 0x3F (63): Thieves Hideout reward room (Kayla cutscene variant)
-    // 0x40 (64): Thieves Hideout reward room (Kayla cutscene variant)
-    // 0x41 (65): Thieves Hideout reward room (Kayla cutscene variant)
-    // 0xBB (187): Crypt (Larson. E room)
-    // 0xBC (188): Crypt (Larson. E room)
-    // 0xBD (189): Crypt (Larson. E room)
-    // 0xBE (190): Crypt (Larson. E room)
-    // 0xC3 (195): Map 712 / 0x2C8 ???
-}
-
-WorldPath* RandomizerWorld::path(WorldNode* origin, WorldNode* destination)
-{
-    return _paths.at(std::make_pair(origin, destination));
-}
-
-WorldPath* RandomizerWorld::path(const std::string& origin_name, const std::string& destination_name)
-{
-    WorldNode* origin = _nodes.at(origin_name);
-    WorldNode* destination = _nodes.at(destination_name);
-    return this->path(origin, destination);
-}
-
-void RandomizerWorld::add_path(WorldPath* path)
-{
-    _paths[std::make_pair(path->origin(), path->destination())] = path;
+    std::vector<WorldPath*> ret;
+    for(WorldPath* path : _paths)
+        if(path->origin() == node)
+            ret.emplace_back(path);
+    return ret;
 }
 
 WorldRegion* RandomizerWorld::region(const std::string& name) const
@@ -110,20 +73,25 @@ WorldRegion* RandomizerWorld::region(const std::string& name) const
     return nullptr;
 }
 
-void RandomizerWorld::load_model_from_json(const GameData& game_data)
+void RandomizerWorld::init_item_sources(const GameData& game_data)
 {
-    this->load_item_sources(game_data);
-    this->load_nodes();
-    this->load_paths(game_data);
-    this->load_regions();
+    Json item_sources_json = Json::parse(ITEM_SOURCES_JSON);
+    for(const Json& source_json : item_sources_json)
+    {
+        _item_sources.emplace_back(ItemSource::from_json(source_json, game_data));
+    }
+
+#ifdef DEBUG
+    std::cout << _item_sources.size() << " item sources loaded." << std::endl;
+#endif
 }
 
-void RandomizerWorld::load_nodes()
+void RandomizerWorld::init_nodes()
 {
     Json nodes_json = Json::parse(WORLD_NODES_JSON);
     for(auto& [node_id, node_json] : nodes_json.items())
     {
-        WorldNode* new_node = WorldNode::from_json(node_id, node_json);
+        WorldNode* new_node = WorldNode::from_json(node_json, node_id);
         _nodes[node_id] = new_node;
     }
 
@@ -142,7 +110,7 @@ void RandomizerWorld::load_nodes()
 #endif
 }
 
-void RandomizerWorld::load_paths(const GameData& game_data)
+void RandomizerWorld::init_paths(const GameData& game_data)
 {
     Json paths_json = Json::parse(WORLD_PATHS_JSON);
     for(const Json& path_json : paths_json)
@@ -158,7 +126,7 @@ void RandomizerWorld::load_paths(const GameData& game_data)
 #endif
 }
 
-void RandomizerWorld::load_regions()
+void RandomizerWorld::init_regions()
 {
     Json regions_json = Json::parse(WORLD_REGIONS_JSON);
     for(const Json& region_json : regions_json)

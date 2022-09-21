@@ -5,22 +5,6 @@
 #include "../tools/exception.hpp"
 #include <utility>
 
-void WorldPath::origin(WorldNode* node)
-{
-    if(_from_node)
-        _from_node->remove_outgoing_path(this);
-    _from_node = node;
-    node->add_outgoing_path(this);
-}
-
-void WorldPath::destination(WorldNode* node)
-{
-    if(_to_node)
-        _to_node->remove_ingoing_path(this);
-    _to_node = node;
-    node->add_ingoing_path(this);
-}
-
 std::map<const Item*, uint16_t> WorldPath::required_items_and_quantity() const
 {
     std::map<const Item*, uint16_t> items_and_quantities;
