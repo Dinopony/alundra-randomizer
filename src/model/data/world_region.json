@@ -1,16 +1,8 @@
 [
     {
-        "name": "Overworld A1 (Murgg great tree)",
+        "name": "Inoa",
         "nodeIds": [
-            "overworld_a1"
-        ]
-    },
-    {
-        "name": "Overworld A2 (Murgg woods)",
-        "nodeIds": [
-            "overworld_a2",
-            "overworld_a2_behind_vines",
-            "overworld_a2_behind_vines_and_bomb"
+            "inoa"
         ]
     },
     {
@@ -33,6 +25,12 @@
             "overworld_a4_behind_manor"
         ]
     },
+    {
+        "name": "Fire Manor",
+        "nodeIds": [
+            "fire_manor"
+        ]
+    },
 
     {
         "name": "Overworld B1 (Lake sector)",
@@ -42,6 +40,7 @@
             "overworld_b1_left"
         ]
     },
+
     {
         "name": "Overworld B2 (Coal Mine sector)",
         "nodeIds": [
@@ -52,6 +51,11 @@
             "overworld_b2_upper_mines"
         ]
     },
+    {
+        "name": "Coal Mine",
+        "nodeIds": [ "coal_mine" ]
+    },
+
     {
         "name": "Overworld B3 (Riverside sector)",
         "nodeIds": [
@@ -70,6 +74,11 @@
             "riverside_casino_shooting_range"
         ]
     },
+    {
+        "name": "Fairy Pond",
+        "nodeIds": [ "fairy_pond" ]
+    },
+
     {
         "name": "Overworld B4 (Nava's hut sector)",
         "nodeIds": [
@@ -99,11 +108,12 @@
         ]
     },
     {
-        "name": "Inoa",
+        "name": "Lars Crypt",
         "nodeIds": [
-            "inoa"
+            "lars_crypt"
         ]
     },
+
     {
         "name": "Overworld C4 (Merrick's shop sector)",
         "nodeIds": [
@@ -111,132 +121,6 @@
             "overworld_c4_behind_spring",
             "overworld_c4_behind_long_boots",
             "overworld_c4_right_cliff_behind_long_boots"
-        ]
-    },
-
-    {
-        "name": "Overworld D1 (Torla sector)",
-        "nodeIds": [
-            "overworld_d1",
-            "overworld_d1_cliff_maze"
-        ]
-    },
-    {
-        "name": "Overworld D2 (Watermill sector)",
-        "nodeIds": [
-            "overworld_d2",
-            "overworld_d2_behind_spring",
-            "overworld_d2_chest_cliff",
-            "overworld_d2_arches",
-            "overworld_d2_watermill",
-            "overworld_d2_cave",
-            "overworld_d2_cave_behind_merman"
-        ]
-    },
-    {
-        "name": "Overworld D3 (Tarn Manor sector)",
-        "nodeIds": [
-            "overworld_d3",
-            "overworld_d3_behind_vines",
-            "overworld_d3_behind_bricks",
-            "overworld_d3_behind_spring",
-            "overworld_d3_behind_spring_and_vines"
-        ]
-    },
-    {
-        "name": "Overworld D4 (Reptiles Lair sector)",
-        "nodeIds": [
-            "overworld_d4",
-            "overworld_d4_behind_long_boots"
-        ]
-    },
-
-    {
-        "name": "Overworld E1 (Nirude sector)",
-        "nodeIds": [
-            "overworld_e1"
-        ]
-    },
-    {
-        "name": "Overworld E2 (Upper desert)",
-        "nodeIds": [
-            "overworld_e2",
-            "overworld_e2_behind_long_boots",
-            "overworld_e2_cave_behind_ice_wand"
-        ]
-    },
-    {
-        "name": "Overworld E3 (Lower desert)",
-        "nodeIds": [
-            "overworld_e3",
-            "overworld_e3_bottom_left",
-            "overworld_e3_bottom_left_island",
-            "overworld_e3_cape_cave",
-            "overworld_e3_behind_cape_or_boots"
-        ]
-    },
-    {
-        "name": "Overworld E4 (Cliffs of Madness)",
-        "nodeIds": [
-            "overworld_e4",
-            "overworld_e4_well",
-            "overworld_e4_well_behind_vines",
-            "overworld_e4_behind_merman"
-        ]
-    },
-
-    {
-        "name": "Fire Manor",
-        "nodeIds": [
-            "fire_manor"
-        ]
-    },
-    {
-        "name": "Ice Manor",
-        "nodeIds": [
-            "ice_manor"
-        ]
-    },
-
-    {
-        "name": "Tarn Manor",
-        "nodeIds": [ "tarn_manor" ]
-    },
-    {
-        "name": "Coal Mine",
-        "nodeIds": [ "coal_mine" ]
-    },
-    {
-        "name": "Fairy Pond",
-        "nodeIds": [ "fairy_pond" ]
-    },
-    {
-        "name": "Ancient Shrine",
-        "nodeIds": [ "ancient_shrine" ]
-    },
-    {
-        "name": "Coastal Cave",
-        "nodeIds": [
-            "coastal_cave",
-            "coastal_cave_behind_merman"
-        ]
-    },
-    {
-        "name": "Tower of the Great Tree",
-        "nodeIds": [
-            "great_tree_tower"
-        ]
-    },
-    {
-        "name": "Undeground Waterway",
-        "nodeIds": [
-            "underground_waterway"
-        ]
-    },
-    {
-        "name": "Lars Crypt",
-        "nodeIds": [
-            "lars_crypt"
         ]
     },
     {
@@ -252,6 +136,130 @@
             "merrick_shop_8"
         ]
     },
+    {
+        "name": "Coastal Cave",
+        "nodeIds": [
+            "coastal_cave",
+            "coastal_cave_behind_merman"
+        ]
+    },
+
+    {
+        "name": "Overworld D1 (Torla sector)",
+        "nodeIds": [
+            "overworld_d1",
+            "overworld_d1_cliff_maze"
+        ]
+    },
+    {
+        "name": "Ice Manor",
+        "nodeIds": [
+            "ice_manor"
+        ]
+    },
+
+    {
+        "name": "Overworld D2 (Watermill sector)",
+        "nodeIds": [
+            "overworld_d2",
+            "overworld_d2_behind_spring",
+            "overworld_d2_chest_cliff",
+            "overworld_d2_arches",
+            "overworld_d2_watermill",
+            "overworld_d2_cave",
+            "overworld_d2_cave_behind_merman"
+        ]
+    },
+    {
+        "name": "Undeground Waterway",
+        "nodeIds": [
+            "underground_waterway"
+        ]
+    },
+
+    {
+        "name": "Overworld D3 (Tarn Manor sector)",
+        "nodeIds": [
+            "overworld_d3",
+            "overworld_d3_behind_vines",
+            "overworld_d3_behind_bricks",
+            "overworld_d3_behind_spring",
+            "overworld_d3_behind_spring_and_vines"
+        ]
+    },
+    {
+        "name": "Tarn Manor",
+        "nodeIds": [ "tarn_manor" ]
+    },
+
+    {
+        "name": "Overworld D4 (Reptiles Lair sector)",
+        "nodeIds": [
+            "overworld_d4",
+            "overworld_d4_behind_long_boots"
+        ]
+    },
+
+    {
+        "name": "Overworld E4 (Cliffs of Madness)",
+        "nodeIds": [
+            "overworld_e4",
+            "overworld_e4_well",
+            "overworld_e4_well_behind_vines",
+            "overworld_e4_behind_merman"
+        ]
+    },
+    {
+        "name": "Overworld E3 (Lower desert)",
+        "nodeIds": [
+            "overworld_e3",
+            "overworld_e3_bottom_left",
+            "overworld_e3_bottom_left_island",
+            "overworld_e3_cape_cave",
+            "overworld_e3_behind_cape_or_boots"
+        ]
+    },
+    {
+        "name": "Overworld E2 (Upper desert)",
+        "nodeIds": [
+            "overworld_e2",
+            "overworld_e2_behind_long_boots",
+            "overworld_e2_cave_behind_ice_wand"
+        ]
+    },
+    {
+        "name": "Ancient Shrine",
+        "nodeIds": [ "ancient_shrine" ]
+    },
+
+    {
+        "name": "Overworld E1 (Nirude sector)",
+        "nodeIds": [
+            "overworld_e1"
+        ]
+    },
+
+    {
+        "name": "Overworld A1 (Murgg great tree)",
+        "nodeIds": [
+            "overworld_a1"
+        ]
+    },
+    {
+        "name": "Overworld A2 (Murgg woods)",
+        "nodeIds": [
+            "overworld_a2",
+            "overworld_a2_behind_vines",
+            "overworld_a2_behind_vines_and_bomb"
+        ]
+    },
+    {
+        "name": "Tower of the Great Tree",
+        "nodeIds": [
+            "great_tree_tower"
+        ]
+    },
+
     {
         "name": "Lake Shrine",
         "nodeIds": [
