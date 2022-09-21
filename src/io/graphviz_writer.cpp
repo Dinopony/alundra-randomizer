@@ -28,19 +28,8 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& output_
     for(size_t i=0 ; i<paths.size() ; ++i)
     {
         WorldPath* path = paths[i];
-        bool is_two_way = false;
-        for(size_t j=i+1 ; j<paths.size() ; ++j)
-        {
-            if(path->is_perfect_opposite_of(paths[j]))
-            {
-                is_two_way = true;
-                paths.erase(paths.begin() + j);
-                break;
-            }
-        }
-
         graphviz << "\t" << path->origin()->id() << " -> " << path->destination()->id() << " [";
-        if (is_two_way)
+        if (path->is_two_way())
             graphviz << "dir=both ";
 
         std::vector<std::string> required_names;

@@ -60,8 +60,10 @@ std::vector<WorldPath*> RandomizerWorld::paths_starting_from_node(const WorldNod
 {
     std::vector<WorldPath*> ret;
     for(WorldPath* path : _paths)
-        if(path->origin() == node)
+    {
+        if(path->origin() == node || (path->is_two_way() && path->destination() == node))
             ret.emplace_back(path);
+    }
     return ret;
 }
 
@@ -115,10 +117,8 @@ void RandomizerWorld::init_paths(const GameData& game_data)
     Json paths_json = Json::parse(WORLD_PATHS_JSON);
     for(const Json& path_json : paths_json)
     {
-        std::pair<WorldPath*, WorldPath*> paths = WorldPath::from_json(path_json, _nodes, game_data);
-        this->add_path(paths.first);
-        if(paths.second)
-            this->add_path(paths.second);
+        WorldPath* path = WorldPath::from_json(path_json, _nodes, game_data);
+        this->add_path(path);
     }
 
 #ifdef DEBUG

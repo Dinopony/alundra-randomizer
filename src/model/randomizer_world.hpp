@@ -22,10 +22,14 @@ private:
     /// A list of all logic nodes
     std::map<std::string, WorldNode*> _nodes;
 
-    /// A list of all logic paths
+    /// A list of all logic paths, which connect nodes to form an explorable graph
     std::vector<WorldPath*> _paths;
 
-    /// A list of all logic regions
+    /**
+     * A list of all logic regions, used to group nodes into coherent sets that represent
+     * a concrete location inside the game. Mostly used to group item sources in categories
+     * inside the spoiler log.
+     */
     std::vector<WorldRegion*> _regions;
 
 public:

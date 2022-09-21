@@ -19,37 +19,14 @@ std::map<const Item*, uint16_t> WorldPath::required_items_and_quantity() const
     return items_and_quantities;
 }
 
-bool WorldPath::has_explored_required_nodes(const std::vector<WorldNode*>& explored_nodes) const
-{
-    for(WorldNode* node : _required_nodes)
-        if(!vectools::contains(explored_nodes, node))
-            return false;
-    return true;
-}
-
-bool WorldPath::is_perfect_opposite_of(WorldPath* other) const
-{
-    if(_from_node != other->_to_node)
-        return false;
-    if(_to_node != other->_from_node)
-        return false;
-    if(_weight != other->_weight)
-        return false;
-    if(_required_items != other->_required_items)
-        return false;
-    if(_required_nodes != other->_required_nodes)
-        return false;
-
-    return true;
-}
-
-Json WorldPath::to_json(bool two_way) const
+Json WorldPath::to_json() const
 {
     Json json;
 
     json["fromId"] = _from_node->id();
     json["toId"] = _to_node->id();
-    json["twoWay"] = two_way;
+    if(_two_way)
+        json["twoWay"] = _two_way;
 
     if(_weight > 1)
         json["weight"] = _weight;
@@ -71,9 +48,7 @@ Json WorldPath::to_json(bool two_way) const
     return json;
 }
 
-std::pair<WorldPath*, WorldPath*> WorldPath::from_json(const Json& json, 
-                                                       const std::map<std::string, WorldNode*>& nodes, 
-                                                       const GameData& game_data)
+WorldPath* WorldPath::from_json(const Json& json, const std::map<std::string, WorldNode*>& nodes, const GameData& game_data)
 {
     WorldPath* path = new WorldPath();
     bool create_opposite_path = false;
@@ -84,6 +59,8 @@ std::pair<WorldPath*, WorldPath*> WorldPath::from_json(const Json& json,
             path->origin(nodes.at(value));
         else if(key == "toId")
             path->destination(nodes.at(value));
+        else if(key == "twoWay")
+            path->is_two_way(value);
         else if(key == "requiredNodes")
         {
             for(std::string node_id : value)
@@ -113,22 +90,9 @@ std::pair<WorldPath*, WorldPath*> WorldPath::from_json(const Json& json,
                     path->_required_items.emplace_back(required_item);
             }
         }
-        else if(key == "twoWay")
-            create_opposite_path = value;
         else
             throw RandomizerException("Unknown key '" + key + "' in WorldPath JSON");
     }
 
-    WorldPath* path_opposite = nullptr;
-    if(create_opposite_path)
-    {
-        path_opposite = new WorldPath();
-        path_opposite->origin(path->destination());
-        path_opposite->destination(path->origin());
-        path_opposite->_required_items = path->_required_items;
-        path_opposite->_required_nodes = path->_required_nodes;
-        path_opposite->_weight = path->_weight;
-    }
-
-    return std::make_pair(path, path_opposite);
+    return path;
 }
