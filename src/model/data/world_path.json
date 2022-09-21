@@ -210,6 +210,38 @@
         "toId": "overworld_c4_right_cliff_behind_long_boots",
         "twoWay": true
     },
+    {
+        "fromId": "overworld_d4",
+        "toId": "reptiles_lair_side_cavern",
+        "twoWay": true,
+        "requiredItems": [
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_d4",
+        "toId": "reptiles_lair",
+        "requiredItems": [
+            "Hunter's Bow",
+            "Merman Boots",
+            "Bomb"
+        ]
+    },
+    {
+        "fromId": "reptiles_lair",
+        "toId": "reptiles_lair_side_cavern",
+        "requiredItems": [
+            "Bomb"
+        ]
+    },
+    {
+        "fromId": "reptiles_lair",
+        "toId": "reptiles_lair_behind_flail",
+        "twoWay": true,
+        "requiredItems": [
+            "Iron Flail"
+        ]
+    },
 
     {
         "fromId": "overworld_c4",

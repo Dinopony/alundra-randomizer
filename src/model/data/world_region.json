@@ -206,6 +206,14 @@
             "overworld_d4_behind_long_boots"
         ]
     },
+    {
+        "name": "Reptiles Lair",
+        "nodeIds": [
+            "reptiles_lair_side_cavern",
+            "reptiles_lair",
+            "reptiles_lair_behind_flail"
+        ]
+    },
 
     {
         "name": "Overworld E4 (Cliffs of Madness)",
