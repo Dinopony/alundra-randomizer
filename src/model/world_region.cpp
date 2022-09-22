@@ -3,16 +3,19 @@
 #include <utility>
 #include "world_node.hpp"
 #include "item_source.hpp"
+#include "randomizer_world.hpp"
 
-WorldRegion::WorldRegion(std::string name, std::string hint_name, 
-                         std::vector<WorldNode*> nodes, bool can_be_hinted_as_required) :
-    _name                       (std::move(name)),
-    _hint_name                  (std::move(hint_name)),
-    _nodes                      (std::move(nodes)),
-    _can_be_hinted_as_required  (can_be_hinted_as_required)
+std::string WorldRegion::hint_name() const
 {
-    for(WorldNode* node : _nodes)
-        node->region(this);
+    if(_hint_name.empty())
+        return std::string("in ") + _name;
+    return _hint_name;
+}
+
+void WorldRegion::add_node(WorldNode* node)
+{
+    _nodes.emplace_back(node);
+    node->region(this);
 }
 
 Json WorldRegion::to_json() const 
@@ -21,6 +24,7 @@ Json WorldRegion::to_json() const
 
     json["name"] = _name;
     json["hintName"] = _hint_name;
+    json["canBeHintedAsRequired"] = _can_be_hinted_as_required;
     
     json["nodeIds"] = Json::array();
     for(WorldNode* node : _nodes)
@@ -29,21 +33,28 @@ Json WorldRegion::to_json() const
     return json;
 }
 
-WorldRegion* WorldRegion::from_json(const Json& json, const std::map<std::string, WorldNode*>& all_nodes)
+WorldRegion* WorldRegion::from_json(const Json& json, const RandomizerWorld& world)
 {
-    std::string name = json.at("name");
+    WorldRegion* region = new WorldRegion();
 
-    std::string hint_name = json.value("hintName", "");
-    if(hint_name.empty())
-        hint_name = "in " + name;
+    for (auto& [key, value] : json.items())
+    {
+        if (key == "name")
+            region->name(value);
+        else if (key == "hintName")
+            region->hint_name(value);
+        else if (key == "canBeHintedAsRequired")
+            region->can_be_hinted_as_required(value);
+        else if (key == "nodeIds")
+        {
+            for(const std::string& node_id : value)
+                region->add_node(world.node(node_id));
+        }
+        else
+            throw RandomizerException("Unknown key '" + key + "' in WorldRegion JSON");
+    }
 
-    bool can_be_hinted_as_required = json.value("canBeHintedAsRequired", true);
-
-    std::vector<WorldNode*> nodes;
-    for(std::string node_id : json.at("nodeIds"))
-        nodes.emplace_back(all_nodes.at(node_id));
-
-    return new WorldRegion(name, hint_name, nodes, can_be_hinted_as_required);
+    return region;
 }
 
 std::vector<ItemSource*> WorldRegion::item_sources() const

@@ -129,12 +129,13 @@ void RandomizerWorld::init_regions()
 {
     Json regions_json = Json::parse(WORLD_REGIONS_JSON);
     for(const Json& region_json : regions_json)
-        _regions.emplace_back(WorldRegion::from_json(region_json, _nodes));
+        _regions.emplace_back(WorldRegion::from_json(region_json, *this));
 
 #ifdef DEBUG
     std::cout << _regions.size() << " regions loaded." << std::endl;
 #endif
 
+    // Check for orphan nodes
     for(auto& [id, node] : _nodes)
         if(node->region() == nullptr)
             throw RandomizerException("Node '" + node->id() + "' doesn't belong to any region");
