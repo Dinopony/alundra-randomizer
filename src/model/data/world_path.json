@@ -257,7 +257,7 @@
         ]
     },
     {
-        "fromId": "overworld_c4",
+        "fromId": "overworld_c4_behind_long_boots",
         "toId": "overworld_c4_behind_spring",
         "requiredItems": [
             "Spring Bean"
@@ -851,8 +851,7 @@
         "toId": "riverside_casino_shooting_range",
         "twoWay": true,
         "requiredItems": [
-            "Hunter's Bow",
-            "Willow Bow"
+            "Hunter's Bow"
         ]
     },
 

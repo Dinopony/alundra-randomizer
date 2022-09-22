@@ -20,7 +20,8 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& output_
     graphviz << "digraph {\n";
 
     graphviz << "\tgraph [pad=0.5, nodesep=1, ranksep=1.5];\n";
-    graphviz << "\tnode[shape=rect];\n\n";
+    graphviz << "\tnode[shape=rect];\n";
+    graphviz << "\tlayout = neato;\n\n";
 
     std::map<WorldPath*, bool> _paths_two_way;
 
@@ -60,21 +61,19 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& output_
 
     graphviz << "\n";
     uint32_t i=0;
-    for(WorldRegion* region : world.regions())
+
+    for(auto& [node_id, node] : world.nodes())
     {
-        graphviz << "\tsubgraph cluster_" << i++ << " {\n";
-        graphviz << "\t\tperipheries=0\n";
+        graphviz << "\t" << node_id << "[";
+        // Node position
+        if(node->position_in_graph().first != INT_MIN)
+            graphviz << " pos=\"" << node->position_in_graph().first << "," << node->position_in_graph().second << "!\"";
+        // Node label
+        graphviz << " label=\"" << node_id;
+        if(!node->item_sources().empty())
+            graphviz << "\\n(" << std::to_string(node->item_sources().size()) << " items)";
 
-        for(WorldNode* node : region->nodes())
-        {
-            graphviz << "\t\t" << node->id() << "[";
-            graphviz << " label=\"" << node->id();
-            if(!node->item_sources().empty())
-                graphviz << "\\n(" << std::to_string(node->item_sources().size()) << " items)";
-            graphviz << "\"]\n";
-        }
-
-        graphviz << "\t}\n\n";
+        graphviz << "\"]\n";
     }
 
     graphviz << "}\n"; 

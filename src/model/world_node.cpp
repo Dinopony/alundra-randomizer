@@ -15,6 +15,8 @@ Json WorldNode::to_json() const
 
     if (!_hints.empty())
         json["hints"] = _hints;
+    
+    json["graphPos"] = _position_in_graph;
 
     return json;
 }
@@ -24,11 +26,14 @@ WorldNode* WorldNode::from_json(const Json &json, const std::string &id)
     WorldNode* node = new WorldNode();
 
     node->_id = id;
+    node->_position_in_graph = std::make_pair(INT_MIN, INT_MIN);
 
     for (auto& [key, value] : json.items())
     {
         if (key == "hints")
             value.get_to(node->_hints);
+        else if (key == "graphPos")
+            value.get_to(node->_position_in_graph);
         else
             throw RandomizerException("Unknown key '" + key + "' in WorldNode JSON");
     }

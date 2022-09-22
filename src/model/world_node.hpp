@@ -24,6 +24,9 @@ private:
     /// The region this node belongs to
     WorldRegion* _region = nullptr;
 
+    /// The position of the node when exported to a visual graph
+    std::pair<int, int> _position_in_graph;
+
 public:
     WorldNode() = default;
 
@@ -38,6 +41,8 @@ public:
 
     [[nodiscard]] WorldRegion* region() const { return _region; }
     void region(WorldRegion* region) { _region = region; }
+
+    [[nodiscard]] const std::pair<int, int>& position_in_graph() const { return _position_in_graph; }
 
     [[nodiscard]] Json to_json() const;
     static WorldNode* from_json(const Json& json, const std::string& id);

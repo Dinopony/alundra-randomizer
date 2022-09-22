@@ -1,326 +1,443 @@
 {
     "inoa": {
-        "hints": []
+        "hints": [],
+        "graphPos": [0,0]
     },
     "overworld_c1": {
-        "hints": []
+        "hints": [],
+        "graphPos": [0,20]
     },
     "overworld_c1_right_sector": {
-        "hints": []
+        "hints": [],
+        "graphPos": [5,22]
     },
     "overworld_c1_elevated_cavern": {
-        "hints": []
+        "hints": [],
+        "graphPos": [3,16]
     },
     "overworld_c1_cliff": {
-        "hints": []
+        "hints": [],
+        "graphPos": [5,18]
     },
     "overworld_c2": {
-        "hints": []
+        "hints": [],
+        "graphPos": [0,10]
     },
     "overworld_c2_cave_behind_spring": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-2,12]
     },
     "overworld_c2_graveyard_house": {
-        "hints": []
+        "hints": [],
+        "graphPos": [2,8]
     },
     "overworld_d2": {
-        "hints": []
+        "hints": [],
+        "graphPos": [10,10]
     },
     "overworld_d2_behind_spring": {
-        "hints": []
+        "hints": [],
+        "graphPos": [5,13]
     },
     "overworld_d2_chest_cliff": {
-        "hints": []
+        "hints": [],
+        "graphPos": [13,12]
     },
     "overworld_d2_arches": {
-        "hints": []
+        "hints": [],
+        "graphPos": [13,14]
     },
     "overworld_d2_watermill": {
-        "hints": []
+        "hints": [],
+        "graphPos": [12,8]
     },
     "overworld_d2_cave": {
-        "hints": []
+        "hints": [],
+        "graphPos": [10,13]
     },
     "overworld_d2_cave_behind_merman": {
-        "hints": []
+        "hints": [],
+        "graphPos": [10,15]
     },
     "overworld_d3": {
-        "hints": []
+        "hints": [],
+        "graphPos": [10,0]
     },
     "overworld_d3_behind_vines": {
-        "hints": []
+        "hints": [],
+        "graphPos": [6,0]
     },
     "overworld_d3_behind_bricks": {
-        "hints": []
+        "hints": [],
+        "graphPos": [8,2]
     },
     "overworld_d3_behind_spring": {
-        "hints": []
+        "hints": [],
+        "graphPos": [8,4]
     },
     "overworld_d3_behind_spring_and_vines": {
-        "hints": []
+        "hints": [],
+        "graphPos": [8,6]
     },
     "overworld_d4": {
-        "hints": []
+        "hints": [],
+        "graphPos": [10,-10]
     },
     "overworld_d4_behind_long_boots": {
-        "hints": []
+        "hints": [],
+        "graphPos": [7,-8]
     },
     "overworld_c4": {
-        "hints": []
+        "hints": [],
+        "graphPos": [0,-10]
     },
     "overworld_c4_behind_spring": {
-        "hints": []
+        "hints": [],
+        "graphPos": [5,-12]
     },
     "overworld_c4_behind_long_boots": {
-        "hints": []
+        "hints": [],
+        "graphPos": [5,-14]
     },
     "overworld_c4_right_cliff_behind_long_boots": {
-        "hints": []
+        "hints": [],
+        "graphPos": [3,-8]
     },
     "overworld_d1": {
-        "hints": []
+        "hints": [],
+        "graphPos": [10,20]
     },
     "overworld_d1_cliff_maze": {
-        "hints": []
+        "hints": [],
+        "graphPos": [14,18]
     },
     "ice_manor": {
-        "hints": []
+        "hints": [],
+        "graphPos": [14,16]
     },
     "overworld_b4": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-10,-10]
     },
     "overworld_b4_behind_merman": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-8,-12]
     },
     "overworld_b4_behind_bomb": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-13,-9]
     },
     "overworld_b4_behind_power_glove": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-14,-12]
     },
     "overworld_b4_nava_hut_behind_spring": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-10,-14]
     },
     "overworld_b3": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-10,0]
     },
     "overworld_b3_elevated": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-10,-4]
     },
     "overworld_b3_behind_vines": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-8,2]
     },
     "overworld_b3_behind_power_glove": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-8,-2]
     },
     "overworld_b3_top_left": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-13,0]
     },
     "overworld_b3_megalith": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-13,-4]
     },
     "riverside_casino": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-7,0]
     },
     "riverside_casino_shooting_range": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-4,0]
     },
-
     "overworld_b2": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-10,10]
     },
     "overworld_b2_left": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-14,10]
     },
     "overworld_b2_cave_to_lake": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-14,13]
     },
     "overworld_b2_cave_to_lake_behind_merman": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-14,16]
     },
     "overworld_b2_upper_mines": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-5,13]
     },
     "overworld_b1": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-10,20]
     },
     "overworld_b1_left": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-14,20]
     },
     "overworld_b1_island": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-7,18]
     },
     "overworld_a4_right": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-16,-10]
     },
     "overworld_a4_middle": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,-10]
     },
     "overworld_a4_left": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-24,-12]
     },
     "overworld_a4_manor": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,-14]
     },
     "overworld_a4_behind_manor": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,-12]
     },
     "fire_manor": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,-16]
     },
     "overworld_a3_left": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,0]
     },
     "overworld_a3_left_behind_power_glove": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,5]
     },
     "overworld_a3_megalith": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,-5]
     },
     "overworld_a3_right": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-17,-1]
     },
     "overworld_a3_right_behind_vines": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-17,1]
     },
     "overworld_a1": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,20]
     },
     "overworld_e1": {
-        "hints": []
+        "hints": [],
+        "graphPos": [20,20]
     },
     "overworld_a2": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,10]
     },
     "overworld_a2_behind_vines": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-18,13]
     },
     "overworld_a2_behind_vines_and_bomb": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,16]
     },
-
     "overworld_e2": {
-        "hints": []
+        "hints": [],
+        "graphPos": [20,10]
     },
     "overworld_e2_behind_long_boots": {
-        "hints": []
+        "hints": [],
+        "graphPos": [23,7]
     },
     "overworld_e2_cave_behind_ice_wand": {
-        "hints": []
+        "hints": [],
+        "graphPos": [28,7]
     },
     "overworld_e3": {
-        "hints": []
+        "hints": [],
+        "graphPos": [20,0]
     },
     "overworld_e3_bottom_left": {
-        "hints": []
+        "hints": [],
+        "graphPos": [18,-2]
     },
     "overworld_e3_bottom_left_island": {
-        "hints": []
+        "hints": [],
+        "graphPos": [16,-4]
     },
     "overworld_e3_cape_cave": {
-        "hints": []
+        "hints": [],
+        "graphPos": [18,2]
     },
     "overworld_e3_behind_cape_or_boots": {
-        "hints": []
+        "hints": [],
+        "graphPos": [24,2]
     },
     "overworld_e4": {
-        "hints": []
+        "hints": [],
+        "graphPos": [20,-10]
     },
     "overworld_e4_behind_merman": {
-        "hints": []
+        "hints": [],
+        "graphPos": [18,-12]
     },
     "overworld_e4_well": {
-        "hints": []
+        "hints": [],
+        "graphPos": [22,-12]
     },
     "overworld_e4_well_behind_vines": {
-        "hints": []
+        "hints": [],
+        "graphPos": [26,-12]
     },
     "tarn_manor": {
-        "hints": []
+        "hints": [],
+        "graphPos": [8,2]
     },
     "coal_mine": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-12,8]
     },
     "fairy_pond": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-15,-3]
     },
     "ancient_shrine": {
-        "hints": []
+        "hints": [],
+        "graphPos": [24,-2]
     },
     "coastal_cave": {
-        "hints": []
+        "hints": [],
+        "graphPos": [0,-13]
     },
     "coastal_cave_behind_merman": {
-        "hints": []
+        "hints": [],
+        "graphPos": [0,-16]
     },
     "great_tree_tower": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-20,23]
     },
     "underground_waterway": {
-        "hints": []
+        "hints": [],
+        "graphPos": [14,10]
     },
     "lars_crypt": {
-        "hints": []
+        "hints": [],
+        "graphPos": [2,12]
     },
     "magyscar": {
-        "hints": []
+        "hints": [],
+        "graphPos": [0,22]
     },
     "magyscar_behind_bomb": {
-        "hints": []
+        "hints": [],
+        "graphPos": [0,24]
     },
     "reptiles_lair_side_cavern": {
-        "hints": []
+        "hints": [],
+        "graphPos": [8,-12]
     },
     "reptiles_lair": {
-        "hints": []
+        "hints": [],
+        "graphPos": [12,-12]
     },
     "reptiles_lair_behind_flail": {
-        "hints": []
+        "hints": [],
+        "graphPos": [10,-14]
     },
     "torla_mountain": {
-        "hints": []
+        "hints": [],
+        "graphPos": [10,25]
     },
     "torla_mountain_behind_charm_boots": {
-        "hints": []
+        "hints": [],
+        "graphPos": [10,27]
     },
     "torla_mountain_behind_spring": {
-        "hints": []
+        "hints": [],
+        "graphPos": [10,29]
     },
     "merrick_shop_1": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-4,-12]
     },
     "merrick_shop_2": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-4,-14]
     },
     "merrick_shop_3": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-4,-16]
     },
     "merrick_shop_4": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-4,-18]
     },
     "merrick_shop_5": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-4,-20]
     },
     "merrick_shop_6": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-4,-22]
     },
     "merrick_shop_7": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-4,-24]
     },
     "merrick_shop_8": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-4,-26]
     },
     "river_network": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-15,-5]
     },
-    "crest_1": {},
-    "crest_2": {},
-    "crest_3": {},
-    "crest_4": {},
-    "crest_5": {},
-    "crest_6": {},
+    "crest_1": {
+        "graphPos": [-10,22]
+    },
+    "crest_2": {
+        "graphPos": [-10,24]
+    },
+    "crest_3": {
+        "graphPos": [-8,24]
+    },
+    "crest_4": {
+        "graphPos": [-8,22]
+    },
+    "crest_5": {
+        "graphPos": [-6,22]
+    },
+    "crest_6": {
+        "graphPos": [-6,24]
+    },
     "lake_shrine": {
-        "hints": []
+        "hints": [],
+        "graphPos": [-6,26]
     },
-    "end": {}
+    "end": {
+        "graphPos": [-6,28]
+    }
 }
