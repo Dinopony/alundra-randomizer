@@ -584,6 +584,15 @@
         ]
     },
     {
+        "fromId": "overworld_a3_left",
+        "toId": "overworld_a3_mimics_cave",
+        "twoWay": true,
+        "requiredItems": [
+            "Power Glove",
+            "Spring Bean"
+        ]
+    },
+    {
         "fromId": "overworld_a3_left_behind_power_glove",
         "toId": "overworld_a2",
         "twoWay": true,
@@ -680,6 +689,7 @@
     {
         "fromId": "overworld_b2",
         "toId": "overworld_b2_upper_mines",
+        "twoWay": true,
         "requiredItems": [
             "Bomb",
             "Iron Flail"

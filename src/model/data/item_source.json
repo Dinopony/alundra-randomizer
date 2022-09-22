@@ -452,25 +452,25 @@
     },
     {
         "name": "Overworld A3: Left elevated chest in mimics cave",
-        "nodeId": "overworld_a3_left_behind_power_glove",
+        "nodeId": "overworld_a3_mimics_cave",
         "address": "538B372",
         "vanillaItem": "Gilded Falcon"
     },
     {
         "name": "Overworld A3: Right elevated chest in mimics cave",
-        "nodeId": "overworld_a3_left_behind_power_glove",
+        "nodeId": "overworld_a3_mimics_cave",
         "address": "538B386",
         "vanillaItem": "Herbs"
     },
     {
         "name": "Overworld A3: Left ground chest in mimics cave",
-        "nodeId": "overworld_a3_left_behind_power_glove",
+        "nodeId": "overworld_a3_mimics_cave",
         "address": "538B34A",
         "vanillaItem": "Life Vessel"
     },
     {
         "name": "Overworld A3: Right ground chest in mimics cave",
-        "nodeId": "overworld_a3_left_behind_power_glove",
+        "nodeId": "overworld_a3_mimics_cave",
         "address": "538B35E",
         "vanillaItem": "Magic Elixyr"
     },
