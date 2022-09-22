@@ -30,7 +30,8 @@ public:
     [[nodiscard]] const std::string& id() const { return _id; }
 
     [[nodiscard]] const std::vector<ItemSource*>& item_sources() const { return _item_sources; }
-    void add_item_source(ItemSource* source) {  _item_sources.emplace_back(source); }
+    void add_item_source(ItemSource* source) { _item_sources.emplace_back(source); }
+    void remove_item_source(ItemSource* source);
 
     [[nodiscard]] const std::vector<std::string>& hints() const { return _hints; }
     void add_hint(const std::string& hint) { _hints.emplace_back(hint); }

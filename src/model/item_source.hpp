@@ -6,28 +6,39 @@
 #include "../constants/item_codes.hpp"
 
 class GameData;
+class RandomizerWorld;
+class WorldNode;
 
 class ItemSource
 {
 private:
     /// The name used to describe this ItemSource
     std::string _name;
+
     /// The item contained inside this ItemSource
     const Item* _item = nullptr;
+
     /// The item contained inside this ItemSource in the base game
     const Item* _vanilla_item = nullptr;
-    /// The ID of the logic node containing this ItemSource
-    std::string _node_id;
+
+    /// The logic node containing this ItemSource
+    WorldNode* _node = nullptr;
+
     /// Addresses inside DATAS.BIN file where to put the contained item ID
     std::vector<uint32_t> _addresses;
+
     /// Addresses inside DATAS.BIN file where to put the contained item sprite ID
     std::vector<uint32_t> _sprite_addresses;
+
     /// Address inside ALUND_CD.EXE file where to put the contained item ItemInfo address (0 if not handled)
     uint32_t _merrick_item_address = 0x0;
+
     /// A boolean indicating whether this item source can hold an item required for progression or not
     bool _can_contain_progression = true;
+
     /// An array of hints which can be used to subtly point at this ItemSource
     std::vector<std::string> _hints;
+
     /// If set to true, this ItemSource cannot contain "precious items" (items that would break the game if taken
     /// repeatedly). This is usually set for ItemSources that can be taken an infinite amount of times.
     bool _forbid_precious_items = false;
@@ -49,8 +60,8 @@ public:
     [[nodiscard]] const Item* vanilla_item() const { return _vanilla_item; }
     void vanilla_item(const Item* item) { _vanilla_item = item; }
 
-    [[nodiscard]] const std::string& node_id() const { return _node_id; }
-    void node_id(const std::string& node_id) { _node_id = node_id; }
+    [[nodiscard]] WorldNode* node() const { return _node; }
+    void node(WorldNode* node);
 
     [[nodiscard]] const std::vector<std::string>& hints() const { return _hints; }
     void add_hint(const std::string& hint) { _hints.emplace_back(hint); }
@@ -73,5 +84,5 @@ public:
     void forbid_precious_items(bool value) { _forbid_precious_items = value; }
 
     [[nodiscard]] virtual Json to_json() const;
-    static ItemSource* from_json(const Json& json, const GameData& world);
+    static ItemSource* from_json(const Json& json, const GameData& game_data, const RandomizerWorld& world);
 };

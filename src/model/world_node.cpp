@@ -1,5 +1,14 @@
 #include "world_node.hpp"
 
+void WorldNode::remove_item_source(ItemSource* source)
+{
+    auto it = std::find(_item_sources.begin(), _item_sources.end(), source);
+    if(it == _item_sources.end())
+        throw RandomizerException("Could not remove item source from node '" + _id + "' because it was not contained inside.");
+
+    _item_sources.erase(it);
+}
+
 Json WorldNode::to_json() const
 {
     Json json;

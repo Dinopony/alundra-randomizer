@@ -24,7 +24,7 @@ public:
     [[nodiscard]] const std::string& hint_name() const { return _hint_name; }
     [[nodiscard]] const std::vector<WorldNode*>& nodes() const { return _nodes; }
     [[nodiscard]] bool can_be_hinted_as_required() const { return _can_be_hinted_as_required; }
-    [[nodiscard]] std::map<std::string, ItemSource*> item_sources() const;
+    [[nodiscard]] std::vector<ItemSource*> item_sources() const;
 
     [[nodiscard]] Json to_json() const;
     static WorldRegion* from_json(const Json& json, const std::map<std::string, WorldNode*>& all_nodes);

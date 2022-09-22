@@ -20,7 +20,14 @@ private:
     std::vector<Flag> _starting_flags;
 
 public:
-    GameData(const RandomizerOptions& options);
+    GameData();
+
+private:
+    void init_items();
+    void init_starting_flags();
+
+public:
+    void apply_options(const RandomizerOptions& options);
 
     [[nodiscard]] const std::array<Item, ITEM_COUNT>& items() const { return _items; }
     [[nodiscard]] const Item* item(uint8_t id) const { return &(_items[id]); }
@@ -30,8 +37,4 @@ public:
 
     [[nodiscard]] const std::vector<Flag>& starting_flags() const { return _starting_flags; }
     void add_starting_flag(const Flag& flag) { _starting_flags.emplace_back(flag); }
-
-private:
-    void init_items();
-    void init_starting_flags(const RandomizerOptions& options);
 };

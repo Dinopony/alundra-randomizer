@@ -4,6 +4,8 @@
 #include "../tools/exception.hpp"
 #include "../tools/json_tools.hpp"
 #include "../game/game_data.hpp"
+#include "world_node.hpp"
+#include "randomizer_world.hpp"
 
 std::string ItemSource::pretty_name() const
 {
@@ -13,12 +15,20 @@ std::string ItemSource::pretty_name() const
     return pretty_name;
 }
 
+void ItemSource::node(WorldNode* node)
+{
+    if(_node)
+        _node->remove_item_source(this);
+    _node = node;
+    _node->add_item_source(this);
+}
+
 Json ItemSource::to_json() const
 {
     Json json;
 
     json["name"] = _name;
-    json["nodeId"] = _node_id;
+    json["nodeId"] = _node->id();
     if(!_addresses.empty())
         json["address"] = addresses_to_json(_addresses);
     if(!_sprite_addresses.empty())
@@ -37,7 +47,7 @@ Json ItemSource::to_json() const
     return json;
 }
 
-ItemSource* ItemSource::from_json(const Json& json, const GameData& game_data)
+ItemSource* ItemSource::from_json(const Json& json, const GameData& game_data, const RandomizerWorld& world)
 {
     ItemSource* source = new ItemSource();
 
@@ -46,7 +56,7 @@ ItemSource* ItemSource::from_json(const Json& json, const GameData& game_data)
         if(key == "name")                        
             source->name(value);
         else if(key == "nodeId")
-            source->node_id(value);
+            source->node(world.node(value));
         else if(key == "address")
             source->addresses(parse_addresses_from_json(value));
         else if(key == "spriteAddress")

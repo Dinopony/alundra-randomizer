@@ -3,6 +3,12 @@
 #include <iostream>
 #include <utility>
 
+#include "game/game_data.hpp"
+#include "model/randomizer_world.hpp"
+#include "model/world_region.hpp"
+#include "model/world_node.hpp"
+#include "model/item_source.hpp"
+
 #include "tools/vectools.hpp"
 #include "tools/bitstream_writer.hpp"
 #include "tools/bitstream_reader.hpp"
@@ -10,7 +16,7 @@
 #include "tools/base64.hpp"
 #include "constants/item_names.hpp"
 
-RandomizerOptions::RandomizerOptions(const ArgumentDictionary& args)
+RandomizerOptions::RandomizerOptions(const ArgumentDictionary& args, const GameData& game_data, const RandomizerWorld& world)
 {
     _items_distribution.fill(0);
 
@@ -54,13 +60,13 @@ RandomizerOptions::RandomizerOptions(const ArgumentDictionary& args)
 
         Json preset_json;
         preset_file >> preset_json;
-        this->apply_json(preset_json);
+        this->apply_json(preset_json, game_data, world);
     }
 
     this->validate();
 }
 
-Json RandomizerOptions::to_json() const
+Json RandomizerOptions::to_json(const GameData& game_data, const RandomizerWorld& world) const
 {
     Json json;
 
@@ -83,6 +89,14 @@ Json RandomizerOptions::to_json() const
         }
     }
     json["randomizerSettings"]["itemsDistributions"] = items_distribution_with_names;
+
+    for(auto& [item_source_id, item_id] : _fixed_item_sources)
+    {
+        ItemSource* item_source = world.item_source(item_source_id);
+        WorldRegion* region = item_source->node()->region();
+        const Item* item = game_data.item(item_id);
+        json["world"]["itemSources"][region->name()][item_source->pretty_name()] = item->name();
+    }
 
     return json;
 }
@@ -122,7 +136,37 @@ void RandomizerOptions::apply_randomizer_settings_json(const Json& json)
     }
 }
 
-void RandomizerOptions::apply_json(const Json& json)
+void RandomizerOptions::apply_world_json(const Json& json, const GameData& game_data, const RandomizerWorld& world)
+{
+    if(!json.count("itemSources"))
+        return;
+
+    const Json& item_sources_json = json.at("itemSources");
+    for(auto& [region_id, item_sources_in_region_json] : item_sources_json.items())
+    {
+        try {
+            WorldRegion* region = world.region(region_id);
+            std::vector<ItemSource*> region_item_sources = region->item_sources();
+            
+            for(auto& [source_name, item_name_json] : item_sources_in_region_json.items())
+            {
+                ItemSource* source = world.item_source(source_name);
+                uint16_t source_id = world.item_source_id(source);
+                if(source->node()->region() != region)
+                    throw RandomizerException("Item source '" + source_name + "' exists but is not in region '" + region_id +  "'");
+
+                const std::string& item_name = item_name_json;
+                const Item* item = game_data.item(item_name);
+
+                _fixed_item_sources[source_id] = item->id();
+            }
+        } catch(std::out_of_range&) {
+            throw RandomizerException("Region '" + region_id + "' could not be found");
+        }
+    }
+}
+
+void RandomizerOptions::apply_json(const Json& json, const GameData& game_data, const RandomizerWorld& world)
 {
     if(json.contains("permalink"))
     {
@@ -141,7 +185,7 @@ void RandomizerOptions::apply_json(const Json& json)
         else if(key == "gameSettings")
             this->apply_game_settings_json(value);
         else if(key == "world")
-            _world_json = value;
+            this->apply_world_json(value, game_data, world);
         else
             throw RandomizerException("Unknown key '" + key + "' in preset JSON");
     }
@@ -187,7 +231,7 @@ std::string RandomizerOptions::permalink() const
     bitpack.pack(_megaliths_enabled_on_start);
     bitpack.pack(_skip_last_dungeon);
 
-    bitpack.pack(_world_json.dump());
+    bitpack.pack_map(_fixed_item_sources);
 
     return "a" + base64_encode(bitpack.bytes()) + "/";
 }
@@ -213,5 +257,5 @@ void RandomizerOptions::parse_permalink(std::string permalink)
     _megaliths_enabled_on_start = bitpack.unpack<bool>();
     _skip_last_dungeon = bitpack.unpack<bool>();
 
-    _world_json = Json::parse(bitpack.unpack<std::string>());
+    _fixed_item_sources = bitpack.unpack_map<uint16_t, uint8_t>();
 }

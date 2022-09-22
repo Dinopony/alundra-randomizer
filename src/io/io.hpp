@@ -18,7 +18,3 @@ namespace SpoilerWriter {
 namespace GraphvizWriter {
     void write_logic_as_dot(const RandomizerWorld& world, const std::string& path);
 }
-
-namespace WorldJsonParser {
-    void parse_world_json(const Json& json, RandomizerWorld& world, GameData& game_data);
-}

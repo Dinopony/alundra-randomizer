@@ -43,17 +43,17 @@ WorldRegion* WorldRegion::from_json(const Json& json, const std::map<std::string
     for(std::string node_id : json.at("nodeIds"))
         nodes.emplace_back(all_nodes.at(node_id));
 
+    return new WorldRegion(name, hint_name, nodes, can_be_hinted_as_required);
 }
 
-std::map<std::string, ItemSource*> WorldRegion::item_sources() const
+std::vector<ItemSource*> WorldRegion::item_sources() const
 {
-    std::map<std::string, ItemSource*> item_sources;
+    std::vector<ItemSource*> item_sources;
     for(WorldNode* node : _nodes)
     {
-        for(ItemSource *source : node->item_sources())
-            item_sources[source->pretty_name()] = source;
+        for(ItemSource* source : node->item_sources())
+            item_sources.emplace_back(source);
     }
 
     return item_sources;
-    return new WorldRegion(name, hint_name, nodes, can_be_hinted_as_required);
 }

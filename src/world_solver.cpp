@@ -118,7 +118,7 @@ void WorldSolver::update_current_inventory()
     for(ItemSource* source : _reachable_item_sources)
     {
         // If item is located in forbidden node, don't take it
-        if(vectools::contains(_forbidden_nodes_to_pick_items, _world.node(source->node_id())))
+        if(vectools::contains(_forbidden_nodes_to_pick_items, source->node()))
             continue;
 
         const Item* item = source->item();

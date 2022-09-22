@@ -33,13 +33,17 @@ private:
     std::vector<WorldRegion*> _regions;
 
 public:
-    explicit RandomizerWorld(const RandomizerOptions& options, const GameData& game_data);
+    explicit RandomizerWorld(const GameData& game_data);
     ~RandomizerWorld();
+
+    void apply_options(const RandomizerOptions& options, const GameData& game_data);
 
     [[nodiscard]] const std::vector<ItemSource*>& item_sources() const { return _item_sources; }
     [[nodiscard]] std::vector<ItemSource*>& item_sources() { return _item_sources; }
     [[nodiscard]] ItemSource* item_source(const std::string& name) const;
-    [[nodiscard]] std::vector<ItemSource*> item_sources_with_item(const Item* item);
+    [[nodiscard]] ItemSource* item_source(uint16_t id) const { return _item_sources.at(id); }
+    [[nodiscard]] uint16_t item_source_id(const ItemSource* source) const;
+    [[nodiscard]] std::vector<ItemSource*> item_sources_with_item(const Item* item) const;
 
     [[nodiscard]] const std::map<std::string, WorldNode*>& nodes() const { return _nodes; }
     [[nodiscard]] WorldNode* node(const std::string& id) const { return _nodes.at(id); }

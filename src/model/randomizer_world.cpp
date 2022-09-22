@@ -16,12 +16,12 @@
 
 #include <iostream>
 
-RandomizerWorld::RandomizerWorld(const RandomizerOptions& options, const GameData& game_data)
+RandomizerWorld::RandomizerWorld(const GameData& game_data)
 {
-    this->init_item_sources(game_data);
     this->init_nodes();
-    this->init_paths(game_data);
     this->init_regions();
+    this->init_paths(game_data);
+    this->init_item_sources(game_data);
 }
 
 RandomizerWorld::~RandomizerWorld()
@@ -39,13 +39,22 @@ RandomizerWorld::~RandomizerWorld()
 ItemSource* RandomizerWorld::item_source(const std::string& name) const
 {
     for (ItemSource* source : _item_sources)
-        if (source->name() == name)
+        if (source->pretty_name() == name)
             return source;
 
-    throw std::out_of_range("No source with given name");
+    throw std::out_of_range("No ItemSource with name '" + name + "'");
 }
 
-std::vector<ItemSource*> RandomizerWorld::item_sources_with_item(const Item* item)
+uint16_t RandomizerWorld::item_source_id(const ItemSource* source) const
+{
+    for(size_t i=0 ; i<_item_sources.size() ; ++i)
+        if(source == _item_sources[i])
+            return (uint16_t)i;
+
+    throw std::out_of_range("ItemSource was not found when looking for its ID");
+}
+
+std::vector<ItemSource*> RandomizerWorld::item_sources_with_item(const Item* item) const
 {
     std::vector<ItemSource*> sources_with_item;
 
@@ -80,7 +89,7 @@ void RandomizerWorld::init_item_sources(const GameData& game_data)
     Json item_sources_json = Json::parse(ITEM_SOURCES_JSON);
     for(const Json& source_json : item_sources_json)
     {
-        _item_sources.emplace_back(ItemSource::from_json(source_json, game_data));
+        _item_sources.emplace_back(ItemSource::from_json(source_json, game_data, *this));
     }
 
 #ifdef DEBUG
@@ -95,16 +104,6 @@ void RandomizerWorld::init_nodes()
     {
         WorldNode* new_node = WorldNode::from_json(node_json, node_id);
         _nodes[node_id] = new_node;
-    }
-
-    for(ItemSource* source : this->item_sources())
-    {
-        const std::string& node_id = source->node_id();
-        try {
-            _nodes.at(node_id)->add_item_source(source);
-        } catch(std::out_of_range&) {
-            throw RandomizerException("Could not find node '" + node_id + "' referenced by item source '" + source->name() + "'");
-        }
     }
 
 #ifdef DEBUG
@@ -139,4 +138,13 @@ void RandomizerWorld::init_regions()
     for(auto& [id, node] : _nodes)
         if(node->region() == nullptr)
             throw RandomizerException("Node '" + node->id() + "' doesn't belong to any region");
+}
+
+void RandomizerWorld::apply_options(const RandomizerOptions& options, const GameData& game_data)
+{
+    // Apply item sources which contents were set inside the preset configuration
+    for(auto& [source_id, item_id] : options.fixed_item_sources())
+    {
+        _item_sources[source_id]->item(game_data.item(item_id));
+    }
 }

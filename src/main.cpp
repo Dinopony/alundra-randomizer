@@ -120,12 +120,8 @@ Json randomize(RandomizerWorld& world, GameData& game_data, RandomizerOptions& o
 
     spoiler_json["permalink"] = options.permalink();
     spoiler_json["hashSentence"] = options.hash_sentence();
-    spoiler_json.merge_patch(options.to_json());
+    spoiler_json.merge_patch(options.to_json(game_data, world));
 
-    // Parse a potential "world" section inside the preset for plandos & half plandos
-    WorldJsonParser::parse_world_json(options.world_json(), world, game_data);
-
-    // In rando mode, we rock our little World and shuffle things around to make a brand new experience on each seed.
     std::cout << "\nRandomizing world...\n";
     WorldShuffler shuffler(world, game_data, options);
     shuffler.randomize();
@@ -203,11 +199,13 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
 
 void generate(const ArgumentDictionary& args)
 {
-    RandomizerOptions options(args);
+    GameData game_data;
+    RandomizerWorld world(game_data);
+    RandomizerOptions options(args, game_data, world);
     PersonalSettings personal_settings(args);
 
-    GameData game_data(options);
-    RandomizerWorld world(options, game_data);
+    game_data.apply_options(options);
+    world.apply_options(options, game_data);
 
     Json spoiler_json = randomize(world, game_data, options, personal_settings, args);
 

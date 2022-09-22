@@ -5,10 +5,10 @@
 #include "data/item.json.hxx"
 #include "../randomizer_options.hpp"
 
-GameData::GameData(const RandomizerOptions& options)
+GameData::GameData()
 {
     this->init_items();
-    this->init_starting_flags(options);
+    this->init_starting_flags();
 }
 
 /**
@@ -36,7 +36,7 @@ void GameData::init_items()
  * 
  * @param options the randomizer options
  */
-void GameData::init_starting_flags(const RandomizerOptions& options)
+void GameData::init_starting_flags()
 {
     // Mark HUD as allowed (0x40 -> 0x1DD403)
     _starting_flags.emplace_back(FLAG_HUD_ALLOWED);
@@ -72,7 +72,10 @@ void GameData::init_starting_flags(const RandomizerOptions& options)
     // Activate Torla geysers on game start, giving access to Torla Mountain
     _starting_flags.emplace_back(FLAG_TORLA_GEYSERS_1);
     _starting_flags.emplace_back(FLAG_TORLA_GEYSERS_2);
+}
 
+void GameData::apply_options(const RandomizerOptions& options)
+{
     if(options.megaliths_enabled_on_start())
         _starting_flags.emplace_back(FLAG_CAN_ACTIVATE_MEGALITHS);
 

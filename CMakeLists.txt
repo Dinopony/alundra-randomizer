@@ -54,7 +54,6 @@ set(SOURCES
         "src/io/io.hpp"
         "src/io/model_writer.cpp"
         "src/io/spoiler_writer.cpp"
-        "src/io/world_json_parser.cpp"
 
         # --- Game model ----------------------------------------
         "src/game/item.hpp"
