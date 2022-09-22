@@ -1482,7 +1482,7 @@
         "vanillaItem": "Emerald Crest"
     },
     {
-        "name": "Merrick Shop: Item traded for 15 Gilded Falcons",
+        "name": "Merrick's Shop: Item traded for 15 Gilded Falcons",
         "nodeId": "merrick_shop_1",
         "address": "1EBF67C",
         "spriteAddress": "1EBF92E",
@@ -1491,7 +1491,7 @@
         "vanillaItem": "Life Vessel"
     },
     {
-        "name": "Merrick Shop: Item traded for 20 Gilded Falcons",
+        "name": "Merrick's Shop: Item traded for 20 Gilded Falcons",
         "nodeId": "merrick_shop_2",
         "address": "1EBF6B4",
         "spriteAddress": [
@@ -1503,7 +1503,7 @@
         "vanillaItem": "Olga's Ring"
     },
     {
-        "name": "Merrick Shop: Item traded for 25 Gilded Falcons",
+        "name": "Merrick's Shop: Item traded for 25 Gilded Falcons",
         "nodeId": "merrick_shop_3",
         "address": "1EBF774",
         "spriteAddress": "1EBF956",
@@ -1512,7 +1512,7 @@
         "vanillaItem": "Life Vessel"
     },
     {
-        "name": "Merrick Shop: Item traded for 30 Gilded Falcons",
+        "name": "Merrick's Shop: Item traded for 30 Gilded Falcons",
         "nodeId": "merrick_shop_4",
         "address": "1EBF6E4",
         "spriteAddress": [
@@ -1524,7 +1524,7 @@
         "vanillaItem": "Silver Armlet"
     },
     {
-        "name": "Merrick Shop: Item traded for 35 Gilded Falcons",
+        "name": "Merrick's Shop: Item traded for 35 Gilded Falcons",
         "nodeId": "merrick_shop_5",
         "address": "1EBF7AC",
         "spriteAddress": "1EBF97E",
@@ -1533,7 +1533,7 @@
         "vanillaItem": "Life Vessel"
     },
     {
-        "name": "Merrick Shop: Item traded for 40 Gilded Falcons",
+        "name": "Merrick's Shop: Item traded for 40 Gilded Falcons",
         "nodeId": "merrick_shop_6",
         "address": "1EBF714",
         "spriteAddress": [
@@ -1546,7 +1546,7 @@
         "vanillaItem": "Recovery Ring"
     },
     {
-        "name": "Merrick Shop: Item traded for 45 Gilded Falcons",
+        "name": "Merrick's Shop: Item traded for 45 Gilded Falcons",
         "nodeId": "merrick_shop_7",
         "address": "1EBF7E4",
         "spriteAddress": "1EBF9A6",
@@ -1555,7 +1555,7 @@
         "vanillaItem": "Life Vessel"
     },
     {
-        "name": "Merrick Shop: Item traded for 50 Gilded Falcons",
+        "name": "Merrick's Shop: Item traded for 50 Gilded Falcons",
         "nodeId": "merrick_shop_8",
         "address": "1EBF742",
         "spriteAddress": [

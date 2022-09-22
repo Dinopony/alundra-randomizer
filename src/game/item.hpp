@@ -9,12 +9,16 @@ class Item
 private:
     /// The in-game ID of the item
     uint8_t _id;
+    
     /// The name of the item
     std::string _name;
+
     /// The maximum amount of this item the player can carry at any given point
     uint8_t _max_quantity = 1;
+
     /// The amount possessed by player on game start
     uint8_t _starting_quantity = 0;
+
     /// The value of this item in shops
     uint16_t _gold_value = 0;
 

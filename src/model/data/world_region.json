@@ -5,107 +5,7 @@
             "inoa"
         ]
     },
-    {
-        "name": "Overworld A3 (Ruins above Fire Manor)",
-        "nodeIds": [
-            "overworld_a3_left",
-            "overworld_a3_left_behind_power_glove",
-            "overworld_a3_megalith",
-            "overworld_a3_right",
-            "overworld_a3_right_behind_vines"
-        ]
-    },
-    {
-        "name": "Overworld A4 (Fire Manor sector)",
-        "nodeIds": [
-            "overworld_a4_right",
-            "overworld_a4_middle",
-            "overworld_a4_left",
-            "overworld_a4_manor",
-            "overworld_a4_behind_manor"
-        ]
-    },
-    {
-        "name": "Fire Manor",
-        "nodeIds": [
-            "fire_manor"
-        ]
-    },
 
-    {
-        "name": "Overworld B1 (Lake sector)",
-        "nodeIds": [
-            "overworld_b1",
-            "overworld_b1_island",
-            "overworld_b1_left"
-        ]
-    },
-
-    {
-        "name": "Overworld B2 (Coal Mine sector)",
-        "nodeIds": [
-            "overworld_b2",
-            "overworld_b2_left",
-            "overworld_b2_cave_to_lake",
-            "overworld_b2_cave_to_lake_behind_merman",
-            "overworld_b2_upper_mines"
-        ]
-    },
-    {
-        "name": "Coal Mine",
-        "nodeIds": [ "coal_mine" ]
-    },
-
-    {
-        "name": "Overworld B3 (Riverside sector)",
-        "nodeIds": [
-            "overworld_b3",
-            "overworld_b3_elevated",
-            "overworld_b3_behind_vines",
-            "overworld_b3_behind_power_glove",
-            "overworld_b3_megalith",
-            "overworld_b3_top_left"
-        ]
-    },
-    {
-        "name": "Riverside Casino",
-        "nodeIds": [
-            "riverside_casino",
-            "riverside_casino_shooting_range"
-        ]
-    },
-    {
-        "name": "Fairy Pond",
-        "nodeIds": [ "fairy_pond" ]
-    },
-
-    {
-        "name": "Overworld B4 (Nava's hut sector)",
-        "nodeIds": [
-            "overworld_b4",
-            "overworld_b4_behind_merman",
-            "overworld_b4_behind_bomb",
-            "overworld_b4_behind_power_glove",
-            "overworld_b4_nava_hut_behind_spring"
-        ]
-    },
-
-    {
-        "name": "Overworld C1 (Magyscar sector)",
-        "nodeIds": [
-            "overworld_c1",
-            "overworld_c1_right_sector",
-            "overworld_c1_elevated_cavern",
-            "overworld_c1_cliff"
-        ]
-    },
-    {
-        "name": "Magyscar",
-        "nodeIds": [
-            "magyscar",
-            "magyscar_behind_bomb"
-        ]
-    },
     {
         "name": "Overworld C2 (Sanctuary sector)",
         "nodeIds": [
@@ -122,55 +22,18 @@
     },
 
     {
-        "name": "Overworld C4 (Merrick's shop sector)",
+        "name": "Overworld B2 (Coal Mine sector)",
         "nodeIds": [
-            "overworld_c4",
-            "overworld_c4_behind_spring",
-            "overworld_c4_behind_long_boots",
-            "overworld_c4_right_cliff_behind_long_boots"
+            "overworld_b2",
+            "overworld_b2_left",
+            "overworld_b2_cave_to_lake",
+            "overworld_b2_cave_to_lake_behind_merman",
+            "overworld_b2_upper_mines"
         ]
     },
     {
-        "name": "Merrick's shop",
-        "nodeIds": [
-            "merrick_shop_1",
-            "merrick_shop_2",
-            "merrick_shop_3",
-            "merrick_shop_4",
-            "merrick_shop_5",
-            "merrick_shop_6",
-            "merrick_shop_7",
-            "merrick_shop_8"
-        ]
-    },
-    {
-        "name": "Coastal Cave",
-        "nodeIds": [
-            "coastal_cave",
-            "coastal_cave_behind_merman"
-        ]
-    },
-
-    {
-        "name": "Overworld D1 (Torla sector)",
-        "nodeIds": [
-            "overworld_d1",
-            "overworld_d1_cliff_maze"
-        ]
-    },
-    {
-        "name": "Torla Mountain",
-        "nodeIds": [
-            "torla_mountain",
-            "torla_mountain_behind_charm_boots",
-            "torla_mountain_behind_spring"
-        ]
-    },
-    {
-        "name": "Ice Manor",
-        "nodeIds": [
-            "ice_manor"
-        ]
+        "name": "Coal Mine",
+        "nodeIds": [ "coal_mine" ]
     },
 
     {
@@ -208,6 +71,36 @@
     },
 
     {
+        "name": "Overworld C4 (Merrick's shop sector)",
+        "nodeIds": [
+            "overworld_c4",
+            "overworld_c4_behind_spring",
+            "overworld_c4_behind_long_boots",
+            "overworld_c4_right_cliff_behind_long_boots"
+        ]
+    },
+    {
+        "name": "Merrick's shop",
+        "nodeIds": [
+            "merrick_shop_1",
+            "merrick_shop_2",
+            "merrick_shop_3",
+            "merrick_shop_4",
+            "merrick_shop_5",
+            "merrick_shop_6",
+            "merrick_shop_7",
+            "merrick_shop_8"
+        ]
+    },
+    {
+        "name": "Coastal Cave",
+        "nodeIds": [
+            "coastal_cave",
+            "coastal_cave_behind_merman"
+        ]
+    },
+
+    {
         "name": "Overworld D4 (Reptiles Lair sector)",
         "nodeIds": [
             "overworld_d4",
@@ -220,6 +113,40 @@
             "reptiles_lair_side_cavern",
             "reptiles_lair",
             "reptiles_lair_behind_flail"
+        ]
+    },
+
+    {
+        "name": "Overworld B3 (Riverside sector)",
+        "nodeIds": [
+            "overworld_b3",
+            "overworld_b3_elevated",
+            "overworld_b3_behind_vines",
+            "overworld_b3_behind_power_glove",
+            "overworld_b3_megalith",
+            "overworld_b3_top_left"
+        ]
+    },
+    {
+        "name": "Riverside Casino",
+        "nodeIds": [
+            "riverside_casino",
+            "riverside_casino_shooting_range"
+        ]
+    },
+    {
+        "name": "Fairy Pond",
+        "nodeIds": [ "fairy_pond" ]
+    },
+
+    {
+        "name": "Overworld B4 (Nava's hut sector)",
+        "nodeIds": [
+            "overworld_b4",
+            "overworld_b4_behind_merman",
+            "overworld_b4_behind_bomb",
+            "overworld_b4_behind_power_glove",
+            "overworld_b4_nava_hut_behind_spring"
         ]
     },
 
@@ -256,9 +183,75 @@
     },
 
     {
+        "name": "Overworld C1 (Magyscar sector)",
+        "nodeIds": [
+            "overworld_c1",
+            "overworld_c1_right_sector",
+            "overworld_c1_elevated_cavern",
+            "overworld_c1_cliff"
+        ]
+    },
+    {
+        "name": "Magyscar",
+        "nodeIds": [
+            "magyscar",
+            "magyscar_behind_bomb"
+        ]
+    },
+
+    {
+        "name": "Overworld D1 (Torla sector)",
+        "nodeIds": [
+            "overworld_d1",
+            "overworld_d1_cliff_maze"
+        ]
+    },
+    {
+        "name": "Torla Mountain",
+        "nodeIds": [
+            "torla_mountain",
+            "torla_mountain_behind_charm_boots",
+            "torla_mountain_behind_spring"
+        ]
+    },
+    {
+        "name": "Ice Manor",
+        "nodeIds": [
+            "ice_manor"
+        ]
+    },
+
+    {
         "name": "Overworld E1 (Nirude sector)",
         "nodeIds": [
             "overworld_e1"
+        ]
+    },
+
+    {
+        "name": "Overworld A3 (Ruins above Fire Manor)",
+        "nodeIds": [
+            "overworld_a3_left",
+            "overworld_a3_left_behind_power_glove",
+            "overworld_a3_megalith",
+            "overworld_a3_right",
+            "overworld_a3_right_behind_vines"
+        ]
+    },
+    {
+        "name": "Overworld A4 (Fire Manor sector)",
+        "nodeIds": [
+            "overworld_a4_right",
+            "overworld_a4_middle",
+            "overworld_a4_left",
+            "overworld_a4_manor",
+            "overworld_a4_behind_manor"
+        ]
+    },
+    {
+        "name": "Fire Manor",
+        "nodeIds": [
+            "fire_manor"
         ]
     },
 
@@ -283,6 +276,14 @@
         ]
     },
 
+    {
+        "name": "Overworld B1 (Lake sector)",
+        "nodeIds": [
+            "overworld_b1",
+            "overworld_b1_island",
+            "overworld_b1_left"
+        ]
+    },
     {
         "name": "Lake Shrine",
         "nodeIds": [
