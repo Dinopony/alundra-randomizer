@@ -128,34 +128,46 @@ void WorldShuffler::init_item_pool()
 }
 
 /**
- * Place the given item randomly in one of the given item sources
+ * Place the given item randomly in an empty ItemSource that is reachable by the solver
  * @param item the item to place
- * @param possible_sources the item sources that are eligible for item placement
  * @return the item source where the item was placed
  * @throw RandomizerException if item could not be placed in any of the possible item sources
  * @throw RandomizerException if item could not be found inside item pool
  */
-ItemSource* WorldShuffler::place_progression_item_randomly(const Item* item, std::vector<ItemSource*> possible_sources)
+ItemSource* WorldShuffler::place_progression_item_randomly(const Item* item)
 {
-    if(!vectools::contains(_item_pool, item))
-    {
-        std::cout << "Ignored placement of " << item->name() 
-                 << " because there are no more instances of it inside the item pool." << std::endl;
-        return nullptr;
-    }
+    constexpr int32_t DEFAULT_ITEM_SOURCE_WEIGHT = 5;
+    constexpr int32_t MINIMAL_ITEM_SOURCE_WEIGHT = 1;
 
-    vectools::shuffle(possible_sources, _rng);
-
-    ItemSource* picked_item_source = nullptr;
-    for(ItemSource* source : possible_sources)
+    const std::vector<ItemSource*>& reachable_sources = _solver.reachable_item_sources();
+   
+    std::vector<ItemSource*> weighted_sources;
+    weighted_sources.reserve(reachable_sources.size() * DEFAULT_ITEM_SOURCE_WEIGHT);
+    for(ItemSource* source : reachable_sources)
     {
         if(!source->is_empty())
-            throw RandomizerException("Received a non-empty ItemSource in WorldShuffler::place_progression_item_randomly");
+            continue;
         if(!source->can_contain_progression())
             continue;
         if(!test_item_source_compatibility(source, item))
             continue;
-    
+
+        // We perform a weighting of item sources: the more an item source has been considered to place a progression
+        // item, the less likely it will become that it is actually selected. This is to counterbalance the fact that
+        // item sources in the first sphere tend to be considered many more times than late game ones (since they are
+        // reachable from the start) and therefore tend to contain a lot more progression items (which is a bias we want
+        // to avoid).
+        ++_item_source_sightings[source];
+
+        int32_t weight = std::max(DEFAULT_ITEM_SOURCE_WEIGHT - _item_source_sightings[source], MINIMAL_ITEM_SOURCE_WEIGHT);
+        for(size_t i=0 ; i<weight ; ++i)
+            weighted_sources.emplace_back(source);
+    }
+    vectools::shuffle(weighted_sources, _rng);
+
+    ItemSource* picked_item_source = nullptr;
+    for(ItemSource* source : weighted_sources)
+    {
         source->item(item);
         picked_item_source = source;
         break;
@@ -164,7 +176,7 @@ ItemSource* WorldShuffler::place_progression_item_randomly(const Item* item, std
     if(!picked_item_source)
     {
         throw RandomizerException("Could not place " + item->name() + " in any of the "
-                                   + std::to_string(possible_sources.size()) + " possible sources.");
+                                   + std::to_string(reachable_sources.size()) + " possible sources.");
     }
 
     _item_pool.erase(std::find(_item_pool.begin(), _item_pool.end(), item));
@@ -203,6 +215,22 @@ bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Ite
 {
     if(source->forbid_precious_items() && item->is_precious())
         return false;
+    return true;
+}
+
+/**
+ * Checks if the current list of items is contained inside the item pool (and therefore can be placed inside the world).
+ * @param items the Item objects to check
+ */
+bool WorldShuffler::item_pool_contains_items(const std::vector<const Item*>& items) const
+{
+    std::map<const Item*, uint16_t> item_quantities;
+    for(const Item* item : items)
+        ++item_quantities[item];
+
+    for(auto& [item, qty] : item_quantities)
+        if(vectools::count(_item_pool, item) < qty)
+            return false;
     return true;
 }
 
@@ -271,19 +299,29 @@ void WorldShuffler::open_random_blocked_path()
     std::vector<WorldPath*> weighted_blocked_paths = this->build_weighted_blocked_paths_list();
     if (weighted_blocked_paths.empty())
         return;
-    WorldPath* path_to_open = weighted_blocked_paths[0];
-    debug_log["chosenPath"].emplace_back(path_to_open->origin()->id() + " --> " + path_to_open->destination()->id());
 
-    // Place all missing key items for the player to be able to open this blocking path
-    std::vector<const Item*> items_to_place = _solver.missing_items_to_take_path(path_to_open);
-    for(const Item* item : items_to_place)
+    for(WorldPath* path_to_open : weighted_blocked_paths)
     {
-        while(vectools::contains(_item_pool, item))
+        std::vector<const Item*> items_to_place = _solver.missing_items_to_take_path(path_to_open);
+
+        // Check if all items required to cross the path are available in the item pool
+        if(!this->item_pool_contains_items(items_to_place))
+            continue;
+
+        debug_log["chosenPath"].emplace_back(path_to_open->origin()->id() + " --> " + path_to_open->destination()->id());
+
+        // Place all missing key items for the player to be able to open this blocking path
+        for(const Item* item : items_to_place)
         {
-            ItemSource* source = this->place_progression_item_randomly(item, _solver.empty_reachable_item_sources());
-            _logical_playthrough.emplace_back(source);
-            debug_log["placedKeyItems"][source->name()] = item->name();
+            while(vectools::contains(_item_pool, item))
+            {
+                ItemSource* source = this->place_progression_item_randomly(item);
+                _logical_playthrough.emplace_back(source);
+                debug_log["placedKeyItems"][source->name()] = item->name();
+            }
         }
+
+        break;
     }
 }
 

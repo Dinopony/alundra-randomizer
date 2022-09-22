@@ -33,6 +33,11 @@ private:
     /// of item instances to place)
     std::vector<const Item*> _item_pool;
 
+    /// A map containing the amount of times an item source was considered for placing an item, allowing
+    /// for dynamic weighting to prevent item sources in the first sphere to statistically contain
+    /// better items
+    std::map<ItemSource*, int32_t> _item_source_sightings;
+
     /// The list of item sources containing progression items, in the order they were filled by the shuffler
     /// algorithm. This means it contains (more or less) the minimal list of item sources to take in order to
     /// be able to complete the seed
@@ -53,10 +58,13 @@ public:
 private:
     void init_item_pool();
 
-    ItemSource* place_progression_item_randomly(const Item* item, std::vector<ItemSource*> possible_sources);
-    void fill_item_source_randomly(ItemSource* source);
-    [[nodiscard]] bool test_item_source_compatibility(ItemSource* source, const Item* item) const;
-    [[nodiscard]] std::vector<WorldPath*> build_weighted_blocked_paths_list();
     void open_random_blocked_path();
     void place_remaining_items();
+
+    ItemSource* place_progression_item_randomly(const Item* item);
+    void fill_item_source_randomly(ItemSource* source);
+
+    [[nodiscard]] bool test_item_source_compatibility(ItemSource* source, const Item* item) const;
+    [[nodiscard]] bool item_pool_contains_items(const std::vector<const Item*>& items) const;
+    [[nodiscard]] std::vector<WorldPath*> build_weighted_blocked_paths_list();
 };

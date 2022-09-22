@@ -85,7 +85,6 @@ public:
 
     [[nodiscard]] const std::vector<WorldPath*>& blocked_paths() const { return _blocked_paths; }
     [[nodiscard]] const std::vector<ItemSource*>& reachable_item_sources() const { return _reachable_item_sources; }
-    [[nodiscard]] std::vector<ItemSource*> empty_reachable_item_sources() const;
     [[nodiscard]] const std::vector<const Item*>& inventory() const { return _inventory; }
 
     [[nodiscard]] bool can_take_path(WorldPath* path) const;

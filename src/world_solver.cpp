@@ -137,21 +137,6 @@ void WorldSolver::update_current_inventory()
 }
 
 /**
- * @return a list of all the empty item sources that can be currently reached by this solver
- */
-std::vector<ItemSource*> WorldSolver::empty_reachable_item_sources() const
-{
-    std::vector<ItemSource*> empty_item_sources;
-    empty_item_sources.reserve(_reachable_item_sources.size());
-
-    for(ItemSource* source : _reachable_item_sources)
-        if(source->is_empty())
-            empty_item_sources.emplace_back(source);
-    
-    return empty_item_sources;
-}
-
-/**
  * Tests if all conditions (items, visited regions...) are met by the solver to cross the given WorldPath.
  * @param path the path to test
  * @return true if solver can take this path, false otherwise
