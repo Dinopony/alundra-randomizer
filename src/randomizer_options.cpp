@@ -14,7 +14,6 @@
 #include "tools/bitstream_reader.hpp"
 #include "tools/exception.hpp"
 #include "tools/base64.hpp"
-#include "constants/item_names.hpp"
 
 RandomizerOptions::RandomizerOptions(const ArgumentDictionary& args, const GameData& game_data, const RandomizerWorld& world)
 {
@@ -83,10 +82,7 @@ Json RandomizerOptions::to_json(const GameData& game_data, const RandomizerWorld
     {
         uint8_t amount = _items_distribution[i];
         if(amount > 0)
-        {
-            const std::string& item_name = get_item_name_from_id(i);
-            items_distribution_with_names[item_name] = amount;
-        }
+            items_distribution_with_names[game_data.item(i)->name()] = amount;
     }
     json["randomizerSettings"]["itemsDistributions"] = items_distribution_with_names;
 
@@ -116,7 +112,7 @@ void RandomizerOptions::apply_game_settings_json(const Json& json)
     }
 }
 
-void RandomizerOptions::apply_randomizer_settings_json(const Json& json)
+void RandomizerOptions::apply_randomizer_settings_json(const Json& json, const GameData& game_data)
 {
     for(auto& [key, value] : json.items())
     {
@@ -127,7 +123,7 @@ void RandomizerOptions::apply_randomizer_settings_json(const Json& json)
             std::map<std::string, uint8_t> items_distribution = value;
             for(auto& [item_name, quantity] : items_distribution)
             {
-                uint8_t item_id = get_item_id_from_name(item_name);
+                uint8_t item_id = game_data.item(item_name)->id();
                 _items_distribution[item_id] = quantity;
             }
         }
@@ -181,7 +177,7 @@ void RandomizerOptions::apply_json(const Json& json, const GameData& game_data, 
         if(key == "seed")
             _seed = value;
         if(key == "randomizerSettings")                        
-            this->apply_randomizer_settings_json(value);
+            this->apply_randomizer_settings_json(value, game_data);
         else if(key == "gameSettings")
             this->apply_game_settings_json(value);
         else if(key == "world")

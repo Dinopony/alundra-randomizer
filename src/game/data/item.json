@@ -1,41 +1,289 @@
-{
-    "Nothing": {
+[
+    {
+        "name": "Nothing",
         "maxQuantity": 0
     },
-    "Dagger": {
+    {
+        "name": "Dagger",
         "startingQuantity": 1
     },
-    "Herbs": {
+    {
+        "name": "Sword"
+    },
+    {
+        "name": "Fiend Blade"
+    },
+    {
+        "name": "Holy Sword"
+    },
+    {
+        "name": "Hunter's Bow"
+    },
+    {
+        "name": "Willow Bow"
+    },
+    {
+        "name": "Spirit Wand"
+    },
+    {
+        "name": "Legend Sword"
+    },
+    {
+        "name": "Iron Flail"
+    },
+    {
+        "name": "Steel Flail"
+    },
+    {
+        "name": "Item 0x0B"
+    },
+    {
+        "name": "Item 0x0C"
+    },
+    {
+        "name": "Item 0x0D"
+    },
+    {
+        "name": "Ice Wand"
+    },
+    {
+        "name": "Item 0x0F"
+    },
+    {
+        "name": "Fire Wand"
+    },
+    {
+        "name": "Cloth Armor"
+    },
+    {
+        "name": "Leather Armor"
+    },
+    {
+        "name": "Ancient Armor"
+    },
+    {
+        "name": "Silver Armor"
+    },
+    {
+        "name": "Item 0x15"
+    },
+    {
+        "name": "Item 0x16"
+    },
+    {
+        "name": "Item 0x17"
+    },
+    {
+        "name": "Item 0x18"
+    },
+    {
+        "name": "Short Boots"
+    },
+    {
+        "name": "Long Boots"
+    },
+    {
+        "name": "Merman Boots"
+    },
+    {
+        "name": "Charm Boots"
+    },
+    {
+        "name": "Item 0x1D"
+    },
+    {
+        "name": "Item 0x1E"
+    },
+    {
+        "name": "Spring Bean"
+    },
+    {
+        "name": "Sand Cape"
+    },
+    {
+        "name": "Broken Armor"
+    },
+    {
+        "name": "Item 0x22"
+    },
+    {
+        "name": "Bomb"
+    },
+    {
+        "name": "Herbs",
         "maxQuantity": 9
     },
-    "Key": {
+    {
+        "name": "Strength Elixyr"
+    },
+    {
+        "name": "Magic Elixyr"
+    },
+    {
+        "name": "Wonder Essence"
+    },
+    {
+        "name": "Aqua Cape"
+    },
+    {
+        "name": "Strength Tonic"
+    },
+    {
+        "name": "Item 0x2A"
+    },
+    {
+        "name": "Earth Scroll"
+    },
+    {
+        "name": "Earth Book"
+    },
+    {
+        "name": "Water Scroll"
+    },
+    {
+        "name": "Water Book"
+    },
+    {
+        "name": "Fire Scroll"
+    },
+    {
+        "name": "Fire Book"
+    },
+    {
+        "name": "Wind Scroll"
+    },
+    {
+        "name": "Wind Book"
+    },
+    {
+        "name": "Olga's Ring"
+    },
+    {
+        "name": "Item 0x34"
+    },
+    {
+        "name": "Silver Armlet"
+    },
+    {
+        "name": "Nava's Charm"
+    },
+    {
+        "name": "Recovery Ring"
+    },
+    {
+        "name": "Item 0x38"
+    },
+    {
+        "name": "Secret Pass"
+    },
+    {
+        "name": "Item 0x3A"
+    },
+    {
+        "name": "Power Glove"
+    },
+    {
+        "name": "Elevator Key"
+    },
+    {
+        "name": "Key",
         "maxQuantity": 99,
         "precious": true
     },
-    "1 Gilder": {
+    {
+        "name": "Ruby Crest"
+    },
+    {
+        "name": "Sapphire Crest"
+    },
+    {
+        "name": "Topaz Crest"
+    },
+    {
+        "name": "Agate Crest"
+    },
+    {
+        "name": "Garnet Crest"
+    },
+    {
+        "name": "Emerald Crest"
+    },
+    {
+        "name": "Diamond Crest"
+    },
+    {
+        "name": "1 Gilder",
         "maxQuantity": 0
     },
-    "5 Gilder": {
+    {
+        "name": "5 Gilder",
         "maxQuantity": 0
     },
-    "10 Gilder": {
+    {
+        "name": "10 Gilder",
         "maxQuantity": 0,
         "precious": true
     },
-    "30 Gilder": {
+    {
+        "name": "30 Gilder",
         "maxQuantity": 0,
         "precious": true
     },
-    "Gilded Falcon": {
+    {
+        "name": "Sluice Key"
+    },
+    {
+        "name": "Bouquet"
+    },
+    {
+        "name": "Small Key"
+    },
+    {
+        "name": "Jess's Letter"
+    },
+    {
+        "name": "Tree Gem"
+    },
+    {
+        "name": "Zolists Stone"
+    },
+    {
+        "name": "Gilded Falcon",
         "maxQuantity": 0,
         "precious": true
     },
-    "Magic Seed": {
+    {
+        "name": "Magic Seed",
         "maxQuantity": 0,
         "precious": true
     },
-    "Life Vessel": {
+    {
+        "name": "Item 0x51"
+    },
+    {
+        "name": "Item 0x52"
+    },
+    {
+        "name": "Life Vessel",
         "maxQuantity": 0,
         "precious": true
+    },
+    {
+        "name": "Item 0x54"
+    },
+    {
+        "name": "Item 0x55"
+    },
+    {
+        "name": "Item 0x56"
+    },
+    {
+        "name": "Book of Runes"
+    },
+    {
+        "name": "Book of Elna"
+    },
+    {
+        "name": "Curious Key"
     }
-}
+]

@@ -77,7 +77,7 @@ public:
 
 private:
     void apply_game_settings_json(const Json& json);
-    void apply_randomizer_settings_json(const Json& json);
+    void apply_randomizer_settings_json(const Json& json, const GameData& game_data);
     void apply_world_json(const Json& json, const GameData& game_data, const RandomizerWorld& world);
 
     void parse_permalink(std::string permalink);

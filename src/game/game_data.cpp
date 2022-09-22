@@ -2,13 +2,31 @@
 
 #include "item.hpp"
 #include "../constants/flags.hpp"
-#include "data/item.json.hxx"
 #include "../randomizer_options.hpp"
+#include "../tools/exception.hpp"
+#include "data/item.json.hxx"
+
 
 GameData::GameData()
 {
     this->init_items();
     this->init_starting_flags();
+}
+
+const Item* GameData::item(const std::string& name) const
+{
+    for(const Item& item : _items)
+        if(item.name() == name)
+            return &item;
+    throw RandomizerException("Could not find item with name '" + name + "'");
+}
+
+Item* GameData::item(const std::string& name)
+{
+    for(Item& item : _items)
+        if(item.name() == name)
+            return &item;
+    throw RandomizerException("Could not find item with name '" + name + "'");
 }
 
 /**
@@ -17,17 +35,14 @@ GameData::GameData()
 void GameData::init_items()
 {   
     for(size_t i=0 ; i<_items.size() ; ++i)
-    {
-        Item& item = _items[i];
-        item.id(i);
-        item.name(get_item_name_from_id(i));
-    }
+        _items[i].id(i);
 
     Json items_json = Json::parse(ITEMS_JSON);
-    for(auto& [item_name, item_json] : items_json.items())
+    uint8_t item_id = 0;
+    for(Json& item_json : items_json) // auto& [item_name, item_json] : items_json.items()
     {
-        uint8_t item_id = get_item_id_from_name(item_name);
         _items[item_id].apply_json(item_json);
+        ++item_id;
     }
 }
 

@@ -45,8 +45,6 @@ set(SOURCES
 
         # --- Constnats ----------------------------------------
         "src/constants/item_codes.hpp"
-        "src/constants/item_names.hpp"
-        "src/constants/item_names.cpp"
         "src/constants/flags.hpp"
 
         # --- I/O ----------------------------------------
