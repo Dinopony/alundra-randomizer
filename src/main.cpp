@@ -271,6 +271,11 @@ int main(int argc, char* argv[])
         std::cerr << "ERROR: " << e.what() << std::endl;
         return_code = EXIT_FAILURE;
     }
+    catch(Json::parse_error& e)
+    {
+        std::cerr << "ERROR: Malformed json -> " << e.what() << std::endl;
+        return_code = EXIT_FAILURE;
+    }
 
     if(args.get_boolean("pause", true))
     {
