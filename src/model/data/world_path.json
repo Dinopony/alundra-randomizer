@@ -1002,6 +1002,7 @@
     },
     {
         "fromId": "lake_shrine",
-        "toId": "end"
+        "toId": "end",
+        "requiredItems": [ "Fire Wand" ]
     }
 ]
