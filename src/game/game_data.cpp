@@ -85,8 +85,12 @@ void GameData::init_starting_flags()
     _starting_flags.emplace_back(FLAG_MAGYSCAR_WALL_IS_CRACKED);
 
     // Activate Torla geysers on game start, giving access to Torla Mountain
-    _starting_flags.emplace_back(FLAG_TORLA_GEYSERS_1);
-    _starting_flags.emplace_back(FLAG_TORLA_GEYSERS_2);
+    _starting_flags.emplace_back(FLAG_NIRUDE_IS_BROKEN); // TODO: This one is required for geysers to work, but has a very bad side effect
+    _starting_flags.emplace_back(FLAG_TORLA_GEYSERS_ACTIVE);
+
+    // Activate Nirude moai statues
+    _starting_flags.emplace_back(FLAG_SAW_NIRUDE_STATUES_ACTIVATION_CUTSCENE);
+    _starting_flags.emplace_back(FLAG_NIRUDE_STATUES_VULNERABLE);
 }
 
 void GameData::apply_options(const RandomizerOptions& options)

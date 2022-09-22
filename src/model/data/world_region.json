@@ -224,7 +224,16 @@
     {
         "name": "Overworld E1 (Nirude sector)",
         "nodeIds": [
-            "overworld_e1"
+            "overworld_e1",
+            "overworld_e1_behind_spring",
+            "overworld_e1_left",
+            "overworld_e1_top_left"
+        ]
+    },
+    {
+        "name": "Nirude's Lair",
+        "nodeIds": [
+            "nirude_lair"
         ]
     },
 

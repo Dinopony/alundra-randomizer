@@ -255,6 +255,22 @@
         "hints": [],
         "graphPos": [20,20]
     },
+    "overworld_e1_behind_spring": {
+        "hints": [],
+        "graphPos": [22,22]
+    },
+    "overworld_e1_left": {
+        "hints": [],
+        "graphPos": [17,20]
+    },
+    "overworld_e1_top_left": {
+        "hints": [],
+        "graphPos": [14,22]
+    },
+    "nirude_lair": {
+        "hints": [],
+        "graphPos": [17,24]
+    },
     "overworld_a2": {
         "hints": [],
         "graphPos": [-20,10]

@@ -29,6 +29,10 @@ public:
         data.set_byte(0x1442734, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
         data.set_byte(0x5931734, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
 
+        // Neutralize the Inoa variant replacement when finishing Nirude Lair
+        data.set_byte(0x5478DA, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
+        data.set_byte(0x5F3C8E6, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
+
         // Neutralize the Inoa variant replacement when finishing Torla Mountain
         data.set_byte(0x4817A26, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
     }

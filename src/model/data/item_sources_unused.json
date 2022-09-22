@@ -127,5 +127,26 @@
         "nodeId": "torla_mountain",
         "address": "60B048A",
         "vanillaItem": "Key"
+    },
+    {
+        "name": "Nirude's Lair: Left elevated chest in entrance room",
+        "nodeId": "nirude_lair",
+        "address": "5BF183E",
+        "vanillaItem": "Key"
+    },
+    {
+        "name": "Nirude's Lair: Chest inside left hand room",
+        "nodeId": "nirude_lair",
+        "address": "5C56ADA",
+        "vanillaItem": "Key"
+    },
+    {
+        "name": "Nirude's Lair: Miniboss chest reward",
+        "nodeId": "nirude_lair",
+        "address": "5B8355E",
+        "vanillaItem": "Key"
+    },
+    {
+        "name": "Miming follower giving 50 Gilder after Nirude"
     }
 ]

@@ -329,6 +329,11 @@
     },
     {
         "fromId": "overworld_d1",
+        "toId": "overworld_e1_top_left",
+        "twoWay": true
+    },
+    {
+        "fromId": "overworld_d1",
         "toId": "torla_mountain",
         "twoWay": true,
         "requiredItems": [
@@ -835,7 +840,11 @@
         "fromId": "overworld_e2",
         "toId": "overworld_e3"
     },
-
+    {
+        "fromId": "overworld_e2",
+        "toId": "overworld_e1",
+        "twoWay": true
+    },
     {
         "fromId": "overworld_e2",
         "toId": "overworld_e2_behind_long_boots",
@@ -891,11 +900,42 @@
     },
     {
         "fromId": "underground_waterway",
-        "toId": "overworld_e1",
+        "toId": "overworld_e1_left",
         "twoWay": true,
         "requiredItems": [
             "Merman Boots"
-        ] 
+        ]
+    },
+    {
+        "fromId": "overworld_e1_left",
+        "toId": "overworld_e1"
+    },
+    {
+        "fromId": "overworld_e1_left",
+        "toId": "nirude_lair",
+        "twoWay": true,
+        "requiredNodes": [
+            "overworld_e1_top_left",
+            "overworld_e1_behind_spring"
+        ]
+    },
+    {
+        "fromId": "overworld_e1",
+        "toId": "overworld_e1_left",
+        "requiredItems": [
+            "Spring Bean"
+        ]
+    },
+    {
+        "fromId": "overworld_e1",
+        "toId": "overworld_e1_behind_spring",
+        "requiredItems": [
+            "Spring Bean"
+        ]
+    },
+    {
+        "fromId": "overworld_e1_behind_spring",
+        "toId": "overworld_e1"
     },
 
     {

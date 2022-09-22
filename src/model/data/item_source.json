@@ -562,33 +562,6 @@
         "vanillaItem": "Gilded Falcon"
     },
     {
-        "name": "Overworld E1: Chest on cliff near top-left corner",
-        "nodeId": "overworld_e1",
-        "address": [
-            "548096",
-            "5F3D0A2"
-        ],
-        "vanillaItem": "Earth Book"
-    },
-    {
-        "name": "Overworld E1: Left chest in two chests group",
-        "nodeId": "overworld_e1",
-        "address": [
-            "5480AA",
-            "5F3D0B6"
-        ],
-        "vanillaItem": "30 Gilder"
-    },
-    {
-        "name": "Overworld E1: Right chest in two chests group",
-        "nodeId": "overworld_e1",
-        "address": [
-            "5480BE",
-            "5F3D0CA"
-        ],
-        "vanillaItem": "30 Gilder"
-    },
-    {
         "name": "Overworld E1: Chest near bottom right corner",
         "nodeId": "overworld_e1",
         "address": [
@@ -599,7 +572,7 @@
     },
     {
         "name": "Overworld E1: Chest near top right corner",
-        "nodeId": "overworld_e1",
+        "nodeId": "overworld_e1_behind_spring",
         "address": [
             "54805A",
             "5F3D066"
@@ -1486,6 +1459,88 @@
         "nodeId": "torla_mountain_behind_charm_boots",
         "address": "4817B36",
         "vanillaItem": "Emerald Crest"
+    },
+    {
+        "name": "Nirude's Lair: Chest hidden in passageway behind statue, accessible from outside",
+        "nodeId": "nirude_lair",
+        "address": "5C29D26",
+        "vanillaItem": "Gilded Falcon"
+    },
+    {
+        "name": "Nirude's Lair: Chest on left side of cavern hallway with statues",
+        "nodeId": "nirude_lair",
+        "address": "5BF18B6",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Nirude's Lair: Right elevated chest in entrance room",
+        "nodeId": "nirude_lair",
+        "address": "5BF1852",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Overworld E1: Left chest in two chests group",
+        "nodeId": "nirude_lair",
+        "address": [
+            "5480AA",
+            "5F3D0B6"
+        ],
+        "vanillaItem": "30 Gilder"
+    },
+    {
+        "name": "Overworld E1: Right chest in two chests group",
+        "nodeId": "nirude_lair",
+        "address": [
+            "5480BE",
+            "5F3D0CA"
+        ],
+        "vanillaItem": "30 Gilder"
+    },
+    {
+        "name": "Nirude's Lair: Chest in room with spikes and moving platforms",
+        "nodeId": "nirude_lair",
+        "address": "5B833CE",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Overworld E1: Chest on cliff near top-left corner",
+        "nodeId": "nirude_lair",
+        "address": [
+            "548096",
+            "5F3D0A2"
+        ],
+        "vanillaItem": "Earth Book"
+    },
+    {
+        "name": "Nirude's Lair: Chest hidden behind moving statue",
+        "nodeId": "nirude_lair",
+        "address": "5B4BAFE",
+        "vanillaItem": "Strength Elixyr"
+    },
+    {
+        "name": "Nirude's Lair: Upper falling chest in elevated arena room",
+        "nodeId": "nirude_lair",
+        "address": "5B4BAEA",
+        "vanillaItem": "Life Vessel"
+    },
+    {
+        "name": "Nirude's Lair: Lower falling chest in elevated arena room",
+        "nodeId": "nirude_lair",
+        "address": "5B4BAD6",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Nirude's Lair: Boss reward chest",
+        "nodeId": "nirude_lair",
+        "address": "5F3CFEE",
+        "vanillaItem": "Topaz Crest"
+    },
+    {
+        "name": "Nirude's Lair: Boss reward item given by Miming",
+        "nodeId": "nirude_lair",
+        "address": "5F3C942",
+        "spriteAddress": "5F3D0D2",
+        "vanillaItem": "Aqua Cape"
     },
     {
         "name": "Merrick's Shop: Item traded for 15 Gilded Falcons",

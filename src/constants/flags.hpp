@@ -40,5 +40,8 @@ constexpr Flag FLAG_CAN_EXIT_LARS_CRYPT = Flag(0xD34E, 0);
 
 constexpr Flag FLAG_MAGYSCAR_WALL_IS_CRACKED = Flag(0xD357, 5);
 
-constexpr Flag FLAG_TORLA_GEYSERS_1 = Flag(0xD34F, 5);
-constexpr Flag FLAG_TORLA_GEYSERS_2 = Flag(0xD37A, 3);
+constexpr Flag FLAG_NIRUDE_IS_BROKEN = Flag(0xD34F, 5);
+constexpr Flag FLAG_TORLA_GEYSERS_ACTIVE = Flag(0xD37A, 3);
+
+constexpr Flag FLAG_NIRUDE_STATUES_VULNERABLE = Flag(0xD3CC, 6);
+constexpr Flag FLAG_SAW_NIRUDE_STATUES_ACTIVATION_CUTSCENE = Flag(0xD3D0, 0);
