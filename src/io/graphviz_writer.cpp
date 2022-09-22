@@ -8,6 +8,8 @@
 #include "../model/world_region.hpp"
 #include "../model/randomizer_world.hpp"
 
+#include <climits>
+
 namespace GraphvizWriter {
 
 constexpr const char* COLORS[] = { "indianred2", "lightslateblue", "limegreen", "deeppink2", "darkorchid3", "chocolate2", "darkturquoise" };

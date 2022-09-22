@@ -1,5 +1,7 @@
 #include "world_node.hpp"
 
+#include <climits>
+
 void WorldNode::remove_item_source(ItemSource* source)
 {
     auto it = std::find(_item_sources.begin(), _item_sources.end(), source);
