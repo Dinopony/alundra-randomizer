@@ -725,6 +725,7 @@
     {
         "fromId": "overworld_a2_behind_vines",
         "toId": "overworld_a2_behind_vines_and_bomb",
+        "twoWay": true,
         "requiredItems": [
             "Bomb"
         ]
@@ -801,8 +802,15 @@
         "toId": "overworld_e3_behind_cape_or_boots",
         "twoWay": true,
         "requiredItems": [
-            "Sand Cape",
             "Long Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_e3",
+        "toId": "overworld_e3_behind_cape_or_boots",
+        "twoWay": true,
+        "requiredItems": [
+            "Sand Cape"
         ]
     },
     {
@@ -828,7 +836,13 @@
         "fromId": "overworld_e3",
         "toId": "overworld_e2_behind_long_boots",
         "requiredItems": [
-            "Long Boots",
+            "Long Boots"
+        ]
+    },
+    {
+        "fromId": "overworld_e3",
+        "toId": "overworld_e2_behind_long_boots",
+        "requiredItems": [
             "Sand Cape"
         ]
     },
