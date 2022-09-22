@@ -59,7 +59,7 @@ std::map<std::string, ItemSource*> WorldRegion::item_sources() const
     for(WorldNode* node : _nodes)
     {
         for(ItemSource *source : node->item_sources())
-            item_sources[source->name()] = source;
+            item_sources[source->pretty_name()] = source;
     }
 
     return item_sources;
