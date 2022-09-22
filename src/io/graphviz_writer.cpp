@@ -19,7 +19,7 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& output_
     std::ofstream graphviz(output_path);
     graphviz << "digraph {\n";
 
-    graphviz << "\tgraph [pad=0.5, nodesep=1, ranksep=1.5];\n";
+    graphviz << "\tgraph [pad=0.5, nodesep=0.7];\n";
     graphviz << "\tnode[shape=rect];\n";
     graphviz << "\tlayout = neato;\n\n";
 

@@ -125,7 +125,7 @@
     },
     "overworld_b4_behind_bomb": {
         "hints": [],
-        "graphPos": [-13,-9]
+        "graphPos": [-10,-7]
     },
     "overworld_b4_behind_power_glove": {
         "hints": [],
@@ -361,7 +361,7 @@
     },
     "underground_waterway": {
         "hints": [],
-        "graphPos": [14,10]
+        "graphPos": [17,10]
     },
     "lars_crypt": {
         "hints": [],
