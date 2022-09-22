@@ -995,6 +995,12 @@
         "vanillaItem": "Merman Boots"
     },
     {
+        "name": "Coastal Cave: Chest in room revealed by hitting lever",
+        "nodeId": "coastal_cave_behind_merman",
+        "address": "115DD9A",
+        "vanillaItem": "Gilded Falcon"
+    },
+    {
         "name": "Coastal Cave: First chest in room with checkpoint",
         "nodeId": "coastal_cave_behind_merman",
         "address": "12068F2",
