@@ -194,7 +194,7 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
     std::filesystem::remove_all("./tmp_dump/");
 #endif
 
-    std::cout << "Randomized game outputted to \"" << output_path << "\".\n";
+    std::cout << "Randomized game outputted to " << output_path << ".\n";
 }
 
 void generate(const ArgumentDictionary& args)

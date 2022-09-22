@@ -69,15 +69,15 @@
     },
     "overworld_d3_behind_bricks": {
         "hints": [],
-        "graphPos": [8,2]
+        "graphPos": [6,-2]
     },
     "overworld_d3_behind_spring": {
         "hints": [],
-        "graphPos": [8,4]
+        "graphPos": [8,-4]
     },
     "overworld_d3_behind_spring_and_vines": {
         "hints": [],
-        "graphPos": [8,6]
+        "graphPos": [8,-6]
     },
     "overworld_d4": {
         "hints": [],
@@ -97,7 +97,7 @@
     },
     "overworld_c4_behind_long_boots": {
         "hints": [],
-        "graphPos": [5,-14]
+        "graphPos": [4,-14]
     },
     "overworld_c4_right_cliff_behind_long_boots": {
         "hints": [],
@@ -153,7 +153,7 @@
     },
     "overworld_b3_top_left": {
         "hints": [],
-        "graphPos": [-13,0]
+        "graphPos": [-13,-2]
     },
     "overworld_b3_megalith": {
         "hints": [],
@@ -165,7 +165,7 @@
     },
     "riverside_casino_shooting_range": {
         "hints": [],
-        "graphPos": [-4,0]
+        "graphPos": [-3,0]
     },
     "overworld_b2": {
         "hints": [],
@@ -173,7 +173,7 @@
     },
     "overworld_b2_left": {
         "hints": [],
-        "graphPos": [-14,10]
+        "graphPos": [-15,8]
     },
     "overworld_b2_cave_to_lake": {
         "hints": [],
@@ -185,7 +185,7 @@
     },
     "overworld_b2_upper_mines": {
         "hints": [],
-        "graphPos": [-5,13]
+        "graphPos": [-7,7]
     },
     "overworld_b1": {
         "hints": [],
@@ -197,7 +197,7 @@
     },
     "overworld_b1_island": {
         "hints": [],
-        "graphPos": [-7,18]
+        "graphPos": [-6,16]
     },
     "overworld_a4_right": {
         "hints": [],
