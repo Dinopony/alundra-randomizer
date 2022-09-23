@@ -28,7 +28,10 @@
     {
         "fromId": "overworld_c2",
         "toId": "lars_crypt",
-        "twoWay": true
+        "twoWay": true,
+        "requiredItems": [
+            "Bouquet"
+        ]
     },
     {
         "fromId": "overworld_c2",

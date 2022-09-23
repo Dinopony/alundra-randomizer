@@ -12,6 +12,10 @@ public:
         data.set_word_le(0x29B3A6, 0x067E);
         data.set_word_le(0x29AF35, 0x067E);
         data.set_word_le(0x29B5E5, 0x067E);
+
+        // Make the bouquet the condition to be able to open Lars Crypt
+        data.set_word_le(0x364BFE, 0x3120);
+        data.set_word_le(0x494ED32, 0x3120);
     }
 };
 

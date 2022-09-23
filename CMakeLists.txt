@@ -76,6 +76,7 @@ set(SOURCES
         "src/patches/patch_fix_map_inconsistencies.hpp"
         "src/patches/patch_original_game_balance.hpp"
         "src/patches/patch_neutralize_map_variant_changes.hpp"
+        "src/patches/patch_neutralize_flags.hpp"
         "src/patches/patch_change_flag_checks.hpp"
         "src/patches/patch_allow_using_consumables_while_full.hpp"
 
@@ -102,6 +103,7 @@ set(SOURCES
         "src/tools/vectools.hpp"
         "src/tools/json_tools.hpp"
         "src/tools/psx_exe_file.hpp"
+        "src/tools/flag.hpp"
 
         # --- Project root ----------------------------------------
         "src/personal_settings.hpp"

@@ -78,9 +78,6 @@ void GameData::init_starting_flags()
     _starting_flags.emplace_back(FLAG_TALKED_WITH_MERRICK_ABOUT_FALCONS);
     _starting_flags.emplace_back(FLAG_ACCEPTED_MERRICK_DEAL_ABOUT_FALCONS);
 
-    // Allow entering the Crypt by placing flowers in the graveyard since game start
-    _starting_flags.emplace_back(FLAG_CAN_PUT_FLOWERS_IN_GRAVEYARD);
-
     // Allow entering in Magyscar using a Bomb
     _starting_flags.emplace_back(FLAG_MAGYSCAR_WALL_IS_CRACKED);
 
@@ -91,6 +88,9 @@ void GameData::init_starting_flags()
     // Activate Nirude moai statues
     _starting_flags.emplace_back(FLAG_SAW_NIRUDE_STATUES_ACTIVATION_CUTSCENE);
     _starting_flags.emplace_back(FLAG_NIRUDE_STATUES_VULNERABLE);
+
+    // Flag allowing to exit Lars Crypt without having to beat the boss
+    _starting_flags.emplace_back(FLAG_CAN_EXIT_LARS_CRYPT);
 }
 
 void GameData::apply_options(const RandomizerOptions& options)
