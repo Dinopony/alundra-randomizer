@@ -99,7 +99,6 @@ void WorldShuffler::init_item_pool()
         for(uint16_t i=0 ; i<quantity ; ++i)
             _item_pool.emplace_back(_game_data.item(item_id));
     }
-    vectools::shuffle(_item_pool, _rng);
 
     // Count the empty item sources, and compare this count to the item pool size to handle invalid cases
     size_t empty_item_sources_count = 0;
@@ -117,7 +116,7 @@ void WorldShuffler::init_item_pool()
     }
     else if(_item_pool.size() < empty_item_sources_count)
     {
-        size_t missing_item_count = _world.item_sources().size() - _item_pool.size();
+        size_t missing_item_count = empty_item_sources_count - _item_pool.size();
         std::cout << "Warning: Item pool (" << _item_pool.size() << " items) is smaller than the item sources pool ("
                                             << _world.item_sources().size() << " item sources).\n"
                                             << "Remaining sources will remain empty.\n\n";
@@ -125,6 +124,8 @@ void WorldShuffler::init_item_pool()
         for(size_t i=0 ; i<missing_item_count ; ++i)
             _item_pool.emplace_back(_game_data.item(ITEM_NONE));
     }
+
+    vectools::shuffle(_item_pool, _rng);
 }
 
 /**
