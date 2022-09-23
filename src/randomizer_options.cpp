@@ -140,24 +140,23 @@ void RandomizerOptions::apply_world_json(const Json& json, const GameData& game_
     const Json& item_sources_json = json.at("itemSources");
     for(auto& [region_id, item_sources_in_region_json] : item_sources_json.items())
     {
-        try {
-            WorldRegion* region = world.region(region_id);
-            std::vector<ItemSource*> region_item_sources = region->item_sources();
-            
-            for(auto& [source_name, item_name_json] : item_sources_in_region_json.items())
-            {
-                ItemSource* source = world.item_source(source_name);
-                uint16_t source_id = world.item_source_id(source);
-                if(source->node()->region() != region)
-                    throw RandomizerException("Item source '" + source_name + "' exists but is not in region '" + region_id +  "'");
-
-                const std::string& item_name = item_name_json;
-                const Item* item = game_data.item(item_name);
-
-                _fixed_item_sources[source_id] = item->id();
-            }
-        } catch(std::out_of_range&) {
+        WorldRegion* region = world.region(region_id);
+        if(!region)
             throw RandomizerException("Region '" + region_id + "' could not be found");
+
+        std::vector<ItemSource*> region_item_sources = region->item_sources();
+
+        for(auto& [source_name, item_name_json] : item_sources_in_region_json.items())
+        {
+            ItemSource* source = world.item_source(source_name);
+            uint16_t source_id = world.item_source_id(source);
+            if(source->node()->region() != region)
+                throw RandomizerException("Item source '" + source_name + "' exists but is not in region '" + region_id +  "'");
+
+            const std::string& item_name = item_name_json;
+            const Item* item = game_data.item(item_name);
+
+            _fixed_item_sources[source_id] = item->id();
         }
     }
 }

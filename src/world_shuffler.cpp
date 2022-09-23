@@ -110,15 +110,15 @@ void WorldShuffler::init_item_pool()
 
     if(_item_pool.size() > empty_item_sources_count)
     {
-        throw RandomizerException("The number of items in item pool is not the same as the number of item sources (" +
+        throw RandomizerException("The number of items in item pool is not the same as the number of empty item sources (" +
                                     std::to_string(_item_pool.size()) + " =/= " +
-                                    std::to_string(_world.item_sources().size()) + ")");
+                                    std::to_string(empty_item_sources_count) + ")");
     }
     else if(_item_pool.size() < empty_item_sources_count)
     {
         size_t missing_item_count = empty_item_sources_count - _item_pool.size();
-        std::cout << "Warning: Item pool (" << _item_pool.size() << " items) is smaller than the item sources pool ("
-                                            << _world.item_sources().size() << " item sources).\n"
+        std::cout << "Warning: Item pool (" << _item_pool.size() << " items) is smaller than the empty item sources pool ("
+                                            << empty_item_sources_count << " item sources).\n"
                                             << "Remaining sources will remain empty.\n\n";
 
         for(size_t i=0 ; i<missing_item_count ; ++i)
