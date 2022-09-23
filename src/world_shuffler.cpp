@@ -129,13 +129,12 @@ void WorldShuffler::init_item_pool()
 }
 
 /**
- * Place the given item randomly in an empty ItemSource that is reachable by the solver
+ * Find a random ItemSource that is reachable by the solver where the given progression item can be placed.
  * @param item the item to place
- * @return the item source where the item was placed
- * @throw RandomizerException if item could not be placed in any of the possible item sources
- * @throw RandomizerException if item could not be found inside item pool
+ * @param excluded_sources a list of item sources that are instantly rejected
+ * @return the item source where the item was placed (null if it could not be placed anywhere)
  */
-ItemSource* WorldShuffler::place_progression_item_randomly(const Item* item)
+ItemSource* WorldShuffler::find_item_source_for_progression_item(const Item* item, const std::vector<ItemSource*>& excluded_sources)
 {
     constexpr int32_t DEFAULT_ITEM_SOURCE_WEIGHT = 5;
     constexpr int32_t MINIMAL_ITEM_SOURCE_WEIGHT = 1;
@@ -146,6 +145,8 @@ ItemSource* WorldShuffler::place_progression_item_randomly(const Item* item)
     weighted_sources.reserve(reachable_sources.size() * DEFAULT_ITEM_SOURCE_WEIGHT);
     for(ItemSource* source : reachable_sources)
     {
+        if (vectools::contains(excluded_sources, source))
+            continue;
         if(!source->is_empty())
             continue;
         if(!source->can_contain_progression())
@@ -164,24 +165,15 @@ ItemSource* WorldShuffler::place_progression_item_randomly(const Item* item)
         for(size_t i=0 ; i<weight ; ++i)
             weighted_sources.emplace_back(source);
     }
-    vectools::shuffle(weighted_sources, _rng);
 
-    ItemSource* picked_item_source = nullptr;
-    for(ItemSource* source : weighted_sources)
-    {
-        source->item(item);
-        picked_item_source = source;
-        break;
-    }
-
-    if(!picked_item_source)
+    if(weighted_sources.empty())
     {
         throw RandomizerException("Could not place " + item->name() + " in any of the "
-                                   + std::to_string(reachable_sources.size()) + " possible sources.");
+                                + std::to_string(reachable_sources.size()) + " possible sources.");
     }
 
-    _item_pool.erase(std::find(_item_pool.begin(), _item_pool.end(), item));
-    return picked_item_source;
+    vectools::shuffle(weighted_sources, _rng);
+    return weighted_sources[0];
 }
 
 /**
@@ -309,20 +301,36 @@ void WorldShuffler::open_random_blocked_path()
         if(!this->item_pool_contains_items(items_to_place))
             continue;
 
+        // Try to find a set of ItemSources that work to place all the required progression items to open the path
+        std::vector<ItemSource*> picked_item_sources;
+        for(const Item* item : items_to_place)
+        {
+            ItemSource* source = this->find_item_source_for_progression_item(item, picked_item_sources);
+            if(!source)
+                break;
+
+            picked_item_sources.emplace_back(source);
+        }
+
+        // We couldn't find a set of sources accepting all the items required for the path, try unlocking another path
+        if(picked_item_sources.size() < items_to_place.size())
+            continue;
+
         debug_log["chosenPath"].emplace_back(path_to_open->origin()->id() + " --> " + path_to_open->destination()->id());
 
         // Place all missing key items for the player to be able to open this blocking path
-        for(const Item* item : items_to_place)
+        for(size_t i=0 ; i<items_to_place.size() ; ++i)
         {
-            while(vectools::contains(_item_pool, item))
-            {
-                ItemSource* source = this->place_progression_item_randomly(item);
-                _logical_playthrough.emplace_back(source);
-                debug_log["placedKeyItems"][source->name()] = item->name();
-            }
+            const Item* item = items_to_place[i];
+            ItemSource* source = picked_item_sources[i];
+            source->item(item);
+            vectools::erase_first(_item_pool, item);
+
+            _logical_playthrough.emplace_back(source);
+            debug_log["placedKeyItems"][source->name()] = item->name();
         }
 
-        break;
+        return;
     }
 }
 

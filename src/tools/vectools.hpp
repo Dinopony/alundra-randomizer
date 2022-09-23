@@ -11,8 +11,7 @@ namespace vectools {
     inline void erase_first(std::vector<T>& vector, const T& elem)
     {
         auto iter = std::find(vector.begin(), vector.end(), elem);
-        if(iter != vector.end())
-            vector.erase(iter);
+        vector.erase(iter);
     }
 
     template<typename T>
