@@ -141,7 +141,7 @@
     },
     "overworld_b3_elevated": {
         "hints": [],
-        "graphPos": [-10,-4]
+        "graphPos": [-10,-3]
     },
     "overworld_b3_behind_vines": {
         "hints": [],
@@ -149,15 +149,15 @@
     },
     "overworld_b3_behind_power_glove": {
         "hints": [],
-        "graphPos": [-8,-2]
+        "graphPos": [-7,-2]
     },
     "overworld_b3_top_left": {
         "hints": [],
-        "graphPos": [-13,-2]
+        "graphPos": [-12,2]
     },
     "overworld_b3_megalith": {
         "hints": [],
-        "graphPos": [-13,-4]
+        "graphPos": [-13,-2]
     },
     "riverside_casino": {
         "hints": [],
@@ -241,11 +241,11 @@
     },
     "overworld_a3_right": {
         "hints": [],
-        "graphPos": [-17,-1]
+        "graphPos": [-16,0]
     },
     "overworld_a3_right_behind_vines": {
         "hints": [],
-        "graphPos": [-17,1]
+        "graphPos": [-18,2]
     },
     "overworld_a1": {
         "hints": [],
@@ -313,7 +313,7 @@
     },
     "overworld_e3_behind_cape_or_boots": {
         "hints": [],
-        "graphPos": [24,2]
+        "graphPos": [23,-3]
     },
     "overworld_e4": {
         "hints": [],
@@ -341,11 +341,11 @@
     },
     "fairy_pond": {
         "hints": [],
-        "graphPos": [-15,-3]
+        "graphPos": [-15,-7]
     },
     "ancient_shrine": {
         "hints": [],
-        "graphPos": [24,-2]
+        "graphPos": [24,0]
     },
     "coastal_cave": {
         "hints": [],
@@ -389,15 +389,15 @@
     },
     "torla_mountain": {
         "hints": [],
-        "graphPos": [10,25]
+        "graphPos": [10,24]
     },
     "torla_mountain_behind_charm_boots": {
         "hints": [],
-        "graphPos": [10,27]
+        "graphPos": [10,26]
     },
     "torla_mountain_behind_spring": {
         "hints": [],
-        "graphPos": [10,29]
+        "graphPos": [10,28]
     },
     "merrick_shop_1": {
         "hints": [],
@@ -433,7 +433,7 @@
     },
     "river_network": {
         "hints": [],
-        "graphPos": [-15,-5]
+        "graphPos": [-18,-7]
     },
     "crest_1": {
         "graphPos": [-10,22]
