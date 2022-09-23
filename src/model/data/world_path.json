@@ -800,7 +800,6 @@
     {
         "fromId": "overworld_e3",
         "toId": "overworld_e3_behind_cape_or_boots",
-        "twoWay": true,
         "requiredItems": [
             "Long Boots"
         ]
@@ -808,10 +807,13 @@
     {
         "fromId": "overworld_e3",
         "toId": "overworld_e3_behind_cape_or_boots",
-        "twoWay": true,
         "requiredItems": [
             "Sand Cape"
         ]
+    },
+    {
+        "fromId": "overworld_e3_behind_cape_or_boots",
+        "toId": "overworld_e3"
     },
     {
         "fromId": "overworld_e3",
