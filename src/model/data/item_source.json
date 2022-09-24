@@ -1292,10 +1292,16 @@
         "vanillaItem": "30 Gilder"
     },
     {
-        "name": "Magyscar: Chest in room with elevator controlled by switch",
+        "name": "Magyscar: Upper chest in room with elevator controlled by switch",
         "nodeId": "magyscar",
         "address": "15551D6",
         "vanillaItem": "Magic Elixyr"
+    },
+    {
+        "name": "Magyscar: Lower hidden chest in room with elevator controlled by switch",
+        "nodeId": "magyscar",
+        "address": "1555046",
+        "vanillaItem": "Strength Tonic"
     },
     {
         "name": "Magyscar: Chest behind vines in room with switch giving torch and lowering platforms",
