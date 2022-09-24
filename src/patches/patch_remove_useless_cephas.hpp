@@ -63,7 +63,7 @@ private:
     static void remove_cephas(BinaryFile& data, uint32_t entity_base_address)
     {
         // Position Cephas outside of the map
-        data.set_word(entity_base_address + 5, 0xFFFF);
+        data.set_word(entity_base_address + 5, 0xFF00);
 
         // Remove events linked with that Cephas instance
         data.set_byte(entity_base_address + 10, 0x00);
