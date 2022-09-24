@@ -10,6 +10,7 @@
 #include "patch_neutralize_flags.hpp"
 #include "patch_change_flag_checks.hpp"
 #include "patch_allow_using_consumables_while_full.hpp"
+#include "patch_remove_useless_cephas.hpp"
 
 void execute_patches(const std::vector<GamePatch*>& patches, 
                      BinaryFile& data_file, PsxExeFile& exe_file, 
@@ -34,6 +35,7 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
     patches.emplace_back(new PatchNeutralizeFlags());
     patches.emplace_back(new PatchChangeFlagChecks());
     patches.emplace_back(new PatchAllowUsingConsumablesWhileFull());
+    patches.emplace_back(new PatchRemoveUselessCephas());
     if(options.original_game_balance())
         patches.emplace_back(new PatchOriginalGameBalance());
 
