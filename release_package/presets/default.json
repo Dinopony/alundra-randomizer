@@ -1,6 +1,9 @@
 {
     "gameSettings": {
-        "megalithsEnabledOnStart": true
+        "originalGameBalance": true,
+        "megalithsEnabledOnStart": true,
+        "skipLastDungeon": true,
+        "kingSnowDeathCount": 20
     },
     "randomizerSettings": {
         "allowSpoilerLog": true,

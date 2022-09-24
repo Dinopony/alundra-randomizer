@@ -81,6 +81,7 @@ set(SOURCES
         "src/patches/patch_allow_using_consumables_while_full.hpp"
         "src/patches/patch_remove_useless_cephas.hpp"
         "src/patches/patch_remove_cutscenes.hpp"
+        "src/patches/patch_set_king_snow_death_count.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"

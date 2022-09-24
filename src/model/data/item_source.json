@@ -330,7 +330,7 @@
         "vanillaItem": "Life Vessel"
     },
     {
-        "name": "Overworld B3: King Snow reward for dying 20 times",
+        "name": "Overworld B3: King Snow reward for dying a specified amount of times",
         "nodeId": "overworld_b3_behind_power_glove",
         "address": "29B530",
         "spriteAddress": "29B87A",

@@ -73,6 +73,7 @@ Json RandomizerOptions::to_json(const GameData& game_data, const RandomizerWorld
     json["gameSettings"]["originalGameBalance"] = _original_game_balance;
     json["gameSettings"]["megalithsEnabledOnStart"] = _megaliths_enabled_on_start;
     json["gameSettings"]["skipLastDungeon"] = _skip_last_dungeon;
+    json["gameSettings"]["kingSnowDeathCount"] = _king_snow_death_count;
 
     // Randomizer settings
     json["randomizerSettings"]["allowSpoilerLog"] = _allow_spoiler_log;
@@ -107,6 +108,8 @@ void RandomizerOptions::apply_game_settings_json(const Json& json)
             _megaliths_enabled_on_start = value;
         else if(key == "skipLastDungeon")
             _skip_last_dungeon = value;
+        else if(key == "kingSnowDeathCount")
+            _king_snow_death_count = value;
         else
             throw RandomizerException("Unknown key '" + key + "' in preset game settings JSON");
     }
@@ -225,6 +228,7 @@ std::string RandomizerOptions::permalink() const
     bitpack.pack(_original_game_balance);
     bitpack.pack(_megaliths_enabled_on_start);
     bitpack.pack(_skip_last_dungeon);
+    bitpack.pack(_king_snow_death_count);
 
     bitpack.pack_map(_fixed_item_sources);
 
@@ -251,6 +255,7 @@ void RandomizerOptions::parse_permalink(std::string permalink)
     _original_game_balance = bitpack.unpack<bool>();
     _megaliths_enabled_on_start = bitpack.unpack<bool>();
     _skip_last_dungeon = bitpack.unpack<bool>();
+    _king_snow_death_count = bitpack.unpack<uint8_t>();
 
     _fixed_item_sources = bitpack.unpack_map<uint16_t, uint8_t>();
 }

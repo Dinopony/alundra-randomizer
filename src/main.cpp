@@ -14,6 +14,7 @@
 #include "personal_settings.hpp"
 #include "randomizer_options.hpp"
 
+#include "game/game_data.hpp"
 #include "model/randomizer_world.hpp"
 #include "world_shuffler.hpp"
 #include "io/io.hpp"

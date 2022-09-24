@@ -33,6 +33,9 @@ private:
     /// to simply go forward to reach the final boss once all crests are collected & placed
     bool _skip_last_dungeon = true;
 
+    /// The amount of times you need to die in order to be able to get King Snow's item
+    uint8_t _king_snow_death_count = 20;
+
     // ------------- Randomization settings -------------
 
     /// The random number generator's seed, determining all of the randomization. Generating two seeds
@@ -68,6 +71,7 @@ public:
     [[nodiscard]] bool original_game_balance() const { return _original_game_balance; }
     [[nodiscard]] bool megaliths_enabled_on_start() const { return _megaliths_enabled_on_start; }
     [[nodiscard]] bool skip_last_dungeon() const { return _skip_last_dungeon; }
+    [[nodiscard]] uint8_t king_snow_death_count() const { return _king_snow_death_count; }
 
     [[nodiscard]] const std::map<uint16_t, uint8_t>& fixed_item_sources() const { return _fixed_item_sources; }
 

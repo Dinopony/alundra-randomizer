@@ -12,6 +12,7 @@
 #include "patch_allow_using_consumables_while_full.hpp"
 #include "patch_remove_useless_cephas.hpp"
 #include "patch_remove_cutscenes.hpp"
+#include "patch_set_king_snow_death_count.hpp"
 
 void execute_patches(const std::vector<GamePatch*>& patches, 
                      BinaryFile& data_file, PsxExeFile& exe_file, 
@@ -38,6 +39,8 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
     patches.emplace_back(new PatchAllowUsingConsumablesWhileFull());
     patches.emplace_back(new PatchRemoveUselessCephas());
     patches.emplace_back(new PatchRemoveCutscenes());
+    patches.emplace_back(new PatchSetKingSnowDeathCount(options.king_snow_death_count()));
+
     if(options.original_game_balance())
         patches.emplace_back(new PatchOriginalGameBalance());
 
