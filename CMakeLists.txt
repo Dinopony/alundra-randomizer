@@ -79,6 +79,8 @@ set(SOURCES
         "src/patches/patch_neutralize_flags.hpp"
         "src/patches/patch_change_flag_checks.hpp"
         "src/patches/patch_allow_using_consumables_while_full.hpp"
+        "src/patches/patch_remove_useless_cephas.hpp"
+        "src/patches/patch_remove_cutscenes.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"
