@@ -13,6 +13,9 @@ public:
         // Remove the flag set when entering Lars Crypt that prevents from re-entering
         data.set_byte(0x3654C4, INSTRUCTION_CODE_SKIP_FLAG_SET);
         data.set_byte(0x494F5F8, INSTRUCTION_CODE_SKIP_FLAG_SET);
+
+        // Remove Alundra being immobilized when seeing Magyscar cutscene to prevent a softlock
+        data.set_byte(0x1683D14, 0x11);
     }
 
     void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override

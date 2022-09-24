@@ -196,7 +196,7 @@ std::vector<std::string> RandomizerOptions::hash_words() const
         "Steel", "Flail", "Ice", "Cloth", "Armor", "Ancient", "Silver", "Short", "Boots", "Long", "Merman",
         "Charm", "Spring", "Bean", "Sand", "Cape", "Aqua", "Broken", "Bomb", "Herbs", "Strength", "Elixyr", "Magic",
         "Wonder", "Essence", "Tonic", "Earth", "Water", "Fire", "Wind", "Scroll", "Book", "Ring", "Armlet",
-        "Recovery", "Secret", "Pass", "Power", "Glove", "Elevator", "Key", "Crest", "Ruby", "Sapphire", "Chest"
+        "Recovery", "Secret", "Pass", "Power", "Glove", "Elevator", "Key", "Crest", "Ruby", "Sapphire", "Chest",
         "Topaz", "Agate", "Garnet", "Emerald", "Diamond", "Gilder", "Sluice", "Bouquet", "Small", "Letter", "Tree",
         "Gem", "Zolist", "Stone", "Gilded", "Falcon", "Magic", "Seed", "Runes", "Elna", "Curious", "Life", "Vessel",
         "Dreamwalker", "Dream", "Nightmare", "Inoa", "Torla", "Murgg", "Crystal", "Megalith", "Crypt", "Manor", "Desert",
@@ -204,7 +204,7 @@ std::vector<std::string> RandomizerOptions::hash_words() const
         "Lair", "Tarn", "Coal", "Mine", "Sara", "Coastal", "Cave", "Reptile", "Magyscar", "Sanctuary", "Fairy", "Pond",
         "Golem", "Dragon", "Alundra", "Meia", "Giles", "Lutas", "Merrick", "Jess", "Olga", "Oak", "Nava", "Ronan",
         "Melzas", "Lars", "Bonaire", "Nadia", "Kline", "Wendell", "Olen", "Nirude", "Zazan", "Wilda", "Nestus",
-        "Zorgia", "Elene", "Lurvy", "Kohei", "Vul", "Jeal", "Mountain", "Bergus", "Roulette"
+        "Zorgia", "Elene", "Lurvy", "Kohei", "Vul", "Jeal", "Uma", "Mountain", "Bergus", "Roulette"
     };
 
     std::mt19937 rng(_seed);
