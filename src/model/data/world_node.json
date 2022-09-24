@@ -371,9 +371,13 @@
         "hints": [],
         "graphPos": [0,22]
     },
-    "magyscar_behind_bomb": {
+    "magyscar_behind_bomb_or_fire_wand": {
         "hints": [],
         "graphPos": [0,24]
+    },
+    "magyscar_behind_bomb": {
+        "hints": [],
+        "graphPos": [0,26]
     },
     "reptiles_lair_side_cavern": {
         "hints": [],

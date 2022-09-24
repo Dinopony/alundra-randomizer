@@ -303,6 +303,24 @@
     },
     {
         "fromId": "magyscar",
+        "toId": "magyscar_behind_bomb_or_fire_wand",
+        "requiredItems": [
+            "Bomb"
+        ]
+    },
+    {
+        "fromId": "magyscar",
+        "toId": "magyscar_behind_bomb_or_fire_wand",
+        "requiredItems": [
+            "Fire Wand"
+        ]
+    },
+    {
+        "fromId": "magyscar_behind_bomb_or_fire_wand",
+        "toId": "magyscar"
+    },
+    {
+        "fromId": "magyscar_behind_bomb_or_fire_wand",
         "toId": "magyscar_behind_bomb",
         "twoWay": true,
         "requiredItems": [

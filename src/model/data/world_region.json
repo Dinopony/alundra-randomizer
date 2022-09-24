@@ -195,6 +195,7 @@
         "name": "Magyscar",
         "nodeIds": [
             "magyscar",
+            "magyscar_behind_bomb_or_fire_wand",
             "magyscar_behind_bomb"
         ]
     },

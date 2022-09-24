@@ -1269,43 +1269,43 @@
     },
     {
         "name": "Magyscar: Chest behind vines in switchable platforms room",
-        "nodeId": "magyscar",
+        "nodeId": "magyscar_behind_bomb_or_fire_wand",
         "address": "14E252A",
         "vanillaItem": "Gilded Falcon"
     },
     {
         "name": "Magyscar: Chest in room with pillars and smashing spikeballs",
-        "nodeId": "magyscar",
+        "nodeId": "magyscar_behind_bomb_or_fire_wand",
         "address": "14E249E",
         "vanillaItem": "Life Vessel"
     },
     {
         "name": "Magyscar: Elevated chest in small room with spinning spikeballs",
-        "nodeId": "magyscar",
+        "nodeId": "magyscar_behind_bomb_or_fire_wand",
         "address": "151BA9E",
         "vanillaItem": "Herbs"
     },
     {
         "name": "Magyscar: Chest between teleporters",
-        "nodeId": "magyscar",
+        "nodeId": "magyscar_behind_bomb_or_fire_wand",
         "address": "155514A",
         "vanillaItem": "30 Gilder"
     },
     {
         "name": "Magyscar: Upper chest in room with elevator controlled by switch",
-        "nodeId": "magyscar",
+        "nodeId": "magyscar_behind_bomb_or_fire_wand",
         "address": "15551D6",
         "vanillaItem": "Magic Elixyr"
     },
     {
         "name": "Magyscar: Lower hidden chest in room with elevator controlled by switch",
-        "nodeId": "magyscar",
+        "nodeId": "magyscar_behind_bomb_or_fire_wand",
         "address": "1555046",
         "vanillaItem": "Strength Tonic"
     },
     {
         "name": "Magyscar: Chest behind vines in room with switch giving torch and lowering platforms",
-        "nodeId": "magyscar",
+        "nodeId": "magyscar_behind_bomb_or_fire_wand",
         "address": "158F052",
         "vanillaItem": "30 Gilder"
     },

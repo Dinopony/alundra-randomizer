@@ -79,19 +79,19 @@
     },
     {
         "name": "Magyscar: Second key chest",
-        "nodeId": "magyscar",
+        "nodeId": "magyscar_behind_bomb_or_fire_wand",
         "address": "151BCA6",
         "vanillaItem": "Key"
     },
     {
         "name": "Magyscar: Third key chest",
-        "nodeId": "magyscar",
+        "nodeId": "magyscar_behind_bomb_or_fire_wand",
         "address": "15C1FF6",
         "vanillaItem": "Key"
     },
     {
         "name": "Magyscar: Fourth key chest",
-        "nodeId": "magyscar",
+        "nodeId": "magyscar_behind_bomb",
         "address": "155500A",
         "vanillaItem": "Key"
     },
