@@ -92,6 +92,8 @@ void GameData::init_starting_flags()
 
     // Flag allowing to exit Lars Crypt without having to beat the boss
     _starting_flags.emplace_back(FLAG_CAN_EXIT_LARS_CRYPT);
+    // Put flowers on other tombs to indicate you need the Bouquet to enter Lars Crypt
+    _starting_flags.emplace_back(FLAG_OTHER_FLOWERS_ARE_IN_GRAVEYARD);
 }
 
 void GameData::apply_options(const RandomizerOptions& options)

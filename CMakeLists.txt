@@ -46,6 +46,7 @@ set(SOURCES
         # --- Constnats ----------------------------------------
         "src/constants/item_codes.hpp"
         "src/constants/flags.hpp"
+        "src/constants/map_codes.hpp"
 
         # --- I/O ----------------------------------------
         "src/io/graphviz_writer.cpp"
