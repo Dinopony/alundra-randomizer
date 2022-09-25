@@ -1,4 +1,4 @@
-![version](https://img.shields.io/badge/Version-0.5.0-blue)
+![version](https://img.shields.io/badge/Version-0.9.0-blue)
 ![compile](https://github.com/Dinopony/alundra-randomizer/workflows/Compile/badge.svg)
 
 # Alundra Randomizer
@@ -23,6 +23,19 @@ Using the provided release packages (on the right panel of this webpage) is real
 
 You just have to put your own copy of the original 1.1 US game disc inside the folder named `input.bin`, and use the 
 `gen_preset.bat` script on Windows (Linux users are expected to know how to use CLI).
+
+A command line interface will open, don't be scared! It will ask you for which **preset** you want to use. Presets are a
+bunch of settings that define how the game will be randomized, and there is a default one provided with the randomizer.
+These can be found under the `presets/` subfolder, and you can duplicate the existing ones and modify them to choose
+your own settings if the default ones are not your cup of tea.
+Back to the command line, you can just press Enter to use the default preset or you can type your own preset name before
+confirming.
+
+The randomizer will start working and generate a seed for you inside the `seeds/` subfolder, so you can play on your
+favorite emulator / real console. It will also give you a **permalink**, which is a sort of code you can give your
+randomizer pals so they can generate the exact same seed as you by using `gen_permalink.bat` and pasting this permalink.
+
+Have fun randomizing!
 
 ### Building from source
 
