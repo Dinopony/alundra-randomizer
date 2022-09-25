@@ -50,7 +50,7 @@ public:
 
         RoomStrings graveyard_strings(MAP_OVERWORLD_C2, data);
         graveyard_strings.set_string(9,
-            "If you go to the basement of my house\\Nthere is a treasure to be obtained.\\A"
+            "\\CIf you go to the basement of my house\\Nthere is a treasure to be obtained.\\A"
             "Light the lamps starting with upper\\Nleft, then lower right, bottom left,\\Ncenter bottom, middle top, top right.\\A"
             "I'm certain you'll be quite pleased\\Nwith the fruits of your labor\\W2\\N"
         );
