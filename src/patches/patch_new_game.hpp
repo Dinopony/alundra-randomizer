@@ -65,13 +65,16 @@ private:
 
             // Also put 0xF2 -> 0x1DD676 for post-Torla house cutscene at night (where Meia wakes us up to warn
             // that Bergus has gone missing)
-            // TODO: Does this actually work? Test it.
             func.li(reg_T0, 0x00F2);
             func.sh(reg_T0, reg_AT, 0xD678);
 
             // Set Overworld C4 to the "Merrick shop open" variant (0x0197 -> 0x1DD44C)
             func.li(reg_T0, 0x0197);
             func.sh(reg_T0, reg_AT, 0xD44C);
+
+            // Set Overworld E1 (Nirude) to a variant where things work properly
+            func.li(reg_T0, 0x01B7);
+            func.sh(reg_T0, reg_AT, 0xD456);
 
             // Jump back to calling procedure
             func.j(return_addr);

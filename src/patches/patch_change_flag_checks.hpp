@@ -16,6 +16,13 @@ public:
         // Make the bouquet the condition to be able to open Lars Crypt
         data.set_word_le(0x364BFE, 0x3120);
         data.set_word_le(0x494ED32, 0x3120);
+
+        // Remove Nirude having to be broken for Torla geysers to work
+        data.set_word_le(0x43F774, 0x0005);
+        data.set_word_le(0x43F7DB, 0x0005);
+        data.set_word_le(0x43F83F, 0x0005);
+        data.set_word_le(0x43F8A3, 0x0005);
+        data.set_word_le(0x43F907, 0x0005);
     }
 };
 
