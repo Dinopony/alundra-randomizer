@@ -58,6 +58,8 @@ set(SOURCES
         "src/game/item.cpp"
         "src/game/game_data.hpp"
         "src/game/game_data.cpp"
+        "src/game/room_strings.hpp"
+        "src/game/room_strings.cpp"
 
         # --- Logic model ----------------------------------------
         "src/model/item_source.hpp"
