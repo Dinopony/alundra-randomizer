@@ -1561,7 +1561,10 @@
         "name": "Merrick's Shop: Item traded for 15 Gilded Falcons",
         "nodeId": "merrick_shop_1",
         "address": "1EBF67C",
-        "spriteAddress": "1EBF92E",
+        "spriteAddress": [
+            "1EBF88E",
+            "1EBF92E"
+        ],
         "merrickItemAddress": "7CE7C",
         "canContainProgression": false,
         "vanillaItem": "Life Vessel"
@@ -1582,7 +1585,10 @@
         "name": "Merrick's Shop: Item traded for 25 Gilded Falcons",
         "nodeId": "merrick_shop_3",
         "address": "1EBF774",
-        "spriteAddress": "1EBF956",
+        "spriteAddress": [
+            "1EBF8B6",
+            "1EBF956"
+        ],
         "merrickItemAddress": "7CE84",
         "canContainProgression": false,
         "vanillaItem": "Life Vessel"
@@ -1603,7 +1609,10 @@
         "name": "Merrick's Shop: Item traded for 35 Gilded Falcons",
         "nodeId": "merrick_shop_5",
         "address": "1EBF7AC",
-        "spriteAddress": "1EBF97E",
+        "spriteAddress": [
+            "1EBF8DE",
+            "1EBF97E"
+        ],
         "merrickItemAddress": "7CE8C",
         "canContainProgression": false,
         "vanillaItem": "Life Vessel"
@@ -1625,7 +1634,10 @@
         "name": "Merrick's Shop: Item traded for 45 Gilded Falcons",
         "nodeId": "merrick_shop_7",
         "address": "1EBF7E4",
-        "spriteAddress": "1EBF9A6",
+        "spriteAddress": [
+            "1EBF906",
+            "1EBF9A6"
+        ],
         "merrickItemAddress": "7CE94",
         "canContainProgression": false,
         "vanillaItem": "Life Vessel"
