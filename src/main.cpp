@@ -161,39 +161,35 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
     // Dump the input ROM into a "base_dump" folder if it was not already done on a previous generation
     if(!std::filesystem::exists("./base_dump/DATA/DATAS.BIN"))
     {
+        std::cout << "Performing the initial image dump...\n\n";
+
         BinaryFile image_file(input_path);
         uint64_t checksum = image_file.checksum();
         if(checksum != 51532940438)
             throw RandomizerException("Invalid checksum (" + std::to_string(checksum) + ") on the image file. Make sure you are using a 1.1 US image.");
 
-        std::cout << "Performing the initial image dump (" << checksum << ")...\n\n";
         dump_iso(input_path, "./base_dump/");
     }
 
     // Copy the base_dump into a tmp_dump that will be manipulated to generate this seed's ROM
     std::cout << "Copying game files...\n";
-    std::filesystem::remove_all("./tmp_dump/");
-    std::filesystem::copy("./base_dump/", "./tmp_dump/", std::filesystem::copy_options::recursive);
+    if(!std::filesystem::exists("./tmp_dump/"))
+        std::filesystem::copy("./base_dump/", "./tmp_dump/", std::filesystem::copy_options::recursive);
 
     // Apply patches to relevant files that were extracted from the game ROM
     std::cout << "Editing game files...\n";
-    BinaryFile datas_file("./tmp_dump/DATA/DATAS.BIN");
-    PsxExeFile exe_file("./tmp_dump/ALUN_CD.EXE");
+    BinaryFile datas_file("./base_dump/DATA/DATAS.BIN");
+    PsxExeFile exe_file("./base_dump/ALUN_CD.EXE");
     apply_randomizer_patches(datas_file, exe_file, game_data, world, options);
 
     // Save those files to disk
     std::cout << "Writing edited files to disk...\n\n";
-    datas_file.save();
-    exe_file.save();
+    datas_file.save_as("./tmp_dump/DATA/DATAS.BIN");
+    exe_file.save_as("./tmp_dump/ALUN_CD.EXE");
 
     // Use an external tool to repack the files into a PS1 disc image
     std::cout << "Building a disc image...\n\n";
     rebuild_iso("./tmp_dump/", output_path);
-
-#ifndef DEBUG
-    // Remove the tmp_dump folder in release builds, keep it in debug releases for debugging purpose
-    std::filesystem::remove_all("./tmp_dump/");
-#endif
 
     std::cout << "Randomized game outputted to " << output_path << ".\n";
 }
