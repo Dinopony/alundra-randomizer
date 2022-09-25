@@ -66,4 +66,10 @@ namespace stringtools
     inline void to_lower(std::string& s) {
         std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) { return std::tolower(c); });
     }
+
+    inline void replace(std::string& str, const std::string& from, const std::string& to)
+    {
+        size_t start_pos = str.find(from);
+        str.replace(start_pos, from.length(), to);
+    }
 }

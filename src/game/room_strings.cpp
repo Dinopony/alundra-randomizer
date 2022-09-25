@@ -1,7 +1,6 @@
 #include "room_strings.hpp"
 #include "../tools/binary_file.hpp"
 #include "../tools/exception.hpp"
-#include <iostream>
 
 RoomStrings::RoomStrings(uint32_t map_id, const BinaryFile& datas_file)
 {
@@ -40,13 +39,6 @@ Json RoomStrings::to_json() const
     return strings_json;
 }
 
-void RoomStrings::set_string(size_t string_id, const std::string& str)
-{
-    if(string_id > _strings.size())
-        throw RandomizerException("Trying to edit a string that is not present in base room data");
-    _strings[string_id] = str;
-}
-
 void RoomStrings::apply_on_data(BinaryFile& datas_file) const
 {
     ByteArray string_bytes;
@@ -61,8 +53,11 @@ void RoomStrings::apply_on_data(BinaryFile& datas_file) const
         string_bytes.set_word_le(i * 2, string_bytes.size());
         string_bytes.add_bytes(reinterpret_cast<uint8_t*>(str_ptr), str.size() + 1);
     }
-    string_bytes.resize(_initial_strings_size, 0x00);
 
+    if(string_bytes.size() > _initial_strings_size)
+        throw RandomizerException("String data is bigger than in original room");
+
+    string_bytes.resize(_initial_strings_size, 0x00);
     datas_file.set_bytes(_initial_strings_pos, string_bytes);
 }
 

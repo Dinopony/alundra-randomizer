@@ -337,13 +337,13 @@
         "vanillaItem": "Legend Sword"
     },
     {
-        "name": "Riverside Casino: 'Roulette' chest",
+        "name": "Riverside Casino: 'Wheel of Fortune' chest",
         "nodeId": "riverside_casino",
         "address": "65FD322",
         "vanillaItem": "Life Vessel"
     },
     {
-        "name": "Riverside Casino: 'Roulette' x3 reward",
+        "name": "Riverside Casino: 'Wheel of Fortune' second reward",
         "nodeId": "riverside_casino",
         "address": "65FD0C1",
         "vanillaItem": "Gilded Falcon"
@@ -355,7 +355,7 @@
         "vanillaItem": "Life Vessel"
     },
     {
-        "name": "Riverside Casino: 'Hit Your Mark' x3 reward",
+        "name": "Riverside Casino: 'Hit Your Mark' second reward",
         "nodeId": "riverside_casino_shooting_range",
         "address": "65C7A80",
         "vanillaItem": "Gilded Falcon"
@@ -367,7 +367,7 @@
         "vanillaItem": "Life Vessel"
     },
     {
-        "name": "Riverside Casino: 'Slime Smash' x3 reward",
+        "name": "Riverside Casino: 'Slime Smash' second reward",
         "nodeId": "riverside_casino",
         "address": "65978F9",
         "vanillaItem": "Gilded Falcon"

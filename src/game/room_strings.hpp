@@ -15,7 +15,7 @@ private:
 public:
     RoomStrings(uint32_t map_id, const BinaryFile& datas_file);
 
-    void set_string(size_t string_id, const std::string& str);
+    std::string& string(size_t string_id) { return _strings.at(string_id); }
 
     void apply_on_data(BinaryFile& datas_file) const;
     [[nodiscard]] Json to_json() const;
