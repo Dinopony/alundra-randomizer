@@ -16,6 +16,7 @@
 #include "patch_remove_items_fanfare.hpp"
 #include "patch_fix_wrong_map_transitions.hpp"
 #include "patch_fix_item_names_in_textboxes.hpp"
+#include "patch_fix_throwables.hpp"
 
 void execute_patches(const std::vector<GamePatch*>& patches, 
                      BinaryFile& data_file, PsxExeFile& exe_file, 
@@ -46,6 +47,7 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
     patches.emplace_back(new PatchSetKingSnowDeathCount(options.king_snow_death_count()));
     patches.emplace_back(new PatchRemoveItemsFanfare());
     patches.emplace_back(new PatchFixItemNamesInTextboxes());
+    patches.emplace_back(new PatchFixThrowables());
 
     if(options.original_game_balance())
         patches.emplace_back(new PatchOriginalGameBalance());

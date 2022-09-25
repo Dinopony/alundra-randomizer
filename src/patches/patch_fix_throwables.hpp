@@ -23,14 +23,21 @@ public:
         uint32_t offset_2 = data.get_long_le(OBJECT_PROPERTIES_TABLE_START + offset_1);
         return OBJECT_PROPERTIES_TABLE_START + offset_2;
     }
-    
-    // TODO: This patch doesn't work for now
+
+
     void alter_datas_file(BinaryFile& data, const GameData& game_data, const RandomizerWorld& world) override
     {
+        // Prevent Merrick items from being taken and thrown to prevent any crash
+        data.set_byte(0x1EBF9E8, 0x00);
+        data.set_byte(0x1EBF9FC, 0x00);
+        data.set_byte(0x1EBFA10, 0x00);
+
+        // TODO: This patch doesn't work for now, so we just prevent Merrick items from being thrown
+        /*
         constexpr uint8_t VALID_THROWABLE_ITEM_ID = ITEM_HERBS;
 
         // Extract the first 8 bytes of object properties for a valid item object
-        uint32_t valid_bytes_addr = get_object_properties_addr(data, ITEM_HERBS);
+        uint32_t valid_bytes_addr = get_object_properties_addr(data, VALID_THROWABLE_ITEM_ID);
         ByteArray valid_bytes = data.get_bytes(valid_bytes_addr, valid_bytes_addr + 8);
 
         // Now, we apply those "valid bytes" to every item object
@@ -39,5 +46,6 @@ public:
             uint32_t bytes_addr = get_object_properties_addr(data, item_id);
             data.set_bytes(bytes_addr, valid_bytes);
         }
+        */
     }
 };
