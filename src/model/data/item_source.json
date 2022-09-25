@@ -1538,14 +1538,23 @@
     {
         "name": "Nirude's Lair: Boss reward chest",
         "nodeId": "nirude_lair",
-        "address": "5F3CFEE",
+        "address": [
+            "547FE2",
+            "5F3CFEE"
+        ],
         "vanillaItem": "Topaz Crest"
     },
     {
         "name": "Nirude's Lair: Boss reward item given by Miming",
         "nodeId": "nirude_lair",
-        "address": "5F3C942",
-        "spriteAddress": "5F3D0D2",
+        "address": [
+            "547936",
+            "5F3C942"
+        ],
+        "spriteAddress": [
+            "5480C6",
+            "5F3D0D2"
+        ],
         "vanillaItem": "Aqua Cape"
     },
     {
