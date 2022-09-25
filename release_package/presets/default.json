@@ -3,12 +3,12 @@
         "originalGameBalance": true,
         "megalithsEnabledOnStart": true,
         "skipLastDungeon": true,
-        "kingSnowDeathCount": 20
+        "kingSnowDeathCount": 5
     },
     "randomizerSettings": {
         "allowSpoilerLog": true,
         "itemsDistribution": {
-            "Herbs": 50,
+            "Herbs": 60,
             "Strength Tonic": 10,
             "Strength Elixyr": 5,
             "Magic Elixyr": 6,
@@ -55,6 +55,7 @@
             "Aqua Cape": 1,
             "Power Glove": 1,
             "Secret Pass": 1,
+            "Tree Gem": 1,
             "Bouquet": 1,
 
             "Earth Scroll": 1,
@@ -73,6 +74,13 @@
             "Agate Crest": 1,
             "Garnet Crest": 1,
             "Diamond Crest": 1
+        }
+    },
+    "world": {
+        "itemSources": {
+            "Merrick's shop": {
+                "Merrick's Shop: Item traded for 50 Gilded Falcons (Spirit Wand)": "Spirit Wand"
+            }
         }
     }
 }
