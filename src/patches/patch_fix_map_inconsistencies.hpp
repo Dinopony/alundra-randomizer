@@ -26,9 +26,5 @@ public:
         data.set_byte(0x584D6AB, 0x5F);
         data.set_word(0x584D6B4, 0xD706);
         data.set_byte(0x584D6B6, 0x25);
-
-        // Leaving the inn map uses a forced transition to the wrong variant of Inoa, replace
-        // the map ID directly in the events
-        data.set_word_le(0x3A673AE, 0x00F1);
     }
 };
