@@ -36,16 +36,20 @@ private:
 
     static void fix_post_nirude_items(BinaryFile& data, const RandomizerWorld& world)
     {
+        ItemSource* topaz_crest_source = world.item_source("Nirude's Lair: Boss reward chest (Topaz Crest)");
+        ItemSource* aqua_cape_source = world.item_source("Nirude's Lair: Boss reward item given by Miming (Aqua Cape)");
+
         // Fix Nirude exterior rewards after Nirude's Lair
         RoomStrings strings(MAP_OVERWORLD_E1, data);
-
-        ItemSource* topaz_crest_source = world.item_source("Nirude's Lair: Boss reward item given by Miming (Aqua Cape)");
         stringtools::replace(strings.string(34), "the Topaz Crest", topaz_crest_source->item()->name());
-
-        ItemSource* aqua_cape_source = world.item_source("Nirude's Lair: Boss reward item given by Miming (Aqua Cape)");
         stringtools::replace(strings.string(36), "the Aqua Cape", aqua_cape_source->item()->name());
-
         strings.apply_on_data(data);
+
+        // Fix second map variant
+        RoomStrings strings_variant(MAP_OVERWORLD_E1_VARIANT, data);
+        stringtools::replace(strings_variant.string(34), "the Topaz Crest", topaz_crest_source->item()->name());
+        stringtools::replace(strings_variant.string(36), "the Aqua Cape", aqua_cape_source->item()->name());
+        strings_variant.apply_on_data(data);
     }
 
     static void fix_casino_items(BinaryFile& data, const RandomizerWorld& world)

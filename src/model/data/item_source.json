@@ -1539,8 +1539,14 @@
         "name": "Nirude's Lair: Boss reward chest",
         "nodeId": "nirude_lair",
         "address": [
+            "54791D",
             "547FE2",
-            "5F3CFEE"
+            "5F3CFEE",
+            "5F3C929"
+        ],
+        "spriteAddress": [
+            "547FEA",
+            "5F3CFF6"
         ],
         "vanillaItem": "Topaz Crest"
     },

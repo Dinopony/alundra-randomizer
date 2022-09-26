@@ -85,9 +85,11 @@ void GameData::init_starting_flags()
     _starting_flags.emplace_back(FLAG_TORLA_GEYSERS_ACTIVE);
 
     // Activate Nirude moai statues
-    _starting_flags.emplace_back(FLAG_SAW_NIRUDE_STATUES_ACTIVATION_CUTSCENE);
-    _starting_flags.emplace_back(FLAG_NIRUDE_SAW_TOP_LEFT_CUTSCENE);
-    _starting_flags.emplace_back(FLAG_NIRUDE_STATUES_VULNERABLE);
+    // TODO: This looks like it's breaking the boss reward for now, so we'll just let the normal dungeon flow
+    //       do the work.
+    // _starting_flags.emplace_back(FLAG_SAW_NIRUDE_STATUES_ACTIVATION_CUTSCENE);
+    // _starting_flags.emplace_back(FLAG_NIRUDE_SAW_TOP_LEFT_CUTSCENE);
+    // _starting_flags.emplace_back(FLAG_NIRUDE_STATUES_VULNERABLE);
     _starting_flags.emplace_back(FLAG_NIRUDE_LOWER_BOULDER_REMOVED);
 
     // Flag allowing to exit Lars Crypt without having to beat the boss

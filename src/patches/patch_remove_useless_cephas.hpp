@@ -19,6 +19,12 @@ public:
         const std::vector<uint8_t> ALWAYS_BRANCH = { 0x31, 0x00, 0x00 };
 
         // Base variant
+        data.set_bytes(0x364B44, ALWAYS_BRANCH);      // Flag C9
+        data.set_bytes(0x364B4C, ALWAYS_BRANCH);      // Flag CA
+        data.set_bytes(0x364B54, ALWAYS_BRANCH);      // Flag CB
+        data.set_bytes(0x364B5C, ALWAYS_BRANCH);      // Flag CC
+        data.set_bytes(0x364B64, ALWAYS_BRANCH);      // Flag CD
+        data.set_bytes(0x364B6C, ALWAYS_BRANCH);      // Flag CE
 //        data.set_bytes(0x364B75, ALWAYS_BRANCH);      // Flag D0
         data.set_bytes(0x364B7D, ALWAYS_BRANCH);      // Flag D1
         data.set_bytes(0x364B85, ALWAYS_BRANCH);      // Flag D2
@@ -34,6 +40,12 @@ public:
         data.set_bytes(0x364BEE, ALWAYS_BRANCH);      // Flag DD
 
         // Other variant
+        data.set_bytes(0x494EC78, ALWAYS_BRANCH);      // Flag C9
+        data.set_bytes(0x494EC80, ALWAYS_BRANCH);      // Flag CA
+        data.set_bytes(0x494EC88, ALWAYS_BRANCH);      // Flag CB
+        data.set_bytes(0x494EC90, ALWAYS_BRANCH);      // Flag CC
+        data.set_bytes(0x494EC98, ALWAYS_BRANCH);      // Flag CD
+        data.set_bytes(0x494ECA0, ALWAYS_BRANCH);      // Flag CE
 //        data.set_bytes(0x494ECA9, ALWAYS_BRANCH);      // Flag D0
         data.set_bytes(0x494ECB1, ALWAYS_BRANCH);      // Flag D1
         data.set_bytes(0x494ECB9, ALWAYS_BRANCH);      // Flag D2
