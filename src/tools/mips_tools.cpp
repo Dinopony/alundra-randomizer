@@ -56,6 +56,45 @@ MipsCode& MipsCode::sb(const MipsRegister& reg_from, const MipsRegister& reg_to,
     return *this;
 }
 
+MipsCode& MipsCode::lw(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from)
+{
+    this->add_word_le(offset_from);
+
+    // Opcode : 1000 11SS SSSD DDDD
+    uint16_t opcode = 0x8C00;
+    opcode |= reg_to.code();
+    opcode |= reg_from.code() << 5;
+    this->add_word_le(opcode);
+
+    return *this;
+}
+
+MipsCode& MipsCode::lh(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from)
+{
+    this->add_word_le(offset_from);
+
+    // Opcode : 1000 01SS SSSD DDDD
+    uint16_t opcode = 0x8400;
+    opcode |= reg_to.code();
+    opcode |= reg_from.code() << 5;
+    this->add_word_le(opcode);
+
+    return *this;
+}
+
+MipsCode& MipsCode::lb(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from)
+{
+    this->add_word_le(offset_from);
+
+    // Opcode : 1000 00SS SSSD DDDD
+    uint16_t opcode = 0x8000;
+    opcode |= reg_to.code();
+    opcode |= reg_from.code() << 5;
+    this->add_word_le(opcode);
+
+    return *this;
+}
+
 MipsCode& MipsCode::j(uint32_t addr, bool add_load_delay_nop)
 {
     uint32_t long_count = (addr / 4) & 0x00FFFFFF;

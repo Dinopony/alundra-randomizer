@@ -3,6 +3,7 @@
         "originalGameBalance": true,
         "megalithsEnabledOnStart": true,
         "skipLastDungeon": true,
+        "splitBootsEffects": true,
         "kingSnowDeathCount": 5
     },
     "randomizerSettings": {

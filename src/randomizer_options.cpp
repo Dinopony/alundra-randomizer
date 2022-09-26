@@ -74,6 +74,7 @@ Json RandomizerOptions::to_json(const GameData& game_data, const RandomizerWorld
     json["gameSettings"]["megalithsEnabledOnStart"] = _megaliths_enabled_on_start;
     json["gameSettings"]["skipLastDungeon"] = _skip_last_dungeon;
     json["gameSettings"]["kingSnowDeathCount"] = _king_snow_death_count;
+    json["gameSettings"]["splitBootsEffects"] = _split_boots_effects;
 
     // Randomizer settings
     json["randomizerSettings"]["allowSpoilerLog"] = _allow_spoiler_log;
@@ -110,6 +111,8 @@ void RandomizerOptions::apply_game_settings_json(const Json& json)
             _skip_last_dungeon = value;
         else if(key == "kingSnowDeathCount")
             _king_snow_death_count = value;
+        else if(key == "splitBootsEffects")
+            _split_boots_effects = value;
         else
             throw RandomizerException("Unknown key '" + key + "' in preset game settings JSON");
     }
@@ -222,14 +225,17 @@ std::string RandomizerOptions::permalink() const
     bitpack.pack((uint8_t)MAJOR_RELEASE);
 
     bitpack.pack(_seed);
+
     bitpack.pack(_allow_spoiler_log);
-    bitpack.pack_array(_items_distribution);
 
     bitpack.pack(_original_game_balance);
     bitpack.pack(_megaliths_enabled_on_start);
     bitpack.pack(_skip_last_dungeon);
+    bitpack.pack(_split_boots_effects);
+
     bitpack.pack(_king_snow_death_count);
 
+    bitpack.pack_array(_items_distribution);
     bitpack.pack_map(_fixed_item_sources);
 
     return "a" + base64_encode(bitpack.bytes()) + "/";
@@ -249,13 +255,16 @@ void RandomizerOptions::parse_permalink(std::string permalink)
         throw RandomizerException("This permalink comes from an incompatible version (" + std::to_string(version) + ").");
 
     _seed = bitpack.unpack<uint32_t>();
+
     _allow_spoiler_log = bitpack.unpack<bool>();
-    _items_distribution = bitpack.unpack_array<uint8_t, ITEM_COUNT>();
 
     _original_game_balance = bitpack.unpack<bool>();
     _megaliths_enabled_on_start = bitpack.unpack<bool>();
     _skip_last_dungeon = bitpack.unpack<bool>();
+    _split_boots_effects = bitpack.unpack<bool>();
+
     _king_snow_death_count = bitpack.unpack<uint8_t>();
 
+    _items_distribution = bitpack.unpack_array<uint8_t, ITEM_COUNT>();
     _fixed_item_sources = bitpack.unpack_map<uint16_t, uint8_t>();
 }

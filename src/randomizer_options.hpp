@@ -33,6 +33,9 @@ private:
     /// to simply go forward to reach the final boss once all crests are collected & placed
     bool _skip_last_dungeon = true;
 
+    /// If true, each boots give its own effects instead of boots tiers giving all previous tiers effects
+    bool _split_boots_effects = true;
+
     /// The amount of times you need to die in order to be able to get King Snow's item
     uint8_t _king_snow_death_count = 20;
 
