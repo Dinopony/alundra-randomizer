@@ -210,7 +210,7 @@ std::vector<std::string> RandomizerOptions::hash_words() const
         "Lair", "Tarn", "Coal", "Mine", "Sara", "Coastal", "Cave", "Reptile", "Magyscar", "Sanctuary", "Fairy", "Pond",
         "Golem", "Dragon", "Alundra", "Meia", "Giles", "Lutas", "Merrick", "Jess", "Olga", "Oak", "Nava", "Ronan",
         "Melzas", "Lars", "Bonaire", "Nadia", "Kline", "Wendell", "Olen", "Nirude", "Zazan", "Wilda", "Nestus",
-        "Zorgia", "Elene", "Lurvy", "Kohei", "Vul", "Jeal", "Uma", "Mountain", "Bergus", "Roulette", "Cephas"
+        "Zorgia", "Elene", "Lurvy", "Kohei", "Vul", "Jeal", "Uma", "Mountain", "Bergus", "Roulette", "Cephas", "Stenia"
     };
 
     std::mt19937 rng(_seed);

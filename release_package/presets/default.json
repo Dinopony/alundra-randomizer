@@ -9,16 +9,16 @@
     "randomizerSettings": {
         "allowSpoilerLog": true,
         "itemsDistribution": {
-            "Herbs": 60,
-            "Strength Tonic": 10,
-            "Strength Elixyr": 5,
-            "Magic Elixyr": 6,
-            "Wonder Essence": 3,
+            "Herbs": 55,
+            "Strength Tonic": 12,
+            "Strength Elixyr": 6,
+            "Magic Elixyr": 7,
+            "Wonder Essence": 4,
 
             "1 Gilder": 2,
             "5 Gilder": 6,
             "10 Gilder": 9,
-            "30 Gilder": 15,
+            "30 Gilder": 16,
 
             "Life Vessel": 39,
             "Magic Seed": 4,
