@@ -21,7 +21,7 @@ It works on a 1.1 US image of the game by randomizing item sources and altering 
 Using the provided release packages (on the right panel of this webpage) is really straightforward since everything
 (excepted the original ROM, of course) is included for you to start randomizing.
 
-You just have to put your own copy of the original 1.1 US game disc inside the folder named `input.bin`, and use the 
+You just have to put your own copy of the original 1.1 US game disc inside the folder, rename it `input.bin`, and use the 
 `gen_preset.bat` script on Windows (Linux users are expected to know how to use CLI).
 
 A command line interface will open, don't be scared! It will ask you for which **preset** you want to use. Presets are a
