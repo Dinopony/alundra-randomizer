@@ -36,12 +36,12 @@ private:
     /// A boolean indicating whether this item source can hold an item required for progression or not
     bool _can_contain_progression = true;
 
-    /// An array of hints which can be used to subtly point at this ItemSource
-    std::vector<std::string> _hints;
-
     /// If set to true, this ItemSource cannot contain "precious items" (items that would break the game if taken
     /// repeatedly). This is usually set for ItemSources that can be taken an infinite amount of times.
     bool _forbid_precious_items = false;
+
+    /// An array of hints which can be used to subtly point at this ItemSource
+    std::vector<std::string> _hints;
 
 public:
     ItemSource() = default;

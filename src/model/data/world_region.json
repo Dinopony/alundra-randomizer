@@ -12,13 +12,15 @@
             "overworld_c2",
             "overworld_c2_cave_behind_spring",
             "overworld_c2_graveyard_house"
-        ]
+        ],
+        "hintName": "near Sanctuary"
     },
     {
         "name": "Lars Crypt",
         "nodeIds": [
             "lars_crypt"
-        ]
+        ],
+        "canBeHintedAsRequired": true
     },
 
     {
@@ -29,11 +31,13 @@
             "overworld_b2_cave_to_lake",
             "overworld_b2_cave_to_lake_behind_merman",
             "overworld_b2_upper_mines"
-        ]
+        ],
+        "hintName": "near Coal Mine"
     },
     {
         "name": "Coal Mine",
-        "nodeIds": [ "coal_mine" ]
+        "nodeIds": [ "coal_mine" ],
+        "canBeHintedAsRequired": true
     },
 
     {
@@ -46,13 +50,16 @@
             "overworld_d2_watermill",
             "overworld_d2_cave",
             "overworld_d2_cave_behind_merman"
-        ]
+        ],
+        "hintName": "near the watermill"
     },
     {
         "name": "Undeground Waterway",
         "nodeIds": [
             "underground_waterway"
-        ]
+        ],
+        "canBeHintedAsRequired": true,
+        "hintName": "in the Underground Waterway"
     },
 
     {
@@ -63,11 +70,13 @@
             "overworld_d3_behind_bricks",
             "overworld_d3_behind_spring",
             "overworld_d3_behind_spring_and_vines"
-        ]
+        ],
+        "hintName": "near Tarn Manor"
     },
     {
         "name": "Tarn Manor",
-        "nodeIds": [ "tarn_manor" ]
+        "nodeIds": [ "tarn_manor" ],
+        "canBeHintedAsRequired": true
     },
 
     {
@@ -77,7 +86,8 @@
             "overworld_c4_behind_spring",
             "overworld_c4_behind_long_boots",
             "overworld_c4_right_cliff_behind_long_boots"
-        ]
+        ],
+        "hintName": "near Merrick's Shop"
     },
     {
         "name": "Merrick's shop",
@@ -97,7 +107,8 @@
         "nodeIds": [
             "coastal_cave",
             "coastal_cave_behind_merman"
-        ]
+        ],
+        "canBeHintedAsRequired": true
     },
 
     {
@@ -105,7 +116,8 @@
         "nodeIds": [
             "overworld_d4",
             "overworld_d4_behind_long_boots"
-        ]
+        ],
+        "hintName": "near Reptile Lair"
     },
     {
         "name": "Reptiles Lair",
@@ -113,7 +125,8 @@
             "reptiles_lair_side_cavern",
             "reptiles_lair",
             "reptiles_lair_behind_flail"
-        ]
+        ],
+        "canBeHintedAsRequired": true
     },
 
     {
@@ -125,29 +138,34 @@
             "overworld_b3_behind_power_glove",
             "overworld_b3_megalith",
             "overworld_b3_top_left"
-        ]
+        ],
+        "hintName": "near Riverside pub"
     },
     {
         "name": "Riverside Casino",
         "nodeIds": [
             "riverside_casino",
             "riverside_casino_shooting_range"
-        ]
+        ],
+        "canBeHintedAsRequired": true
     },
     {
         "name": "Fairy Pond",
-        "nodeIds": [ "fairy_pond" ]
+        "nodeIds": [ "fairy_pond" ],
+        "canBeHintedAsRequired": true,
+        "hintName": "in the Fairy Pond"
     },
 
     {
-        "name": "Overworld B4 (Nava's hut sector)",
+        "name": "Overworld B4 (Nava's cabin sector)",
         "nodeIds": [
             "overworld_b4",
             "overworld_b4_behind_merman",
             "overworld_b4_behind_bomb",
             "overworld_b4_behind_power_glove",
             "overworld_b4_nava_hut_behind_spring"
-        ]
+        ],
+        "hintName": "near Nava's cabin"
     },
 
     {
@@ -157,7 +175,8 @@
             "overworld_e4_well",
             "overworld_e4_well_behind_vines",
             "overworld_e4_behind_merman"
-        ]
+        ],
+        "hintName": "in the Cliffs of Madness"
     },
     {
         "name": "Overworld E3 (Lower desert)",
@@ -167,7 +186,8 @@
             "overworld_e3_bottom_left_island",
             "overworld_e3_cape_cave",
             "overworld_e3_behind_cape_or_boots"
-        ]
+        ],
+        "hintName": "in lower desert"
     },
     {
         "name": "Overworld E2 (Upper desert)",
@@ -175,11 +195,13 @@
             "overworld_e2",
             "overworld_e2_behind_long_boots",
             "overworld_e2_cave_behind_ice_wand"
-        ]
+        ],
+        "hintName": "in upper desert"
     },
     {
         "name": "Ancient Shrine",
-        "nodeIds": [ "ancient_shrine" ]
+        "nodeIds": [ "ancient_shrine" ],
+        "canBeHintedAsRequired": true
     },
 
     {
@@ -189,7 +211,8 @@
             "overworld_c1_right_sector",
             "overworld_c1_elevated_cavern",
             "overworld_c1_cliff"
-        ]
+        ],
+        "hintName": "near Magyscar"
     },
     {
         "name": "Magyscar",
@@ -197,7 +220,8 @@
             "magyscar",
             "magyscar_behind_bomb_or_fire_wand",
             "magyscar_behind_bomb"
-        ]
+        ],
+        "canBeHintedAsRequired": true
     },
 
     {
@@ -205,7 +229,8 @@
         "nodeIds": [
             "overworld_d1",
             "overworld_d1_cliff_maze"
-        ]
+        ],
+        "hintName": "near Torla Mountain"
     },
     {
         "name": "Torla Mountain",
@@ -213,7 +238,8 @@
             "torla_mountain",
             "torla_mountain_behind_charm_boots",
             "torla_mountain_behind_spring"
-        ]
+        ],
+        "canBeHintedAsRequired": true
     },
     {
         "name": "Ice Manor",
@@ -229,13 +255,15 @@
             "overworld_e1_behind_spring",
             "overworld_e1_left",
             "overworld_e1_top_left"
-        ]
+        ],
+        "hintName": "near Nirude's Lair"
     },
     {
         "name": "Nirude's Lair",
         "nodeIds": [
             "nirude_lair"
-        ]
+        ],
+        "canBeHintedAsRequired": true
     },
 
     {
@@ -247,7 +275,8 @@
             "overworld_a3_megalith",
             "overworld_a3_right",
             "overworld_a3_right_behind_vines"
-        ]
+        ],
+        "hintName": "in ruins north of Fire Manor"
     },
     {
         "name": "Overworld A4 (Fire Manor sector)",
@@ -257,7 +286,8 @@
             "overworld_a4_left",
             "overworld_a4_manor",
             "overworld_a4_behind_manor"
-        ]
+        ],
+        "hintName": "near Fire Manor"
     },
     {
         "name": "Fire Manor",
@@ -270,7 +300,8 @@
         "name": "Overworld A1 (Murgg great tree)",
         "nodeIds": [
             "overworld_a1"
-        ]
+        ],
+        "hintName": "near the Great Tree"
     },
     {
         "name": "Overworld A2 (Murgg woods)",
@@ -278,13 +309,16 @@
             "overworld_a2",
             "overworld_a2_behind_vines",
             "overworld_a2_behind_vines_and_bomb"
-        ]
+        ],
+        "hintName": "in the Murgg woods"
     },
     {
         "name": "Tower of the Great Tree",
         "nodeIds": [
             "great_tree_tower"
-        ]
+        ],
+        "canBeHintedAsRequired": true,
+        "hintName": "inside the Great Tree"
     },
 
     {
@@ -293,7 +327,8 @@
             "overworld_b1",
             "overworld_b1_island",
             "overworld_b1_left"
-        ]
+        ],
+        "hintName": "near the lake"
     },
     {
         "name": "Lake Shrine",

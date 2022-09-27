@@ -13,6 +13,7 @@ class ItemSource;
 class WorldNode;
 class WorldPath;
 class WorldRegion;
+class HintSource;
 
 class RandomizerWorld {
 private:
@@ -32,6 +33,9 @@ private:
      */
     std::vector<WorldRegion*> _regions;
 
+    /// A dictionary of hints
+    std::map<std::string, HintSource*> _hint_sources;
+
 public:
     explicit RandomizerWorld(const GameData& game_data);
     ~RandomizerWorld();
@@ -47,6 +51,8 @@ public:
 
     [[nodiscard]] const std::map<std::string, WorldNode*>& nodes() const { return _nodes; }
     [[nodiscard]] WorldNode* node(const std::string& id) const { return _nodes.at(id); }
+    [[nodiscard]] WorldNode* spawn_node() const { return _nodes.at("inoa"); }
+    [[nodiscard]] WorldNode* end_node() const { return _nodes.at("end"); }
 
     [[nodiscard]] const std::vector<WorldPath*>& paths() const { return _paths; }
     void add_path(WorldPath* path) { _paths.emplace_back(path); }
@@ -55,12 +61,17 @@ public:
     [[nodiscard]] const std::vector<WorldRegion*>& regions() const { return _regions; }
     [[nodiscard]] WorldRegion* region(const std::string& name) const;
 
-    [[nodiscard]] WorldNode* spawn_node() const { return _nodes.at("inoa"); }
-    [[nodiscard]] WorldNode* end_node() const { return _nodes.at("end"); }
+    [[nodiscard]] std::map<std::string, HintSource*>& hint_sources() { return _hint_sources; }
+    [[nodiscard]] const std::map<std::string, HintSource*>& hint_sources() const { return _hint_sources; }
+    [[nodiscard]] const HintSource* hint_source(const std::string& hint_source_id) const { return _hint_sources.at(hint_source_id); }
+    [[nodiscard]] HintSource* hint_source(const std::string& hint_source_id) { return _hint_sources.at(hint_source_id); }
+
+    [[nodiscard]] std::vector<const Item*> starting_inventory() const { return {}; }
 
 private:    
     void init_item_sources(const GameData& game_data);
     void init_nodes();
     void init_paths(const GameData& game_data);
     void init_regions();
+    void init_hint_sources();
 };

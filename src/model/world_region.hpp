@@ -22,7 +22,7 @@ private:
     std::string _hint_name;
 
     /// If true, a hint can say if exploring this region is necessary to complete the seed
-    bool _can_be_hinted_as_required = true;
+    bool _can_be_hinted_as_required = false;
 
 public:
     WorldRegion() = default;

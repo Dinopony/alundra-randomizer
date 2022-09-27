@@ -8,6 +8,7 @@
 #include "tools/exception.hpp"
 
 #include "model/item_source.hpp"
+#include "model/hint_source.hpp"
 #include "model/world_node.hpp"
 #include "model/world_path.hpp"
 #include "model/world_region.hpp"
@@ -25,11 +26,11 @@ WorldShuffler::WorldShuffler(RandomizerWorld& world, const GameData& game_data, 
     _rng            (_options.seed())
 {}
 
-void WorldShuffler::randomize()
+void WorldShuffler::randomize_items()
 {
     this->init_item_pool();
 
-    _solver.setup(_world.spawn_node(), _world.end_node(), { });
+    _solver.setup(_world.spawn_node(), _world.end_node(), _world.starting_inventory());
 
     bool explored_new_nodes = true;
     while(explored_new_nodes)
@@ -375,4 +376,143 @@ Json WorldShuffler::playthrough_as_json() const
     }
 
     return json;
+}
+
+
+void WorldShuffler::randomize_hints()
+{
+    this->init_hint_collections();
+
+    std::vector<HintSource*> hint_sources_pool;
+    for(auto& [_, hint_source] : _world.hint_sources())
+        hint_sources_pool.emplace_back(hint_source);
+    vectools::shuffle(hint_sources_pool, _rng);
+
+    uint16_t remaining_region_requirement_hints = 5;
+
+    // Put hints inside
+    for(HintSource* hint_source : hint_sources_pool)
+    {
+        if(remaining_region_requirement_hints > 0)
+        {
+            if(this->generate_region_requirement_hint(hint_source))
+            {
+                remaining_region_requirement_hints--;
+                continue;
+            }
+        }
+
+        this->generate_item_location_hint(hint_source);
+    }
+}
+
+void WorldShuffler::init_hint_collections()
+{
+    // A shuffled list of regions, used for the "barren / useful node" hints
+    for(WorldRegion* region : _world.regions())
+        if(region->can_be_hinted_as_required())
+            _hintable_region_requirements.emplace_back(region);
+    vectools::shuffle(_hintable_region_requirements, _rng);
+
+    // A shuffled list of items which location is interesting, useful for the "item X is in Y" hints
+    _hintable_item_locations = {
+            ITEM_RUBY_CREST,    ITEM_SAPPHIRE_CREST,
+            ITEM_TOPAZ_CREST,   ITEM_AGATE_CREST,
+            ITEM_GARNET_CREST,  ITEM_EMERALD_CREST,
+            ITEM_DIAMOND_CREST,
+
+            ITEM_BOMB,          ITEM_SAND_CAPE,
+            ITEM_SPRING_BEAN,   ITEM_LONG_BOOTS,
+            ITEM_MERMAN_BOOTS,  ITEM_FIRE_WAND,
+            ITEM_ICE_WAND,      ITEM_IRON_FLAIL,
+            ITEM_BOUQUET,       ITEM_TREE_GEM,
+            ITEM_SECRET_PASS,   ITEM_POWER_GLOVE
+    };
+    vectools::shuffle(_hintable_item_locations, _rng);
+}
+
+bool WorldShuffler::generate_region_requirement_hint(HintSource* hint_source)
+{
+    WorldRegion* hinted_region = nullptr;
+    for(WorldRegion* region : _hintable_region_requirements)
+    {
+        // Check that taking items from region is not mandatory to reach the hint source
+        WorldSolver solver(_world);
+        solver.forbid_taking_items_from_nodes(region->nodes());
+        if(!solver.try_to_solve(_world.spawn_node(), hint_source->node(), _world.starting_inventory()))
+            continue;
+
+        hinted_region = region;
+        vectools::erase_first(_hintable_region_requirements, region);
+        break;
+    }
+
+    if(!hinted_region)
+        return false;
+
+    if (this->is_region_avoidable(hinted_region))
+        hint_source->text("nothing of interest can be found " + hinted_region->hint_name());
+    else
+        hint_source->text("something useful lies " + hinted_region->hint_name());
+
+    return true;
+}
+
+bool WorldShuffler::generate_item_location_hint(HintSource* hint_source)
+{
+    const Item* hinted_item_location = nullptr;
+    for(uint8_t item_id : _hintable_item_locations)
+    {
+        const Item* tested_item = _game_data.item(item_id);
+
+        WorldSolver solver(_world);
+        solver.forbid_item_type(tested_item);
+        if(solver.try_to_solve(_world.spawn_node(), hint_source->node(), _world.starting_inventory()))
+        {
+            // If item is not mandatory to reach the hint source, we can hint it
+            hinted_item_location = tested_item;
+            vectools::erase_first(_hintable_item_locations, item_id);
+            break;
+        }
+    }
+
+    if (!hinted_item_location)
+        return false;
+
+    hint_source->text(hinted_item_location->name() + " can be found " + this->random_hint_for_item(hinted_item_location));
+    return true;
+}
+
+bool WorldShuffler::is_region_avoidable(WorldRegion* region) const
+{
+    WorldSolver solver(_world);
+    solver.forbid_taking_items_from_nodes(region->nodes());
+    return solver.try_to_solve(_world.spawn_node(), _world.end_node(), _world.starting_inventory());
+}
+
+std::string WorldShuffler::random_hint_for_item(const Item* item)
+{
+    std::vector<ItemSource*> sources = _world.item_sources_with_item(item);
+    if(sources.empty())
+        return "in an unknown place";
+
+    vectools::shuffle(sources, _rng);
+    ItemSource* random_source = sources[0];
+    return this->random_hint_for_item_source(random_source);
+}
+
+std::string WorldShuffler::random_hint_for_item_source(ItemSource* item_source)
+{
+    std::vector<std::string> all_hints = {
+            item_source->node()->region()->hint_name()
+    };
+
+    const std::vector<std::string>& node_hints = item_source->node()->hints();
+    all_hints.insert(all_hints.end(), node_hints.begin(), node_hints.end());
+
+    const std::vector<std::string>& source_hints = item_source->hints();
+    all_hints.insert(all_hints.end(), source_hints.begin(), source_hints.end());
+
+    vectools::shuffle(all_hints, _rng);
+    return all_hints[0];
 }

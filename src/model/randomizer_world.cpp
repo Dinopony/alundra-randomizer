@@ -4,10 +4,12 @@
 #include "world_node.hpp"
 #include "world_path.hpp"
 #include "world_region.hpp"
+#include "hint_source.hpp"
 #include "../randomizer_options.hpp"
 
 // Include headers automatically generated from model json files
 #include "data/item_source.json.hxx"
+#include "data/hint_source.json.hxx"
 #include "data/world_node.json.hxx"
 #include "data/world_path.json.hxx"
 #include "data/world_region.json.hxx"
@@ -22,6 +24,7 @@ RandomizerWorld::RandomizerWorld(const GameData& game_data)
     this->init_regions();
     this->init_paths(game_data);
     this->init_item_sources(game_data);
+    this->init_hint_sources();
 }
 
 RandomizerWorld::~RandomizerWorld()
@@ -34,6 +37,8 @@ RandomizerWorld::~RandomizerWorld()
         delete path;
     for (WorldRegion* region : _regions)
         delete region;
+    for (auto& [source_id, source] : _hint_sources)
+        delete source;
 }
 
 ItemSource* RandomizerWorld::item_source(const std::string& name) const
@@ -139,6 +144,19 @@ void RandomizerWorld::init_regions()
     for(auto& [id, node] : _nodes)
         if(node->region() == nullptr)
             throw RandomizerException("Node '" + node->id() + "' doesn't belong to any region");
+}
+
+void RandomizerWorld::init_hint_sources()
+{
+    Json hint_sources_json = Json::parse(HINT_SOURCES_JSON);
+    for(auto& [hint_source_id, hint_source_json] : hint_sources_json.items())
+    {
+        _hint_sources[hint_source_id] = HintSource::from_json(hint_source_json, *this);
+    }
+
+#ifdef DEBUG
+    std::cout << _hint_sources.size() << " hint sources loaded." << std::endl;
+#endif
 }
 
 void RandomizerWorld::apply_options(const RandomizerOptions& options, const GameData& game_data)

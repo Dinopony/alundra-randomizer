@@ -1,0 +1,57 @@
+{
+    "lars_crypt": {
+        "name": "Lars (Lars Crypt)",
+        "nodeId": "lars_crypt",
+        "text": "Wait. I forgot. Nevermind"
+    },
+    "reptiles_lair": {
+        "name": "Jeal (Reptile Lair)",
+        "nodeId": "reptiles_lair",
+        "text": "you need to gather seven crests"
+    },
+    "nirudes_lair": {
+        "name": "Miming (after Nirude's Lair)",
+        "nodeId": "nirude_lair",
+        "text": "SendNirudes. What could it mean?.."
+    },
+    "coastal_cave": {
+        "name": "Vul (Coastal Cave)",
+        "nodeId": "coastal_cave_behind_merman",
+        "text": "Inoa is a charming town"
+    },
+    "torla_mountain": {
+        "name": "Wilda (Torla Mountain)",
+        "nodeId": "torla_mountain_behind_charm_boots",
+        "text": "sleeping feels good"
+    },
+    "magyscar": {
+        "name": "Uma (Magyscar)",
+        "nodeId": "magyscar_behind_bomb",
+        "text": "WUKIKI! WUKIKI!"
+    },
+    "coal_mine": {
+        "name": "Zazan (Coal Mine)",
+        "nodeId": "coal_mine",
+        "text": "Find the crests you stupid monkeys!"
+    },
+    "ancient_shrine": {
+        "name": "Priest (Ancient Shrine)",
+        "nodeId": "ancient_shrine",
+        "text": "the size of your sword doesn't matter"
+    },
+    "fairy_pond": {
+        "name": "Stenia (Fairy Pond)",
+        "nodeId": "fairy_pond",
+        "text": "your name is Alundra"
+    },
+    "great_tree":  {
+        "name": "Zazan (Tower of the Great Tree)",
+        "nodeId": "great_tree_tower",
+        "text": "hotdogs are tasty! WUKIKI"
+    },
+    "jess": {
+        "name": "Jess (Inoa)",
+        "nodeId": "inoa",
+        "text": "there would be an evil god called Melzas"
+    }
+}

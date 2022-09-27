@@ -32,6 +32,7 @@ wrapped_dependency(TEXT   src/model/data/world_path.json     WORLD_PATHS_JSON)
 wrapped_dependency(TEXT   src/model/data/world_region.json   WORLD_REGIONS_JSON)
 wrapped_dependency(TEXT   src/game/data/item.json            ITEMS_JSON)
 wrapped_dependency(TEXT   src/model/data/item_source.json    ITEM_SOURCES_JSON)
+wrapped_dependency(TEXT   src/model/data/hint_source.json    HINT_SOURCES_JSON)
 wrapped_dependency(RAW    src/assets/patched_balance.bin     PATCHED_BALANCE)
 
 set(SOURCES
@@ -40,6 +41,7 @@ set(SOURCES
         "src/model/data/world_node.json.hxx"
         "src/model/data/world_path.json.hxx"
         "src/model/data/item_source.json.hxx"
+        "src/model/data/hint_source.json.hxx"
         "src/model/data/world_region.json.hxx"
         "src/assets/patched_balance.bin.hxx"
 
@@ -71,6 +73,8 @@ set(SOURCES
         "src/model/world_path.cpp"
         "src/model/world_region.hpp"
         "src/model/world_region.cpp"
+        "src/model/hint_source.hpp"
+        "src/model/hint_source.cpp"
         "src/model/randomizer_world.hpp"
         "src/model/randomizer_world.cpp"
 
@@ -89,6 +93,7 @@ set(SOURCES
         "src/patches/patch_fix_wrong_map_transitions.hpp"
         "src/patches/patch_fix_item_names_in_textboxes.hpp"
         "src/patches/patch_split_boots_effects.hpp"
+        "src/patches/patch_apply_hint_text.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"
@@ -109,6 +114,8 @@ set(SOURCES
         "src/tools/json.hpp"
         "src/tools/mips_tools.hpp"
         "src/tools/mips_tools.cpp"
+        "src/tools/textbox_formatter.hpp"
+        "src/tools/textbox_formatter.cpp"
         "src/tools/stringtools.hpp"
         "src/tools/vectools.hpp"
         "src/tools/json_tools.hpp"

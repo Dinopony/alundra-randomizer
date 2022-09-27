@@ -125,7 +125,8 @@ Json randomize(RandomizerWorld& world, GameData& game_data, RandomizerOptions& o
 
     std::cout << "\nRandomizing world...\n";
     WorldShuffler shuffler(world, game_data, options);
-    shuffler.randomize();
+    shuffler.randomize_items();
+    shuffler.randomize_hints();
 
     if(options.allow_spoiler_log())
     {

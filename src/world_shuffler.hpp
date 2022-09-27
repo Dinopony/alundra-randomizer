@@ -47,10 +47,14 @@ private:
     /// from `_logical_playthrough` to only keep those containing relevant items.
     std::vector<const Item*> _minimal_items_to_complete;
 
+    std::vector<WorldRegion*> _hintable_region_requirements;
+    std::vector<uint8_t> _hintable_item_locations;
+
 public:
     WorldShuffler(RandomizerWorld& world, const GameData& game_data, const RandomizerOptions& options);
     
-    void randomize();
+    void randomize_items();
+    void randomize_hints();
 
     [[nodiscard]] Json playthrough_as_json() const;
     [[nodiscard]] Json& debug_log_as_json() { return _solver.debug_log(); }
@@ -67,4 +71,13 @@ private:
     [[nodiscard]] bool test_item_source_compatibility(ItemSource* source, const Item* item) const;
     [[nodiscard]] bool item_pool_contains_items(const std::vector<const Item*>& items) const;
     [[nodiscard]] std::vector<WorldPath*> build_weighted_blocked_paths_list();
+
+    void init_hint_collections();
+
+    bool generate_region_requirement_hint(HintSource* hint_source);
+    [[nodiscard]] bool is_region_avoidable(WorldRegion* region) const;
+
+    bool generate_item_location_hint(HintSource* hint_source);
+    std::string random_hint_for_item(const Item* item);
+    std::string random_hint_for_item_source(ItemSource* item_source);
 };

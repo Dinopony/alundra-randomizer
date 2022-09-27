@@ -278,6 +278,9 @@ void WorldSolver::expand_exploration_zone()
             {
                 // If destination as already been explored or is already pending exploration, ignore it
                 WorldNode* destination = path->destination();
+                if(path->is_two_way() && destination == node)
+                    destination = path->origin();
+
                 if (vectools::contains(_explored_nodes, destination) || vectools::contains(_nodes_to_explore, destination))
                     continue;
 
@@ -337,5 +340,17 @@ void WorldSolver::take_path(WorldPath* path)
 
         Json& debug_log = this->debug_log_for_current_step();
         debug_log["exploration"].emplace_back("Added " + destination->id() + " to accessible nodes");
+    }
+    else if(path->is_two_way())
+    {
+        // If one way was useless, maybe it was because we were coming from the destination towards the origin
+        destination = path->origin();
+        if (!vectools::contains(_explored_nodes, destination) && !vectools::contains(_nodes_to_explore, destination))
+        {
+            _nodes_to_explore.emplace_back(destination);
+
+            Json& debug_log = this->debug_log_for_current_step();
+            debug_log["exploration"].emplace_back("Added " + destination->id() + " to accessible nodes");
+        }
     }
 }
