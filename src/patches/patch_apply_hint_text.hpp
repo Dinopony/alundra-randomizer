@@ -23,7 +23,7 @@ public:
         apply_ancient_shrine_hint(data, world);
         apply_fairy_pond_hint(data, world);
         apply_great_tree_hint(data, world);
-        //apply_navas_keep_hint(data, world);
+        apply_navas_keep_hint(data, world);
 
         apply_jess_hint(data, world);
         // apply_book_of_elna_hint(data, world);
@@ -182,16 +182,27 @@ private:
         strings.apply_on_data(data);
     }
 
-    /*
     static void apply_navas_keep_hint(BinaryFile& data, const RandomizerWorld& world)
     {
-        const std::string& hint_text = world.hint_source("navas_keep")->text();
+        const std::string& hint_text = world.hint_source("nava_keep")->text();
 
-        //RoomStrings strings(MAP_NAVAS_CABIN, data);
-        // TODO
-        //strings.apply_on_data(data);
+        RoomStrings strings(MAP_432, data);
+
+        // Shorten Nava & Zorgia talk
+        strings.string(32) = R"(\C\CIt's time you knew the truth about\NMelzas. He is a ravenous monster\Nfrom a distant star...)";
+        strings.string(34) = TextboxFormatter(R"(\FAlundra, it's about time I get rid of you. I just hope it won't get too dirty...)").format();
+
+        // Make post-fight Nava give a hint
+        strings.string(36) = TextboxFormatter(
+                R"(\CIt is I, Nava.\A)"
+                R"(You were wonderful, Alundra. I've never witnessed such a passionate fight!\A)"
+                R"(Now listen to me very well. There is a secret we've been sharing between guardians for centuries, and I think it is time for you to know about it.\A")
+                R"(You must know that )" + hint_text + R"(.\A)"
+                R"(I hope you make good use of it.)"
+        ).format();
+
+        strings.apply_on_data(data);
     }
-    */
 
     static void apply_jess_hint(BinaryFile& data, const RandomizerWorld& world)
     {

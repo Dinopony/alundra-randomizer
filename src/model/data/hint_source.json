@@ -49,6 +49,11 @@
         "nodeId": "great_tree_tower",
         "text": "hotdogs are tasty! WUKIKI"
     },
+    "nava_keep":  {
+        "name": "Nava (Nava's Keep)",
+        "nodeId": "nava_keep",
+        "text": "you can press Start + Select to die quickly"
+    },
     "jess": {
         "name": "Jess (Inoa)",
         "nodeId": "inoa",
