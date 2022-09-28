@@ -88,12 +88,19 @@ Json RandomizerOptions::to_json(const GameData& game_data, const RandomizerWorld
     }
     json["randomizerSettings"]["itemsDistributions"] = items_distribution_with_names;
 
+    json["randomizerSettings"]["fixedItemSources"] = Json::object();
     for(auto& [item_source_id, item_id] : _fixed_item_sources)
     {
         ItemSource* item_source = world.item_source(item_source_id);
-        WorldRegion* region = item_source->node()->region();
         const Item* item = game_data.item(item_id);
-        json["world"]["itemSources"][region->name()][item_source->pretty_name()] = item->name();
+        json["randomizerSettings"]["fixedItemSources"][item_source->pretty_name()] = item->name();
+    }
+
+    json["randomizerSettings"]["itemSourcesWithoutProgression"] = Json::array();
+    for(uint16_t item_source_id : _item_sources_without_progression)
+    {
+        ItemSource* item_source = world.item_source(item_source_id);
+        json["randomizerSettings"]["itemSourcesWithoutProgression"].emplace_back(item_source->pretty_name());
     }
 
     return json;
@@ -118,11 +125,11 @@ void RandomizerOptions::apply_game_settings_json(const Json& json)
     }
 }
 
-void RandomizerOptions::apply_randomizer_settings_json(const Json& json, const GameData& game_data)
+void RandomizerOptions::apply_randomizer_settings_json(const Json& json, const GameData& game_data, const RandomizerWorld& world)
 {
     for(auto& [key, value] : json.items())
     {
-        if(key == "allowSpoilerLog")                        
+        if(key == "allowSpoilerLog")
             _allow_spoiler_log = true;
         else if(key == "itemsDistribution")
         {
@@ -133,37 +140,30 @@ void RandomizerOptions::apply_randomizer_settings_json(const Json& json, const G
                 _items_distribution[item_id] = quantity;
             }
         }
+        else if(key == "fixedItemSources")
+        {
+            for(auto& [source_name, item_name_json] : value.items())
+            {
+                ItemSource* source = world.item_source(source_name);
+                uint16_t source_id = world.item_source_id(source);
+
+                const std::string& item_name = item_name_json;
+                const Item* item = game_data.item(item_name);
+
+                _fixed_item_sources[source_id] = item->id();
+            }
+        }
+        else if(key == "itemSourcesWithoutProgression")
+        {
+            for(std::string source_name : value)
+            {
+                ItemSource* source = world.item_source(source_name);
+                uint16_t source_id = world.item_source_id(source);
+                _item_sources_without_progression.emplace_back(source_id);
+            }
+        }
         else
             throw RandomizerException("Unknown key '" + key + "' in preset randomizer settings JSON");
-    }
-}
-
-void RandomizerOptions::apply_world_json(const Json& json, const GameData& game_data, const RandomizerWorld& world)
-{
-    if(!json.count("itemSources"))
-        return;
-
-    const Json& item_sources_json = json.at("itemSources");
-    for(auto& [region_id, item_sources_in_region_json] : item_sources_json.items())
-    {
-        WorldRegion* region = world.region(region_id);
-        if(!region)
-            throw RandomizerException("Region '" + region_id + "' could not be found");
-
-        std::vector<ItemSource*> region_item_sources = region->item_sources();
-
-        for(auto& [source_name, item_name_json] : item_sources_in_region_json.items())
-        {
-            ItemSource* source = world.item_source(source_name);
-            uint16_t source_id = world.item_source_id(source);
-            if(source->node()->region() != region)
-                throw RandomizerException("Item source '" + source_name + "' exists but is not in region '" + region_id +  "'");
-
-            const std::string& item_name = item_name_json;
-            const Item* item = game_data.item(item_name);
-
-            _fixed_item_sources[source_id] = item->id();
-        }
     }
 }
 
@@ -182,11 +182,9 @@ void RandomizerOptions::apply_json(const Json& json, const GameData& game_data, 
         if(key == "seed")
             _seed = value;
         if(key == "randomizerSettings")                        
-            this->apply_randomizer_settings_json(value, game_data);
+            this->apply_randomizer_settings_json(value, game_data, world);
         else if(key == "gameSettings")
             this->apply_game_settings_json(value);
-        else if(key == "world")
-            this->apply_world_json(value, game_data, world);
         else
             throw RandomizerException("Unknown key '" + key + "' in preset JSON");
     }
@@ -237,6 +235,7 @@ std::string RandomizerOptions::permalink() const
 
     bitpack.pack_array(_items_distribution);
     bitpack.pack_map(_fixed_item_sources);
+    bitpack.pack_vector(_item_sources_without_progression);
 
     return "a" + base64_encode(bitpack.bytes()) + "/";
 }
@@ -267,4 +266,5 @@ void RandomizerOptions::parse_permalink(std::string permalink)
 
     _items_distribution = bitpack.unpack_array<uint8_t, ITEM_COUNT>();
     _fixed_item_sources = bitpack.unpack_map<uint16_t, uint8_t>();
+    _item_sources_without_progression = bitpack.unpack_vector<uint16_t>();
 }

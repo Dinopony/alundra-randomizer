@@ -8,17 +8,27 @@
     },
     "randomizerSettings": {
         "allowSpoilerLog": true,
+        "fixedItemSources": {
+            "Merrick's Shop: Item traded for 50 Gilded Falcons (Spirit Wand)": "Spirit Wand"
+        },
+        "itemSourcesWithoutProgression": [
+            "Riverside Casino: 'Wheel of Fortune' second reward (Gilded Falcon)",
+            "Riverside Casino: 'Hit Your Mark' second reward (Gilded Falcon)",
+            "Riverside Casino: 'Slime Smash' second reward (Gilded Falcon)",
+            "Merrick's Shop: Item traded for 40 Gilded Falcons (Recovery Ring)",
+            "Merrick's Shop: Item traded for 45 Gilded Falcons (Life Vessel)"
+        ],
         "itemsDistribution": {
             "Herbs": 55,
             "Strength Tonic": 12,
             "Strength Elixyr": 6,
-            "Magic Elixyr": 7,
-            "Wonder Essence": 4,
+            "Magic Elixyr": 8,
+            "Wonder Essence": 5,
 
             "1 Gilder": 2,
-            "5 Gilder": 6,
-            "10 Gilder": 9,
-            "30 Gilder": 16,
+            "5 Gilder": 7,
+            "10 Gilder": 10,
+            "30 Gilder": 17,
 
             "Life Vessel": 39,
             "Magic Seed": 4,
@@ -75,13 +85,6 @@
             "Agate Crest": 1,
             "Garnet Crest": 1,
             "Diamond Crest": 1
-        }
-    },
-    "world": {
-        "itemSources": {
-            "Merrick's shop": {
-                "Merrick's Shop: Item traded for 50 Gilded Falcons (Spirit Wand)": "Spirit Wand"
-            }
         }
     }
 }

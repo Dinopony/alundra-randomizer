@@ -1609,7 +1609,6 @@
             "1EBF92E"
         ],
         "merrickItemAddress": "7CE7C",
-        "canContainProgression": false,
         "vanillaItem": "Life Vessel"
     },
     {
@@ -1633,7 +1632,6 @@
             "1EBF956"
         ],
         "merrickItemAddress": "7CE84",
-        "canContainProgression": false,
         "vanillaItem": "Life Vessel"
     },
     {
@@ -1657,7 +1655,6 @@
             "1EBF97E"
         ],
         "merrickItemAddress": "7CE8C",
-        "canContainProgression": false,
         "vanillaItem": "Life Vessel"
     },
     {
@@ -1670,7 +1667,6 @@
             "1EBFA0A"
         ],
         "merrickItemAddress": "7CE90",
-        "canContainProgression": false,
         "vanillaItem": "Recovery Ring"
     },
     {
@@ -1682,7 +1678,6 @@
             "1EBF9A6"
         ],
         "merrickItemAddress": "7CE94",
-        "canContainProgression": false,
         "vanillaItem": "Life Vessel"
     },
     {
@@ -1693,7 +1688,6 @@
             "1EBF9BA"
         ],
         "merrickItemAddress": "7CE98",
-        "canContainProgression": false,
         "vanillaItem": "Spirit Wand"
     }
 ]

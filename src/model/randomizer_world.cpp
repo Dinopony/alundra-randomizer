@@ -163,7 +163,9 @@ void RandomizerWorld::apply_options(const RandomizerOptions& options, const Game
 {
     // Apply item sources which contents were set inside the preset configuration
     for(auto& [source_id, item_id] : options.fixed_item_sources())
-    {
         _item_sources[source_id]->item(game_data.item(item_id));
-    }
+
+    // Mark item sources that cannot contain progression with a specific flag
+    for(uint16_t source_id : options.item_sources_without_progression())
+        _item_sources[source_id]->can_contain_progression(false);
 }

@@ -60,6 +60,10 @@ private:
     /// values are Item IDs)
     std::map<uint16_t, uint8_t> _fixed_item_sources;
 
+    /// A map used to define item sources that will **always** contain the same item (keys are ItemSource IDs,
+    /// values are Item IDs)
+    std::vector<uint16_t> _item_sources_without_progression;
+
 public:
     explicit RandomizerOptions(const ArgumentDictionary& args, const GameData& game_data, const RandomizerWorld& world);
 
@@ -77,6 +81,7 @@ public:
     [[nodiscard]] uint8_t king_snow_death_count() const { return _king_snow_death_count; }
 
     [[nodiscard]] const std::map<uint16_t, uint8_t>& fixed_item_sources() const { return _fixed_item_sources; }
+    [[nodiscard]] const std::vector<uint16_t>& item_sources_without_progression() const { return _item_sources_without_progression; }
 
     [[nodiscard]] std::vector<std::string> hash_words() const;
     [[nodiscard]] std::string hash_sentence() const { return stringtools::join(this->hash_words(), " "); }
@@ -84,8 +89,7 @@ public:
 
 private:
     void apply_game_settings_json(const Json& json);
-    void apply_randomizer_settings_json(const Json& json, const GameData& game_data);
-    void apply_world_json(const Json& json, const GameData& game_data, const RandomizerWorld& world);
+    void apply_randomizer_settings_json(const Json& json, const GameData& game_data, const RandomizerWorld& world);
 
     void parse_permalink(std::string permalink);
     void validate() const;

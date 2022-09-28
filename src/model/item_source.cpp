@@ -35,8 +35,6 @@ Json ItemSource::to_json() const
         json["spriteAddress"] = addresses_to_json(_sprite_addresses);
     if(_merrick_item_address)
         json["merrickItemAddress"] = _merrick_item_address;
-    if(!_can_contain_progression)
-        json["canContainProgression"] = _can_contain_progression;
     if(!_hints.empty())
         json["hints"] = _hints;
     if(_vanilla_item)
@@ -65,8 +63,6 @@ ItemSource* ItemSource::from_json(const Json& json, const GameData& game_data, c
             source->merrick_item_address(parse_addresses_from_json(value)[0]);
         else if(key == "hints")
             value.get_to(source->_hints);
-        else if(key == "canContainProgression")
-            source->can_contain_progression(value);
         else if(key == "vanillaItem")
             source->vanilla_item(game_data.item(std::string(value)));
         else if(key == "forbidPreciousItems")
