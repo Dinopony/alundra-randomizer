@@ -167,6 +167,13 @@
         ],
         "hintName": "near Nava's cabin"
     },
+    {
+        "name": "Nava's Keep",
+        "nodeIds": [
+            "nava_keep"
+        ],
+        "canBeHintedAsRequired": true
+    },
 
     {
         "name": "Overworld E4 (Cliffs of Madness)",

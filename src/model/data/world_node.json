@@ -121,7 +121,7 @@
     },
     "overworld_b4_behind_merman": {
         "hints": [],
-        "graphPos": [-8,-12]
+        "graphPos": [-7,-9]
     },
     "overworld_b4_behind_bomb": {
         "hints": [],
@@ -132,6 +132,10 @@
         "graphPos": [-14,-12]
     },
     "overworld_b4_nava_hut_behind_spring": {
+        "hints": [],
+        "graphPos": [-7,-11]
+    },
+    "nava_keep": {
         "hints": [],
         "graphPos": [-10,-14]
     },

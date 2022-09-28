@@ -20,6 +20,7 @@ public:
         fix_king_snow_item(data, world);
         fix_post_nirude_items(data, world);
         fix_casino_items(data, world);
+        fix_post_nava_item(data, world);
     }
 
 private:
@@ -82,6 +83,15 @@ private:
         bar_strings.string(23) = "\\C'Hit Your Mark' rewards:\\N- " + shooting_1_source->item()->name() + "\\N- " + shooting_2_source->item()->name();
         bar_strings.string(24) = "\\C'Wheel of Fortune' rewards:\\N- " + roulette_1_source->item()->name() + "\\N- " + roulette_2_source->item()->name();
         bar_strings.apply_on_data(data);
+    }
+
+    static void fix_post_nava_item(BinaryFile& data, const RandomizerWorld& world)
+    {
+        ItemSource* nava_diamond_crest_source = world.item_source("Nava's Keep: Falling item revealed using Zolist's Stone (Diamond Crest)");
+
+        RoomStrings strings(MAP_432, data);
+        stringtools::replace(strings.string(70), "the Diamond Crest", nava_diamond_crest_source->item()->name());
+        strings.apply_on_data(data);
     }
 };
 

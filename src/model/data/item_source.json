@@ -312,7 +312,7 @@
         "vanillaItem": "Gilded Falcon"
     },
     {
-        "name": "Overworld B4: Chest in Nava's hut",
+        "name": "Overworld B4: Chest in Nava's cabin",
         "nodeId": "overworld_b4_nava_hut_behind_spring",
         "address": "20EB10E",
         "vanillaItem": "Gilded Falcon"
@@ -1568,6 +1568,37 @@
             "5F3D0D2"
         ],
         "vanillaItem": "Aqua Cape"
+    },
+    {
+        "name": "Nava's Keep: Chest buried in ground, raising after beating enemies",
+        "nodeId": "nava_keep",
+        "address": "5CD9C82",
+        "vanillaItem": "Gilded Falcon"
+    },
+    {
+        "name": "Nava's Keep: Chest in room with hidden paths",
+        "nodeId": "nava_keep",
+        "address": "5D14FEE",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Nava's Keep: Elevated chest on Nava's island",
+        "nodeId": "nava_keep",
+        "address": "5D47406",
+        "vanillaItem": "Life Vessel"
+    },
+    {
+        "name": "Nava's Keep: Chest left to the house on Nava's island",
+        "nodeId": "nava_keep",
+        "address": "5D4742E",
+        "vanillaItem": "Wind Book"
+    },
+    {
+        "name": "Nava's Keep: Falling item revealed using Zolist's Stone",
+        "nodeId": "nava_keep",
+        "address": "5D73782",
+        "spriteAddress": "5D73962",
+        "vanillaItem": "Diamond Crest"
     },
     {
         "name": "Merrick's Shop: Item traded for 15 Gilded Falcons",

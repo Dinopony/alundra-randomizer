@@ -435,6 +435,16 @@
         ]
     },
     {
+        "fromId": "overworld_b4",
+        "toId": "nava_keep",
+        "twoWay": true,
+        "requiredItems": [
+            "Bomb",
+            "Merman Boots",
+            "Spring Bean"
+        ]
+    },
+    {
         "fromId": "overworld_b4_behind_bomb",
         "toId": "overworld_a4_right",
         "twoWay": true
