@@ -36,6 +36,9 @@ private:
     /// If true, each boots give its own effects instead of boots tiers giving all previous tiers effects
     bool _split_boots_effects = true;
 
+    /// If true, equipment with tiers (weapons, armors and magic)
+    bool _progressive_items = true;
+
     /// The amount of times you need to die in order to be able to get King Snow's item
     uint8_t _king_snow_death_count = 20;
 
@@ -79,6 +82,7 @@ public:
     [[nodiscard]] bool megaliths_enabled_on_start() const { return _megaliths_enabled_on_start; }
     [[nodiscard]] bool skip_last_dungeon() const { return _skip_last_dungeon; }
     [[nodiscard]] bool split_boots_effects() const { return _split_boots_effects; }
+    [[nodiscard]] bool progressive_items() const { return _progressive_items; }
     [[nodiscard]] uint8_t king_snow_death_count() const { return _king_snow_death_count; }
 
     [[nodiscard]] const std::map<uint16_t, uint8_t>& fixed_item_sources() const { return _fixed_item_sources; }

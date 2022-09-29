@@ -21,10 +21,10 @@ public:
     void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override
     {
         // Add a "do nothing" event instruction to replace unconvenient instructions (with code 0xC6)
-         MipsCode func;
-         func.jr(reg_RA, false);
-         func.li(reg_V0, 0x3);
-         uint32_t func_addr = exe.inject_code(func);
-         exe.set_long_le(0x7C32C, func_addr);
+        MipsCode func;
+        func.jr(reg_RA, false);
+        func.set_(reg_V0, 0x3);
+        uint32_t func_addr = exe.inject_code(func);
+        exe.set_long_le(0x7C32C, func_addr);
     }
 };

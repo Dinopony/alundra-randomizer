@@ -20,6 +20,7 @@
 #include "patch_split_boots_effects.hpp"
 #include "patch_apply_hint_text.hpp"
 #include "patch_remove_nava_instances.hpp"
+#include "patch_progressive_items.hpp"
 
 void execute_patches(const std::vector<GamePatch*>& patches, 
                      BinaryFile& data_file, PsxExeFile& exe_file, 
@@ -56,6 +57,8 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
 
     if(options.split_boots_effects())
         patches.emplace_back(new PatchSplitBootsEffects());
+    if(options.progressive_items())
+        patches.emplace_back(new PatchProgressiveItems(!options.split_boots_effects()));
     if(options.original_game_balance())
         patches.emplace_back(new PatchOriginalGameBalance());
 

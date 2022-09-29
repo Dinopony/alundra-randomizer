@@ -95,6 +95,7 @@ set(SOURCES
         "src/patches/patch_split_boots_effects.hpp"
         "src/patches/patch_apply_hint_text.hpp"
         "src/patches/patch_remove_nava_instances.hpp"
+        "src/patches/patch_progressive_items.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"

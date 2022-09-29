@@ -42,7 +42,7 @@ public:
         // Add a "do nothing" event instruction to replace unconvenient instructions (with code 0xC5)
         MipsCode func;
         func.jr(reg_RA, false);
-        func.li(reg_V0, 0x5);
+        func.set_(reg_V0, 0x5);
         uint32_t func_addr = exe.inject_code(func);
         exe.set_long_le(0x7C328, func_addr);
     }

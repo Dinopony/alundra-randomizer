@@ -4,6 +4,7 @@
         "megalithsEnabledOnStart": true,
         "skipLastDungeon": true,
         "splitBootsEffects": true,
+        "progressiveItems": true,
         "kingSnowDeathCount": 5
     },
     "randomizerSettings": {

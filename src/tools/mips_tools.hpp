@@ -27,26 +27,79 @@ private:
 
 public:
     MipsCode() = default;
+    virtual ~MipsCode() noexcept(false);
 
-    MipsCode& li(const MipsRegister& reg, uint16_t value);
-    MipsCode& lui(const MipsRegister& reg, uint16_t value);
-    MipsCode& sw(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to);
-    MipsCode& sh(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to);
-    MipsCode& sb(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to);
-    MipsCode& lw(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from);
-    MipsCode& lh(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from);
-    MipsCode& lb(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from);
-    MipsCode& j(uint32_t addr, bool add_load_delay_nop = true);
-    MipsCode& jr(const MipsRegister& reg, bool add_load_delay_nop = true);
     MipsCode& nop();
 
-    /*
-    void label(const std::string& label);
-    [[nodiscard]] const std::vector<uint8_t>& get_bytes() const;
+    // ----- ARITHMETIC LOGIC UNIT -----
+    MipsCode& add(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
+    MipsCode& addu(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
+//  MipsCode& addi(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value);
+    MipsCode& addiu(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value);
+    MipsCode& addiu(const MipsRegister& reg, uint16_t value) { return this->addiu(reg, reg, value); }
+
+    MipsCode& logical_and(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
+//  MipsCode& andi(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value);
+
+    MipsCode& lui(const MipsRegister& reg, uint16_t value);
+
+//  MipsCode& nor(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
+//  MipsCode& or(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
+//  MipsCode& ori(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value);
+
+    MipsCode& slt(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
+//  MipsCode& sltu(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
+//  MipsCode& slti(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value);
+//  MipsCode& sltiu(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value);
+
+//  MipsCode& sub(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
+//  MipsCode& subu(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
+
+//  MipsCode& xor(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
+//  MipsCode& xori(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value);
+
+    // ----- MULTIPLY -----
+    MipsCode& mult(const MipsRegister& reg_1, const MipsRegister& reg_2);
+    MipsCode& multu(const MipsRegister& reg_1, const MipsRegister& reg_2);
+    MipsCode& mflo(const MipsRegister& reg);
+
+    // ----- BRANCH -----
+    MipsCode& beq(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label);
+    MipsCode& bne(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label);
+    MipsCode& bgez(const MipsRegister& reg, const std::string& label);
+
+    MipsCode& j(uint32_t addr, bool add_load_delay_nop = true);
+    MipsCode& jal(uint32_t addr, bool add_load_delay_nop = true);
+    MipsCode& jr(const MipsRegister& reg, bool add_load_delay_nop = true);
+
+    // ----- MEMORY ACCESS -----
+    MipsCode& sw(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to = 0);
+    MipsCode& sh(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to = 0);
+    MipsCode& sb(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to = 0);
+    MipsCode& lw(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from = 0);
+    MipsCode& lh(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from = 0);
+    MipsCode& lb(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from = 0);
+
+    // ----- PSEUDO INSTRUCTIONS -----
+    MipsCode& set_(const MipsRegister& reg_to, uint32_t value);
+    MipsCode& set_(const MipsRegister& reg_to, const MipsRegister& reg_from);
+
+    MipsCode& multiply_(const MipsRegister& reg_dest, const MipsRegister& reg_src, uint16_t value);
+    MipsCode& multiply_(const MipsRegister& reg_dest, const MipsRegister& reg_1, const MipsRegister& reg_2);
+
+    MipsCode& clr_(const MipsRegister& reg);
+    void clear() { throw std::exception(); }
+
+    MipsCode& label_(const std::string& label);
+    MipsCode& bra_(const std::string& label);
+    MipsCode& ble_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label);
+    MipsCode& ble_(const MipsRegister& reg_1, uint32_t value, const std::string& label);
+    MipsCode& bge_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label);
+    MipsCode& bge_(const MipsRegister& reg_1, uint32_t value, const std::string& label);
 
 private:
     void resolve_branches();
-    */
+
 };
 
 #define reg_ZERO MipsRegister(0)

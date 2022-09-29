@@ -75,6 +75,7 @@ Json RandomizerOptions::to_json(const GameData& game_data, const RandomizerWorld
     json["gameSettings"]["skipLastDungeon"] = _skip_last_dungeon;
     json["gameSettings"]["kingSnowDeathCount"] = _king_snow_death_count;
     json["gameSettings"]["splitBootsEffects"] = _split_boots_effects;
+    json["gameSettings"]["progressiveItems"] = _progressive_items;
 
     // Randomizer settings
     json["randomizerSettings"]["allowSpoilerLog"] = _allow_spoiler_log;
@@ -120,6 +121,8 @@ void RandomizerOptions::apply_game_settings_json(const Json& json)
             _king_snow_death_count = value;
         else if(key == "splitBootsEffects")
             _split_boots_effects = value;
+        else if(key == "progressiveItems")
+            _progressive_items = value;
         else
             throw RandomizerException("Unknown key '" + key + "' in preset game settings JSON");
     }
@@ -230,6 +233,7 @@ std::string RandomizerOptions::permalink() const
     bitpack.pack(_megaliths_enabled_on_start);
     bitpack.pack(_skip_last_dungeon);
     bitpack.pack(_split_boots_effects);
+    bitpack.pack(_progressive_items);
 
     bitpack.pack(_king_snow_death_count);
 
@@ -261,6 +265,7 @@ void RandomizerOptions::parse_permalink(std::string permalink)
     _megaliths_enabled_on_start = bitpack.unpack<bool>();
     _skip_last_dungeon = bitpack.unpack<bool>();
     _split_boots_effects = bitpack.unpack<bool>();
+    _progressive_items = bitpack.unpack<bool>();
 
     _king_snow_death_count = bitpack.unpack<uint8_t>();
 

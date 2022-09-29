@@ -27,6 +27,6 @@ public:
         exe.set_code(0x1573C, MipsCode().nop());
 
         // Wonder Essence
-        exe.set_code(0x157B0, MipsCode().li(reg_V0, 0x1));
+        exe.set_code(0x157B0, MipsCode().set_(reg_V0, 0x1));
     }
 };
