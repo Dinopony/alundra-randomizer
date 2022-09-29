@@ -36,6 +36,12 @@ private:
     /// A dictionary of hints
     std::map<std::string, HintSource*> _hint_sources;
 
+    /**
+     * An editable copy of the items distribution from RandomizerOptions.
+     * Contains the number of each item type to be scattered inside the world during randomization.
+     */
+    std::array<uint8_t, ITEM_COUNT> _items_distribution {};
+
 public:
     explicit RandomizerWorld(const GameData& game_data);
     ~RandomizerWorld();
@@ -65,6 +71,8 @@ public:
     [[nodiscard]] const std::map<std::string, HintSource*>& hint_sources() const { return _hint_sources; }
     [[nodiscard]] const HintSource* hint_source(const std::string& hint_source_id) const { return _hint_sources.at(hint_source_id); }
     [[nodiscard]] HintSource* hint_source(const std::string& hint_source_id) { return _hint_sources.at(hint_source_id); }
+
+    [[nodiscard]] const std::array<uint8_t, ITEM_COUNT>& items_distribution() const { return _items_distribution; }
 
     [[nodiscard]] std::vector<const Item*> starting_inventory() const { return {}; }
 

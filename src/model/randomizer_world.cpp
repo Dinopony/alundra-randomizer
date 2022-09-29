@@ -15,6 +15,7 @@
 #include "data/world_region.json.hxx"
 
 #include "../tools/exception.hpp"
+#include "../tools/vectools.hpp"
 
 #include <iostream>
 
@@ -168,4 +169,56 @@ void RandomizerWorld::apply_options(const RandomizerOptions& options, const Game
     // Mark item sources that cannot contain progression with a specific flag
     for(uint16_t source_id : options.item_sources_without_progression())
         _item_sources[source_id]->can_contain_progression(false);
+
+    // Handle progressive items in distribution
+    _items_distribution = options.items_distribution();
+    if(options.progressive_items())
+    {
+        auto convert_item_in_distrib = [this](const std::vector<uint8_t>& items_from, uint8_t item_to) {
+            for(uint8_t item_from : items_from)
+            {
+                _items_distribution[item_to] += _items_distribution[item_from];
+                _items_distribution[item_from] = 0;
+            }
+        };
+
+        convert_item_in_distrib({ ITEM_DAGGER, ITEM_FIEND_BLADE, ITEM_HOLY_SWORD, ITEM_LEGEND_SWORD }, ITEM_SWORD);
+        convert_item_in_distrib({ ITEM_WILLOW_BOW },                                                   ITEM_HUNTERS_BOW);
+        convert_item_in_distrib({ ITEM_STEEL_FLAIL },                                                  ITEM_IRON_FLAIL);
+        convert_item_in_distrib({ ITEM_CLOTH_ARMOR, ITEM_ANCIENT_ARMOR, ITEM_SILVER_ARMOR},            ITEM_LEATHER_ARMOR);
+        convert_item_in_distrib({ ITEM_EARTH_BOOK },                                                   ITEM_EARTH_SCROLL);
+        convert_item_in_distrib({ ITEM_WATER_BOOK },                                                   ITEM_WATER_SCROLL);
+        convert_item_in_distrib({ ITEM_FIRE_BOOK },                                                    ITEM_FIRE_SCROLL);
+        convert_item_in_distrib({ ITEM_WIND_BOOK },                                                    ITEM_WIND_SCROLL);
+
+        // Boots are only made progressive if their effects are not split
+        if(!options.split_boots_effects())
+        {
+            convert_item_in_distrib({ ITEM_SHORT_BOOTS, ITEM_MERMAN_BOOTS, ITEM_CHARM_BOOTS}, ITEM_LONG_BOOTS);
+
+            for(WorldPath* path : _paths)
+            {
+                auto& required_items = path->required_items();
+                uint8_t highest_tier = 0;
+                if(vectools::contains(required_items, game_data.item(ITEM_LONG_BOOTS)))
+                {
+                    highest_tier = 2;
+                    vectools::erase_first(required_items, game_data.item(ITEM_LONG_BOOTS));
+                }
+                if(vectools::contains(required_items, game_data.item(ITEM_MERMAN_BOOTS)))
+                {
+                    highest_tier = 3;
+                    vectools::erase_first(required_items, game_data.item(ITEM_MERMAN_BOOTS));
+                }
+                if(vectools::contains(required_items, game_data.item(ITEM_CHARM_BOOTS)))
+                {
+                    highest_tier = 4;
+                    vectools::erase_first(required_items, game_data.item(ITEM_CHARM_BOOTS));
+                }
+
+                for(int i=1 ; i<highest_tier ; ++i)
+                    required_items.emplace_back(game_data.item(ITEM_LONG_BOOTS));
+            }
+        }
+    }
 }

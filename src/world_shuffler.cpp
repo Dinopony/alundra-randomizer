@@ -22,8 +22,7 @@ WorldShuffler::WorldShuffler(RandomizerWorld& world, const GameData& game_data, 
     _world          (world),
     _game_data      (game_data),
     _solver         (world),
-    _options        (options),
-    _rng            (_options.seed())
+    _rng            (options.seed())
 {}
 
 void WorldShuffler::randomize_items()
@@ -76,7 +75,7 @@ void WorldShuffler::init_item_pool()
 
     _item_pool.reserve(_world.item_sources().size());
 
-    std::array<uint8_t, ITEM_COUNT> distribution_copy = _options.items_distribution();
+    std::array<uint8_t, ITEM_COUNT> distribution_copy = _world.items_distribution();
     
     // Count quantities already in place
     for(ItemSource* source : _world.item_sources())
