@@ -78,6 +78,7 @@ public:
     [[nodiscard]] bool original_game_balance() const { return _original_game_balance; }
     [[nodiscard]] bool megaliths_enabled_on_start() const { return _megaliths_enabled_on_start; }
     [[nodiscard]] bool skip_last_dungeon() const { return _skip_last_dungeon; }
+    [[nodiscard]] bool split_boots_effects() const { return _split_boots_effects; }
     [[nodiscard]] uint8_t king_snow_death_count() const { return _king_snow_death_count; }
 
     [[nodiscard]] const std::map<uint16_t, uint8_t>& fixed_item_sources() const { return _fixed_item_sources; }

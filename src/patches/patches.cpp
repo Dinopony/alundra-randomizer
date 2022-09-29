@@ -51,10 +51,11 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
     patches.emplace_back(new PatchRemoveItemsFanfare());
     patches.emplace_back(new PatchFixItemNamesInTextboxes());
     patches.emplace_back(new PatchFixThrowables());
-    patches.emplace_back(new PatchSplitBootsEffects());
     patches.emplace_back(new PatchApplyHintText());
     patches.emplace_back(new PatchRemoveNavaInstances());
 
+    if(options.split_boots_effects())
+        patches.emplace_back(new PatchSplitBootsEffects());
     if(options.original_game_balance())
         patches.emplace_back(new PatchOriginalGameBalance());
 
