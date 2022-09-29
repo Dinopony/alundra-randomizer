@@ -416,7 +416,7 @@
     },
     {
         "name": "Overworld A4: Chest in cave on the way to Fire Manor rewarded for beating circle of fishes",
-        "nodeId": "overworld_a4_manor",
+        "nodeId": "overworld_a4_manor_caves",
         "address": "1FE97DA",
         "vanillaItem": "Strength Elixyr"
     },

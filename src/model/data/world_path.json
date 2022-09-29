@@ -558,7 +558,7 @@
     },
     {
         "fromId": "overworld_a4_left",
-        "toId": "overworld_a4_manor",
+        "toId": "overworld_a4_manor_caves",
         "twoWay": true,
         "requiredItems": [
             "Power Glove"
@@ -570,7 +570,7 @@
         "twoWay": true
     },
     {
-        "fromId": "overworld_a4_manor",
+        "fromId": "fire_manor",
         "toId": "overworld_a4_behind_manor",
         "twoWay": true,
         "requiredItems": [
@@ -578,16 +578,20 @@
         ]
     },
     {
-        "fromId": "overworld_a4_manor",
+        "fromId": "fire_manor",
         "toId": "overworld_a4_right"
     },
     {
-        "fromId": "overworld_a4_manor",
+        "fromId": "fire_manor",
         "toId": "overworld_a4_left"
     },
     {
-        "fromId": "overworld_a4_manor",
-        "toId": "fire_manor"
+        "fromId": "overworld_a4_manor_caves",
+        "toId": "fire_manor",
+        "twoWay": true,
+        "requiredItems": [
+            "Iron Flail"
+        ]
     },
     {
         "fromId": "overworld_a4_behind_manor",

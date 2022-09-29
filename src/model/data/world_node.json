@@ -215,9 +215,9 @@
         "hints": [],
         "graphPos": [-24,-12]
     },
-    "overworld_a4_manor": {
+    "overworld_a4_manor_caves": {
         "hints": [],
-        "graphPos": [-20,-14]
+        "graphPos": [-24,-14]
     },
     "overworld_a4_behind_manor": {
         "hints": [],
@@ -225,7 +225,7 @@
     },
     "fire_manor": {
         "hints": [],
-        "graphPos": [-20,-16]
+        "graphPos": [-20,-14]
     },
     "overworld_a3_left": {
         "hints": [],
