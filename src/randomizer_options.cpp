@@ -57,8 +57,9 @@ RandomizerOptions::RandomizerOptions(const ArgumentDictionary& args, const GameD
 
         std::cout << "Preset: '" << preset_path << "'\n";
 
-        Json preset_json;
-        preset_file >> preset_json;
+        std::stringstream buffer;
+        buffer << preset_file.rdbuf();
+        Json preset_json = Json::parse(buffer.str(), nullptr, true, true);
         this->apply_json(preset_json, game_data, world);
     }
 

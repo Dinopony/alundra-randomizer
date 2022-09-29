@@ -1,17 +1,39 @@
 {
     "gameSettings": {
+        // If true, the game balance from the japanese version is used instead of the balance edited
+        // by Working Designs for the US version. This mostly changes enemies HP and damage.
         "originalGameBalance": true,
+
+        // If true, you won't have to do Berue's memory minigame to activate megaliths, as they will be activated
+        // on game start. You still have to visit each megalith to unlock the ability to come back there later.
         "megalithsEnabledOnStart": true,
+
+        // If true, all gates in Lake Shrine exterior & interior will be open right away, allowing the player
+        // to simply go forward to reach the final boss once all crests are collected & placed
         "skipLastDungeon": true,
+
+        // If true, each boots only give their own effects instead of also giving all previous tiers effects
         "splitBootsEffects": true,
+
+        // If true, equipment with tiers (weapons, armors and magic)
         "progressiveItems": true,
+
+        // The amount of times you need to die in order to be able to get King Snow's item
         "kingSnowDeathCount": 5
     },
+
     "randomizerSettings": {
+        // If false, the randomizer program will forbid the generation of a full spoiler log, and will only
+        // output the initial settings in that file instead of the full contents of all item sources.
         "allowSpoilerLog": true,
+
+        // A dictionary used to define item sources that will always contain the same item (keys are item source names,
+        // values are item names)
         "fixedItemSources": {
             "Merrick's Shop: Item traded for 50 Gilded Falcons (Spirit Wand)": "Spirit Wand"
         },
+
+        // A dictionary used to define item sources that will never contain an item required for progression
         "itemSourcesWithoutProgression": [
             "Riverside Casino: 'Wheel of Fortune' second reward (Gilded Falcon)",
             "Riverside Casino: 'Hit Your Mark' second reward (Gilded Falcon)",
@@ -19,6 +41,9 @@
             "Merrick's Shop: Item traded for 40 Gilded Falcons (Recovery Ring)",
             "Merrick's Shop: Item traded for 45 Gilded Falcons (Life Vessel)"
         ],
+
+        // A dictionary used to define the amount of each item the randomizer will scatter across the world.
+        // The total count must not exceed the total count of item sources
         "itemsDistribution": {
             "Herbs": 55,
             "Strength Tonic": 12,

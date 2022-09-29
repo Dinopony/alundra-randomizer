@@ -57,8 +57,6 @@ private:
     /// of ItemSources inside the world.
     std::array<uint8_t, ITEM_COUNT> _items_distribution {};
 
-    // ------------- World descriptor -------------
-
     /// A map used to define item sources that will **always** contain the same item (keys are ItemSource IDs,
     /// values are Item IDs)
     std::map<uint16_t, uint8_t> _fixed_item_sources;
