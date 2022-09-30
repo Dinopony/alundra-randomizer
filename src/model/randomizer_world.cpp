@@ -170,8 +170,9 @@ void RandomizerWorld::apply_options(const RandomizerOptions& options, const Game
     for(uint16_t source_id : options.item_sources_without_progression())
         _item_sources[source_id]->can_contain_progression(false);
 
-    // Handle progressive items in distribution
     _items_distribution = options.items_distribution();
+
+    // Handle progressive items in distribution
     if(options.progressive_items())
     {
         auto convert_item_in_distrib = [this](const std::vector<uint8_t>& items_from, uint8_t item_to) {

@@ -75,6 +75,7 @@ MipsCode& MipsCode::lw(const MipsRegister& reg_to, const MipsRegister& reg_from,
     opcode |= offset_from;
 
     this->add_long_le(opcode);
+    this->nop();
     return *this;
 }
 
@@ -87,6 +88,7 @@ MipsCode& MipsCode::lh(const MipsRegister& reg_to, const MipsRegister& reg_from,
     opcode |= offset_from;
 
     this->add_long_le(opcode);
+    this->nop();
     return *this;
 }
 
@@ -99,6 +101,7 @@ MipsCode& MipsCode::lb(const MipsRegister& reg_to, const MipsRegister& reg_from,
     opcode |= offset_from;
 
     this->add_long_le(opcode);
+    this->nop();
     return *this;
 }
 
@@ -243,6 +246,7 @@ MipsCode& MipsCode::beq(const MipsRegister& reg_1, const MipsRegister& reg_2, co
 
     this->add_long_le(opcode);
     this->resolve_branches();
+    this->nop();
     return *this;
 }
 
@@ -257,6 +261,7 @@ MipsCode& MipsCode::bne(const MipsRegister& reg_1, const MipsRegister& reg_2, co
 
     this->add_long_le(opcode);
     this->resolve_branches();
+    this->nop();
     return *this;
 }
 
@@ -270,6 +275,7 @@ MipsCode& MipsCode::bgez(const MipsRegister& reg, const std::string& label)
 
     this->add_long_le(opcode);
     this->resolve_branches();
+    this->nop();
     return *this;
 }
 
