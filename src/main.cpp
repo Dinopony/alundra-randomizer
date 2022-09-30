@@ -164,9 +164,19 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
 #endif
 
     std::cout << "Checking input image...\n";
+
+    if(!std::filesystem::exists(input_path))
+    {
+        throw RandomizerException("Input file 'input.bin' is missing from the randomizer folder. "
+                                  "Please place your Alundra 1.1 US disc image there and rename it 'input.md'.)");
+    }
+
     size_t file_size = std::filesystem::file_size(input_path);
     if(file_size != 600359760)
-        throw RandomizerException("Invalid file size (" + std::to_string(file_size) + ") on the image file. Make sure you are using a 1.1 US image.");
+    {
+        throw RandomizerException("Invalid file size (" + std::to_string(file_size) + ") on the image file. "
+                                  "Make sure you are using a 1.1 US image.");
+    }
 
     // Dump the input ROM into a "tmp_dump" folder
     std::cout << "Extracting game files...\n";
