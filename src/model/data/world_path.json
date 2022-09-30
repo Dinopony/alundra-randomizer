@@ -587,11 +587,25 @@
     },
     {
         "fromId": "overworld_a4_manor_caves",
-        "toId": "fire_manor",
-        "twoWay": true,
+        "toId": "overworld_a4_manor_caves_behind_flail",
         "requiredItems": [
             "Iron Flail"
         ]
+    },
+    {
+        "fromId": "overworld_a4_manor_caves_behind_flail",
+        "toId": "overworld_a4_manor_caves"
+    },
+    {
+        "fromId": "overworld_a4_manor_caves_behind_flail",
+        "toId": "fire_manor",
+        "requiredItems": [
+            "Spring Bean"
+        ]
+    },
+    {
+        "fromId": "fire_manor",
+        "toId": "overworld_a4_manor_caves_behind_flail"
     },
     {
         "fromId": "overworld_a4_behind_manor",
