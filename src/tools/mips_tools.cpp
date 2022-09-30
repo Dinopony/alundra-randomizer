@@ -30,6 +30,18 @@ MipsCode& MipsCode::slt(const MipsRegister& reg_to, const MipsRegister& reg_from
     return *this;
 }
 
+MipsCode& MipsCode::slti(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value)
+{
+    // 0010 10ss ssst tttt iiii iiii iiii iiii
+    uint32_t opcode = 0x28000000;
+    opcode |= reg_from.code() << 21;
+    opcode |= reg_to.code() << 16;
+    opcode |= value;
+
+    this->add_long_le(opcode);
+    return *this;
+}
+
 MipsCode& MipsCode::sw(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to)
 {
     // 1010 11ss ssst tttt iiii iiii iiii iiii
@@ -343,8 +355,8 @@ MipsCode& MipsCode::bra_(const std::string& label)
 MipsCode& MipsCode::ble_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label)
 {
     // if(reg1 <= reg2) <-------> if(!(reg2 < reg1))
-    this->slt(reg_T9, reg_2, reg_1);
-    this->beq(reg_T9, reg_ZERO, label);
+    this->slt(reg_T9, reg_2, reg_1);    // reg_2 < reg_1
+    this->beq(reg_T9, reg_ZERO, label); // branch if false
     return *this;
 }
 
@@ -354,11 +366,25 @@ MipsCode& MipsCode::ble_(const MipsRegister& reg_1, uint32_t value, const std::s
     return this->ble_(reg_1, reg_T9, label);
 }
 
+MipsCode& MipsCode::blt_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label)
+{
+    this->slt(reg_T9, reg_1, reg_2);    // reg_1 < reg_2
+    this->bne(reg_T9, reg_ZERO, label); // branch if true
+    return *this;
+}
+
+MipsCode& MipsCode::blt_(const MipsRegister& reg_1, uint32_t value, const std::string& label)
+{
+    this->slti(reg_T9, reg_1, value);   // reg_1 < value
+    this->bne(reg_T9, reg_ZERO, label); // branch if true
+    return *this;
+}
+
 MipsCode& MipsCode::bge_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label)
 {
-    // if(reg1 > reg2) <-------> if(reg2 < reg1)
-    this->slt(reg_T9, reg_2, reg_1);
-    this->bne(reg_T9, reg_ZERO, label);
+    // if(reg1 >= reg2) <-------> if(!(reg1 < reg2))
+    this->slt(reg_T9, reg_1, reg_2);    // reg_1 < reg_2
+    this->beq(reg_T9, reg_ZERO, label); // branch if false
     return *this;
 }
 
@@ -367,6 +393,19 @@ MipsCode& MipsCode::bge_(const MipsRegister& reg_1, uint32_t value, const std::s
     this->set_(reg_T9, value);
     return this->bge_(reg_1, reg_T9, label);
 }
+
+MipsCode& MipsCode::bgt_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label)
+{
+    // if(reg1 > reg2) <-------> if(reg2 < reg1)
+    return this->blt_(reg_2, reg_1, label);
+}
+
+MipsCode& MipsCode::bgt_(const MipsRegister& reg_1, uint32_t value, const std::string& label)
+{
+    this->set_(reg_T9, value);
+    return this->bgt_(reg_1, reg_T9, label);
+}
+
 
 void MipsCode::resolve_branches()
 {

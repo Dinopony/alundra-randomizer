@@ -49,7 +49,7 @@ public:
 
     MipsCode& slt(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
 //  MipsCode& sltu(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
-//  MipsCode& slti(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value);
+    MipsCode& slti(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value);
 //  MipsCode& sltiu(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t value);
 
 //  MipsCode& sub(const MipsRegister& reg_to, const MipsRegister& reg_from_1, const MipsRegister& reg_from_2);
@@ -94,8 +94,12 @@ public:
     MipsCode& bra_(const std::string& label);
     MipsCode& ble_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label);
     MipsCode& ble_(const MipsRegister& reg_1, uint32_t value, const std::string& label);
+    MipsCode& blt_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label);
+    MipsCode& blt_(const MipsRegister& reg_1, uint32_t value, const std::string& label);
     MipsCode& bge_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label);
     MipsCode& bge_(const MipsRegister& reg_1, uint32_t value, const std::string& label);
+    MipsCode& bgt_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label);
+    MipsCode& bgt_(const MipsRegister& reg_1, uint32_t value, const std::string& label);
 
 private:
     void resolve_branches();

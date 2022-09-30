@@ -48,15 +48,15 @@ private:
         func.set_(storage_RA, reg_RA);
 
         // if(item_id > ITEM_WIND_BOOK) return
-        func.bge_(reg_A0, ITEM_WIND_BOOK + 1, "return");
+        func.bgt_(reg_A0, ITEM_WIND_BOOK, "return");
 
         // If we are using "splitBootsEffect" setting, we don't want the boots to be progressive.
         // If it's set, perform this additionnal check to return in case we are processing boots.
         if(!_progressive_boots)
         {
             // if(item_id >= ITEM_SHORT_BOOTS && item_id <= ITEM_CHARM_BOOTS) return
-            func.ble_(reg_A0, ITEM_SHORT_BOOTS - 1, "do_process");
-            func.bge_(reg_A0, ITEM_CHARM_BOOTS + 1, "do_process");
+            func.blt_(reg_A0, ITEM_SHORT_BOOTS, "do_process");
+            func.bgt_(reg_A0, ITEM_CHARM_BOOTS, "do_process");
             {
                 func.bra_("return");
             }
