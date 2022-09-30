@@ -96,6 +96,7 @@ set(SOURCES
         "src/patches/patch_apply_hint_text.hpp"
         "src/patches/patch_remove_nava_instances.hpp"
         "src/patches/patch_progressive_items.hpp"
+        "src/patches/patch_remove_videos.hpp"
         "src/patches/patch_edit_credits.hpp"
 
         "src/patches/game_patch.hpp"
