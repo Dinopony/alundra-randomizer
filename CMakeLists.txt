@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(alundra-randomizer VERSION 1.0.2 LANGUAGES CXX)
+project(alundra-randomizer VERSION 1.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -45,7 +45,7 @@ set(SOURCES
         "src/model/data/world_region.json.hxx"
         "src/assets/patched_balance.bin.hxx"
 
-        # --- Constnats ----------------------------------------
+        # --- Constants ----------------------------------------
         "src/constants/item_codes.hpp"
         "src/constants/flags.hpp"
         "src/constants/map_codes.hpp"
