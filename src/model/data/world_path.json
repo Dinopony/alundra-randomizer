@@ -872,8 +872,23 @@
         ]
     },
     {
+        "fromId": "overworld_e3",
+        "toId": "ancient_shrine",
+        "requiredItems": [
+            "Long Boots"
+        ]
+    },
+    {
         "fromId": "ancient_shrine",
         "toId": "overworld_e3"
+    },
+    {
+        "fromId": "ancient_shrine",
+        "toId": "ancient_shrine_behind_cape",
+        "twoWay": true,
+        "requiredItems": [
+            "Sand Cape"
+        ]
     },
     {
         "fromId": "overworld_e3",

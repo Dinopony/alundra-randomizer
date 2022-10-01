@@ -355,6 +355,10 @@
         "hints": [],
         "graphPos": [24,0]
     },
+    "ancient_shrine_behind_cape": {
+        "hints": [],
+        "graphPos": [28,0]
+    },
     "coastal_cave": {
         "hints": [],
         "graphPos": [0,-13]
