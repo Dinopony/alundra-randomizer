@@ -14,9 +14,13 @@ public:
 
     void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override
     {
-        // Inject and call a custom "init game" function setting up flags properly
+        // Inject and call a function to alter obtained item ID if needed
         uint32_t func_addr = inject_alter_item_id(exe);
         exe.set_code(0x303F4, MipsCode().jal(func_addr));
+
+        // Modify the behavior of TryIncreasingItemQuantityInInventory which can behave weirdly
+        // when trying to increase a progressive item quantity
+        exe.set_code(0x14DFC, MipsCode().addiu(reg_V0, 0x1));
 
         // Alter the ItemInfoTable to modify wrong tier information
         exe.set_byte(0x9C6BE, 0x0);  // Remove unused T3 Flail
