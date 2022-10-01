@@ -17,6 +17,18 @@ public:
         // Inject and call a custom "init game" function setting up flags properly
         uint32_t func_addr = inject_alter_item_id(exe);
         exe.set_code(0x303F4, MipsCode().jal(func_addr));
+
+        // Alter the ItemInfoTable to modify wrong tier information
+        exe.set_byte(0x9C6BE, 0x0);  // Remove unused T3 Flail
+        exe.set_byte(0x9C6C8, 0x0);  // Remove unused T4 Flail
+
+        exe.set_byte(0x9C69A, 0x0);  // Make Spirit Wand T1 instead of T2
+
+        exe.set_byte(0x9C6E0, 0x0);  // Make Ice Wand T1 instead of T2
+        exe.set_byte(0x9C6D2, 0x0);  // Remove unused T1 Ice Wand
+
+        exe.set_byte(0x9C6F4, 0x0);  // Make Fire Wand T1 instead of T2
+        exe.set_byte(0x9C6E6, 0x0);  // Remove unused T1 Fire Wand
     }
 
 private:
