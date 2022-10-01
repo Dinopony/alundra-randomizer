@@ -1770,5 +1770,49 @@
             "56BFB9D"
         ],
         "vanillaItem": "Wonder Essence"
+    },
+    {
+        "name": "Nadia's Shop: Item #1",
+        "nodeId": "nadia_shop",
+        "address": "3A670B3",
+        "spriteAddress": "3A677FA",
+        "priceAddress": [
+            "3A6709F",
+            "3A670C6"
+        ],
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Nadia's Shop: Item #2",
+        "nodeId": "nadia_shop",
+        "address": "3A67133",
+        "spriteAddress": "3A6780E",
+        "priceAddress": [
+            "3A6711F",
+            "3A67146"
+        ],
+        "vanillaItem": "Strength Tonic"
+    },
+    {
+        "name": "Nadia's Shop: Item #3",
+        "nodeId": "nadia_shop",
+        "address": "3A671B3",
+        "spriteAddress": "3A67822",
+        "priceAddress": [
+            "3A6719F",
+            "3A671C6"
+        ],
+        "vanillaItem": "Magic Elixyr"
+    },
+    {
+        "name": "Nadia's Shop: Item #4",
+        "nodeId": "nadia_shop",
+        "address": "3A67247",
+        "spriteAddress": "3A67836",
+        "priceAddress": [
+            "3A6721F",
+            "3A67233"
+        ],
+        "vanillaItem": "Life Vessel"
     }
 ]

@@ -210,9 +210,19 @@ bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Ite
     if(source->forbid_precious_items() && item->is_precious())
         return false;
 
-    // Forbid items that have no price in shops
-    if(!source->price_addresses().empty() && item->gold_value() == 0)
-        return false;
+    // In shops...
+    if(!source->price_addresses().empty())
+    {
+        // Forbid items that have no price
+        if(item->gold_value() == 0)
+            return false;
+
+        // Forbid having two identical items in the same shop node
+        std::vector<ItemSource*> other_sources_in_node = source->node()->item_sources();
+        for(ItemSource* other_source : other_sources_in_node)
+            if(other_source->item() == item)
+                return false;
+    }
 
     return true;
 }

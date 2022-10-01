@@ -1,6 +1,11 @@
 [
     {
         "fromId": "inoa",
+        "toId": "nadia_shop",
+        "twoWay": true
+    },
+    {
+        "fromId": "inoa",
         "toId": "overworld_c4",
         "twoWay": true
     },

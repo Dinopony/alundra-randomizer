@@ -1,5 +1,16 @@
 [
     {
+        "name": "Nadia's Shop: Unbuyable slot",
+        "nodeId": "nadia_shop",
+        "address": "",
+        "spriteAddress": "3A6785E",
+        "priceAddress": [
+            "",
+            ""
+        ],
+        "vanillaItem": "Silver Armor"
+    },
+    {
         "name": "Tarn's Manor: Chest in underground pillars room",
         "nodeId": "tarn_manor",
         "address": "1BA5CFE",

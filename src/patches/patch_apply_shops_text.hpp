@@ -65,7 +65,37 @@ private:
 
     static void apply_nadia_shop_text(BinaryFile& data, const RandomizerWorld& world)
     {
-        // TODO
+        ItemSource* nadia_1 = world.item_source("Nadia's Shop: Item #1 (Herbs)");
+        ItemSource* nadia_2 = world.item_source("Nadia's Shop: Item #2 (Strength Tonic)");
+        ItemSource* nadia_3 = world.item_source("Nadia's Shop: Item #3 (Magic Elixyr)");
+        ItemSource* nadia_4 = world.item_source("Nadia's Shop: Item #4 (Life Vessel)");
+
+        RoomStrings strings(MAP_258, data);
+
+        strings.string(1) = TextboxFormatter(
+                R"(\DIf you'd like to purchase )" + nadia_1->item()->name() + R"(, the cost will be )" +
+                std::to_string(nadia_1->item()->gold_value()) + R"( Gilder. Is that satisfactory? \0100\Y)"
+        ).format();
+
+        strings.string(2) = TextboxFormatter(
+                R"(\DAh, yes! )" + nadia_2->item()->name() + R"(! The prime choice of adventurers such as yourself! It costs, )" +
+                std::to_string(nadia_2->item()->gold_value()) + R"( Gilder, ok? \0100\Y)"
+        ).format();
+
+        strings.string(3) = TextboxFormatter(
+                R"(\D)" + nadia_3->item()->name() + "! For just " + std::to_string(nadia_3->item()->gold_value())+
+                R"( Gilder, it can be put to work to make all your dreams come true! Want it? \0100\Y)"
+        ).format();
+
+        strings.string(4) = TextboxFormatter(
+                R"(\D)" + nadia_4->item()->name() + "! "
+                "Hmm, pricey, but a prime choice for the especially discriminating. "
+                "It's " + std::to_string(nadia_4->item()->gold_value()) + R"( Gilder, ok? \0100\Y)"
+        ).format();
+
+        strings.string(57) = R"(\BReceived a )" + nadia_4->item()->name() + R"(.)";
+
+        strings.apply_on_data(data);
     }
 };
 
