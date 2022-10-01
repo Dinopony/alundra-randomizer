@@ -94,3 +94,13 @@ constexpr uint8_t ITEM_BOOK_OF_ELNA		=  0x58;
 constexpr uint8_t ITEM_CURIOUS_KEY		=  0x59;
 
 constexpr uint8_t ITEM_COUNT = ITEM_CURIOUS_KEY + 1;
+
+constexpr uint8_t ITEM_SWORD_UPGRADE        = ITEM_SWORD;
+constexpr uint8_t ITEM_FLAIL_UPGRADE        = ITEM_IRON_FLAIL;
+constexpr uint8_t ITEM_BOW_UPGRADE          = ITEM_HUNTERS_BOW;
+constexpr uint8_t ITEM_ARMOR_UPGRADE        = ITEM_LEATHER_ARMOR;
+constexpr uint8_t ITEM_BOOTS_UPGRADE        = ITEM_LONG_BOOTS;
+constexpr uint8_t ITEM_EARTH_MAGIC_UPGRADE  = ITEM_EARTH_SCROLL;
+constexpr uint8_t ITEM_WATER_MAGIC_UPGRADE  = ITEM_WATER_SCROLL;
+constexpr uint8_t ITEM_FIRE_MAGIC_UPGRADE   = ITEM_FIRE_SCROLL;
+constexpr uint8_t ITEM_WIND_MAGIC_UPGRADE   = ITEM_WIND_SCROLL;

@@ -178,24 +178,28 @@ void RandomizerWorld::apply_options(const RandomizerOptions& options, const Game
         auto convert_item_in_distrib = [this](const std::vector<uint8_t>& items_from, uint8_t item_to) {
             for(uint8_t item_from : items_from)
             {
-                _items_distribution[item_to] += _items_distribution[item_from];
-                _items_distribution[item_from] = 0;
+                uint8_t amount = _items_distribution[item_from];
+                _items_distribution[item_to] += amount;
+                _items_distribution[item_from] -= amount;
             }
         };
 
-        convert_item_in_distrib({ ITEM_DAGGER, ITEM_FIEND_BLADE, ITEM_HOLY_SWORD, ITEM_LEGEND_SWORD }, ITEM_SWORD);
-        convert_item_in_distrib({ ITEM_WILLOW_BOW },                                                   ITEM_HUNTERS_BOW);
-        convert_item_in_distrib({ ITEM_STEEL_FLAIL },                                                  ITEM_IRON_FLAIL);
-        convert_item_in_distrib({ ITEM_CLOTH_ARMOR, ITEM_ANCIENT_ARMOR, ITEM_SILVER_ARMOR},            ITEM_LEATHER_ARMOR);
-        convert_item_in_distrib({ ITEM_EARTH_BOOK },                                                   ITEM_EARTH_SCROLL);
-        convert_item_in_distrib({ ITEM_WATER_BOOK },                                                   ITEM_WATER_SCROLL);
-        convert_item_in_distrib({ ITEM_FIRE_BOOK },                                                    ITEM_FIRE_SCROLL);
-        convert_item_in_distrib({ ITEM_WIND_BOOK },                                                    ITEM_WIND_SCROLL);
+        convert_item_in_distrib({ ITEM_DAGGER, ITEM_SWORD, ITEM_FIEND_BLADE, ITEM_HOLY_SWORD, ITEM_LEGEND_SWORD },
+                                ITEM_SWORD_UPGRADE);
+        convert_item_in_distrib({ ITEM_CLOTH_ARMOR, ITEM_LEATHER_ARMOR, ITEM_ANCIENT_ARMOR, ITEM_SILVER_ARMOR},
+                                ITEM_ARMOR_UPGRADE);
+        convert_item_in_distrib({ ITEM_HUNTERS_BOW,  ITEM_WILLOW_BOW  }, ITEM_BOW_UPGRADE);
+        convert_item_in_distrib({ ITEM_IRON_FLAIL,   ITEM_STEEL_FLAIL }, ITEM_FLAIL_UPGRADE);
+        convert_item_in_distrib({ ITEM_EARTH_SCROLL, ITEM_EARTH_BOOK  }, ITEM_EARTH_MAGIC_UPGRADE);
+        convert_item_in_distrib({ ITEM_WATER_SCROLL, ITEM_WATER_BOOK  }, ITEM_WATER_MAGIC_UPGRADE);
+        convert_item_in_distrib({ ITEM_FIRE_SCROLL,  ITEM_FIRE_BOOK   }, ITEM_FIRE_MAGIC_UPGRADE);
+        convert_item_in_distrib({ ITEM_WIND_SCROLL,  ITEM_WIND_BOOK   }, ITEM_WIND_MAGIC_UPGRADE);
 
         // Boots are only made progressive if their effects are not split
         if(!options.split_boots_effects())
         {
-            convert_item_in_distrib({ ITEM_SHORT_BOOTS, ITEM_MERMAN_BOOTS, ITEM_CHARM_BOOTS}, ITEM_LONG_BOOTS);
+            convert_item_in_distrib({ ITEM_SHORT_BOOTS, ITEM_LONG_BOOTS, ITEM_MERMAN_BOOTS, ITEM_CHARM_BOOTS},
+                                    ITEM_BOOTS_UPGRADE);
 
             for(WorldPath* path : _paths)
             {
@@ -218,7 +222,7 @@ void RandomizerWorld::apply_options(const RandomizerOptions& options, const Game
                 }
 
                 for(int i=1 ; i<highest_tier ; ++i)
-                    required_items.emplace_back(game_data.item(ITEM_LONG_BOOTS));
+                    required_items.emplace_back(game_data.item(ITEM_BOOTS_UPGRADE));
             }
         }
     }
