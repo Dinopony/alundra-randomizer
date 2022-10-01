@@ -23,6 +23,7 @@
 #include "patch_progressive_items.hpp"
 #include "patch_remove_videos.hpp"
 #include "patch_edit_credits.hpp"
+#include "patch_apply_shops_text.hpp"
 
 void execute_patches(const std::vector<GamePatch*>& patches, 
                      BinaryFile& data_file, PsxExeFile& exe_file, 
@@ -58,6 +59,7 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
     patches.emplace_back(new PatchRemoveNavaInstances());
     patches.emplace_back(new PatchRemoveVideos(options));
     patches.emplace_back(new PatchEditCredits());
+    patches.emplace_back(new PatchApplyShopsText());
 
     if(options.split_boots_effects())
         patches.emplace_back(new PatchSplitBootsEffects());

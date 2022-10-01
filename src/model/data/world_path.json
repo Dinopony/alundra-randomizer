@@ -809,6 +809,11 @@
         ]
     },
     {
+        "fromId": "overworld_e4",
+        "toId": "lurvy_shop",
+        "twoWay": true
+    },
+    {
         "fromId": "overworld_b1",
         "toId": "overworld_b1_island",
         "requiredItems": [

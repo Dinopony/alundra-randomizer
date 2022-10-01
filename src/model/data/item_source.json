@@ -1690,10 +1690,85 @@
         "name": "Merrick's Shop: Item traded for 50 Gilded Falcons",
         "nodeId": "merrick_shop_8",
         "address": "1EBF742",
-        "spriteAddress": [
-            "1EBF9BA"
-        ],
+        "spriteAddress": "1EBF9BA",
         "merrickItemAddress": "7CE98",
         "vanillaItem": "Spirit Wand"
+    },
+    {
+        "name": "Lurvy's Shop: Item #1",
+        "nodeId": "lurvy_shop",
+        "address": "56BF6FF",
+        "spriteAddress": "56BFFE2",
+        "priceAddress": [
+            "56BF6EB",
+            "56BF712"
+        ],
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lurvy's Shop: Item #2",
+        "nodeId": "lurvy_shop",
+        "address": "56BF7B3",
+        "spriteAddress": "56BFFF6",
+        "priceAddress": [
+            "56BF79F",
+            "56BF7C6"
+        ],
+        "vanillaItem": "Strength Tonic"
+    },
+    {
+        "name": "Lurvy's Shop: Item #3",
+        "nodeId": "lurvy_shop",
+        "address": "56BF867",
+        "spriteAddress": "56C000A",
+        "priceAddress": [
+            "56BF853",
+            "56BF87A"
+        ],
+        "vanillaItem": "Strength Elixyr"
+    },
+    {
+        "name": "Lurvy's Shop: Item #4",
+        "nodeId": "lurvy_shop",
+        "address": "56BF91B",
+        "spriteAddress": "56C001E",
+        "priceAddress": [
+            "56BF907",
+            "56BF92E"
+        ],
+        "vanillaItem": "Magic Elixyr"
+    },
+    {
+        "name": "Lurvy's Shop: Item #5",
+        "nodeId": "lurvy_shop",
+        "address": "56BF9DE",
+        "spriteAddress": "56C0032",
+        "priceAddress": [
+            "56BF9CA",
+            "56BF9F1"
+        ],
+        "vanillaItem": "Leather Armor"
+    },
+    {
+        "name": "Lurvy's Shop: Item #5 replacement when bought once",
+        "nodeId": "lurvy_shop",
+        "address": "56BFACF",
+        "spriteAddress": "56C0046",
+        "priceAddress": [
+            "56BFAA6",
+            "56BFABB"
+        ],
+        "vanillaItem": "Life Vessel"
+    },
+    {
+        "name": "Lurvy's Shop: Item #5 replacement when bought twice",
+        "nodeId": "lurvy_shop",
+        "address": "56BFB8A",
+        "spriteAddress": "56C005A",
+        "priceAddress": [
+            "56BFB76",
+            "56BFB9D"
+        ],
+        "vanillaItem": "Wonder Essence"
     }
 ]
