@@ -59,6 +59,8 @@ ItemSource* ItemSource::from_json(const Json& json, const GameData& game_data, c
             source->addresses(parse_addresses_from_json(value));
         else if(key == "spriteAddress")
             source->sprite_addresses(parse_addresses_from_json(value));
+        else if(key == "priceAddress")
+            source->price_addresses(parse_addresses_from_json(value));
         else if(key == "merrickItemAddress")
             source->merrick_item_address(parse_addresses_from_json(value)[0]);
         else if(key == "hints")

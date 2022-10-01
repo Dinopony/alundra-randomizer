@@ -30,6 +30,9 @@ private:
     /// Addresses inside DATAS.BIN file where to put the contained item sprite ID
     std::vector<uint32_t> _sprite_addresses;
 
+    /// Addresses inside DATAS.BIN file where to put the contained the price of the item as a word
+    std::vector<uint32_t> _price_addresses;
+
     /// Address inside ALUND_CD.EXE file where to put the contained item ItemInfo address (0 if not handled)
     uint32_t _merrick_item_address = 0x0;
 
@@ -76,6 +79,10 @@ public:
     [[nodiscard]] const std::vector<uint32_t>& sprite_addresses() const { return _sprite_addresses; }
     void sprite_addresses(const std::vector<uint32_t>& addresses) { _sprite_addresses = addresses; }
     void add_sprite_address(uint32_t address) { _sprite_addresses.emplace_back(address); }
+
+    [[nodiscard]] const std::vector<uint32_t>& price_addresses() const { return _price_addresses; }
+    void price_addresses(const std::vector<uint32_t>& addresses) { _price_addresses = addresses; }
+    void add_price_address(uint32_t address) { _price_addresses.emplace_back(address); }
 
     [[nodiscard]] uint32_t merrick_item_address() const { return _merrick_item_address; }
     void merrick_item_address(uint32_t addr) { _merrick_item_address = addr; }

@@ -16,6 +16,7 @@ public:
     {
         for(ItemSource* source : world.item_sources())
         {
+            // Apply item ID addresses
             uint8_t item_id = source->item() ? source->item()->id() : ITEM_NONE;
             for(uint32_t addr : source->addresses())
             {
@@ -27,6 +28,7 @@ public:
                 data.set_byte(addr, item_id);
             }
 
+            // Apply sprite ID addresses
             uint8_t item_sprite_id = item_id + 0x1E;
             for(uint32_t addr : source->sprite_addresses())
             {
@@ -36,6 +38,12 @@ public:
                     std::cerr << "ItemSource '" << source->name() << "' doesn't contain the expected vanilla item" << std::endl;
 #endif
                 data.set_byte(addr, item_sprite_id);
+            }
+
+            // Apply item price addresses
+            for(uint32_t addr : source->price_addresses())
+            {
+                data.set_word_le(addr, source->item()->gold_value());
             }
         }
 

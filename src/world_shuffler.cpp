@@ -206,8 +206,14 @@ void WorldShuffler::fill_item_source_randomly(ItemSource* source)
  */
 bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Item* item) const
 {
+    // Forbid precious items in sources that can be taken repeatedly
     if(source->forbid_precious_items() && item->is_precious())
         return false;
+
+    // Forbid items that have no price in shops
+    if(!source->price_addresses().empty() && item->gold_value() == 0)
+        return false;
+
     return true;
 }
 

@@ -8,31 +8,40 @@
         "startingQuantity": 1
     },
     {
-        "name": "Sword"
+        "name": "Sword",
+        "goldValue": 200
     },
     {
-        "name": "Fiend Blade"
+        "name": "Fiend Blade",
+        "goldValue": 400
     },
     {
-        "name": "Holy Sword"
+        "name": "Holy Sword",
+        "goldValue": 600
     },
     {
-        "name": "Hunter's Bow"
+        "name": "Hunter's Bow",
+        "goldValue": 200
     },
     {
-        "name": "Willow Bow"
+        "name": "Willow Bow",
+        "goldValue": 350
     },
     {
-        "name": "Spirit Wand"
+        "name": "Spirit Wand",
+        "goldValue": 2000
     },
     {
-        "name": "Legend Sword"
+        "name": "Legend Sword",
+        "goldValue": 1000
     },
     {
-        "name": "Iron Flail"
+        "name": "Iron Flail",
+        "goldValue": 100
     },
     {
-        "name": "Steel Flail"
+        "name": "Steel Flail",
+        "goldValue": 200
     },
     {
         "name": "Item 0x0B"
@@ -44,25 +53,30 @@
         "name": "Item 0x0D"
     },
     {
-        "name": "Ice Wand"
+        "name": "Ice Wand",
+        "goldValue": 250
     },
     {
         "name": "Item 0x0F"
     },
     {
-        "name": "Fire Wand"
+        "name": "Fire Wand",
+        "goldValue": 250
     },
     {
         "name": "Cloth Armor"
     },
     {
-        "name": "Leather Armor"
+        "name": "Leather Armor",
+        "goldValue": 200
     },
     {
-        "name": "Ancient Armor"
+        "name": "Ancient Armor",
+        "goldValue": 350
     },
     {
-        "name": "Silver Armor"
+        "name": "Silver Armor",
+        "goldValue": 500
     },
     {
         "name": "Item 0x15"
@@ -80,13 +94,16 @@
         "name": "Short Boots"
     },
     {
-        "name": "Long Boots"
+        "name": "Long Boots",
+        "goldValue": 150
     },
     {
-        "name": "Merman Boots"
+        "name": "Merman Boots",
+        "goldValue": 200
     },
     {
-        "name": "Charm Boots"
+        "name": "Charm Boots",
+        "goldValue": 200
     },
     {
         "name": "Item 0x1D"
@@ -95,92 +112,116 @@
         "name": "Item 0x1E"
     },
     {
-        "name": "Spring Bean"
+        "name": "Spring Bean",
+        "goldValue": 200
     },
     {
-        "name": "Sand Cape"
+        "name": "Sand Cape",
+        "goldValue": 150
     },
     {
-        "name": "Broken Armor"
+        "name": "Broken Armor",
+        "goldValue": 50
     },
     {
         "name": "Item 0x22"
     },
     {
-        "name": "Bomb"
+        "name": "Bomb",
+        "goldValue": 150
     },
     {
         "name": "Herbs",
-        "maxQuantity": 9
+        "maxQuantity": 9,
+        "goldValue": 5
     },
     {
-        "name": "Strength Elixyr"
+        "name": "Strength Elixyr",
+        "goldValue": 50
     },
     {
-        "name": "Magic Elixyr"
+        "name": "Magic Elixyr",
+        "goldValue": 30
     },
     {
-        "name": "Wonder Essence"
+        "name": "Wonder Essence",
+        "goldValue": 200
     },
     {
-        "name": "Aqua Cape"
+        "name": "Aqua Cape",
+        "goldValue": 150
     },
     {
-        "name": "Strength Tonic"
+        "name": "Strength Tonic",
+        "goldValue": 20
     },
     {
         "name": "Item 0x2A"
     },
     {
-        "name": "Earth Scroll"
+        "name": "Earth Scroll",
+        "goldValue": 200
     },
     {
-        "name": "Earth Book"
+        "name": "Earth Book",
+        "goldValue": 600
     },
     {
-        "name": "Water Scroll"
+        "name": "Water Scroll",
+        "goldValue": 200
     },
     {
-        "name": "Water Book"
+        "name": "Water Book",
+        "goldValue": 600
     },
     {
-        "name": "Fire Scroll"
+        "name": "Fire Scroll",
+        "goldValue": 200
     },
     {
-        "name": "Fire Book"
+        "name": "Fire Book",
+        "goldValue": 600
     },
     {
-        "name": "Wind Scroll"
+        "name": "Wind Scroll",
+        "goldValue": 200
     },
     {
-        "name": "Wind Book"
+        "name": "Wind Book",
+        "goldValue": 600
     },
     {
-        "name": "Olga's Ring"
+        "name": "Olga's Ring",
+        "goldValue": 200
     },
     {
         "name": "Item 0x34"
     },
     {
-        "name": "Silver Armlet"
+        "name": "Silver Armlet",
+        "goldValue": 200
     },
     {
-        "name": "Nava's Charm"
+        "name": "Nava's Charm",
+        "goldValue": 200
     },
     {
-        "name": "Recovery Ring"
+        "name": "Recovery Ring",
+        "goldValue": 200
     },
     {
         "name": "Item 0x38"
     },
     {
-        "name": "Secret Pass"
+        "name": "Secret Pass",
+        "goldValue": 200
     },
     {
         "name": "Item 0x3A"
     },
     {
-        "name": "Power Glove"
+        "name": "Power Glove",
+        "goldValue": 300
     },
     {
         "name": "Elevator Key"
@@ -191,25 +232,32 @@
         "precious": true
     },
     {
-        "name": "Ruby Crest"
+        "name": "Ruby Crest",
+        "goldValue": 1000
     },
     {
-        "name": "Sapphire Crest"
+        "name": "Sapphire Crest",
+        "goldValue": 1250
     },
     {
-        "name": "Topaz Crest"
+        "name": "Topaz Crest",
+        "goldValue": 1500
     },
     {
-        "name": "Agate Crest"
+        "name": "Agate Crest",
+        "goldValue": 1750
     },
     {
-        "name": "Garnet Crest"
+        "name": "Garnet Crest",
+        "goldValue": 2000
     },
     {
-        "name": "Emerald Crest"
+        "name": "Emerald Crest",
+        "goldValue": 2500
     },
     {
-        "name": "Diamond Crest"
+        "name": "Diamond Crest",
+        "goldValue": 3000
     },
     {
         "name": "1 Gilder",
@@ -233,7 +281,8 @@
         "name": "Sluice Key"
     },
     {
-        "name": "Bouquet"
+        "name": "Bouquet",
+        "goldValue": 100
     },
     {
         "name": "Small Key"
@@ -242,7 +291,8 @@
         "name": "Jess's Letter"
     },
     {
-        "name": "Tree Gem"
+        "name": "Tree Gem",
+        "goldValue": 150
     },
     {
         "name": "Zolists Stone"
@@ -255,7 +305,8 @@
     {
         "name": "Magic Seed",
         "maxQuantity": 0,
-        "precious": true
+        "precious": true,
+        "goldValue": 1000
     },
     {
         "name": "Item 0x51"
@@ -266,7 +317,8 @@
     {
         "name": "Life Vessel",
         "maxQuantity": 0,
-        "precious": true
+        "precious": true,
+        "goldValue": 500
     },
     {
         "name": "Item 0x54"
