@@ -208,7 +208,10 @@
     },
     {
         "name": "Ancient Shrine",
-        "nodeIds": [ "ancient_shrine" ],
+        "nodeIds": [
+            "ancient_shrine",
+            "ancient_shrine_behind_cape"
+        ],
         "canBeHintedAsRequired": true
     },
 

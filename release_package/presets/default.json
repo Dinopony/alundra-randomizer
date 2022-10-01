@@ -19,7 +19,7 @@
         "progressiveItems": true,
 
         // The amount of times you need to die in order to be able to get King Snow's item
-        "kingSnowDeathCount": 5
+        "kingSnowDeathCount": 0
     },
 
     "randomizerSettings": {

@@ -915,31 +915,31 @@
     },
     {
         "name": "Ancient Shrine: Chest in room with sandcape holes and jars",
-        "nodeId": "ancient_shrine",
+        "nodeId": "ancient_shrine_behind_cape",
         "address": "89ED1E",
         "vanillaItem": "Herbs"
     },
     {
         "name": "Ancient Shrine: Chest near left exterior statue",
-        "nodeId": "ancient_shrine",
+        "nodeId": "ancient_shrine_behind_cape",
         "address": "866AD2",
         "vanillaItem": "Gilded Falcon"
     },
     {
         "name": "Ancient Shrine: Left reward chest after beating boss",
-        "nodeId": "ancient_shrine",
+        "nodeId": "ancient_shrine_behind_cape",
         "address": "82F0DE",
         "vanillaItem": "Sword"
     },
     {
         "name": "Ancient Shrine: Middle reward chest after beating boss",
-        "nodeId": "ancient_shrine",
+        "nodeId": "ancient_shrine_behind_cape",
         "address": "82F08E",
         "vanillaItem": "Long Boots"
     },
     {
         "name": "Ancient Shrine: Right reward chest after beating boss",
-        "nodeId": "ancient_shrine",
+        "nodeId": "ancient_shrine_behind_cape",
         "address": "82F0F2",
         "vanillaItem": "Life Vessel"
     },
