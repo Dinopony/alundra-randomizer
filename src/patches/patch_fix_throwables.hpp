@@ -32,20 +32,21 @@ public:
         data.set_byte(0x1EBF9FC, 0x00);
         data.set_byte(0x1EBFA10, 0x00);
 
-        // TODO: This patch doesn't work for now, so we just prevent Merrick items from being thrown
-        /*
-        constexpr uint8_t VALID_THROWABLE_ITEM_ID = ITEM_HERBS;
+        // Get pointer offsets for valid item (Life Vessel)
+        constexpr uint32_t STARTING_ADDR = 0x830;
+        uint32_t life_vessel_offset_addr = STARTING_ADDR + ((ITEM_LIFE_VESSEL + 0x1E) * 4);
+        uint32_t life_vessel_offset = data.get_long_le(life_vessel_offset_addr);
+        uint32_t life_veseel_ptr_table = 0x800 + life_vessel_offset;
+        uint32_t life_vessel_ptr_1 = data.get_long(life_veseel_ptr_table); // 5C300300
+        uint32_t life_vessel_ptr_2 = data.get_long(life_veseel_ptr_table + 4); // A4300300
 
-        // Extract the first 8 bytes of object properties for a valid item object
-        uint32_t valid_bytes_addr = get_object_properties_addr(data, VALID_THROWABLE_ITEM_ID);
-        ByteArray valid_bytes = data.get_bytes(valid_bytes_addr, valid_bytes_addr + 8);
-
-        // Now, we apply those "valid bytes" to every item object
-        for(uint8_t item_id = ITEM_DAGGER ; item_id <= ITEM_CURIOUS_KEY ; ++item_id)
+        for(uint16_t item_id = 0x1 ; item_id < ITEM_COUNT ; ++item_id)
         {
-            uint32_t bytes_addr = get_object_properties_addr(data, item_id);
-            data.set_bytes(bytes_addr, valid_bytes);
+            uint32_t addr = STARTING_ADDR + ((item_id + 0x1E) * 4);
+
+            uint32_t pointer_table_offset = data.get_long_le(addr) + 0x800;
+            data.set_long(pointer_table_offset, life_vessel_ptr_1);
+            data.set_long(pointer_table_offset + 4, life_vessel_ptr_2);
         }
-        */
     }
 };
