@@ -630,6 +630,10 @@
         "toId": "overworld_a3_right"
     },
     {
+        "fromId": "overworld_a3_right_behind_vines",
+        "toId": "overworld_b3_top_left"
+    },
+    {
         "fromId": "overworld_a3_left",
         "toId": "overworld_a3_left_behind_power_glove",
         "twoWay": true,
