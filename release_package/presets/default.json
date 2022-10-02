@@ -45,18 +45,18 @@
         // A dictionary used to define the amount of each item the randomizer will scatter across the world.
         // The total count must not exceed the total count of item sources
         "itemsDistribution": {
-            "Herbs": 50,
+            "Herbs": 53,
             "Strength Tonic": 12,
             "Strength Elixyr": 8,
             "Magic Elixyr": 9,
-            "Wonder Essence": 5,
+            "Wonder Essence": 6,
 
             "1 Gilder": 2,
             "5 Gilder": 8,
-            "10 Gilder": 12,
-            "30 Gilder": 18,
+            "10 Gilder": 14,
+            "30 Gilder": 20,
 
-            "Life Vessel": 38,
+            "Life Vessel": 40,
             "Magic Seed": 4,
             "Gilded Falcon": 50,
 
@@ -81,6 +81,7 @@
             "Merman Boots": 1,
             "Charm Boots": 1,
 
+            "Leather Armor": 1,
             "Broken Armor": 1,
             "Silver Armor": 1,
 
