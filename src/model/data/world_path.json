@@ -823,6 +823,14 @@
         "twoWay": true
     },
     {
+        "fromId": "lurvy_shop",
+        "toId": "lurvy_shop_repair",
+        "twoWay": true,
+        "requiredItems": [
+            "Broken Armor"
+        ]
+    },
+    {
         "fromId": "overworld_b1",
         "toId": "overworld_b1_island",
         "requiredItems": [

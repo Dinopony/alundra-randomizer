@@ -1772,6 +1772,13 @@
         "vanillaItem": "Wonder Essence"
     },
     {
+        "name": "Lurvy's Shop: Item obtained after repairing Broken Armor",
+        "nodeId": "lurvy_shop_repair",
+        "address": "56BFF51",
+        "spriteAddress": "56C0096",
+        "vanillaItem": "Ancient Armor"
+    },
+    {
         "name": "Nadia's Shop: Item #1",
         "nodeId": "nadia_shop",
         "address": "3A670B3",

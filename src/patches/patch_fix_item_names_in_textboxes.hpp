@@ -21,6 +21,7 @@ public:
         fix_post_nirude_items(data, world);
         fix_casino_items(data, world);
         fix_post_nava_item(data, world);
+        fix_lurvy_repairing_broken_armor(data, world);
     }
 
 private:
@@ -91,6 +92,17 @@ private:
 
         RoomStrings strings(MAP_432, data);
         stringtools::replace(strings.string(70), "the Diamond Crest", nava_diamond_crest_source->item()->name());
+        strings.apply_on_data(data);
+    }
+
+    static void fix_lurvy_repairing_broken_armor(BinaryFile& data, const RandomizerWorld& world)
+    {
+        ItemSource* lurvy_repair = world.item_source("Lurvy's Shop: Item obtained after repairing Broken Armor (Ancient Armor)");
+
+        RoomStrings strings(MAP_398, data);
+
+        strings.string(31) = R"(\BReceived )" + lurvy_repair->item()->name() + ".";
+
         strings.apply_on_data(data);
     }
 };
