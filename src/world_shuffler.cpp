@@ -196,6 +196,7 @@ void WorldShuffler::fill_item_source_randomly(ItemSource* source)
     }
 
     std::cout << "[WARNING] Item source '" << source->name() << "' could not be filled with any item of the item pool.\n";
+    source->item(_game_data.item(ITEM_NONE));
 }
 
 /**

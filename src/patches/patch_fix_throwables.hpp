@@ -14,17 +14,6 @@
 class PatchFixThrowables : public GamePatch
 {
 public:
-    static uint32_t get_object_properties_addr(BinaryFile& data, uint8_t item_id)
-    {
-        constexpr uint32_t OBJECT_PROPERTIES_TABLE_START = 0x800;
-
-        uint8_t item_object_id = item_id + 0x1E;
-        uint32_t offset_1 = data.get_long_le(OBJECT_PROPERTIES_TABLE_START + (item_object_id * 4));
-        uint32_t offset_2 = data.get_long_le(OBJECT_PROPERTIES_TABLE_START + offset_1);
-        return OBJECT_PROPERTIES_TABLE_START + offset_2;
-    }
-
-
     void alter_datas_file(BinaryFile& data, const GameData& game_data, const RandomizerWorld& world) override
     {
         // Prevent Merrick items from being taken and thrown to prevent any crash

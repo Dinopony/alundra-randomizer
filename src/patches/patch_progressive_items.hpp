@@ -12,31 +12,32 @@ public:
     explicit PatchProgressiveItems(bool progressive_boots) : _progressive_boots(progressive_boots)
     {}
 
+    void alter_datas_file(BinaryFile& data_file, const GameData& game_data, const RandomizerWorld& world) override
+    {
+        replace_item_sprite(data_file, ITEM_SWORD_UPGRADE,       ITEM_SWORD);
+        replace_item_sprite(data_file, ITEM_FLAIL_UPGRADE,       ITEM_IRON_FLAIL);
+        replace_item_sprite(data_file, ITEM_BOW_UPGRADE,         ITEM_HUNTERS_BOW);
+        replace_item_sprite(data_file, ITEM_ARMOR_UPGRADE,       ITEM_ANCIENT_ARMOR);
+        replace_item_sprite(data_file, ITEM_BOOTS_UPGRADE,       ITEM_MERMAN_BOOTS);
+        replace_item_sprite(data_file, ITEM_EARTH_MAGIC_UPGRADE, ITEM_EARTH_SCROLL);
+        replace_item_sprite(data_file, ITEM_WATER_MAGIC_UPGRADE, ITEM_WATER_SCROLL);
+        replace_item_sprite(data_file, ITEM_FIRE_MAGIC_UPGRADE,  ITEM_FIRE_SCROLL);
+        replace_item_sprite(data_file, ITEM_WIND_MAGIC_UPGRADE,  ITEM_WIND_SCROLL);
+    }
+
     void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override
     {
         // Inject and call a function to alter obtained item ID if needed
-        uint32_t func_addr = inject_alter_item_id(exe);
+        uint32_t func_addr = inject_func_alter_item_id(exe);
         exe.set_code(0x303F4, MipsCode().jal(func_addr));
 
         // Modify the behavior of TryIncreasingItemQuantityInInventory which can behave weirdly
         // when trying to increase a progressive item quantity
         exe.set_code(0x14DFC, MipsCode().addiu(reg_V0, 0x1));
-
-        // Alter the ItemInfoTable to modify wrong tier information
-        exe.set_byte(0x9C6BE, 0x0);  // Remove unused T3 Flail
-        exe.set_byte(0x9C6C8, 0x0);  // Remove unused T4 Flail
-
-        exe.set_byte(0x9C69A, 0x0);  // Make Spirit Wand T1 instead of T2
-
-        exe.set_byte(0x9C6E0, 0x0);  // Make Ice Wand T1 instead of T2
-        exe.set_byte(0x9C6D2, 0x0);  // Remove unused T1 Ice Wand
-
-        exe.set_byte(0x9C6F4, 0x0);  // Make Fire Wand T1 instead of T2
-        exe.set_byte(0x9C6E6, 0x0);  // Remove unused T1 Fire Wand
     }
 
 private:
-    uint32_t inject_alter_item_id(PsxExeFile& exe) const
+    uint32_t inject_func_alter_item_id(PsxExeFile& exe) const
     {
         MipsCode func;
 
@@ -63,19 +64,23 @@ private:
         func.set_(storage_A1, reg_A1);
         func.set_(storage_RA, reg_RA);
 
-        // if(item_id > ITEM_WIND_BOOK) return
-        func.bgt_(reg_A0, ITEM_WIND_BOOK, "return");
-
         // If we are using "splitBootsEffect" setting, we don't want the boots to be progressive.
-        // If it's set, perform this additionnal check to return in case we are processing boots.
         if(!_progressive_boots)
         {
+            // if(item_id > ITEM_WIND_MAGIC_UPGRADE) return
+            func.bgt_(reg_A0, ITEM_WIND_MAGIC_UPGRADE, "return");
+
             // if(item_id >= ITEM_SHORT_BOOTS && item_id <= ITEM_CHARM_BOOTS) return
             func.blt_(reg_A0, ITEM_SHORT_BOOTS, "do_process");
             func.bgt_(reg_A0, ITEM_CHARM_BOOTS, "do_process");
             {
                 func.bra_("return");
             }
+        }
+        else
+        {
+            // if(item_id > ITEM_BOOTS_UPGRADE) return
+            func.bgt_(reg_A0, ITEM_BOOTS_UPGRADE, "return");
         }
 
         // Get slot for current item
@@ -146,5 +151,22 @@ private:
         func.jr(reg_RA);                    // return;
 
         return exe.inject_code(func);
+    }
+
+    static void replace_item_sprite(BinaryFile& data, uint8_t item_to_replace, uint8_t item_sprite_to_use)
+    {
+        constexpr uint32_t STARTING_ADDR = 0x830;
+
+        // Get sprite pointer from source item
+        uint32_t source_item_offset_addr = STARTING_ADDR + ((item_sprite_to_use + 0x1E) * 4);
+        uint32_t source_item_offset = data.get_long_le(source_item_offset_addr);
+        uint32_t source_item_ptr_table = 0x800 + source_item_offset;
+        uint32_t source_item_sprite_ptr = data.get_long(source_item_ptr_table + 12);
+
+        // Copy sprite pointer on destination item
+        uint32_t dest_item_offset_addr = STARTING_ADDR + ((item_to_replace + 0x1E) * 4);
+        uint32_t dest_item_offset = data.get_long_le(dest_item_offset_addr);
+        uint32_t dest_item_ptr_table = 0x800 + dest_item_offset;
+        data.set_long(dest_item_ptr_table + 12, source_item_sprite_ptr);
     }
 };

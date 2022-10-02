@@ -100,6 +100,8 @@ set(SOURCES
         "src/patches/patch_progressive_items.hpp"
         "src/patches/patch_remove_videos.hpp"
         "src/patches/patch_edit_credits.hpp"
+        "src/patches/patch_apply_items_info.hpp"
+        "src/patches/patch_edit_global_strings.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"

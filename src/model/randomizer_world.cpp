@@ -170,60 +170,82 @@ void RandomizerWorld::apply_options(const RandomizerOptions& options, const Game
     for(uint16_t source_id : options.item_sources_without_progression())
         _item_sources[source_id]->can_contain_progression(false);
 
+    // Keep an editable copy of the items distribution from rando options
     _items_distribution = options.items_distribution();
 
     // Handle progressive items in distribution
     if(options.progressive_items())
+        handle_progressive_items(options, game_data);
+}
+
+void RandomizerWorld::handle_progressive_items(const RandomizerOptions& options, const GameData& game_data)
+{
+    const uint16_t SLOT_SWORD = game_data.item(ITEM_SWORD_UPGRADE)->slot_id();
+    const uint16_t SLOT_BOW = game_data.item(ITEM_BOW_UPGRADE)->slot_id();
+    const uint16_t SLOT_FLAIL = game_data.item(ITEM_FLAIL_UPGRADE)->slot_id();
+    const uint16_t SLOT_ARMOR = game_data.item(ITEM_ARMOR_UPGRADE)->slot_id();
+    const uint16_t SLOT_BOOTS = game_data.item(ITEM_BOOTS_UPGRADE)->slot_id();
+    const uint16_t SLOT_EARTH_MAGIC = game_data.item(ITEM_EARTH_MAGIC_UPGRADE)->slot_id();
+    const uint16_t SLOT_WATER_MAGIC = game_data.item(ITEM_WATER_MAGIC_UPGRADE)->slot_id();
+    const uint16_t SLOT_FIRE_MAGIC = game_data.item(ITEM_FIRE_MAGIC_UPGRADE)->slot_id();
+    const uint16_t SLOT_WIND_MAGIC = game_data.item(ITEM_WIND_MAGIC_UPGRADE)->slot_id();
+
+    std::vector<uint16_t> slots_to_process = {
+            SLOT_SWORD, SLOT_BOW, SLOT_FLAIL, SLOT_ARMOR,
+            SLOT_EARTH_MAGIC, SLOT_WATER_MAGIC, SLOT_FIRE_MAGIC, SLOT_WIND_MAGIC
+    };
+
+    // Boots are only made progressive if their effects are not split
+    if(!options.split_boots_effects())
+        slots_to_process.emplace_back(SLOT_BOOTS);
+
+    for(uint16_t slot_id : slots_to_process)
     {
-        auto convert_item_in_distrib = [this](const std::vector<uint8_t>& items_from, uint8_t item_to) {
-            for(uint8_t item_from : items_from)
-            {
-                uint8_t amount = _items_distribution[item_from];
-                _items_distribution[item_to] += amount;
-                _items_distribution[item_from] -= amount;
-            }
-        };
-
-        convert_item_in_distrib({ ITEM_DAGGER, ITEM_SWORD, ITEM_FIEND_BLADE, ITEM_HOLY_SWORD, ITEM_LEGEND_SWORD },
-                                ITEM_SWORD_UPGRADE);
-        convert_item_in_distrib({ ITEM_CLOTH_ARMOR, ITEM_LEATHER_ARMOR, ITEM_ANCIENT_ARMOR, ITEM_SILVER_ARMOR},
-                                ITEM_ARMOR_UPGRADE);
-        convert_item_in_distrib({ ITEM_HUNTERS_BOW,  ITEM_WILLOW_BOW  }, ITEM_BOW_UPGRADE);
-        convert_item_in_distrib({ ITEM_IRON_FLAIL,   ITEM_STEEL_FLAIL }, ITEM_FLAIL_UPGRADE);
-        convert_item_in_distrib({ ITEM_EARTH_SCROLL, ITEM_EARTH_BOOK  }, ITEM_EARTH_MAGIC_UPGRADE);
-        convert_item_in_distrib({ ITEM_WATER_SCROLL, ITEM_WATER_BOOK  }, ITEM_WATER_MAGIC_UPGRADE);
-        convert_item_in_distrib({ ITEM_FIRE_SCROLL,  ITEM_FIRE_BOOK   }, ITEM_FIRE_MAGIC_UPGRADE);
-        convert_item_in_distrib({ ITEM_WIND_SCROLL,  ITEM_WIND_BOOK   }, ITEM_WIND_MAGIC_UPGRADE);
-
-        // Boots are only made progressive if their effects are not split
-        if(!options.split_boots_effects())
+        const Item* upgrade_item = nullptr;
+        std::vector<const Item*> items_to_convert;
+        for(uint8_t item_id = 1 ; item_id < ITEM_COUNT ; ++item_id)
         {
-            convert_item_in_distrib({ ITEM_SHORT_BOOTS, ITEM_LONG_BOOTS, ITEM_MERMAN_BOOTS, ITEM_CHARM_BOOTS},
-                                    ITEM_BOOTS_UPGRADE);
+            const Item* item = game_data.item(item_id);
+            if(item->slot_id() != slot_id)
+                continue;
 
-            for(WorldPath* path : _paths)
+            if(item->tier() == 64)
             {
-                auto& required_items = path->required_items();
-                uint8_t highest_tier = 0;
-                if(vectools::contains(required_items, game_data.item(ITEM_LONG_BOOTS)))
-                {
-                    highest_tier = 2;
-                    vectools::erase_first(required_items, game_data.item(ITEM_LONG_BOOTS));
-                }
-                if(vectools::contains(required_items, game_data.item(ITEM_MERMAN_BOOTS)))
-                {
-                    highest_tier = 3;
-                    vectools::erase_first(required_items, game_data.item(ITEM_MERMAN_BOOTS));
-                }
-                if(vectools::contains(required_items, game_data.item(ITEM_CHARM_BOOTS)))
-                {
-                    highest_tier = 4;
-                    vectools::erase_first(required_items, game_data.item(ITEM_CHARM_BOOTS));
-                }
-
-                for(int i=1 ; i<highest_tier ; ++i)
-                    required_items.emplace_back(game_data.item(ITEM_BOOTS_UPGRADE));
+                upgrade_item = item;
+                continue;
             }
+
+            items_to_convert.emplace_back(item);
+        }
+
+        if(!upgrade_item)
+            throw RandomizerException("Could not find a valid upgrade item for slot " + std::to_string(slot_id));
+
+        // Update the items distribution to remove specific item tiers and replace them by item upgrades
+        for(const Item* item : items_to_convert)
+        {
+            uint8_t amount = _items_distribution[item->id()];
+            _items_distribution[upgrade_item->id()] += amount;
+            _items_distribution[item->id()] -= amount;
+        }
+
+        // Update logic paths to require a certain count of item upgrades rather than specific items
+        for(WorldPath* path : _paths)
+        {
+            auto& required_items = path->required_items();
+            uint8_t highest_tier = 0;
+            for(const Item* item : items_to_convert)
+            {
+                auto it = std::find(required_items.begin(), required_items.end(), item);
+                if(it != required_items.end())
+                {
+                    required_items.erase(it);
+                    highest_tier = item->tier();
+                }
+            }
+
+            for(int i=1 ; i<highest_tier ; ++i)
+                required_items.emplace_back(upgrade_item);
         }
     }
 }

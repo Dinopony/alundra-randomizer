@@ -6,6 +6,8 @@ Json Item::to_json() const
     Json json;
 
     json["name"] = _name;
+    json["slot"] = _slot_id;
+    json["tier"] = _tier;
     json["maxQuantity"] = _max_quantity;
     json["startingQuantity"] = _starting_quantity;
     json["goldValue"] = _gold_value;
@@ -37,6 +39,10 @@ void Item::apply_json(const Json& json)
             this->gold_value(value);
         else if(key == "precious")
             this->is_precious(value);
+        else if(key == "slot")
+            this->slot_id(value);
+        else if(key == "tier")
+            this->tier(value);
         else
             throw RandomizerException("Unknown key '" + key + "' in Item JSON");
     }

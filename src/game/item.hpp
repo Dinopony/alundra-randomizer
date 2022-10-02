@@ -22,6 +22,12 @@ private:
     /// The value of this item in shops
     uint16_t _gold_value = 0;
 
+    /// The ID of the slot where this item goes in inventory
+    uint16_t _slot_id = 0;
+
+    /// The tier of this item compared to other items from the same slot
+    uint16_t _tier = 0;
+
     /**
      * If true, this item is considered as precious and cannot be put inside ItemSources which forbid precious
      * items. This is used on ItemSources than can be taken an infinite amount of times to avoid putting
@@ -33,19 +39,25 @@ public:
     Item() = default;
 
     [[nodiscard]] uint8_t id() const { return _id; }
-    Item& id(uint8_t id) { _id = id; return *this; }
+    void id(uint8_t id) { _id = id; }
 
     [[nodiscard]] const std::string& name() const { return _name; }
-    Item& name(const std::string& name) { _name = name; return *this; }
+    void name(const std::string& name) { _name = name; }
 
     [[nodiscard]] uint8_t starting_quantity() const { return std::min(_starting_quantity, _max_quantity); }
-    Item& starting_quantity(uint8_t quantity) { _starting_quantity = quantity; return *this; }
+    void starting_quantity(uint8_t quantity) { _starting_quantity = quantity; }
     
     [[nodiscard]] uint8_t max_quantity() const { return _max_quantity; }
-    Item& max_quantity(uint8_t quantity) { _max_quantity = quantity; return *this; }
+    void max_quantity(uint8_t quantity) { _max_quantity = quantity; }
 
     [[nodiscard]] uint16_t gold_value() const { return _gold_value; }
-    virtual Item& gold_value(uint16_t value) { _gold_value = value; return *this; }
+    void gold_value(uint16_t value) { _gold_value = value; }
+
+    [[nodiscard]] uint16_t slot_id() const { return _slot_id; }
+    void slot_id(uint16_t value) { _slot_id = value; }
+
+    [[nodiscard]] uint16_t tier() const { return _tier; }
+    void tier(uint16_t value) { _tier = value; }
 
     [[nodiscard]] bool is_precious() const { return _is_precious; }
     void is_precious(bool value) { _is_precious = value; }

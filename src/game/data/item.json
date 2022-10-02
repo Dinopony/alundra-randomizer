@@ -5,226 +5,346 @@
     },
     {
         "name": "Dagger",
+        "slot": 1,
+        "tier": 0,
         "startingQuantity": 1
     },
     {
         "name": "Sword",
+        "slot": 1,
+        "tier": 1,
         "goldValue": 200
     },
     {
         "name": "Fiend Blade",
+        "slot": 1,
+        "tier": 2,
         "goldValue": 400
     },
     {
         "name": "Holy Sword",
+        "slot": 1,
+        "tier": 3,
         "goldValue": 600
     },
     {
         "name": "Hunter's Bow",
+        "slot": 2,
+        "tier": 0,
         "goldValue": 200
     },
     {
         "name": "Willow Bow",
+        "slot": 2,
+        "tier": 1,
         "goldValue": 350
     },
     {
         "name": "Spirit Wand",
+        "slot": 6,
+        "tier": 0,
         "goldValue": 2000
     },
     {
         "name": "Legend Sword",
+        "slot": 1,
+        "tier": 4,
         "goldValue": 1000
     },
     {
         "name": "Iron Flail",
+        "slot": 3,
+        "tier": 0,
         "goldValue": 100
     },
     {
         "name": "Steel Flail",
+        "slot": 3,
+        "tier": 1,
         "goldValue": 200
     },
     {
-        "name": "Item 0x0B"
+        "name": "Sword upgrade",
+        "slot": 1,
+        "tier": 64
     },
     {
-        "name": "Item 0x0C"
+        "name": "Flail upgrade",
+        "slot": 3,
+        "tier": 64
     },
     {
-        "name": "Item 0x0D"
+        "name": "Bow upgrade",
+        "slot": 2,
+        "tier": 64
     },
     {
         "name": "Ice Wand",
+        "slot": 4,
+        "tier": 0,
         "goldValue": 250
     },
     {
-        "name": "Item 0x0F"
+        "name": "Armor upgrade",
+        "slot": 7,
+        "tier": 64
     },
     {
         "name": "Fire Wand",
+        "slot": 5,
+        "tier": 0,
         "goldValue": 250
     },
     {
-        "name": "Cloth Armor"
+        "name": "Cloth Armor",
+        "slot": 7,
+        "tier": 0
     },
     {
         "name": "Leather Armor",
+        "slot": 7,
+        "tier": 1,
         "goldValue": 200
     },
     {
         "name": "Ancient Armor",
+        "slot": 7,
+        "tier": 2,
         "goldValue": 350
     },
     {
         "name": "Silver Armor",
+        "slot": 7,
+        "tier": 3,
         "goldValue": 500
     },
     {
-        "name": "Item 0x15"
+        "name": "Earth Spell",
+        "slot": 16,
+        "tier": 64
     },
     {
-        "name": "Item 0x16"
+        "name": "Water Spell",
+        "slot": 17,
+        "tier": 64
     },
     {
-        "name": "Item 0x17"
+        "name": "Fire Spell",
+        "slot": 18,
+        "tier": 64
     },
     {
-        "name": "Item 0x18"
+        "name": "Wind Spell",
+        "slot": 19,
+        "tier": 64
     },
     {
-        "name": "Short Boots"
+        "name": "Short Boots",
+        "slot": 9,
+        "tier": 0
     },
     {
         "name": "Long Boots",
+        "slot": 9,
+        "tier": 1,
         "goldValue": 150
     },
     {
         "name": "Merman Boots",
+        "slot": 9,
+        "tier": 2,
         "goldValue": 200
     },
     {
         "name": "Charm Boots",
+        "slot": 9,
+        "tier": 3,
         "goldValue": 200
     },
     {
-        "name": "Item 0x1D"
+        "name": "Boots upgrade",
+        "slot": 9,
+        "tier": 64
     },
     {
-        "name": "Item 0x1E"
+        "name": "Item 0x1E",
+        "slot": 10,
+        "tier": 0
     },
     {
         "name": "Spring Bean",
+        "slot": 29,
+        "tier": 0,
         "goldValue": 200
     },
     {
         "name": "Sand Cape",
+        "slot": 26,
+        "tier": 0,
         "goldValue": 150
     },
     {
         "name": "Broken Armor",
+        "slot": 28,
+        "tier": 0,
         "goldValue": 50
     },
     {
-        "name": "Item 0x22"
+        "name": "Item 0x22",
+        "slot": 0,
+        "tier": 0
     },
     {
         "name": "Bomb",
+        "slot": 11,
+        "tier": 0,
         "goldValue": 150
     },
     {
         "name": "Herbs",
+        "slot": 12,
+        "tier": 0,
         "maxQuantity": 9,
         "goldValue": 5
     },
     {
         "name": "Strength Elixyr",
+        "slot": 13,
+        "tier": 0,
         "goldValue": 50
     },
     {
         "name": "Magic Elixyr",
+        "slot": 15,
+        "tier": 0,
         "goldValue": 30
     },
     {
         "name": "Wonder Essence",
+        "slot": 30,
+        "tier": 0,
         "goldValue": 200
     },
     {
         "name": "Aqua Cape",
+        "slot": 27,
+        "tier": 0,
         "goldValue": 150
     },
     {
         "name": "Strength Tonic",
+        "slot": 14,
+        "tier": 0,
         "goldValue": 20
     },
     {
-        "name": "Item 0x2A"
+        "name": "Item 0x2A",
+        "slot": 15,
+        "tier": 2
     },
     {
         "name": "Earth Scroll",
+        "slot": 16,
+        "tier": 0,
         "goldValue": 200
     },
     {
         "name": "Earth Book",
+        "slot": 16,
+        "tier": 1,
         "goldValue": 600
     },
     {
         "name": "Water Scroll",
+        "slot": 17,
+        "tier": 0,
         "goldValue": 200
     },
     {
         "name": "Water Book",
+        "slot": 17,
+        "tier": 1,
         "goldValue": 600
     },
     {
         "name": "Fire Scroll",
+        "slot": 18,
+        "tier": 0,
         "goldValue": 200
     },
     {
         "name": "Fire Book",
+        "slot": 18,
+        "tier": 1,
         "goldValue": 600
     },
     {
         "name": "Wind Scroll",
+        "slot": 19,
+        "tier": 0,
         "goldValue": 200
     },
     {
         "name": "Wind Book",
+        "slot": 19,
+        "tier": 1,
         "goldValue": 600
     },
     {
         "name": "Olga's Ring",
+        "slot": 20,
+        "tier": 0,
         "goldValue": 200
     },
     {
-        "name": "Item 0x34"
+        "name": "Item 0x34",
+        "slot": 20,
+        "tier": 1
     },
     {
         "name": "Silver Armlet",
+        "slot": 21,
+        "tier": 0,
         "goldValue": 200
     },
     {
         "name": "Nava's Charm",
+        "slot": 31,
+        "tier": 1,
         "goldValue": 200
     },
     {
         "name": "Recovery Ring",
+        "slot": 22,
+        "tier": 0,
         "goldValue": 200
     },
     {
-        "name": "Item 0x38"
+        "name": "Item 0x38",
+        "slot": 22,
+        "tier": 1
     },
     {
         "name": "Secret Pass",
+        "slot": 28,
+        "tier": 0,
         "goldValue": 200
     },
     {
-        "name": "Item 0x3A"
+        "name": "Item 0x3A",
+        "slot": 0,
+        "tier": 1
     },
     {
         "name": "Power Glove",
+        "slot": 23,
+        "tier": 0,
         "goldValue": 300
     },
     {
-        "name": "Elevator Key"
+        "name": "Elevator Key",
+        "slot": 28,
+        "tier": 0
     },
     {
         "name": "Key",
@@ -233,69 +353,103 @@
     },
     {
         "name": "Ruby Crest",
+        "slot": 24,
+        "tier": 0,
         "goldValue": 1000
     },
     {
         "name": "Sapphire Crest",
+        "slot": 24,
+        "tier": 1,
         "goldValue": 1250
     },
     {
         "name": "Topaz Crest",
+        "slot": 24,
+        "tier": 2,
         "goldValue": 1500
     },
     {
         "name": "Agate Crest",
+        "slot": 24,
+        "tier": 3,
         "goldValue": 1750
     },
     {
         "name": "Garnet Crest",
+        "slot": 24,
+        "tier": 3,
         "goldValue": 2000
     },
     {
         "name": "Emerald Crest",
+        "slot": 24,
+        "tier": 4,
         "goldValue": 2500
     },
     {
         "name": "Diamond Crest",
+        "slot": 24,
+        "tier": 5,
         "goldValue": 3000
     },
     {
         "name": "1 Gilder",
+        "slot": 25,
+        "tier": 1,
         "maxQuantity": 0
     },
     {
         "name": "5 Gilder",
+        "slot": 25,
+        "tier": 2,
         "maxQuantity": 0
     },
     {
         "name": "10 Gilder",
+        "slot": 25,
+        "tier": 10,
         "maxQuantity": 0,
         "precious": true
     },
     {
         "name": "30 Gilder",
+        "slot": 25,
+        "tier": 30,
         "maxQuantity": 0,
         "precious": true
     },
     {
-        "name": "Sluice Key"
+        "name": "Sluice Key",
+        "slot": 28,
+        "tier": 0
     },
     {
         "name": "Bouquet",
+        "slot": 28,
+        "tier": 0,
         "goldValue": 100
     },
     {
-        "name": "Small Key"
+        "name": "Small Key",
+        "slot": 28,
+        "tier": 0
     },
     {
-        "name": "Jess's Letter"
+        "name": "Jess's Letter",
+        "slot": 28,
+        "tier": 0
     },
     {
         "name": "Tree Gem",
+        "slot": 28,
+        "tier": 0,
         "goldValue": 150
     },
     {
-        "name": "Zolists Stone"
+        "name": "Zolists Stone",
+        "slot": 28,
+        "tier": 0
     },
     {
         "name": "Gilded Falcon",
@@ -330,12 +484,18 @@
         "name": "Item 0x56"
     },
     {
-        "name": "Book of Runes"
+        "name": "Book of Runes",
+        "slot": 28,
+        "tier": 0
     },
     {
-        "name": "Book of Elna"
+        "name": "Book of Elna",
+        "slot": 28,
+        "tier": 0
     },
     {
-        "name": "Curious Key"
+        "name": "Curious Key",
+        "slot": 28,
+        "tier": 0
     }
 ]

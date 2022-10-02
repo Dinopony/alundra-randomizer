@@ -82,4 +82,6 @@ private:
     void init_paths(const GameData& game_data);
     void init_regions();
     void init_hint_sources();
+
+    void handle_progressive_items(const RandomizerOptions& options, const GameData& game_data);
 };

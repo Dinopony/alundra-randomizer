@@ -13,25 +13,25 @@ constexpr uint8_t ITEM_SPIRIT_WAND		=  0x07;
 constexpr uint8_t ITEM_LEGEND_SWORD		=  0x08;
 constexpr uint8_t ITEM_IRON_FLAIL		=  0x09;
 constexpr uint8_t ITEM_STEEL_FLAIL		=  0x0A;
-// 0x0B
-// 0x0C
-// 0x0D
+// 0x0B (used as Sword Upgrade)
+// 0x0C (used as Flail Upgrade)
+// 0x0D (used as Bow Upgrade)
 constexpr uint8_t ITEM_ICE_WAND		    =  0x0E;
-// 0x0F
+// 0x0F (used as Armor Upgrade)
 constexpr uint8_t ITEM_FIRE_WAND		=  0x10;
 constexpr uint8_t ITEM_CLOTH_ARMOR		=  0x11;
 constexpr uint8_t ITEM_LEATHER_ARMOR	=  0x12;
 constexpr uint8_t ITEM_ANCIENT_ARMOR    =  0x13;
 constexpr uint8_t ITEM_SILVER_ARMOR		=  0x14;
-// 0x15
-// 0x16
-// 0x17
-// 0x18
+// 0x15 (used as Earth magic upgrade)
+// 0x16 (used as Water magic upgrade)
+// 0x17 (used as Fire magic upgrade)
+// 0x18 (used as Wind magic upgrade)
 constexpr uint8_t ITEM_SHORT_BOOTS		=  0x19;
 constexpr uint8_t ITEM_LONG_BOOTS		=  0x1A;
 constexpr uint8_t ITEM_MERMAN_BOOTS		=  0x1B;
 constexpr uint8_t ITEM_CHARM_BOOTS		=  0x1C;
-// 0x1D
+// 0x1D (used as Boots upgrade)
 // 0x1E
 constexpr uint8_t ITEM_SPRING_BEAN		=  0x1F;
 constexpr uint8_t ITEM_SAND_CAPE		=  0x20;
@@ -95,12 +95,16 @@ constexpr uint8_t ITEM_CURIOUS_KEY		=  0x59;
 
 constexpr uint8_t ITEM_COUNT = ITEM_CURIOUS_KEY + 1;
 
-constexpr uint8_t ITEM_SWORD_UPGRADE        = ITEM_SWORD;
-constexpr uint8_t ITEM_FLAIL_UPGRADE        = ITEM_IRON_FLAIL;
-constexpr uint8_t ITEM_BOW_UPGRADE          = ITEM_HUNTERS_BOW;
-constexpr uint8_t ITEM_ARMOR_UPGRADE        = ITEM_LEATHER_ARMOR;
-constexpr uint8_t ITEM_BOOTS_UPGRADE        = ITEM_LONG_BOOTS;
-constexpr uint8_t ITEM_EARTH_MAGIC_UPGRADE  = ITEM_EARTH_SCROLL;
-constexpr uint8_t ITEM_WATER_MAGIC_UPGRADE  = ITEM_WATER_SCROLL;
-constexpr uint8_t ITEM_FIRE_MAGIC_UPGRADE   = ITEM_FIRE_SCROLL;
-constexpr uint8_t ITEM_WIND_MAGIC_UPGRADE   = ITEM_WIND_SCROLL;
+// Items introduced by the randomizer
+
+constexpr uint8_t ITEM_SWORD_UPGRADE        = 0x0B;
+constexpr uint8_t ITEM_FLAIL_UPGRADE        = 0x0C;
+constexpr uint8_t ITEM_BOW_UPGRADE          = 0x0D;
+constexpr uint8_t ITEM_ARMOR_UPGRADE        = 0x0F;
+
+constexpr uint8_t ITEM_EARTH_MAGIC_UPGRADE  = 0x15;
+constexpr uint8_t ITEM_WATER_MAGIC_UPGRADE  = 0x16;
+constexpr uint8_t ITEM_FIRE_MAGIC_UPGRADE   = 0x17;
+constexpr uint8_t ITEM_WIND_MAGIC_UPGRADE   = 0x18;
+
+constexpr uint8_t ITEM_BOOTS_UPGRADE        = 0x1D;
