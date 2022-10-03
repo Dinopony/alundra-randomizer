@@ -240,11 +240,12 @@ void RandomizerWorld::handle_progressive_items(const RandomizerOptions& options,
                 if(it != required_items.end())
                 {
                     required_items.erase(it);
-                    highest_tier = item->tier();
+                    uint8_t item_tier = item->tier()+1;
+                    highest_tier = std::max(highest_tier, item_tier);
                 }
             }
 
-            for(int i=1 ; i<highest_tier ; ++i)
+            for(int i=1 ; i<=highest_tier ; ++i)
                 required_items.emplace_back(upgrade_item);
         }
     }
