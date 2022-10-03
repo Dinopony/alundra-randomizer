@@ -135,7 +135,7 @@ void RandomizerOptions::apply_randomizer_settings_json(const Json& json, const G
     for(auto& [key, value] : json.items())
     {
         if(key == "allowSpoilerLog")
-            _allow_spoiler_log = true;
+            _allow_spoiler_log = value;
         else if(key == "crestCount")
             _crest_count = value;
         else if(key == "itemsDistribution")
