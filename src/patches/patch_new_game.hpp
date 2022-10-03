@@ -4,12 +4,18 @@
 #include "../tools/byte_array.hpp"
 #include "../tools/mips_tools.hpp"
 
-constexpr uint32_t CODE_BASE_ADDR = 0x1F800;
-constexpr uint16_t MAP_JESS_HOUSE_RONAN_VERSION = 0x00F2;
-
 class PatchNewGame : public GamePatch
 {
+private:
+    static constexpr uint32_t CODE_BASE_ADDR = 0x1F800;
+    static constexpr uint16_t MAP_JESS_HOUSE_RONAN_VERSION = 0x00F2;
+
+    const RandomizerOptions& _options;
+
 public:
+    PatchNewGame(const RandomizerOptions& options) : _options(options)
+    {}
+
     void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override
     {
         // Change spawn map ID
@@ -22,6 +28,15 @@ public:
         uint32_t return_addr = 0x1253c + CODE_BASE_ADDR;
         uint32_t func_addr = inject_func_init_game(exe, return_addr, game_data);
         exe.set_code(0x12534, MipsCode().j(func_addr, false));
+
+        // Set starting HP
+        exe.set_code(0x12590, MipsCode().addiu(reg_A0, reg_ZERO, _options.starting_health()));
+        exe.set_code(0x12598, MipsCode().addiu(reg_A0, reg_ZERO, _options.starting_health()));
+        // Set starting MP
+        exe.set_code(0x125A0, MipsCode().addiu(reg_A0, reg_ZERO, _options.starting_mana()));
+        exe.set_code(0x125A8, MipsCode().addiu(reg_A0, reg_ZERO, _options.starting_mana()));
+        // Set starting Gilders
+        exe.set_code(0x125B0, MipsCode().addiu(reg_A0, reg_ZERO, _options.starting_gold()));
     }
 
 private:

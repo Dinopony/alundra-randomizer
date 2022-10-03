@@ -15,17 +15,32 @@
         // If true, each boots only give their own effects instead of also giving all previous tiers effects
         "splitBootsEffects": true,
 
-        // If true, equipment with tiers (weapons, armors and magic)
+        // If true, equipment with tiers (weapons, armors and magic) are replaced by "item upgrades" giving
+        // the next tier for that category instead of giving a specific item
         "progressiveItems": true,
 
         // The amount of times you need to die in order to be able to get King Snow's item
-        "kingSnowDeathCount": 0
+        "kingSnowDeathCount": 0,
+
+        // Initial health when starting the game
+        "startingHealth": 10,
+
+        // Initial mana when starting the game
+        "startingMana": 0,
+
+        // Initial golds when starting the game
+        "startingGold": 0
     },
 
     "randomizerSettings": {
         // If false, the randomizer program will forbid the generation of a full spoiler log, and will only
         // output the initial settings in that file instead of the full contents of all item sources.
         "allowSpoilerLog": true,
+
+        // The amount of crests to find to be able to reach Lake Shrine. Random crests will be picked and added to
+        // the item distribution. The excluded ones will be automatically placed on their corresponding pedestals on
+        // game start.
+        "crestCount": 7,
 
         // A dictionary used to define item sources that will always contain the same item (keys are item source names,
         // values are item names)
@@ -104,15 +119,7 @@
             "Fire Scroll": 1,
             "Fire Book": 1,
             "Wind Scroll": 1,
-            "Wind Book": 1,
-
-            "Ruby Crest": 1,
-            "Sapphire Crest": 1,
-            "Topaz Crest": 1,
-            "Emerald Crest": 1,
-            "Agate Crest": 1,
-            "Garnet Crest": 1,
-            "Diamond Crest": 1
+            "Wind Book": 1
         }
     }
 }

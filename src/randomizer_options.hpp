@@ -36,11 +36,21 @@ private:
     /// If true, each boots give its own effects instead of boots tiers giving all previous tiers effects
     bool _split_boots_effects = true;
 
-    /// If true, equipment with tiers (weapons, armors and magic)
+    /// If true, equipment with tiers (weapons, armors and magic) are replaced by "item upgrades" giving
+    /// the next tier for that category instead of giving a specific item
     bool _progressive_items = true;
 
     /// The amount of times you need to die in order to be able to get King Snow's item
     uint8_t _king_snow_death_count = 20;
+
+    /// Initial health when starting the game
+    uint8_t _starting_health = 10;
+
+    /// Initial mana when starting the game
+    uint8_t _starting_mana = 0;
+
+    /// Initial golds when starting the game
+    uint16_t _starting_gold = 0;
 
     // ------------- Randomization settings -------------
 
@@ -86,6 +96,9 @@ public:
     [[nodiscard]] bool progressive_items() const { return _progressive_items; }
     [[nodiscard]] uint8_t crest_count() const { return _crest_count; }
     [[nodiscard]] uint8_t king_snow_death_count() const { return _king_snow_death_count; }
+    [[nodiscard]] uint8_t starting_health() const { return _starting_health; }
+    [[nodiscard]] uint8_t starting_mana() const { return _starting_mana; }
+    [[nodiscard]] uint16_t starting_gold() const { return _starting_gold; }
 
     [[nodiscard]] const std::map<uint16_t, uint8_t>& fixed_item_sources() const { return _fixed_item_sources; }
     [[nodiscard]] const std::vector<uint16_t>& item_sources_without_progression() const { return _item_sources_without_progression; }

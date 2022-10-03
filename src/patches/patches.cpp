@@ -43,7 +43,7 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
 {
     std::vector<GamePatch*> patches;
 
-    patches.emplace_back(new PatchNewGame());
+    patches.emplace_back(new PatchNewGame(options));
     patches.emplace_back(new PatchFixMapInconsistencies());
     patches.emplace_back(new PatchFixWrongMapTransitions());
     patches.emplace_back(new PatchApplyItemSources());

@@ -77,6 +77,9 @@ Json RandomizerOptions::to_json(const GameData& game_data, const RandomizerWorld
     json["gameSettings"]["kingSnowDeathCount"] = _king_snow_death_count;
     json["gameSettings"]["splitBootsEffects"] = _split_boots_effects;
     json["gameSettings"]["progressiveItems"] = _progressive_items;
+    json["gameSettings"]["startingHealth"] = _starting_health;
+    json["gameSettings"]["startingMana"] = _starting_mana;
+    json["gameSettings"]["startingGold"] = _starting_gold;
 
     // Randomizer settings
     json["randomizerSettings"]["allowSpoilerLog"] = _allow_spoiler_log;
@@ -125,6 +128,12 @@ void RandomizerOptions::apply_game_settings_json(const Json& json)
             _split_boots_effects = value;
         else if(key == "progressiveItems")
             _progressive_items = value;
+        else if(key == "startingHealth")
+            _starting_health = value;
+        else if(key == "startingMana")
+            _starting_mana = value;
+        else if(key == "startingGold")
+            _starting_gold = value;
         else
             throw RandomizerException("Unknown key '" + key + "' in preset game settings JSON");
     }
@@ -201,6 +210,12 @@ void RandomizerOptions::validate() const
 {
     if(_crest_count > 7)
         throw RandomizerException("Crest count cannot be above 7");
+    if(_starting_health == 0 || _starting_health > 50)
+        throw RandomizerException("Starting health must be between 1 and 50");
+    if(_starting_mana > 4)
+        throw RandomizerException("Starting mana cannot be above 4");
+    if(_starting_gold > 9999)
+        throw RandomizerException("Starting gold cannot be above 9999");
 }
 
 std::vector<std::string> RandomizerOptions::hash_words() const
@@ -244,6 +259,9 @@ std::string RandomizerOptions::permalink() const
 
     bitpack.pack(_king_snow_death_count);
     bitpack.pack(_crest_count);
+    bitpack.pack(_starting_health);
+    bitpack.pack(_starting_mana);
+    bitpack.pack(_starting_gold);
 
     bitpack.pack_array(_items_distribution);
     bitpack.pack_map(_fixed_item_sources);
@@ -277,6 +295,9 @@ void RandomizerOptions::parse_permalink(std::string permalink)
 
     _king_snow_death_count = bitpack.unpack<uint8_t>();
     _crest_count = bitpack.unpack<uint8_t>();
+    _starting_health = bitpack.unpack<uint8_t>();
+    _starting_mana = bitpack.unpack<uint8_t>();
+    _starting_gold = bitpack.unpack<uint16_t>();
 
     _items_distribution = bitpack.unpack_array<uint8_t, ITEM_COUNT>();
     _fixed_item_sources = bitpack.unpack_map<uint16_t, uint8_t>();
