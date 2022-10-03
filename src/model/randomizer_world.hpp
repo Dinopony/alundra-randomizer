@@ -83,5 +83,6 @@ private:
     void init_regions();
     void init_hint_sources();
 
+    void handle_crests(const RandomizerOptions& options, const GameData& game_data);
     void handle_progressive_items(const RandomizerOptions& options, const GameData& game_data);
 };

@@ -50,6 +50,7 @@ public:
     void add_required_item(const Item* item) { _required_items.emplace_back(item); }
 
     [[nodiscard]] const std::vector<WorldNode*>& required_nodes() const { return _required_nodes; }
+    [[nodiscard]] std::vector<WorldNode*>& required_nodes() { return _required_nodes; }
 
     [[nodiscard]] uint16_t weight() const { return _weight; }
     void weight(uint16_t weight) { _weight = weight; }

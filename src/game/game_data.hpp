@@ -15,8 +15,12 @@ class GameData
 private:
     /// An array with structures representing the various items that can be found in the game 
     std::array<Item, ITEM_COUNT> _items;
+
     /// A list of starting flags that are activated on New Game
     std::vector<Flag> _starting_flags;
+
+    /// A list containing the item IDs of the crests that will have to be found to complete the game
+    std::vector<uint8_t> _used_crests;
 
 public:
     GameData();
@@ -36,4 +40,9 @@ public:
 
     [[nodiscard]] const std::vector<Flag>& starting_flags() const { return _starting_flags; }
     void add_starting_flag(const Flag& flag) { _starting_flags.emplace_back(flag); }
+
+    [[nodiscard]] const std::vector<uint8_t>& used_crests() const { return _used_crests; }
+
+private:
+    void handle_crests(const RandomizerOptions& options);
 };

@@ -48,6 +48,9 @@ private:
     /// with the same settings and the same seed should produce the exact same result.
     uint32_t _seed = 0;
 
+    /// The number of crests that have to be found to access Lake Shrine
+    uint8_t _crest_count = 7;
+
     /// If false, the randomizer program will forbid the generation of a full spoiler log, and will only
     /// output the initial settings in that file instead of the full contents of all ItemSources.
     bool _allow_spoiler_log = true;
@@ -81,6 +84,7 @@ public:
     [[nodiscard]] bool skip_last_dungeon() const { return _skip_last_dungeon; }
     [[nodiscard]] bool split_boots_effects() const { return _split_boots_effects; }
     [[nodiscard]] bool progressive_items() const { return _progressive_items; }
+    [[nodiscard]] uint8_t crest_count() const { return _crest_count; }
     [[nodiscard]] uint8_t king_snow_death_count() const { return _king_snow_death_count; }
 
     [[nodiscard]] const std::map<uint16_t, uint8_t>& fixed_item_sources() const { return _fixed_item_sources; }

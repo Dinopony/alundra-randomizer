@@ -80,6 +80,7 @@ Json RandomizerOptions::to_json(const GameData& game_data, const RandomizerWorld
 
     // Randomizer settings
     json["randomizerSettings"]["allowSpoilerLog"] = _allow_spoiler_log;
+    json["randomizerSettings"]["crestCount"] = _crest_count;
 
     std::map<std::string, uint8_t> items_distribution_with_names;
     for(size_t i=0 ; i < _items_distribution.size() ; ++i)
@@ -135,6 +136,8 @@ void RandomizerOptions::apply_randomizer_settings_json(const Json& json, const G
     {
         if(key == "allowSpoilerLog")
             _allow_spoiler_log = true;
+        else if(key == "crestCount")
+            _crest_count = value;
         else if(key == "itemsDistribution")
         {
             std::map<std::string, uint8_t> items_distribution = value;
@@ -195,7 +198,10 @@ void RandomizerOptions::apply_json(const Json& json, const GameData& game_data, 
 }
 
 void RandomizerOptions::validate() const
-{}
+{
+    if(_crest_count > 7)
+        throw RandomizerException("Crest count cannot be above 7");
+}
 
 std::vector<std::string> RandomizerOptions::hash_words() const
 {
@@ -237,6 +243,7 @@ std::string RandomizerOptions::permalink() const
     bitpack.pack(_progressive_items);
 
     bitpack.pack(_king_snow_death_count);
+    bitpack.pack(_crest_count);
 
     bitpack.pack_array(_items_distribution);
     bitpack.pack_map(_fixed_item_sources);
@@ -269,6 +276,7 @@ void RandomizerOptions::parse_permalink(std::string permalink)
     _progressive_items = bitpack.unpack<bool>();
 
     _king_snow_death_count = bitpack.unpack<uint8_t>();
+    _crest_count = bitpack.unpack<uint8_t>();
 
     _items_distribution = bitpack.unpack_array<uint8_t, ITEM_COUNT>();
     _fixed_item_sources = bitpack.unpack_map<uint16_t, uint8_t>();

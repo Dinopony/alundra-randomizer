@@ -16,6 +16,7 @@
 
 #include "../tools/exception.hpp"
 #include "../tools/vectools.hpp"
+#include "../constants/flags.hpp"
 
 #include <iostream>
 
@@ -175,7 +176,9 @@ void RandomizerWorld::apply_options(const RandomizerOptions& options, const Game
 
     // Handle progressive items in distribution
     if(options.progressive_items())
-        handle_progressive_items(options, game_data);
+        this->handle_progressive_items(options, game_data);
+
+    this->handle_crests(options, game_data);
 
     if(options.skip_last_dungeon())
     {
@@ -183,6 +186,55 @@ void RandomizerWorld::apply_options(const RandomizerOptions& options, const Game
         lake_shrine_direct_path->origin(this->node("lake_shrine_exterior"));
         lake_shrine_direct_path->destination(this->node("melzas_fight"));
         _paths.emplace_back(lake_shrine_direct_path);
+    }
+}
+
+void RandomizerWorld::handle_crests(const RandomizerOptions& options, const GameData& game_data)
+{
+    const std::map<uint8_t, std::string> crest_nodes = {
+            { ITEM_RUBY_CREST,      "crest_ruby" },
+            { ITEM_SAPPHIRE_CREST,  "crest_sapphire" },
+            { ITEM_TOPAZ_CREST,     "crest_topaz" },
+            { ITEM_AGATE_CREST,     "crest_agate" },
+            { ITEM_EMERALD_CREST,   "crest_emerald" },
+            { ITEM_GARNET_CREST,    "crest_garnet" },
+            { ITEM_DIAMOND_CREST,   "crest_diamond" }
+    };
+
+    std::vector<uint8_t> excluded_crests = {
+            ITEM_RUBY_CREST, ITEM_SAPPHIRE_CREST, ITEM_TOPAZ_CREST, ITEM_AGATE_CREST,
+            ITEM_EMERALD_CREST, ITEM_GARNET_CREST, ITEM_DIAMOND_CREST
+    };
+
+    const std::vector<uint8_t>& used_crests = game_data.used_crests();
+
+    // Add randomly selected crests to item distribution
+    for(uint8_t crest_id : used_crests)
+    {
+        _items_distribution[crest_id] += 1;
+        vectools::erase_first(excluded_crests, crest_id);
+    }
+
+    WorldNode* origin = this->node("overworld_b1");
+    WorldNode* destination = this->node("lake_shrine_exterior");
+    WorldPath* path_to_lake_shrine = nullptr;
+    for(WorldPath* path : _paths)
+    {
+        if(path->origin() != origin || path->destination() != destination)
+            continue;
+
+        path_to_lake_shrine = path;
+        break;
+    }
+
+    if(!path_to_lake_shrine)
+        throw RandomizerException("Could not find path to Lake Shrine on crests initialization");
+
+    // Remove each excluded crest from the logic requirements to reach Lake Shrine
+    for(uint8_t crest_id : excluded_crests)
+    {
+        WorldNode* crest_node_to_remove = this->node(crest_nodes.at(crest_id));
+        vectools::erase_first(path_to_lake_shrine->required_nodes(), crest_node_to_remove);
     }
 }
 

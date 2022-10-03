@@ -5,6 +5,7 @@
 #include "../randomizer_options.hpp"
 #include "../tools/exception.hpp"
 #include "data/item.json.hxx"
+#include "../tools/vectools.hpp"
 
 
 GameData::GameData()
@@ -117,5 +118,38 @@ void GameData::apply_options(const RandomizerOptions& options)
         _starting_flags.emplace_back(FLAG_LAKE_SHRINE_SE_SEAL_BROKEN);
         _starting_flags.emplace_back(FLAG_LAKE_SHRINE_E_SEAL_BROKEN);
         _starting_flags.emplace_back(FLAG_LAKE_SHRINE_NE_SEAL_BROKEN);
+    }
+
+    this->handle_crests(options);
+}
+
+void GameData::handle_crests(const RandomizerOptions& options)
+{
+    std::vector<uint8_t> crests = {
+            ITEM_RUBY_CREST, ITEM_SAPPHIRE_CREST, ITEM_TOPAZ_CREST, ITEM_AGATE_CREST,
+            ITEM_EMERALD_CREST, ITEM_GARNET_CREST, ITEM_DIAMOND_CREST
+    };
+    std::mt19937 rng(options.seed());
+    vectools::shuffle(crests, rng);
+
+    // Add random crests to the "used crests" list
+    for(size_t i=0 ; i<options.crest_count() ; ++i)
+        _used_crests.emplace_back(crests[i]);
+
+    // For each excluded crest, add the flag to automatically place it on its pedestal on game start
+    const std::map<uint8_t, Flag> crest_flags = {
+            { ITEM_RUBY_CREST,      FLAG_PLACED_RUBY_CREST },
+            { ITEM_SAPPHIRE_CREST,  FLAG_PLACED_SAPPHIRE_CREST },
+            { ITEM_TOPAZ_CREST,     FLAG_PLACED_TOPAZ_CREST },
+            { ITEM_AGATE_CREST,     FLAG_PLACED_AGATE_CREST },
+            { ITEM_EMERALD_CREST,   FLAG_PLACED_EMERALD_CREST },
+            { ITEM_GARNET_CREST,    FLAG_PLACED_GARNET_CREST },
+            { ITEM_DIAMOND_CREST,   FLAG_PLACED_DIAMOND_CREST }
+    };
+
+    for(size_t i=options.crest_count() ; i<crests.size() ; ++i)
+    {
+        uint8_t crest_id = crests[i];
+        _starting_flags.emplace_back(crest_flags.at(crest_id));
     }
 }
