@@ -340,20 +340,26 @@
         "nodeIds": [
             "overworld_b1",
             "overworld_b1_island",
-            "overworld_b1_left"
+            "overworld_b1_left",
+            "crest_ruby",
+            "crest_sapphire",
+            "crest_topaz",
+            "crest_agate",
+            "crest_emerald",
+            "crest_garnet",
+            "crest_diamond"
         ],
         "hintName": "near the lake"
     },
     {
         "name": "Lake Shrine",
         "nodeIds": [
-            "crest_1",
-            "crest_2",
-            "crest_3",
-            "crest_4",
-            "crest_5",
-            "crest_6",
-            "lake_shrine",
+            "lake_shrine_exterior",
+            "lake_shrine_exterior_behind_bow",
+            "lake_shrine_interior",
+            "lake_shrine_interior_behind_flail",
+            "lake_shrine_interior_behind_spring",
+            "melzas_fight",
             "end"
         ]
     },

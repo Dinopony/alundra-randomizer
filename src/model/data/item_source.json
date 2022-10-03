@@ -1821,5 +1821,113 @@
             "3A67233"
         ],
         "vanillaItem": "Life Vessel"
+    },
+    {
+        "name": "Lake Shrine Exterior (ramparts): Chest in red forcefield generator room",
+        "nodeId": "lake_shrine_exterior_behind_bow",
+        "address": "4D7AAAA",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lake Shrine Exterior (ramparts): Chest in blue forcefield generator room",
+        "nodeId": "lake_shrine_exterior_behind_bow",
+        "address": "4D7AABE",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lake Shrine Exterior (ramparts): Left chest behind blue forcefield in left stairway room",
+        "nodeId": "lake_shrine_exterior_behind_bow",
+        "address": "4DA8A5E",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lake Shrine Exterior (ramparts): Hidden chest in left aisle",
+        "nodeId": "lake_shrine_exterior_behind_bow",
+        "address": "4D44D92",
+        "vanillaItem": "Strength Tonic"
+    },
+    {
+        "name": "Lake Shrine Exterior (garden): Chest to the left of Lake Shrine Interior gate",
+        "nodeId": "lake_shrine_exterior_behind_bow",
+        "address": "5DE3796",
+        "vanillaItem": "Gilded Falcon"
+    },
+    {
+        "name": "Lake Shrine Exterior (garden): Chest to the right of Lake Shrine Interior gate",
+        "nodeId": "lake_shrine_exterior_behind_bow",
+        "address": "5DE37AA",
+        "vanillaItem": "Magic Seed"
+    },
+    {
+        "name": "Lake Shrine Interior (0F): Chest in left aisle kitchen opened after solving the dining room riddle",
+        "nodeId": "lake_shrine_interior",
+        "address": "4AC97EA",
+        "vanillaItem": "Life Vessel"
+    },
+    {
+        "name": "Lake Shrine Interior (0F): Elevated chest in left aisle armors room",
+        "nodeId": "lake_shrine_interior",
+        "address": "4AFD6A2",
+        "vanillaItem": "Strength Tonic"
+    },
+    {
+        "name": "Lake Shrine Interior (0F): Chest in right aisle library",
+        "nodeId": "lake_shrine_interior",
+        "address": "4B7DF06",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lake Shrine Interior (0F): Chest hidden inside armor in right aisle",
+        "nodeId": "lake_shrine_interior",
+        "address": "4B7DE02",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lake Shrine Interior (0F): Chest obtained falling from above in right aisle",
+        "nodeId": "lake_shrine_interior_behind_spring",
+        "address": "4B3D3CE",
+        "vanillaItem": "Wonder Essence"
+    },
+    {
+        "name": "Lake Shrine Interior (left tower): Chest in left tower stairway",
+        "nodeId": "lake_shrine_interior",
+        "address": "4AFD5C6",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lake Shrine Interior (1F): Chest inside bedroom with flamethrowers",
+        "nodeId": "lake_shrine_interior",
+        "address": "4C237A2",
+        "vanillaItem": "Magic Elixyr"
+    },
+    {
+        "name": "Lake Shrine Interior (1F): Chest inside bedroom with 6 switches",
+        "nodeId": "lake_shrine_interior",
+        "address": "4C236C6",
+        "vanillaItem": "Herbs"
+    },
+    {
+        "name": "Lake Shrine Interior (1F): Chest inside archery trial with 9 orbs",
+        "nodeId": "lake_shrine_interior",
+        "address": "4C235FE",
+        "vanillaItem": "Wonder Essence"
+    },
+    {
+        "name": "Lake Shrine Interior (1F): Chest hidden below bricks in room with hole",
+        "nodeId": "lake_shrine_interior_behind_spring",
+        "address": "4C58BD6",
+        "vanillaItem": "Wonder Essence"
+    },
+    {
+        "name": "Lake Shrine Interior (balcony): Chest on left aisle balconies",
+        "nodeId": "lake_shrine_interior",
+        "address": "4E104F6",
+        "vanillaItem": "Wonder Essence"
+    },
+    {
+        "name": "Lake Shrine Interior (balcony): Chest on right aisle balconies",
+        "nodeId": "lake_shrine_interior_behind_spring",
+        "address": "4E4660E",
+        "vanillaItem": "Magic Elixyr"
     }
 ]

@@ -1107,52 +1107,92 @@
 
     {
         "fromId": "overworld_b1",
-        "toId": "crest_1",
+        "toId": "crest_ruby",
         "twoWay": true,
         "requiredItems": [ "Ruby Crest" ]
     },
     {
-        "fromId": "crest_1",
-        "toId": "crest_2",
+        "fromId": "overworld_b1",
+        "toId": "crest_sapphire",
         "twoWay": true,
         "requiredItems": [ "Sapphire Crest" ]
     },
     {
-        "fromId": "crest_2",
-        "toId": "crest_3",
+        "fromId": "overworld_b1",
+        "toId": "crest_topaz",
         "twoWay": true,
         "requiredItems": [ "Topaz Crest" ]
     },
     {
-        "fromId": "crest_3",
-        "toId": "crest_4",
+        "fromId": "overworld_b1",
+        "toId": "crest_diamond",
+        "twoWay": true,
+        "requiredItems": [ "Diamond Crest" ]
+    },
+    {
+        "fromId": "overworld_b1_left",
+        "toId": "crest_emerald",
         "twoWay": true,
         "requiredItems": [ "Emerald Crest" ]
     },
     {
-        "fromId": "crest_4",
-        "toId": "crest_5",
+        "fromId": "overworld_b1",
+        "toId": "crest_agate",
         "twoWay": true,
         "requiredItems": [ "Agate Crest" ]
     },
     {
-        "fromId": "crest_5",
-        "toId": "crest_6",
+        "fromId": "overworld_b1_island",
+        "toId": "crest_garnet",
         "twoWay": true,
         "requiredItems": [ "Garnet Crest" ]
     },
     {
-        "fromId": "crest_6",
-        "toId": "lake_shrine",
+        "fromId": "overworld_b1",
+        "toId": "lake_shrine_exterior",
         "twoWay": true,
-        "requiredItems": [ "Diamond Crest" ],
         "requiredNodes": [
-            "overworld_b1_left",
-            "overworld_b1_island"
+            "crest_ruby",
+            "crest_sapphire",
+            "crest_topaz",
+            "crest_agate",
+            "crest_emerald",
+            "crest_garnet",
+            "crest_diamond"
         ]
     },
     {
-        "fromId": "lake_shrine",
+        "fromId": "lake_shrine_exterior",
+        "toId": "lake_shrine_exterior_behind_bow",
+        "twoWay": true,
+        "requiredItems": [
+            "Hunter's Bow",
+            "Merman Boots"
+        ]
+    },
+    {
+        "fromId": "lake_shrine_exterior_behind_bow",
+        "toId": "lake_shrine_interior",
+        "twoWay": true
+    },
+    {
+        "fromId": "lake_shrine_interior",
+        "toId": "lake_shrine_interior_behind_flail",
+        "twoWay": true,
+        "requiredItems": [ "Iron Flail" ]
+    },
+    {
+        "fromId": "lake_shrine_interior_behind_flail",
+        "toId": "lake_shrine_interior_behind_spring",
+        "twoWay": true,
+        "requiredItems": [ "Spring Bean" ]
+    },
+    {
+        "fromId": "lake_shrine_interior_behind_spring",
+        "toId": "melzas_fight"
+    },
+    {
+        "fromId": "melzas_fight",
         "toId": "end",
         "requiredItems": [ "Fire Wand" ]
     }

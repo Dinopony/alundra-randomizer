@@ -205,7 +205,7 @@
     },
     "overworld_b1_island": {
         "hints": [],
-        "graphPos": [-6,16]
+        "graphPos": [-7,16]
     },
     "overworld_a4_right": {
         "hints": [],
@@ -463,29 +463,52 @@
         "hints": [],
         "graphPos": [-18,-7]
     },
-    "crest_1": {
-        "graphPos": [-10,22]
-    },
-    "crest_2": {
-        "graphPos": [-10,24]
-    },
-    "crest_3": {
-        "graphPos": [-8,24]
-    },
-    "crest_4": {
-        "graphPos": [-8,22]
-    },
-    "crest_5": {
+    "crest_ruby": {
         "graphPos": [-6,22]
     },
-    "crest_6": {
-        "graphPos": [-6,24]
+    "crest_sapphire": {
+        "graphPos": [-12,18]
     },
-    "lake_shrine": {
+    "crest_topaz": {
+        "graphPos": [-13,22]
+    },
+    "crest_agate": {
+        "graphPos": [-12,24]
+    },
+    "crest_emerald": {
+        "graphPos": [-16,22]
+    },
+    "crest_garnet": {
+        "graphPos": [-3,16]
+    },
+    "crest_diamond": {
+        "graphPos": [-6,18]
+    },
+    "lake_shrine_exterior": {
         "hints": [],
-        "graphPos": [-6,26]
+        "graphPos": [-10,26]
+    },
+    "lake_shrine_exterior_behind_bow": {
+        "hints": [],
+        "graphPos": [-10,28]
+    },
+    "lake_shrine_interior": {
+        "hints": [],
+        "graphPos": [-10,30]
+    },
+    "lake_shrine_interior_behind_flail": {
+        "hints": [],
+        "graphPos": [-6,30]
+    },
+    "lake_shrine_interior_behind_spring": {
+        "hints": [],
+        "graphPos": [-1,30]
+    },
+    "melzas_fight": {
+        "hints": [],
+        "graphPos": [2,30]
     },
     "end": {
-        "graphPos": [-6,28]
+        "graphPos": [6,30]
     }
 }

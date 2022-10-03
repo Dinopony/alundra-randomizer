@@ -176,6 +176,14 @@ void RandomizerWorld::apply_options(const RandomizerOptions& options, const Game
     // Handle progressive items in distribution
     if(options.progressive_items())
         handle_progressive_items(options, game_data);
+
+    if(options.skip_last_dungeon())
+    {
+        WorldPath* lake_shrine_direct_path = new WorldPath();
+        lake_shrine_direct_path->origin(this->node("lake_shrine_exterior"));
+        lake_shrine_direct_path->destination(this->node("melzas_fight"));
+        _paths.emplace_back(lake_shrine_direct_path);
+    }
 }
 
 void RandomizerWorld::handle_progressive_items(const RandomizerOptions& options, const GameData& game_data)
