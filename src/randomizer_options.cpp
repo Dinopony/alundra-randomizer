@@ -83,6 +83,12 @@ Json RandomizerOptions::to_json(const GameData& game_data, const RandomizerWorld
 
     // Randomizer settings
     json["randomizerSettings"]["allowSpoilerLog"] = _allow_spoiler_log;
+
+    std::vector<std::string> starting_inventory_names;
+    for(uint8_t item_id : _starting_inventory)
+        starting_inventory_names.emplace_back(game_data.item(item_id)->name());
+    json["randomizerSettings"]["startingInventory"] = starting_inventory_names;
+
     json["randomizerSettings"]["crestCount"] = _crest_count;
 
     std::map<std::string, uint8_t> items_distribution_with_names;
@@ -156,6 +162,15 @@ void RandomizerOptions::apply_randomizer_settings_json(const Json& json, const G
                 _items_distribution[item_id] = quantity;
             }
         }
+        else if(key == "startingInventory")
+        {
+            std::vector<std::string> item_names = value;
+            for(const std::string& item_name : item_names)
+            {
+                uint8_t item_id = game_data.item(item_name)->id();
+                _starting_inventory.emplace_back(item_id);
+            }
+        }
         else if(key == "fixedItemSources")
         {
             for(auto& [source_name, item_name_json] : value.items())
@@ -216,6 +231,8 @@ void RandomizerOptions::validate() const
         throw RandomizerException("Starting mana cannot be above 4");
     if(_starting_gold > 9999)
         throw RandomizerException("Starting gold cannot be above 9999");
+    if(!vectools::contains(_starting_inventory, ITEM_DAGGER))
+        throw RandomizerException("Starting inventory must at least contain the Dagger");
 }
 
 std::vector<std::string> RandomizerOptions::hash_words() const
@@ -266,6 +283,7 @@ std::string RandomizerOptions::permalink() const
     bitpack.pack_array(_items_distribution);
     bitpack.pack_map(_fixed_item_sources);
     bitpack.pack_vector(_item_sources_without_progression);
+    bitpack.pack_vector(_starting_inventory);
 
     return "a" + base64_encode(bitpack.bytes()) + "/";
 }
@@ -302,4 +320,5 @@ void RandomizerOptions::parse_permalink(std::string permalink)
     _items_distribution = bitpack.unpack_array<uint8_t, ITEM_COUNT>();
     _fixed_item_sources = bitpack.unpack_map<uint16_t, uint8_t>();
     _item_sources_without_progression = bitpack.unpack_vector<uint16_t>();
+    _starting_inventory = bitpack.unpack_vector<uint8_t>();
 }

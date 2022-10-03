@@ -42,6 +42,9 @@ private:
      */
     std::array<uint8_t, ITEM_COUNT> _items_distribution {};
 
+    /// A list of items owned by player on game start
+    std::vector<const Item*> _starting_inventory;
+
 public:
     explicit RandomizerWorld(const GameData& game_data);
     ~RandomizerWorld();
@@ -74,7 +77,7 @@ public:
 
     [[nodiscard]] const std::array<uint8_t, ITEM_COUNT>& items_distribution() const { return _items_distribution; }
 
-    [[nodiscard]] std::vector<const Item*> starting_inventory() const { return {}; }
+    [[nodiscard]] std::vector<const Item*> starting_inventory() const { return _starting_inventory; }
 
 private:    
     void init_item_sources(const GameData& game_data);

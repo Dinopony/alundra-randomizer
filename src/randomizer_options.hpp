@@ -70,6 +70,9 @@ private:
     /// of ItemSources inside the world.
     std::array<uint8_t, ITEM_COUNT> _items_distribution {};
 
+    /// A list of items owned by the player on game start
+    std::vector<uint8_t> _starting_inventory {};
+
     /// A map used to define item sources that will **always** contain the same item (keys are ItemSource IDs,
     /// values are Item IDs)
     std::map<uint16_t, uint8_t> _fixed_item_sources;
@@ -88,6 +91,7 @@ public:
     [[nodiscard]] uint32_t seed() const { return _seed; }
     [[nodiscard]] bool allow_spoiler_log() const { return _allow_spoiler_log; }
     [[nodiscard]] const std::array<uint8_t, ITEM_COUNT>& items_distribution() const { return _items_distribution; }
+    [[nodiscard]] const std::vector<uint8_t>& starting_inventory() const { return _starting_inventory; }
 
     [[nodiscard]] bool original_game_balance() const { return _original_game_balance; }
     [[nodiscard]] bool megaliths_enabled_on_start() const { return _megaliths_enabled_on_start; }

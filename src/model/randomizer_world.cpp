@@ -174,6 +174,10 @@ void RandomizerWorld::apply_options(const RandomizerOptions& options, const Game
     // Keep an editable copy of the items distribution from rando options
     _items_distribution = options.items_distribution();
 
+    // Apply starting inventory
+    for(uint8_t item_id : options.starting_inventory())
+        _starting_inventory.emplace_back(game_data.item(item_id));
+
     // Handle progressive items in distribution
     if(options.progressive_items())
         this->handle_progressive_items(options, game_data);

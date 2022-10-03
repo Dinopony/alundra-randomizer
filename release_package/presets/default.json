@@ -37,6 +37,11 @@
         // output the initial settings in that file instead of the full contents of all item sources.
         "allowSpoilerLog": true,
 
+        // Items initially owned when starting the game
+        "startingInventory": [
+            "Dagger"
+        ],
+
         // The amount of crests to find to be able to reach Lake Shrine. Random crests will be picked and added to
         // the item distribution. The excluded ones will be automatically placed on their corresponding pedestals on
         // game start.

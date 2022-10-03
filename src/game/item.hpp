@@ -16,9 +16,6 @@ private:
     /// The maximum amount of this item the player can carry at any given point
     uint8_t _max_quantity = 1;
 
-    /// The amount possessed by player on game start
-    uint8_t _starting_quantity = 0;
-
     /// The value of this item in shops
     uint16_t _gold_value = 0;
 
@@ -44,9 +41,6 @@ public:
     [[nodiscard]] const std::string& name() const { return _name; }
     void name(const std::string& name) { _name = name; }
 
-    [[nodiscard]] uint8_t starting_quantity() const { return std::min(_starting_quantity, _max_quantity); }
-    void starting_quantity(uint8_t quantity) { _starting_quantity = quantity; }
-    
     [[nodiscard]] uint8_t max_quantity() const { return _max_quantity; }
     void max_quantity(uint8_t quantity) { _max_quantity = quantity; }
 

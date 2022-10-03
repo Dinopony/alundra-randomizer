@@ -9,7 +9,6 @@ Json Item::to_json() const
     json["slot"] = _slot_id;
     json["tier"] = _tier;
     json["maxQuantity"] = _max_quantity;
-    json["startingQuantity"] = _starting_quantity;
     json["goldValue"] = _gold_value;
     if(_is_precious)
         json["precious"] = _is_precious;
@@ -33,8 +32,6 @@ void Item::apply_json(const Json& json)
             this->name(value);
         else if(key == "maxQuantity")
             this->max_quantity(value);
-        else if(key == "startingQuantity")
-            this->starting_quantity(value);
         else if(key == "goldValue")
             this->gold_value(value);
         else if(key == "precious")

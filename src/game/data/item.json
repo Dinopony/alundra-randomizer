@@ -6,8 +6,7 @@
     {
         "name": "Dagger",
         "slot": 1,
-        "tier": 0,
-        "startingQuantity": 1
+        "tier": 0
     },
     {
         "name": "Sword",
