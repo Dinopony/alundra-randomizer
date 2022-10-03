@@ -218,6 +218,9 @@ bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Ite
         if(item->gold_value() == 0)
             return false;
 
+        if(item->id() == ITEM_NONE)
+            return true;
+
         // Forbid having two identical items in the same shop node
         std::vector<ItemSource*> other_sources_in_node = source->node()->item_sources();
         for(ItemSource* other_source : other_sources_in_node)

@@ -37,6 +37,10 @@ public:
                 if(source->vanilla_item() && data.get_byte(addr) != source->vanilla_item()->id() + 0x1E)
                     std::cerr << "ItemSource '" << source->name() << "' doesn't contain the expected vanilla item" << std::endl;
 #endif
+                // If item is none, move the sprite out of the map
+                if(item_id == ITEM_NONE)
+                    data.set_word(addr + 1, 0x0000);
+
                 data.set_byte(addr, item_sprite_id);
             }
 
