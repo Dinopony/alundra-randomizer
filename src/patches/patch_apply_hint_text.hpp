@@ -141,7 +141,7 @@ private:
     {
         const std::string& hint_text = world.hint_source("ancient_shrine")->text();
 
-        RoomStrings strings(MAP_ANCIENT_SHRINE_34, data);
+        RoomStrings strings(MAP_ANCIENT_SHRINE_30, data);
 
         strings.string(14) = TextboxFormatter(
                 R"(\CYou are truly worthy of the power you possess. Your courage shall not go unrewarded.\A)"
@@ -189,7 +189,7 @@ private:
         RoomStrings strings(MAP_432, data);
 
         // Shorten Nava & Zorgia talk
-        strings.string(32) = R"(\C\CIt's time you knew the truth about\NMelzas. He is a ravenous monster\Nfrom a distant star...)";
+        strings.string(32) = R"(\CIt's time you knew the truth about\NMelzas. He is a ravenous monster\Nfrom a distant star...)";
         strings.string(34) = TextboxFormatter(R"(\FAlundra, it's about time I get rid of you. I just hope it won't get too dirty...)").format();
 
         // Make post-fight Nava give a hint
