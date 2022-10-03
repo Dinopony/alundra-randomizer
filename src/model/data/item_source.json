@@ -1916,7 +1916,7 @@
         "name": "Lake Shrine Interior (1F): Chest hidden below bricks in room with hole",
         "nodeId": "lake_shrine_interior_behind_spring",
         "address": "4C58BD6",
-        "vanillaItem": "Wonder Essence"
+        "vanillaItem": "Strength Tonic"
     },
     {
         "name": "Lake Shrine Interior (balcony): Chest on left aisle balconies",

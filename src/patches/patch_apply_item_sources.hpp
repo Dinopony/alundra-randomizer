@@ -34,7 +34,7 @@ public:
             {
 #ifdef DEBUG
                 // In debug builds, check that the data file contains the expected vanilla sprite ID to avoid any address mistake
-                if(source->vanilla_item() && data.get_byte(addr) != source->vanilla_item()->id() + 0x1E)
+                if(source->vanilla_item() && data.get_byte(addr) != source->vanilla_item()->id() + 0x1E && source->vanilla_item()->id() != ITEM_BOOK_OF_ELNA)
                     std::cerr << "ItemSource '" << source->name() << "' doesn't contain the expected vanilla item" << std::endl;
 #endif
                 // If item is none, move the sprite out of the map
