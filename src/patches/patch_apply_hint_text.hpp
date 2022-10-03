@@ -48,7 +48,7 @@ private:
     {
         const std::string& hint_text = world.hint_source("reptiles_lair")->text();
 
-        RoomStrings strings(MAP_REPTILES_LAIR_85, data);
+        RoomStrings strings(MAP_REPTILES_LAIR_84, data);
 
         strings.string(59) = TextboxFormatter(
                 R"(\CHear my words, Releaser. I have come to be known as Jeal. I am also one of the seven guardians\A)"
