@@ -5,11 +5,19 @@
 
 class PatchRemoveCutscenes : public GamePatch {
 public:
+    void alter_game_data(GameData& game_data) override
+    {
+        // This skips the need to talk twice to the master sage, given that he pretty much says the same thing
+        // when you talk again to validate...
+        game_data.add_starting_flag(FLAG_LARS_CRYPT_TALKED_WITH_MASTER_SAGE_ONCE);
+    }
+
     void alter_datas_file(BinaryFile& data, const GameData& game_data, const RandomizerWorld& world) override
     {
         remove_cutscene_after_dark_dragon_fight(data);
         remove_post_coal_mine_cutscenes(data);
         remove_magyscar_entrance_cutscene(data);
+        remove_lars_crypt_5_sages_cutscene(data);
     }
 
 private:
@@ -61,5 +69,12 @@ private:
         // Replace "branch if flag triggering cutscene not set" by "always branch" so the cutscene never triggers
         data.set_bytes(0x2122C20, { 0x02, 0x17, 0x00 });
         data.set_bytes(0x2122C38, { 0x02, 0x2F, 0x00 });
+    }
+
+    static void remove_lars_crypt_5_sages_cutscene(BinaryFile& data)
+    {
+        // Open the door when master sage has been talked to, instead of after seeing the full cutscene
+        // This will remove the cutscene where all the sages appear one by one
+        data.set_word_le(0x63AC96, FLAG_LARS_CRYPT_SAGES_CUTSCENE_ACTIVE.event_code());
     }
 };
