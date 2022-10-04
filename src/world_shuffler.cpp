@@ -228,6 +228,10 @@ bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Ite
                 return false;
     }
 
+    // Forbid falcons in Merrick's shop, since this can cause flag shenanigans
+    if(source->merrick_item_address() && item->id() == ITEM_GILDED_FALCON)
+        return false;
+
     return true;
 }
 
