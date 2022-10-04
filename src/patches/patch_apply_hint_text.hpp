@@ -94,7 +94,7 @@ private:
     {
         const std::string& hint_text = world.hint_source("torla_mountain")->text();
 
-        RoomStrings strings(MAP_TORLA_MOUNTAIN_448, data);
+        RoomStrings strings(MAP_325, data);
 
         strings.string(10) = TextboxFormatter(
                 R"(\FUngh\T\W2\T\W2 You humans have grown so strong, too strong, during my long rest.\A)"
@@ -170,7 +170,7 @@ private:
     {
         const std::string& hint_text = world.hint_source("great_tree")->text();
 
-        RoomStrings strings(MAP_GREAT_TREE_156, data);
+        RoomStrings strings(MAP_GREAT_TREE_153, data);
 
         strings.string(48) = TextboxFormatter(
                 R"(\EAhh! Furless one, you have come so far, but this is the end of your sad journey of self delusion.\A)"
