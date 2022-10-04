@@ -196,7 +196,7 @@ private:
         strings.string(36) = TextboxFormatter(
                 R"(\CIt is I, Nava.\A)"
                 R"(You were wonderful, Alundra. I've never witnessed such a passionate fight!\A)"
-                R"(Now listen to me very well. There is a secret we've been sharing between guardians for centuries, and I think it is time for you to know about it.\A")"
+                R"(Now listen to me very well. There is a secret we've been sharing between guardians for centuries, and I think it is time for you to know about it.\A)"
                 R"(You must know that )" + hint_text + R"(.\A)"
                 R"(I hope you make good use of it.)"
         ).format();
