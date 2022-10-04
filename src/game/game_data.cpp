@@ -65,7 +65,7 @@ void GameData::init_starting_flags()
     _starting_flags.emplace_back(FLAG_SYBILL_HOLY_SWORD_VISION_2);
 
     // Open Underground Waterway (0x10 -> 0x1DD370)
-    _starting_flags.emplace_back(FLAG_UNDEGROUND_WATERWAY_OPENED);
+    _starting_flags.emplace_back(FLAG_UNDERGROUND_WATERWAY_OPENED);
 
     // Remove the fallen tree on the way to Cliffs of Madness (0x20 -> 0x1DD35F)
     _starting_flags.emplace_back(FLAG_REMOVED_TREE_TO_CLIFFS_OF_MADNESS);

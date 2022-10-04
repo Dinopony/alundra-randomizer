@@ -13,4 +13,6 @@ public:
 
     [[nodiscard]] uint16_t offset() const { return _offset; }
     [[nodiscard]] uint16_t bit() const { return _bit; }
+
+    [[nodiscard]] uint16_t event_code() const { return ((_offset - 0xD334) << 3) + _bit; }
 };

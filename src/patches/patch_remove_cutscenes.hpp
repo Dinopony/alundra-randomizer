@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game_patch.hpp"
+#include "../constants/flags.hpp"
 
 class PatchRemoveCutscenes : public GamePatch {
 public:
@@ -8,6 +9,7 @@ public:
     {
         remove_cutscene_after_dark_dragon_fight(data);
         remove_post_coal_mine_cutscenes(data);
+        remove_magyscar_entrance_cutscene(data);
     }
 
 private:
@@ -40,12 +42,24 @@ private:
         //  - Meatballs fall flag
         //  - Watchtower cutscene flag
         // Remove the meatballs flag requirement for big rocks disappearance
-        data.set_byte(0x245A0B, 0x47);
+        data.set_byte(0x245A0B, 0x47); // Shorten the branch to not ignore the second branch condition anymore
+
         // Change the watchtower requirement to a "beat Coal Mine boss" requirement for big rocks disappearance
-        data.set_word_le(0x245A50, 0x30D);
+        data.set_word_le(0x245A50, FLAG_COAL_MINE_BOSS_BEATEN.event_code());
 
         // Change the watchtower requirement to a "beat Coal Mine boss" requirement for villagers cutscene to trigger
         // in Overworld B2
-        data.set_word_le(0x2458A1, 0x30D);
+        data.set_word_le(0x2458A1, FLAG_COAL_MINE_BOSS_BEATEN.event_code());
+    }
+
+    /**
+     * Sometimes, a cutscene with villagers praying is triggered at Magyscar entrance.
+     * This function removes that cutscene.
+     */
+    static void remove_magyscar_entrance_cutscene(BinaryFile& data)
+    {
+        // Replace "branch if flag triggering cutscene not set" by "always branch" so the cutscene never triggers
+        data.set_bytes(0x2122C20, { 0x02, 0x17, 0x00 });
+        data.set_bytes(0x2122C38, { 0x02, 0x2F, 0x00 });
     }
 };
