@@ -233,6 +233,10 @@ void RandomizerOptions::validate() const
         throw RandomizerException("Starting gold cannot be above 9999");
     if(!vectools::contains(_starting_inventory, ITEM_DAGGER))
         throw RandomizerException("Starting inventory must at least contain the Dagger");
+    if(!vectools::contains(_starting_inventory, ITEM_CLOTH_ARMOR))
+        throw RandomizerException("Starting inventory must at least contain the Cloth Armor");
+    if(!vectools::contains(_starting_inventory, ITEM_SHORT_BOOTS))
+        throw RandomizerException("Starting inventory must at least contain the Short Boots");
 }
 
 std::vector<std::string> RandomizerOptions::hash_words() const

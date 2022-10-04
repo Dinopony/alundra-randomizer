@@ -39,7 +39,9 @@
 
         // Items initially owned when starting the game
         "startingInventory": [
-            "Dagger"
+            "Dagger",
+            "Cloth Armor",
+            "Short Boots"
         ],
 
         // The amount of crests to find to be able to reach Lake Shrine. Random crests will be picked and added to
@@ -65,16 +67,16 @@
         // A dictionary used to define the amount of each item the randomizer will scatter across the world.
         // The total count must not exceed the total count of item sources
         "itemsDistribution": {
-            "Herbs": 53,
-            "Strength Tonic": 12,
-            "Strength Elixyr": 8,
+            "Herbs": 60,
+            "Strength Tonic": 14,
+            "Strength Elixyr": 9,
             "Magic Elixyr": 9,
             "Wonder Essence": 6,
 
             "1 Gilder": 2,
             "5 Gilder": 8,
-            "10 Gilder": 14,
-            "30 Gilder": 20,
+            "10 Gilder": 18,
+            "30 Gilder": 24,
 
             "Life Vessel": 40,
             "Magic Seed": 4,
