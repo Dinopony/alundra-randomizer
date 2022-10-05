@@ -80,6 +80,7 @@ Json RandomizerOptions::to_json(const GameData& game_data, const RandomizerWorld
     json["gameSettings"]["startingHealth"] = _starting_health;
     json["gameSettings"]["startingMana"] = _starting_mana;
     json["gameSettings"]["startingGold"] = _starting_gold;
+    json["gameSettings"]["casinoWinCountForLastReward"] = _casino_win_count_for_last_reward;
 
     // Randomizer settings
     json["randomizerSettings"]["allowSpoilerLog"] = _allow_spoiler_log;
@@ -140,6 +141,8 @@ void RandomizerOptions::apply_game_settings_json(const Json& json)
             _starting_mana = value;
         else if(key == "startingGold")
             _starting_gold = value;
+        else if(key == "casinoWinCountForLastReward")
+            _casino_win_count_for_last_reward = value;
         else
             throw RandomizerException("Unknown key '" + key + "' in preset game settings JSON");
     }
@@ -231,6 +234,8 @@ void RandomizerOptions::validate() const
         throw RandomizerException("Starting mana cannot be above 4");
     if(_starting_gold > 9999)
         throw RandomizerException("Starting gold cannot be above 9999");
+    if(_casino_win_count_for_last_reward < 1 || _casino_win_count_for_last_reward > 4)
+        throw RandomizerException("Casino win count for last reward must be between 1 and 4");
     if(!vectools::contains(_starting_inventory, ITEM_DAGGER))
         throw RandomizerException("Starting inventory must at least contain the Dagger");
     if(!vectools::contains(_starting_inventory, ITEM_CLOTH_ARMOR))
@@ -283,6 +288,7 @@ std::string RandomizerOptions::permalink() const
     bitpack.pack(_starting_health);
     bitpack.pack(_starting_mana);
     bitpack.pack(_starting_gold);
+    bitpack.pack(_casino_win_count_for_last_reward);
 
     bitpack.pack_array(_items_distribution);
     bitpack.pack_map(_fixed_item_sources);
@@ -320,6 +326,7 @@ void RandomizerOptions::parse_permalink(std::string permalink)
     _starting_health = bitpack.unpack<uint8_t>();
     _starting_mana = bitpack.unpack<uint8_t>();
     _starting_gold = bitpack.unpack<uint16_t>();
+    _casino_win_count_for_last_reward = bitpack.unpack<uint8_t>();
 
     _items_distribution = bitpack.unpack_array<uint8_t, ITEM_COUNT>();
     _fixed_item_sources = bitpack.unpack_map<uint16_t, uint8_t>();

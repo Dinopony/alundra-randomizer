@@ -27,6 +27,7 @@
 #include "patch_apply_items_info.hpp"
 #include "patch_edit_global_strings.hpp"
 #include "patch_adapt_blue_chest.hpp"
+#include "patch_set_casino_win_count.hpp"
 
 void execute_patches(const std::vector<GamePatch*>& patches, 
                      BinaryFile& data_file, PsxExeFile& exe_file, 
@@ -66,6 +67,7 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
     patches.emplace_back(new PatchApplyItemsInfo());
     patches.emplace_back(new PatchEditGlobalStrings());
     patches.emplace_back(new PatchAdaptBlueChest());
+    patches.emplace_back(new PatchSetCasinoWinCount(options.casino_win_count_for_last_reward()));
 
     if(options.split_boots_effects())
         patches.emplace_back(new PatchSplitBootsEffects());

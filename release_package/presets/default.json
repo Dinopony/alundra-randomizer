@@ -22,6 +22,9 @@
         // The amount of times you need to die in order to be able to get King Snow's item
         "kingSnowDeathCount": 0,
 
+        /// Casino win counts required on each minigame in order to obtain the second reward
+        "casinoWinCountForLastReward": 1,
+
         // Initial health when starting the game
         "startingHealth": 10,
 
@@ -71,7 +74,7 @@
             "Strength Tonic": 14,
             "Strength Elixyr": 9,
             "Magic Elixyr": 9,
-            "Wonder Essence": 6,
+            "Wonder Essence": 7,
 
             "1 Gilder": 2,
             "5 Gilder": 8,
@@ -118,6 +121,7 @@
             "Tree Gem": 1,
             "Bouquet": 1,
             "Broken Armor": 1,
+            "Small Key": 1,
 
             "Earth Scroll": 1,
             "Earth Book": 1,

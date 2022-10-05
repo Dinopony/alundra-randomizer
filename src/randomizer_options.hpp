@@ -52,18 +52,21 @@ private:
     /// Initial golds when starting the game
     uint16_t _starting_gold = 0;
 
+    /// Casino win counts required on each minigame in order to obtain the second reward
+    uint8_t _casino_win_count_for_last_reward = 4;
+
     // ------------- Randomization settings -------------
 
     /// The random number generator's seed, determining all of the randomization. Generating two seeds
     /// with the same settings and the same seed should produce the exact same result.
     uint32_t _seed = 0;
 
-    /// The number of crests that have to be found to access Lake Shrine
-    uint8_t _crest_count = 7;
-
     /// If false, the randomizer program will forbid the generation of a full spoiler log, and will only
     /// output the initial settings in that file instead of the full contents of all ItemSources.
     bool _allow_spoiler_log = true;
+
+    /// The number of crests that have to be found to access Lake Shrine
+    uint8_t _crest_count = 7;
 
     /// An array containing the items distribution (the complete set of items that will be placed inside
     /// ItemSources during randomization). The total count must always be lower or equal to the number
@@ -103,6 +106,7 @@ public:
     [[nodiscard]] uint8_t starting_health() const { return _starting_health; }
     [[nodiscard]] uint8_t starting_mana() const { return _starting_mana; }
     [[nodiscard]] uint16_t starting_gold() const { return _starting_gold; }
+    [[nodiscard]] uint8_t casino_win_count_for_last_reward() const { return _casino_win_count_for_last_reward; }
 
     [[nodiscard]] const std::map<uint16_t, uint8_t>& fixed_item_sources() const { return _fixed_item_sources; }
     [[nodiscard]] const std::vector<uint16_t>& item_sources_without_progression() const { return _item_sources_without_progression; }

@@ -102,6 +102,8 @@ set(SOURCES
         "src/patches/patch_edit_credits.hpp"
         "src/patches/patch_apply_items_info.hpp"
         "src/patches/patch_edit_global_strings.hpp"
+        "src/patches/patch_adapt_blue_chest.hpp"
+        "src/patches/patch_set_casino_win_count.hpp"
 
         "src/patches/game_patch.hpp"
         "src/patches/patches.hpp"
@@ -140,6 +142,6 @@ set(SOURCES
         "src/world_solver.hpp"
         "src/world_solver.cpp"
         "src/main.cpp"
-        src/patches/patch_adapt_blue_chest.hpp)
+        )
 
 add_executable(alundra-randomizer "${SOURCES}")
