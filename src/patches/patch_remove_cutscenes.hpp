@@ -19,6 +19,7 @@ public:
         remove_magyscar_entrance_cutscene(data);
         remove_lars_crypt_5_sages_cutscene(data);
         remove_post_wilda_night_cutscene(data);
+        remove_post_nirude_cutscene(data);
     }
 
 private:
@@ -91,5 +92,21 @@ private:
         // Unfreeze Alundra so he doesn't get stuck in cutscene mode (since he is meant to be unfrozen by another
         // cutscene in nighttime bedroom)
         data.set_byte(0x4817A02, 0x11);
+    }
+
+    static void remove_post_nirude_cutscene(BinaryFile& data)
+    {
+        ByteArray event_bytes;
+
+        event_bytes.add_byte(0x38);                 // Set map variant
+        event_bytes.add_word_le(MAP_OVERWORLD_E1);  // for Nirude exterior
+        event_bytes.add_word_le(MAP_OVERWORLD_E1);  // to basic (broken) Nirude exterior instead of "dungeon in progress" variant
+
+        event_bytes.add_byte(0x53);                  // Warp
+        event_bytes.add_word_le(MAP_OVERWORLD_E1);   // to Nirude exterior
+        event_bytes.add_bytes({ 0x19, 0x28, 0x00 }); // at coords 19, 28, 0
+
+        // Trigger this event sequence on boss death
+        data.set_bytes(0x47E7B57, event_bytes);
     }
 };
