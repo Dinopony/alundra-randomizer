@@ -18,6 +18,7 @@ public:
         remove_post_coal_mine_cutscenes(data);
         remove_magyscar_entrance_cutscene(data);
         remove_lars_crypt_5_sages_cutscene(data);
+        remove_post_wilda_night_cutscene(data);
     }
 
 private:
@@ -76,5 +77,19 @@ private:
         // Open the door when master sage has been talked to, instead of after seeing the full cutscene
         // This will remove the cutscene where all the sages appear one by one
         data.set_word_le(0x63AC96, FLAG_LARS_CRYPT_SAGES_CUTSCENE_ACTIVE.event_code());
+    }
+
+    /**
+     * In the vanilla game, defeating Wilda teleports you to a nighttime variant of Inoa where Bergus got kidnapped.
+     * We need the bossfight to teleport us to our regular bedroom instead.
+     */
+    static void remove_post_wilda_night_cutscene(BinaryFile& data)
+    {
+        // Change the warp destination map
+        data.set_word_le(0x4817A36, MAP_JESS_HOUSE);
+
+        // Unfreeze Alundra so he doesn't get stuck in cutscene mode (since he is meant to be unfrozen by another
+        // cutscene in nighttime bedroom)
+        data.set_byte(0x4817A02, 0x11);
     }
 };
