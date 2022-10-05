@@ -22,6 +22,7 @@ public:
         fix_casino_items(data, world);
         fix_post_nava_item(data, world);
         fix_lurvy_repairing_broken_armor(data, world);
+        fix_jess_blue_chest_items(data, world);
     }
 
 private:
@@ -103,6 +104,17 @@ private:
 
         strings.string(31) = R"(\BReceived )" + lurvy_repair->item()->name() + ".";
 
+        strings.apply_on_data(data);
+    }
+
+    static void fix_jess_blue_chest_items(BinaryFile& data, const RandomizerWorld& world)
+    {
+        ItemSource* blue_chest_1 = world.item_source("Inoa: First item in Jess's blue chest (Jess's Letter)");
+        ItemSource* blue_chest_2 = world.item_source("Inoa: Second item in Jess's blue chest (Broken Armor)");
+
+        RoomStrings strings(MAP_JESS_HOUSE_CHEST_OPENABLE, data);
+        strings.string(13) = R"(\BReceived )" + blue_chest_1->item()->name() + ".";
+        strings.string(15) = R"(\BReceived )" + blue_chest_2->item()->name() + ".";
         strings.apply_on_data(data);
     }
 };

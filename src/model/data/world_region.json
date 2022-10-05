@@ -3,6 +3,7 @@
         "name": "Inoa",
         "nodeIds": [
             "inoa",
+            "inoa_jess_chest",
             "nadia_shop"
         ]
     },

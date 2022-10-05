@@ -3,9 +3,13 @@
         "hints": [],
         "graphPos": [0,0]
     },
-    "nadia_shop": {
+    "inoa_jess_chest": {
         "hints": [],
         "graphPos": [3,3]
+    },
+    "nadia_shop": {
+        "hints": [],
+        "graphPos": [3,-3]
     },
     "overworld_c1": {
         "hints": [],

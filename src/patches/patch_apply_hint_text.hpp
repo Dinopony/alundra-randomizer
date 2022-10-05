@@ -26,7 +26,6 @@ public:
         apply_navas_keep_hint(data, world);
 
         apply_jess_hint(data, world);
-        // apply_book_of_elna_hint(data, world);
     }
 
 private:
@@ -208,22 +207,19 @@ private:
     {
         const std::string& hint_text = world.hint_source("jess")->text();
 
-        RoomStrings strings(MAP_JESS_HOUSE, data);
+        std::vector<uint16_t> maps = { MAP_JESS_HOUSE_CHEST_OPENABLE, MAP_JESS_HOUSE_RANDOMIZER };
 
-        strings.string(0) = TextboxFormatter(
-                R"(\CHello there, Alundra! This morning, I heard something in town.\A)"
-                R"(Apparently, )" + hint_text + R"(. Can you believe it?)"
-        ).format();
+        for(uint16_t map_id : maps)
+        {
+            RoomStrings strings(map_id, data);
 
-        strings.apply_on_data(data);
+            strings.string(0) = TextboxFormatter(
+                    R"(\CHello there, Alundra! This morning, I heard something in town.\A)"
+                    R"(Apparently, )" + hint_text + R"(. Can you believe it?)"
+            ).format();
+
+            strings.apply_on_data(data);
+        }
     }
-
-    /*
-    static void apply_book_of_elna_hint(BinaryFile& data, const RandomizerWorld& world)
-    {
-        const std::string& hint_text = world.hint_source("book_of_elna");
-
-        // TODO
-    }*/
 };
 

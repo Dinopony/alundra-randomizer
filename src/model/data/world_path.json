@@ -6,6 +6,14 @@
     },
     {
         "fromId": "inoa",
+        "toId": "inoa_jess_chest",
+        "twoWay": true,
+        "requiredItems": [
+            "Small Key"
+        ]
+    },
+    {
+        "fromId": "inoa",
         "toId": "overworld_c4",
         "twoWay": true
     },

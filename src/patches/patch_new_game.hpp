@@ -3,23 +3,23 @@
 #include "game_patch.hpp"
 #include "../tools/byte_array.hpp"
 #include "../tools/mips_tools.hpp"
+#include "../constants/map_codes.hpp"
 
 class PatchNewGame : public GamePatch
 {
 private:
     static constexpr uint32_t CODE_BASE_ADDR = 0x1F800;
-    static constexpr uint16_t MAP_JESS_HOUSE_RONAN_VERSION = 0x00F2;
 
     const RandomizerOptions& _options;
 
 public:
-    PatchNewGame(const RandomizerOptions& options) : _options(options)
+    explicit PatchNewGame(const RandomizerOptions& options) : _options(options)
     {}
 
     void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override
     {
         // Change spawn map ID
-        exe.set_word_le(0x12558, MAP_JESS_HOUSE_RONAN_VERSION);
+        exe.set_word_le(0x12558, MAP_JESS_HOUSE_RANDOMIZER);
         // Change spawn coords
         exe.set_word_le(0x12564, 0x0026);
         exe.set_word_le(0x12570, 0x000C);
@@ -89,18 +89,17 @@ private:
             }
 
             // Set default Inoa version to have Lutas chimney open (0x00F1 -> 0x1DD578 && 0x1DD586)
-            func.set_(reg_T0, 0x00F1);
+            func.set_(reg_T0, MAP_INOA_RANDOMIZER);
             func.sh(reg_T0, reg_AT, 0xD578);
             func.sh(reg_T0, reg_AT, 0xD586);
-            func.sh(reg_T0, reg_AT, 0xD676); // 0xF1 -> 0x1DD676 for post-Torla cutscene
+            func.sh(reg_T0, reg_AT, 0xD63A); // 0xF1 -> 0x1DD63A for variant where blue chest can be opened
 
-            // Also put 0xF2 -> 0x1DD676 for post-Torla house cutscene at night (where Meia wakes us up to warn
-            // that Bergus has gone missing)
-            func.set_(reg_T0, 0x00F2);
-            func.sh(reg_T0, reg_AT, 0xD678);
+            // Set Jess house to a variant where chest can be opened
+            func.set_(reg_T0, MAP_JESS_HOUSE_CHEST_OPENABLE);
+            func.sh(reg_T0, reg_AT, 0xD618);
 
             // Set Overworld C4 to the "Merrick shop open" variant (0x0197 -> 0x1DD44C)
-            func.set_(reg_T0, 0x0197);
+            func.set_(reg_T0, MAP_OVERWORLD_C4_MERRICK_OPEN_VARIANT);
             func.sh(reg_T0, reg_AT, 0xD44C);
 
             // Set Overworld E1 (Nirude) to a variant where things work properly

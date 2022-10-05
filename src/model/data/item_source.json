@@ -6,6 +6,20 @@
         "vanillaItem": "Secret Pass"
     },
     {
+        "name": "Inoa: First item in Jess's blue chest",
+        "nodeId": "inoa_jess_chest",
+        "address": "3AEAB91",
+        "spriteAddress": "3AEAD72",
+        "vanillaItem": "Jess's Letter"
+    },
+    {
+        "name": "Inoa: Second item in Jess's blue chest",
+        "nodeId": "inoa_jess_chest",
+        "address": "3AEABD2",
+        "spriteAddress": "3AEAD86",
+        "vanillaItem": "Broken Armor"
+    },
+    {
         "name": "Overworld C2: Chest in Olen's house",
         "nodeId": "overworld_c2",
         "address": "44591EE",

@@ -87,7 +87,7 @@ private:
     static void remove_post_wilda_night_cutscene(BinaryFile& data)
     {
         // Change the warp destination map
-        data.set_word_le(0x4817A36, MAP_JESS_HOUSE);
+        data.set_word_le(0x4817A36, MAP_JESS_HOUSE_RANDOMIZER);
 
         // Unfreeze Alundra so he doesn't get stuck in cutscene mode (since he is meant to be unfrozen by another
         // cutscene in nighttime bedroom)

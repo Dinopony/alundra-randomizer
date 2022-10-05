@@ -26,6 +26,7 @@
 #include "patch_apply_shops_text.hpp"
 #include "patch_apply_items_info.hpp"
 #include "patch_edit_global_strings.hpp"
+#include "patch_adapt_blue_chest.hpp"
 
 void execute_patches(const std::vector<GamePatch*>& patches, 
                      BinaryFile& data_file, PsxExeFile& exe_file, 
@@ -64,6 +65,7 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
     patches.emplace_back(new PatchApplyShopsText());
     patches.emplace_back(new PatchApplyItemsInfo());
     patches.emplace_back(new PatchEditGlobalStrings());
+    patches.emplace_back(new PatchAdaptBlueChest());
 
     if(options.split_boots_effects())
         patches.emplace_back(new PatchSplitBootsEffects());

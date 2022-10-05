@@ -13,7 +13,7 @@ public:
         // Leaving the inn map uses a forced transition to the wrong variant of Inoa, replace
         // the map ID directly in the events
         data.set_bytes(0x3A6729E, NEVER_BRANCH);
-        data.set_word_le(0x3A672A4, 0x00F1);
+        data.set_word_le(0x3A672A4, MAP_INOA_RANDOMIZER);
 
         // There is an event in Lutas's house second floor that overwrites the map variant for the ground floor,
         // in order to ensure the stairs will bring us to the right map. The problem is, this relies on story flags

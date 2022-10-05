@@ -140,6 +140,6 @@ set(SOURCES
         "src/world_solver.hpp"
         "src/world_solver.cpp"
         "src/main.cpp"
-        )
+        src/patches/patch_adapt_blue_chest.hpp)
 
 add_executable(alundra-randomizer "${SOURCES}")
