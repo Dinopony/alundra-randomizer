@@ -1,4 +1,4 @@
-![version](https://img.shields.io/badge/Version-1.1.0-blue)
+![version](https://img.shields.io/badge/Version-1.2.0-blue)
 ![compile](https://github.com/Dinopony/alundra-randomizer/workflows/Compile/badge.svg)
 
 # Alundra Randomizer
