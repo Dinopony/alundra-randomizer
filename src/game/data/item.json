@@ -65,17 +65,20 @@
     {
         "name": "Sword upgrade",
         "slot": 1,
-        "tier": 64
+        "tier": 64,
+        "precious": true
     },
     {
         "name": "Flail upgrade",
         "slot": 3,
-        "tier": 64
+        "tier": 64,
+        "precious": true
     },
     {
         "name": "Bow upgrade",
         "slot": 2,
-        "tier": 64
+        "tier": 64,
+        "precious": true
     },
     {
         "name": "Ice Wand",
@@ -86,7 +89,8 @@
     {
         "name": "Armor upgrade",
         "slot": 7,
-        "tier": 64
+        "tier": 64,
+        "precious": true
     },
     {
         "name": "Fire Wand",
@@ -120,22 +124,26 @@
     {
         "name": "Earth Spell",
         "slot": 16,
-        "tier": 64
+        "tier": 64,
+        "precious": true
     },
     {
         "name": "Water Spell",
         "slot": 17,
-        "tier": 64
+        "tier": 64,
+        "precious": true
     },
     {
         "name": "Fire Spell",
         "slot": 18,
-        "tier": 64
+        "tier": 64,
+        "precious": true
     },
     {
         "name": "Wind Spell",
         "slot": 19,
-        "tier": 64
+        "tier": 64,
+        "precious": true
     },
     {
         "name": "Short Boots",
@@ -163,7 +171,8 @@
     {
         "name": "Boots upgrade",
         "slot": 9,
-        "tier": 64
+        "tier": 64,
+        "precious": true
     },
     {
         "name": "Item 0x1E",
