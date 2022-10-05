@@ -26,6 +26,8 @@ public:
         apply_navas_keep_hint(data, world);
 
         apply_jess_hint(data, world);
+
+        apply_coal_mine_sign_vanilla_hint(data);
     }
 
 private:
@@ -220,6 +222,15 @@ private:
 
             strings.apply_on_data(data);
         }
+    }
+
+    static void apply_coal_mine_sign_vanilla_hint(BinaryFile& data)
+    {
+        RoomStrings strings(MAP_COAL_MINE_61, data);
+
+        strings.string(8) = R"(\B\HEngine Room to the right\N\HTo start the engine, do the following:\N\HLeft, left, right, left)";
+
+        strings.apply_on_data(data);
     }
 };
 
