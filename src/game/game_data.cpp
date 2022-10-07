@@ -97,6 +97,9 @@ void GameData::init_starting_flags()
     _starting_flags.emplace_back(FLAG_CAN_EXIT_LARS_CRYPT);
     // Put flowers on other tombs to indicate you need the Bouquet to enter Lars Crypt
     _starting_flags.emplace_back(FLAG_OTHER_FLOWERS_ARE_IN_GRAVEYARD);
+
+    // Remove the specific cutscene when we enter Lurvy's shop for the first time
+    _starting_flags.emplace_back(FLAG_LURVY_WELCOMED_US_ONCE);
 }
 
 void GameData::apply_options(const RandomizerOptions& options)

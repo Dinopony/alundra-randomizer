@@ -14,6 +14,8 @@ public:
     {
         apply_naomi_shop_text(data, world);
         apply_lurvy_shop_text(data, world);
+
+        skip_lurvy_shop_entrance_cutscene(data);
     }
 
 private:
@@ -96,6 +98,20 @@ private:
         strings.string(57) = R"(\BReceived a )" + naomi_4->item()->name() + R"(.)";
 
         strings.apply_on_data(data);
+    }
+
+    static void skip_lurvy_shop_entrance_cutscene(BinaryFile& data)
+    {
+        // Remove camera pan
+        data.set_bytes(0x56BFC9A, { 0x02, 0x08, 0x00 });
+
+        // Remove waiting condition for camera pan & text
+        data.set_bytes(0x56BFCB9, { 0x02, 0x0A, 0x00 });
+
+        // Remove Alundra walking up inside the shop
+        data.set_bytes(0x56BFCC7, { 0x02, 0x09, 0x00 });
+        // Remove Alundra walking right inside the shop
+        data.set_bytes(0x56BFCD0, { 0x02, 0x04, 0x00 });
     }
 };
 

@@ -69,14 +69,16 @@ constexpr Flag FLAG_CASINO_SHOOTING_RANGE_3_WINS = Flag(0xD3F6, 3);
 constexpr Flag FLAG_CASINO_SHOOTING_RANGE_4_WINS = Flag(0xD3F6, 4);
 constexpr Flag FLAG_CASINO_SHOOTING_RANGE_BANNED = Flag(0xD3F6, 6);
 
-constexpr Flag FLAG_CASINO_ROULETTE_1_WIN =  Flag(0xD3F6, 7); // 617
-constexpr Flag FLAG_CASINO_ROULETTE_2_WINS = Flag(0xD3F6, 8); // 618
-constexpr Flag FLAG_CASINO_ROULETTE_3_WINS = Flag(0xD3F7, 0); // 619
-constexpr Flag FLAG_CASINO_ROULETTE_4_WINS = Flag(0xD3F7, 1); // 61A
-constexpr Flag FLAG_CASINO_ROULETTE_BANNED = Flag(0xD3F7, 3); // 61C
+constexpr Flag FLAG_CASINO_ROULETTE_1_WIN =  Flag(0xD3F6, 7);
+constexpr Flag FLAG_CASINO_ROULETTE_2_WINS = Flag(0xD3F6, 8);
+constexpr Flag FLAG_CASINO_ROULETTE_3_WINS = Flag(0xD3F7, 0);
+constexpr Flag FLAG_CASINO_ROULETTE_4_WINS = Flag(0xD3F7, 1);
+constexpr Flag FLAG_CASINO_ROULETTE_BANNED = Flag(0xD3F7, 3);
 
 constexpr Flag FLAG_CASINO_SLIME_1_WIN =  Flag(0xD3F7, 5);
 constexpr Flag FLAG_CASINO_SLIME_2_WINS = Flag(0xD3F7, 6);
 constexpr Flag FLAG_CASINO_SLIME_3_WINS = Flag(0xD3F7, 7);
 constexpr Flag FLAG_CASINO_SLIME_4_WINS = Flag(0xD3F8, 0);
 constexpr Flag FLAG_CASINO_SLIME_BANNED = Flag(0xD3F8, 2);
+
+constexpr Flag FLAG_LURVY_WELCOMED_US_ONCE = Flag(0xD3BE, 2);
