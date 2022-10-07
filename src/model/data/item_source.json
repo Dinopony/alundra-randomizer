@@ -1762,6 +1762,7 @@
         "address": "56BF9DE",
         "spriteAddress": "56C0032",
         "priceAddress": [
+
             "56BF9CA",
             "56BF9F1"
         ],
@@ -1780,14 +1781,15 @@
     },
     {
         "name": "Lurvy's Shop: Item #5 replacement when bought twice",
-        "nodeId": "lurvy_shop_unique",
+        "nodeId": "lurvy_shop_repeatable",
         "address": "56BFB8A",
         "spriteAddress": "56C005A",
         "priceAddress": [
             "56BFB76",
             "56BFB9D"
         ],
-        "vanillaItem": "Wonder Essence"
+        "vanillaItem": "Wonder Essence",
+        "forbidPreciousItems": true
     },
     {
         "name": "Lurvy's Shop: Item obtained after repairing Broken Armor",

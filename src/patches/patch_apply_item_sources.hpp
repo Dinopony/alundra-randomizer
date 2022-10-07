@@ -37,9 +37,12 @@ public:
                 if(source->vanilla_item() && data.get_byte(addr) != source->vanilla_item()->id() + 0x1E && source->vanilla_item()->id() != ITEM_BOOK_OF_ELNA)
                     std::cerr << "ItemSource '" << source->name() << "' doesn't contain the expected vanilla item" << std::endl;
 #endif
-                // If item is none, move the sprite out of the map
+                // If item is none, make it an inactive open chest
                 if(item_id == ITEM_NONE)
-                    data.set_word(addr + 1, 0xFFFF);
+                {
+                    for(uint32_t sub_addr = addr+4 ; sub_addr <= addr + 13 ; ++sub_addr)
+                        data.set_byte(sub_addr, 0x00);
+                }
 
                 data.set_byte(addr, item_sprite_id);
             }

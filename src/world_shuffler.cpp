@@ -222,7 +222,7 @@ bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Ite
         return false;
 
     // If nodes should have unique items, check that other ItemSources in node do not contain this Item
-    if(source->node()->should_have_unique_items())
+    if(source->node()->should_have_unique_items() && item->id() != ITEM_NONE)
     {
         // Forbid having two identical items in the same shop node
         std::vector<ItemSource*> other_sources_in_node = source->node()->item_sources();

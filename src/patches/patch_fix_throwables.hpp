@@ -25,9 +25,9 @@ public:
         constexpr uint32_t STARTING_ADDR = 0x830;
         uint32_t life_vessel_offset_addr = STARTING_ADDR + ((ITEM_LIFE_VESSEL + 0x1E) * 4);
         uint32_t life_vessel_offset = data.get_long_le(life_vessel_offset_addr);
-        uint32_t life_veseel_ptr_table = 0x800 + life_vessel_offset;
-        uint32_t life_vessel_ptr_1 = data.get_long(life_veseel_ptr_table); // 5C300300
-        uint32_t life_vessel_ptr_2 = data.get_long(life_veseel_ptr_table + 4); // A4300300
+        uint32_t life_vessel_ptr_table = 0x800 + life_vessel_offset;
+        uint32_t life_vessel_ptr_1 = data.get_long(life_vessel_ptr_table); // 5C300300
+        uint32_t life_vessel_ptr_2 = data.get_long(life_vessel_ptr_table + 4); // A4300300
 
         for(uint16_t item_id = 0x1 ; item_id < ITEM_COUNT ; ++item_id)
         {
