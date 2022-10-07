@@ -39,7 +39,7 @@ public:
 #endif
                 // If item is none, move the sprite out of the map
                 if(item_id == ITEM_NONE)
-                    data.set_word(addr + 1, 0x0000);
+                    data.set_word(addr + 1, 0xFFFF);
 
                 data.set_byte(addr, item_sprite_id);
             }
