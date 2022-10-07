@@ -1,7 +1,8 @@
 [
     {
         "name": "Nothing",
-        "maxQuantity": 0
+        "maxQuantity": 0,
+        "goldValue": 0
     },
     {
         "name": "Dagger",

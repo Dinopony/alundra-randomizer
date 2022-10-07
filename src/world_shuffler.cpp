@@ -203,34 +203,39 @@ void WorldShuffler::fill_item_source_randomly(ItemSource* source)
  * Checks if the given Item can be placed inside the given ItemSource if we follow strictly the ItemDistribution rules.
  * @param source the ItemSource to test
  * @param item the Item to test
+ * @param bypass_light_restrictions if true, the test will not enforce the "light" restrictions
+ *                                  (like "shouldHaveUniqueItems" for nodes). This is usually used as a last resort
+ *                                  when generation is almost complete and the remaining Items don't fit in the
+ *                                  remaining ItemSources
  * @return true if the Item can be placed inside the ItemSource, false otherwise
  */
-bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Item* item) const
+bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Item* item, bool bypass_light_restrictions) const
 {
     // Forbid precious items in sources that can be taken repeatedly
     if(source->forbid_precious_items() && item->is_precious())
         return false;
 
-    // In shops...
-    if(!source->price_addresses().empty())
+    // Forbid items that have no gold value in shops
+    if(!source->price_addresses().empty() && item->gold_value() == 0)
+        return false;
+
+    // Forbid falcons in Merrick's shop, since this can cause flag shenanigans
+    if(source->merrick_item_address() && item->id() == ITEM_GILDED_FALCON)
+        return false;
+
+    // From now on, all other restrictions are "light", meaning they are ignored if this parameter is set
+    if(bypass_light_restrictions)
+        return true;
+
+    // If nodes should have unique items, check that other ItemSources in node do not contain this Item
+    if(source->node()->should_have_unique_items())
     {
-        // Forbid items that have no price
-        if(item->gold_value() == 0)
-            return false;
-
-        if(item->id() == ITEM_NONE)
-            return true;
-
         // Forbid having two identical items in the same shop node
         std::vector<ItemSource*> other_sources_in_node = source->node()->item_sources();
         for(ItemSource* other_source : other_sources_in_node)
             if(other_source->item() == item)
                 return false;
     }
-
-    // Forbid falcons in Merrick's shop, since this can cause flag shenanigans
-    if(source->merrick_item_address() && item->id() == ITEM_GILDED_FALCON)
-        return false;
 
     return true;
 }

@@ -24,6 +24,10 @@ private:
     /// The region this node belongs to
     WorldRegion* _region = nullptr;
 
+    /// If true, the item sources in this node shouldn't contain two instances of the same item. This will not be
+    /// strictly enforced, and might be bypassed if there is no other way to finish distributing the items
+    bool _should_have_unique_items = false;
+
     /// The position of the node when exported to a visual graph
     std::pair<int, int> _position_in_graph;
 
@@ -41,6 +45,9 @@ public:
 
     [[nodiscard]] WorldRegion* region() const { return _region; }
     void region(WorldRegion* region) { _region = region; }
+
+    [[nodiscard]] bool should_have_unique_items() const { return _should_have_unique_items; }
+    void should_have_unique_items(bool value) { _should_have_unique_items = value; }
 
     [[nodiscard]] const std::pair<int, int>& position_in_graph() const { return _position_in_graph; }
 

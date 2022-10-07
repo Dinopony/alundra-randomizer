@@ -73,7 +73,12 @@ void write_logic_as_dot(const RandomizerWorld& world, const std::string& output_
         // Node label
         graphviz << " label=\"" << node_id;
         if(!node->item_sources().empty())
-            graphviz << "\\n(" << std::to_string(node->item_sources().size()) << " items)";
+        {
+            graphviz << "\\n(" << std::to_string(node->item_sources().size());
+            if(node->should_have_unique_items())
+                graphviz << " unique";
+            graphviz << " items)";
+        }
         graphviz << "\"";
         // Node shape if starting or end node
         if(node == world.spawn_node() || node == world.end_node())

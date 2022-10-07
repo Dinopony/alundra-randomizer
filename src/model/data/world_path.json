@@ -828,11 +828,16 @@
     },
     {
         "fromId": "overworld_e4",
-        "toId": "lurvy_shop",
+        "toId": "lurvy_shop_repeatable",
         "twoWay": true
     },
     {
-        "fromId": "lurvy_shop",
+        "fromId": "lurvy_shop_repeatable",
+        "toId": "lurvy_shop_unique",
+        "twoWay": true
+    },
+    {
+        "fromId": "lurvy_shop_repeatable",
         "toId": "lurvy_shop_repair",
         "twoWay": true,
         "requiredItems": [

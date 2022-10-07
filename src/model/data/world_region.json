@@ -184,7 +184,8 @@
             "overworld_e4_well",
             "overworld_e4_well_behind_vines",
             "overworld_e4_behind_merman",
-            "lurvy_shop",
+            "lurvy_shop_repeatable",
+            "lurvy_shop_unique",
             "lurvy_shop_repair"
         ],
         "hintName": "in the Cliffs of Madness"

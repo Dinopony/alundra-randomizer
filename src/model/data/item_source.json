@@ -1710,7 +1710,7 @@
     },
     {
         "name": "Lurvy's Shop: Item #1",
-        "nodeId": "lurvy_shop",
+        "nodeId": "lurvy_shop_repeatable",
         "address": "56BF6FF",
         "spriteAddress": "56BFFE2",
         "priceAddress": [
@@ -1721,7 +1721,7 @@
     },
     {
         "name": "Lurvy's Shop: Item #2",
-        "nodeId": "lurvy_shop",
+        "nodeId": "lurvy_shop_repeatable",
         "address": "56BF7B3",
         "spriteAddress": "56BFFF6",
         "priceAddress": [
@@ -1732,7 +1732,7 @@
     },
     {
         "name": "Lurvy's Shop: Item #3",
-        "nodeId": "lurvy_shop",
+        "nodeId": "lurvy_shop_repeatable",
         "address": "56BF867",
         "spriteAddress": "56C000A",
         "priceAddress": [
@@ -1743,7 +1743,7 @@
     },
     {
         "name": "Lurvy's Shop: Item #4",
-        "nodeId": "lurvy_shop",
+        "nodeId": "lurvy_shop_repeatable",
         "address": "56BF91B",
         "spriteAddress": "56C001E",
         "priceAddress": [
@@ -1754,7 +1754,7 @@
     },
     {
         "name": "Lurvy's Shop: Item #5",
-        "nodeId": "lurvy_shop",
+        "nodeId": "lurvy_shop_unique",
         "address": "56BF9DE",
         "spriteAddress": "56C0032",
         "priceAddress": [
@@ -1765,7 +1765,7 @@
     },
     {
         "name": "Lurvy's Shop: Item #5 replacement when bought once",
-        "nodeId": "lurvy_shop",
+        "nodeId": "lurvy_shop_unique",
         "address": "56BFACF",
         "spriteAddress": "56C0046",
         "priceAddress": [
@@ -1776,7 +1776,7 @@
     },
     {
         "name": "Lurvy's Shop: Item #5 replacement when bought twice",
-        "nodeId": "lurvy_shop",
+        "nodeId": "lurvy_shop_unique",
         "address": "56BFB8A",
         "spriteAddress": "56C005A",
         "priceAddress": [

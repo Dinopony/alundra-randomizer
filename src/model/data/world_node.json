@@ -9,6 +9,7 @@
     },
     "nadia_shop": {
         "hints": [],
+        "shouldHaveUniqueItems": true,
         "graphPos": [3,-3]
     },
     "overworld_c1": {
@@ -347,13 +348,18 @@
         "hints": [],
         "graphPos": [26,-12]
     },
-    "lurvy_shop": {
+    "lurvy_shop_repeatable": {
         "hints": [],
+        "shouldHaveUniqueItems": true,
         "graphPos": [22,-8]
+    },
+    "lurvy_shop_unique": {
+        "hints": [],
+        "graphPos": [26,-10]
     },
     "lurvy_shop_repair": {
         "hints": [],
-        "graphPos": [26,-8]
+        "graphPos": [26,-6]
     },
     "tarn_manor": {
         "hints": [],
