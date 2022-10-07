@@ -12,7 +12,7 @@ class PatchApplyShopsText : public GamePatch
 public:
     void alter_datas_file(BinaryFile& data, const GameData& game_data, const RandomizerWorld& world) override
     {
-        apply_nadia_shop_text(data, world);
+        apply_naomi_shop_text(data, world);
         apply_lurvy_shop_text(data, world);
     }
 
@@ -63,37 +63,37 @@ private:
         strings.apply_on_data(data);
     }
 
-    static void apply_nadia_shop_text(BinaryFile& data, const RandomizerWorld& world)
+    static void apply_naomi_shop_text(BinaryFile& data, const RandomizerWorld& world)
     {
-        ItemSource* nadia_1 = world.item_source("Nadia's Shop: Item #1 (Herbs)");
-        ItemSource* nadia_2 = world.item_source("Nadia's Shop: Item #2 (Strength Tonic)");
-        ItemSource* nadia_3 = world.item_source("Nadia's Shop: Item #3 (Magic Elixyr)");
-        ItemSource* nadia_4 = world.item_source("Nadia's Shop: Item #4 (Life Vessel)");
+        ItemSource* naomi_1 = world.item_source("Naomi's Shop: Item #1 (Herbs)");
+        ItemSource* naomi_2 = world.item_source("Naomi's Shop: Item #2 (Strength Tonic)");
+        ItemSource* naomi_3 = world.item_source("Naomi's Shop: Item #3 (Magic Elixyr)");
+        ItemSource* naomi_4 = world.item_source("Naomi's Shop: Item #4 (Life Vessel)");
 
         RoomStrings strings(MAP_258, data);
 
         strings.string(1) = TextboxFormatter(
-                R"(\DIf you'd like to purchase )" + nadia_1->item()->name() + R"(, the cost will be )" +
-                std::to_string(nadia_1->item()->gold_value()) + R"( Gilder. Is that satisfactory? \0100\Y)"
+                R"(\DIf you'd like to purchase )" + naomi_1->item()->name() + R"(, the cost will be )" +
+                std::to_string(naomi_1->item()->gold_value()) + R"( Gilder. Is that satisfactory? \0100\Y)"
         ).format();
 
         strings.string(2) = TextboxFormatter(
-                R"(\DAh, yes! )" + nadia_2->item()->name() + R"(! The prime choice of adventurers such as yourself! It costs, )" +
-                std::to_string(nadia_2->item()->gold_value()) + R"( Gilder, ok? \0100\Y)"
+                R"(\DAh, yes! )" + naomi_2->item()->name() + R"(! The prime choice of adventurers such as yourself! It costs, )" +
+                std::to_string(naomi_2->item()->gold_value()) + R"( Gilder, ok? \0100\Y)"
         ).format();
 
         strings.string(3) = TextboxFormatter(
-                R"(\D)" + nadia_3->item()->name() + "! For just " + std::to_string(nadia_3->item()->gold_value())+
+                R"(\D)" + naomi_3->item()->name() + "! For just " + std::to_string(naomi_3->item()->gold_value())+
                 R"( Gilder, it can be put to work to make all your dreams come true! Want it? \0100\Y)"
         ).format();
 
         strings.string(4) = TextboxFormatter(
-                R"(\D)" + nadia_4->item()->name() + "! "
+                R"(\D)" + naomi_4->item()->name() + "! "
                 "Hmm, pricey, but a prime choice for the especially discriminating. "
-                "It's " + std::to_string(nadia_4->item()->gold_value()) + R"( Gilder, ok? \0100\Y)"
+                "It's " + std::to_string(naomi_4->item()->gold_value()) + R"( Gilder, ok? \0100\Y)"
         ).format();
 
-        strings.string(57) = R"(\BReceived a )" + nadia_4->item()->name() + R"(.)";
+        strings.string(57) = R"(\BReceived a )" + naomi_4->item()->name() + R"(.)";
 
         strings.apply_on_data(data);
     }

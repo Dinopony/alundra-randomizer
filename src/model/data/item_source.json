@@ -1793,8 +1793,8 @@
         "vanillaItem": "Ancient Armor"
     },
     {
-        "name": "Nadia's Shop: Item #1",
-        "nodeId": "nadia_shop",
+        "name": "Naomi's Shop: Item #1",
+        "nodeId": "naomi_shop",
         "address": "3A670B3",
         "spriteAddress": "3A677FA",
         "priceAddress": [
@@ -1804,8 +1804,8 @@
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Nadia's Shop: Item #2",
-        "nodeId": "nadia_shop",
+        "name": "Naomi's Shop: Item #2",
+        "nodeId": "naomi_shop",
         "address": "3A67133",
         "spriteAddress": "3A6780E",
         "priceAddress": [
@@ -1815,8 +1815,8 @@
         "vanillaItem": "Strength Tonic"
     },
     {
-        "name": "Nadia's Shop: Item #3",
-        "nodeId": "nadia_shop",
+        "name": "Naomi's Shop: Item #3",
+        "nodeId": "naomi_shop",
         "address": "3A671B3",
         "spriteAddress": "3A67822",
         "priceAddress": [
@@ -1826,8 +1826,8 @@
         "vanillaItem": "Magic Elixyr"
     },
     {
-        "name": "Nadia's Shop: Item #4",
-        "nodeId": "nadia_shop",
+        "name": "Naomi's Shop: Item #4",
+        "nodeId": "naomi_shop",
         "address": "3A67247",
         "spriteAddress": "3A67836",
         "priceAddress": [
