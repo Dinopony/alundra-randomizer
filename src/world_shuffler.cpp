@@ -203,13 +203,9 @@ void WorldShuffler::fill_item_source_randomly(ItemSource* source)
  * Checks if the given Item can be placed inside the given ItemSource if we follow strictly the ItemDistribution rules.
  * @param source the ItemSource to test
  * @param item the Item to test
- * @param bypass_light_restrictions if true, the test will not enforce the "light" restrictions
- *                                  (like "shouldHaveUniqueItems" for nodes). This is usually used as a last resort
- *                                  when generation is almost complete and the remaining Items don't fit in the
- *                                  remaining ItemSources
  * @return true if the Item can be placed inside the ItemSource, false otherwise
  */
-bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Item* item, bool bypass_light_restrictions) const
+bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Item* item) const
 {
     // Forbid precious items in sources that can be taken repeatedly
     if(source->forbid_precious_items() && item->is_precious())
@@ -222,10 +218,6 @@ bool WorldShuffler::test_item_source_compatibility(ItemSource* source, const Ite
     // Forbid falcons in Merrick's shop, since this can cause flag shenanigans
     if(source->merrick_item_address() && item->id() == ITEM_GILDED_FALCON)
         return false;
-
-    // From now on, all other restrictions are "light", meaning they are ignored if this parameter is set
-    if(bypass_light_restrictions)
-        return true;
 
     // If nodes should have unique items, check that other ItemSources in node do not contain this Item
     if(source->node()->should_have_unique_items())
@@ -372,17 +364,24 @@ void WorldShuffler::place_remaining_items()
 {
     Json& debug_log = _solver.debug_log_for_current_step();
 
-    std::vector<ItemSource*> unrestricted_item_sources;
+    std::vector<ItemSource*> empty_item_sources;
     for(ItemSource* source : _world.item_sources())
     {
         if(!source->is_empty())
             continue;
 
-        unrestricted_item_sources.emplace_back(source);
+        empty_item_sources.emplace_back(source);
     }
-    vectools::shuffle(unrestricted_item_sources, _rng);
+    vectools::shuffle(empty_item_sources, _rng);
 
-    for(ItemSource* source : unrestricted_item_sources)
+    // Sort sources (while keeping the random order in case of equality) in big priority categories, processing
+    // the most restricted sources first
+    std::stable_sort(empty_item_sources.begin(), empty_item_sources.end(), [](ItemSource* is1, ItemSource* is2)
+    {
+        return is1->fill_priority() > is2->fill_priority();
+    });
+
+    for(ItemSource* source : empty_item_sources)
         this->fill_item_source_randomly(source);
 
     for(const Item* item : _item_pool)

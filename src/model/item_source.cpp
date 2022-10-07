@@ -15,6 +15,17 @@ std::string ItemSource::pretty_name() const
     return pretty_name;
 }
 
+int ItemSource::fill_priority() const
+{
+    int priority = 0;
+    if(_node->should_have_unique_items())
+        priority += 2;
+    if(_forbid_precious_items)
+        priority += 1;
+
+    return priority;
+}
+
 void ItemSource::node(WorldNode* node)
 {
     if(_node)

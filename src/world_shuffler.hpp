@@ -67,7 +67,7 @@ private:
     ItemSource* find_item_source_for_progression_item(const Item* item, const std::vector<ItemSource*>& excluded_sources);
     void fill_item_source_randomly(ItemSource* source);
 
-    [[nodiscard]] bool test_item_source_compatibility(ItemSource* source, const Item* item, bool bypass_light_restrictions = false) const;
+    [[nodiscard]] bool test_item_source_compatibility(ItemSource* source, const Item* item) const;
     [[nodiscard]] bool item_pool_contains_items(const std::vector<const Item*>& items) const;
     [[nodiscard]] std::vector<WorldPath*> build_weighted_blocked_paths_list();
 

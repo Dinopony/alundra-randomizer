@@ -90,6 +90,8 @@ public:
     [[nodiscard]] bool forbid_precious_items() const { return _forbid_precious_items; }
     void forbid_precious_items(bool value) { _forbid_precious_items = value; }
 
+    [[nodiscard]] int fill_priority() const;
+
     [[nodiscard]] virtual Json to_json() const;
     static ItemSource* from_json(const Json& json, const GameData& game_data, const RandomizerWorld& world);
 };
