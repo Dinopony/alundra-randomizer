@@ -1717,7 +1717,8 @@
             "56BF6EB",
             "56BF712"
         ],
-        "vanillaItem": "Herbs"
+        "vanillaItem": "Herbs",
+        "forbidPreciousItems": true
     },
     {
         "name": "Lurvy's Shop: Item #2",
@@ -1728,7 +1729,8 @@
             "56BF79F",
             "56BF7C6"
         ],
-        "vanillaItem": "Strength Tonic"
+        "vanillaItem": "Strength Tonic",
+        "forbidPreciousItems": true
     },
     {
         "name": "Lurvy's Shop: Item #3",
@@ -1739,7 +1741,8 @@
             "56BF853",
             "56BF87A"
         ],
-        "vanillaItem": "Strength Elixyr"
+        "vanillaItem": "Strength Elixyr",
+        "forbidPreciousItems": true
     },
     {
         "name": "Lurvy's Shop: Item #4",
@@ -1750,7 +1753,8 @@
             "56BF907",
             "56BF92E"
         ],
-        "vanillaItem": "Magic Elixyr"
+        "vanillaItem": "Magic Elixyr",
+        "forbidPreciousItems": true
     },
     {
         "name": "Lurvy's Shop: Item #5",
@@ -1801,7 +1805,8 @@
             "3A6709F",
             "3A670C6"
         ],
-        "vanillaItem": "Herbs"
+        "vanillaItem": "Herbs",
+        "forbidPreciousItems": true
     },
     {
         "name": "Naomi's Shop: Item #2",
@@ -1812,7 +1817,8 @@
             "3A6711F",
             "3A67146"
         ],
-        "vanillaItem": "Strength Tonic"
+        "vanillaItem": "Strength Tonic",
+        "forbidPreciousItems": true
     },
     {
         "name": "Naomi's Shop: Item #3",
@@ -1823,7 +1829,8 @@
             "3A6719F",
             "3A671C6"
         ],
-        "vanillaItem": "Magic Elixyr"
+        "vanillaItem": "Magic Elixyr",
+        "forbidPreciousItems": true
     },
     {
         "name": "Naomi's Shop: Item #4",
