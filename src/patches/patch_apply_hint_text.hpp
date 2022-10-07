@@ -14,7 +14,7 @@ public:
     void alter_datas_file(BinaryFile& data, const GameData& game_data, const RandomizerWorld& world) override
     {
         apply_lars_crypt_hint(data, world);
-        apply_reptiles_lair_hint(data, world);
+        apply_reptile_lair_hint(data, world);
         apply_nirudes_lair_hint(data, world);
         apply_coastal_cave_hint(data, world);
         apply_torla_mountain_hint(data, world);
@@ -45,11 +45,11 @@ private:
         strings.apply_on_data(data);
     }
 
-    static void apply_reptiles_lair_hint(BinaryFile& data, const RandomizerWorld& world)
+    static void apply_reptile_lair_hint(BinaryFile& data, const RandomizerWorld& world)
     {
-        const std::string& hint_text = world.hint_source("reptiles_lair")->text();
+        const std::string& hint_text = world.hint_source("reptile_lair")->text();
 
-        RoomStrings strings(MAP_REPTILES_LAIR_84, data);
+        RoomStrings strings(MAP_REPTILE_LAIR_84, data);
 
         strings.string(59) = TextboxFormatter(
                 R"(\CHear my words, Releaser. I have come to be known as Jeal. I am also one of the seven guardians\A)"

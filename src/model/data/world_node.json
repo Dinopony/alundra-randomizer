@@ -413,15 +413,15 @@
         "hints": [],
         "graphPos": [0,26]
     },
-    "reptiles_lair_side_cavern": {
+    "reptile_lair_side_cavern": {
         "hints": [],
         "graphPos": [8,-12]
     },
-    "reptiles_lair": {
+    "reptile_lair": {
         "hints": [],
         "graphPos": [12,-12]
     },
-    "reptiles_lair_behind_flail": {
+    "reptile_lair_behind_flail": {
         "hints": [],
         "graphPos": [10,-14]
     },

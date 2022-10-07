@@ -114,7 +114,7 @@
     },
 
     {
-        "name": "Overworld D4 (Reptiles Lair sector)",
+        "name": "Overworld D4 (Reptile Lair sector)",
         "nodeIds": [
             "overworld_d4",
             "overworld_d4_behind_long_boots"
@@ -122,11 +122,11 @@
         "hintName": "near Reptile Lair"
     },
     {
-        "name": "Reptiles Lair",
+        "name": "Reptile Lair",
         "nodeIds": [
-            "reptiles_lair_side_cavern",
-            "reptiles_lair",
-            "reptiles_lair_behind_flail"
+            "reptile_lair_side_cavern",
+            "reptile_lair",
+            "reptile_lair_behind_flail"
         ],
         "canBeHintedAsRequired": true
     },

@@ -228,7 +228,7 @@
     },
     {
         "fromId": "overworld_d4",
-        "toId": "reptiles_lair_side_cavern",
+        "toId": "reptile_lair_side_cavern",
         "twoWay": true,
         "requiredItems": [
             "Merman Boots"
@@ -236,7 +236,7 @@
     },
     {
         "fromId": "overworld_d4",
-        "toId": "reptiles_lair",
+        "toId": "reptile_lair",
         "requiredItems": [
             "Hunter's Bow",
             "Long Boots",
@@ -245,15 +245,15 @@
         ]
     },
     {
-        "fromId": "reptiles_lair",
-        "toId": "reptiles_lair_side_cavern",
+        "fromId": "reptile_lair",
+        "toId": "reptile_lair_side_cavern",
         "requiredItems": [
             "Bomb"
         ]
     },
     {
-        "fromId": "reptiles_lair",
-        "toId": "reptiles_lair_behind_flail",
+        "fromId": "reptile_lair",
+        "toId": "reptile_lair_behind_flail",
         "twoWay": true,
         "requiredItems": [
             "Iron Flail"

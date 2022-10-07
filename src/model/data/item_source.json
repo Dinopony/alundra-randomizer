@@ -1361,14 +1361,14 @@
     },
 
     {
-        "name": "Reptiles Lair: Chest in side cavern accessible from overworld",
-        "nodeId": "reptiles_lair_side_cavern",
+        "name": "Reptile Lair: Chest in side cavern accessible from overworld",
+        "nodeId": "reptile_lair_side_cavern",
         "address": "1482332",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Reptiles Lair: Lower chest in main flooded room",
-        "nodeId": "reptiles_lair",
+        "name": "Reptile Lair: Lower chest in main flooded room",
+        "nodeId": "reptile_lair",
         "address": [
             "134C5A6",
             "134C9CA"
@@ -1376,8 +1376,8 @@
         "vanillaItem": "Strength Tonic"
     },
     {
-        "name": "Reptiles Lair: Left elevated chest in main flooded room",
-        "nodeId": "reptiles_lair",
+        "name": "Reptile Lair: Left elevated chest in main flooded room",
+        "nodeId": "reptile_lair",
         "address": [
             "134C5BA",
             "134C9DE"
@@ -1385,8 +1385,8 @@
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Reptiles Lair: Chest on wooden structure to the right of main flooded room",
-        "nodeId": "reptiles_lair_behind_flail",
+        "name": "Reptile Lair: Chest on wooden structure to the right of main flooded room",
+        "nodeId": "reptile_lair_behind_flail",
         "address": [
             "134C5CE",
             "134C9F2"
@@ -1394,20 +1394,20 @@
         "vanillaItem": "Strength Tonic"
     },
     {
-        "name": "Reptiles Lair: Chest in room with 3 respawning lizard statues",
-        "nodeId": "reptiles_lair_behind_flail",
+        "name": "Reptile Lair: Chest in room with 3 respawning lizard statues",
+        "nodeId": "reptile_lair_behind_flail",
         "address": "134C79A",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Reptiles Lair: Chest next to stairs after leaving main flooded room using right stairs",
-        "nodeId": "reptiles_lair_behind_flail",
+        "name": "Reptile Lair: Chest next to stairs after leaving main flooded room using right stairs",
+        "nodeId": "reptile_lair_behind_flail",
         "address": "5881A86",
         "vanillaItem": "Herbs"
     },
     {
-        "name": "Reptiles Lair: Chest next to stairs after moving fireballs room",
-        "nodeId": "reptiles_lair_behind_flail",
+        "name": "Reptile Lair: Chest next to stairs after moving fireballs room",
+        "nodeId": "reptile_lair_behind_flail",
         "address": [
             "1403696",
             "58F2696"
@@ -1415,8 +1415,8 @@
         "vanillaItem": "Strength Tonic"
     },
     {
-        "name": "Reptiles Lair: Chest in room with two wooden bridges",
-        "nodeId": "reptiles_lair_behind_flail",
+        "name": "Reptile Lair: Chest in room with two wooden bridges",
+        "nodeId": "reptile_lair_behind_flail",
         "address": [
             "1403786",
             "58F2786"
@@ -1424,8 +1424,8 @@
         "vanillaItem": "Life Vessel"
     },
     {
-        "name": "Reptiles Lair: Chest in room with vibrating spikeballs",
-        "nodeId": "reptiles_lair_behind_flail",
+        "name": "Reptile Lair: Chest in room with vibrating spikeballs",
+        "nodeId": "reptile_lair_behind_flail",
         "address": [
             "1403BAA",
             "58F2BAA"
@@ -1433,8 +1433,8 @@
         "vanillaItem": "Gilded Falcon"
     },
     {
-        "name": "Reptiles Lair: Left chest in boss reward room",
-        "nodeId": "reptiles_lair_behind_flail",
+        "name": "Reptile Lair: Left chest in boss reward room",
+        "nodeId": "reptile_lair_behind_flail",
         "address": [
             "14430D2",
             "59320D2"
@@ -1442,8 +1442,8 @@
         "vanillaItem": "Sapphire Crest"
     },
     {
-        "name": "Reptiles Lair: Right chest in boss reward room",
-        "nodeId": "reptiles_lair_behind_flail",
+        "name": "Reptile Lair: Right chest in boss reward room",
+        "nodeId": "reptile_lair_behind_flail",
         "address": [
             "14430E6",
             "59320E6"

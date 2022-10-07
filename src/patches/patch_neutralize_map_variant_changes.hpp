@@ -25,7 +25,7 @@ public:
         // Neutralize the Inoa variant replacement when finishing the Crypt
         data.set_byte(0x72E55F, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
 
-        // Neutralize the Inoa variant replacement when finishing Reptile's Lair
+        // Neutralize the Inoa variant replacement when finishing Reptile Lair
         data.set_byte(0x1442734, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
         data.set_byte(0x5931734, INSTRUCTION_CODE_SKIP_MAP_VARIANT_SET);
 

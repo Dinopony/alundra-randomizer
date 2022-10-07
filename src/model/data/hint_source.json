@@ -4,9 +4,9 @@
         "nodeId": "lars_crypt",
         "text": "Wait. I forgot. Nevermind"
     },
-    "reptiles_lair": {
+    "reptile_lair": {
         "name": "Jeal (Reptile Lair)",
-        "nodeId": "reptiles_lair",
+        "nodeId": "reptile_lair",
         "text": "you need to gather seven crests"
     },
     "nirudes_lair": {

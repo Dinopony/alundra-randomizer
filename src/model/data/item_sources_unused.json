@@ -119,14 +119,14 @@
         "vanillaItem": "Nothing"
     },
     {
-        "name": "Reptiles Lair: First key chest",
-        "nodeId": "reptiles_lair_behind_flail",
+        "name": "Reptile Lair: First key chest",
+        "nodeId": "reptile_lair_behind_flail",
         "address": "134C7AE",
         "vanillaItem": "Key"
     },
     {
-        "name": "Reptiles Lair: Second key chest",
-        "nodeId": "reptiles_lair_behind_flail",
+        "name": "Reptile Lair: Second key chest",
+        "nodeId": "reptile_lair_behind_flail",
         "address": [
             "1443366",
             "5932366"
