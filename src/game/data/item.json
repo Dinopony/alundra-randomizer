@@ -25,19 +25,19 @@
         "name": "Holy Sword",
         "slot": 1,
         "tier": 3,
-        "goldValue": 600
+        "goldValue": 700
     },
     {
         "name": "Hunter's Bow",
         "slot": 2,
         "tier": 0,
-        "goldValue": 200
+        "goldValue": 150
     },
     {
         "name": "Willow Bow",
         "slot": 2,
         "tier": 1,
-        "goldValue": 350
+        "goldValue": 300
     },
     {
         "name": "Spirit Wand",
@@ -85,7 +85,7 @@
         "name": "Ice Wand",
         "slot": 4,
         "tier": 0,
-        "goldValue": 250
+        "goldValue": 200
     },
     {
         "name": "Armor upgrade",
@@ -97,7 +97,7 @@
         "name": "Fire Wand",
         "slot": 5,
         "tier": 0,
-        "goldValue": 250
+        "goldValue": 300
     },
     {
         "name": "Cloth Armor",
@@ -108,13 +108,13 @@
         "name": "Leather Armor",
         "slot": 7,
         "tier": 1,
-        "goldValue": 200
+        "goldValue": 150
     },
     {
         "name": "Ancient Armor",
         "slot": 7,
         "tier": 2,
-        "goldValue": 350
+        "goldValue": 300
     },
     {
         "name": "Silver Armor",
@@ -238,7 +238,7 @@
         "name": "Aqua Cape",
         "slot": 27,
         "tier": 0,
-        "goldValue": 150
+        "goldValue": 100
     },
     {
         "name": "Strength Tonic",
@@ -261,7 +261,7 @@
         "name": "Earth Book",
         "slot": 16,
         "tier": 1,
-        "goldValue": 600
+        "goldValue": 500
     },
     {
         "name": "Water Scroll",
@@ -273,7 +273,7 @@
         "name": "Water Book",
         "slot": 17,
         "tier": 1,
-        "goldValue": 600
+        "goldValue": 500
     },
     {
         "name": "Fire Scroll",
@@ -285,7 +285,7 @@
         "name": "Fire Book",
         "slot": 18,
         "tier": 1,
-        "goldValue": 600
+        "goldValue": 500
     },
     {
         "name": "Wind Scroll",
@@ -297,7 +297,7 @@
         "name": "Wind Book",
         "slot": 19,
         "tier": 1,
-        "goldValue": 600
+        "goldValue": 500
     },
     {
         "name": "Olga's Ring",
@@ -337,7 +337,7 @@
         "name": "Secret Pass",
         "slot": 28,
         "tier": 0,
-        "goldValue": 200
+        "goldValue": 100
     },
     {
         "name": "Item 0x3A",
@@ -348,7 +348,7 @@
         "name": "Power Glove",
         "slot": 23,
         "tier": 0,
-        "goldValue": 300
+        "goldValue": 200
     },
     {
         "name": "Elevator Key",
@@ -364,43 +364,43 @@
         "name": "Ruby Crest",
         "slot": 24,
         "tier": 0,
-        "goldValue": 1000
+        "goldValue": 800
     },
     {
         "name": "Sapphire Crest",
         "slot": 24,
         "tier": 1,
-        "goldValue": 1250
+        "goldValue": 900
     },
     {
         "name": "Topaz Crest",
         "slot": 24,
         "tier": 2,
-        "goldValue": 1500
+        "goldValue": 1000
     },
     {
         "name": "Agate Crest",
         "slot": 24,
         "tier": 3,
-        "goldValue": 1750
+        "goldValue": 1100
     },
     {
         "name": "Garnet Crest",
         "slot": 24,
         "tier": 3,
-        "goldValue": 2000
+        "goldValue": 1200
     },
     {
         "name": "Emerald Crest",
         "slot": 24,
         "tier": 4,
-        "goldValue": 2500
+        "goldValue": 1300
     },
     {
         "name": "Diamond Crest",
         "slot": 24,
         "tier": 5,
-        "goldValue": 3000
+        "goldValue": 1500
     },
     {
         "name": "1 Gilder",
@@ -469,7 +469,7 @@
         "name": "Magic Seed",
         "maxQuantity": 0,
         "precious": true,
-        "goldValue": 1000
+        "goldValue": 600
     },
     {
         "name": "Item 0x51"
@@ -481,7 +481,7 @@
         "name": "Life Vessel",
         "maxQuantity": 0,
         "precious": true,
-        "goldValue": 500
+        "goldValue": 300
     },
     {
         "name": "Item 0x54"
