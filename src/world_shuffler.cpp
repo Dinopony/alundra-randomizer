@@ -47,6 +47,8 @@ void WorldShuffler::randomize_items()
     // Place the remaining items from the item pool in the remaining sources
     this->place_remaining_items();
 
+    this->perform_specific_tweaks();
+
     // Analyse items required to complete the seed
     Json& debug_log = _solver.debug_log();
     _minimal_items_to_complete = _solver.find_minimal_inventory();
@@ -388,6 +390,29 @@ void WorldShuffler::place_remaining_items()
         std::cout << "[WARNING] Item '" << item->name() << "' is remaining in the item pool at end of generation.\n";
 
     _item_pool.clear();
+}
+
+void WorldShuffler::perform_specific_tweaks()
+{
+    // In Lurvy's shop, if unique items contain "Nothing", those cannot be bought and that makes the subsequent
+    // unique items unreachable. For that reason, we "push" the "Nothing" items towards the end of the unique items
+    // list to avoid any uncompletable seed.
+    ItemSource* lurvy_unique_1 = _world.item_source("Lurvy's Shop: Item #5 (Leather Armor)");
+    ItemSource* lurvy_unique_2 = _world.item_source("Lurvy's Shop: Item #5 replacement when bought once (Life Vessel)");
+    ItemSource* lurvy_unique_3 = _world.item_source("Lurvy's Shop: Item #5 replacement when bought twice (Wonder Essence)");
+
+    if(lurvy_unique_2->item()->id() == ITEM_NONE)
+    {
+        lurvy_unique_2->item(lurvy_unique_3->item());
+        lurvy_unique_3->item(_game_data.item(ITEM_NONE));
+    }
+
+    if(lurvy_unique_1->item()->id() == ITEM_NONE)
+    {
+        lurvy_unique_1->item(lurvy_unique_2->item());
+        lurvy_unique_2->item(lurvy_unique_3->item());
+        lurvy_unique_3->item(_game_data.item(ITEM_NONE));
+    }
 }
 
 Json WorldShuffler::playthrough_as_json() const

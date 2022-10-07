@@ -63,6 +63,7 @@ private:
 
     void open_random_blocked_path();
     void place_remaining_items();
+    void perform_specific_tweaks();
 
     ItemSource* find_item_source_for_progression_item(const Item* item, const std::vector<ItemSource*>& excluded_sources);
     void fill_item_source_randomly(ItemSource* source);
