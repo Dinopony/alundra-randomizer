@@ -82,3 +82,5 @@ constexpr Flag FLAG_CASINO_SLIME_4_WINS = Flag(0xD3F8, 0);
 constexpr Flag FLAG_CASINO_SLIME_BANNED = Flag(0xD3F8, 2);
 
 constexpr Flag FLAG_LURVY_WELCOMED_US_ONCE = Flag(0xD3BE, 2);
+
+constexpr Flag FLAG_ANCIENT_SHRINE_SYBOLS_PILLAR_ROOM_CLEARED = Flag(0xD3F8, 7);

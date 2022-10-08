@@ -40,5 +40,7 @@ public:
 
         // Remove the chest in the map variant where the chest has been opened
         data.set_word(0x36F3907, 0xFFFF);
+        // Remove the map variant change at Inoa
+        data.set_bytes(0x3AEABF4, { 0x02, 0x05, 0x00 });
     }
 };
