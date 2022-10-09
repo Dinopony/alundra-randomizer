@@ -23,6 +23,10 @@ public:
         data.set_word_le(0x43F83F, 0x0005);
         data.set_word_le(0x43F8A3, 0x0005);
         data.set_word_le(0x43F907, 0x0005);
+
+        // Make the Sluice Key door check that Sluice Key is owned instead of checking that chest containing Sluice Key
+        // in vanilla game was opened
+        data.set_word_le(0x567029A, 0x3100);
     }
 };
 
