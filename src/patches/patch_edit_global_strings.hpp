@@ -6,6 +6,9 @@
 
 class PatchEditGlobalStrings : public GamePatch
 {
+private:
+    uint32_t _new_file_size = 0;
+
 public:
     void alter_datas_file(BinaryFile& data_file, const GameData& game_data, const RandomizerWorld& world) override
     {
@@ -30,6 +33,23 @@ public:
         global_strings_file.clear();
         write_strings_to_file(global_strings_file, strings);
         global_strings_file.save();
+
+        _new_file_size = global_strings_file.size();
+    }
+
+    void alter_exe_file(PsxExeFile& exe_file, const GameData& game_data, const RandomizerWorld& world) override
+    {
+        if(_new_file_size > 0xFFFF)
+            throw RandomizerException("Global strings file is too big for its size to be expressed as a word");
+
+        if(_new_file_size % 0x800 > 0)
+        {
+            _new_file_size /= 0x800;
+            _new_file_size *= 0x800;
+            _new_file_size += 0x800;
+        }
+
+        exe_file.set_word_le(0xD040, _new_file_size);
     }
 
 private:
