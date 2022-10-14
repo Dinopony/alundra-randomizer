@@ -121,6 +121,17 @@ void TextboxFormatter::find_words()
             if(current_word == "\\W")
                 current_word += _input_string[++i];
 
+            // Ask (\0) instructions are closed by a '\Y'
+            if(current_word == "\\0")
+            {
+                while(_input_string[++i] != '\\')
+                    current_word += _input_string[i];
+
+                // Add the trailing `\Y`
+                current_word += _input_string[i];
+                current_word += _input_string[++i];
+            }
+
             _words.emplace_back(current_word);
             current_word = "";
             continue;
