@@ -942,13 +942,6 @@
         ]
     },
     {
-        "fromId": "overworld_e3",
-        "toId": "overworld_e2_behind_long_boots",
-        "requiredItems": [
-            "Sand Cape"
-        ]
-    },
-    {
         "fromId": "overworld_e2_behind_long_boots",
         "toId": "overworld_e3"
     },
