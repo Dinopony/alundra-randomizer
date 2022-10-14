@@ -76,9 +76,9 @@ public:
     MipsCode& sw(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to = 0);
     MipsCode& sh(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to = 0);
     MipsCode& sb(const MipsRegister& reg_from, const MipsRegister& reg_to, uint16_t offset_to = 0);
-    MipsCode& lw(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from = 0);
-    MipsCode& lh(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from = 0);
-    MipsCode& lb(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from = 0);
+    MipsCode& lw(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from = 0, bool add_load_delay_nop = true);
+    MipsCode& lh(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from = 0, bool add_load_delay_nop = true);
+    MipsCode& lb(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from = 0, bool add_load_delay_nop = true);
 
     // ----- PSEUDO INSTRUCTIONS -----
     MipsCode& set_(const MipsRegister& reg_to, uint32_t value);

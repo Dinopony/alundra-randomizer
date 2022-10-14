@@ -78,7 +78,7 @@ MipsCode& MipsCode::sb(const MipsRegister& reg_from, const MipsRegister& reg_to,
     return *this;
 }
 
-MipsCode& MipsCode::lw(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from)
+MipsCode& MipsCode::lw(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from, bool add_load_delay_nop)
 {
     // 1000 11ss ssst tttt iiii iiii iiii iiii
     uint32_t opcode = 0x8C000000;
@@ -87,11 +87,12 @@ MipsCode& MipsCode::lw(const MipsRegister& reg_to, const MipsRegister& reg_from,
     opcode |= offset_from;
 
     this->add_long_le(opcode);
-    this->nop();
+    if(add_load_delay_nop)
+        this->nop();
     return *this;
 }
 
-MipsCode& MipsCode::lh(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from)
+MipsCode& MipsCode::lh(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from, bool add_load_delay_nop)
 {
     // 1000 01ss ssst tttt iiii iiii iiii iiii
     uint32_t opcode = 0x84000000;
@@ -100,11 +101,12 @@ MipsCode& MipsCode::lh(const MipsRegister& reg_to, const MipsRegister& reg_from,
     opcode |= offset_from;
 
     this->add_long_le(opcode);
-    this->nop();
+    if(add_load_delay_nop)
+        this->nop();
     return *this;
 }
 
-MipsCode& MipsCode::lb(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from)
+MipsCode& MipsCode::lb(const MipsRegister& reg_to, const MipsRegister& reg_from, uint16_t offset_from, bool add_load_delay_nop)
 {
     // 1000 00ss ssst tttt iiii iiii iiii iiii
     uint32_t opcode = 0x80000000;
@@ -113,7 +115,8 @@ MipsCode& MipsCode::lb(const MipsRegister& reg_to, const MipsRegister& reg_from,
     opcode |= offset_from;
 
     this->add_long_le(opcode);
-    this->nop();
+    if(add_load_delay_nop)
+        this->nop();
     return *this;
 }
 
