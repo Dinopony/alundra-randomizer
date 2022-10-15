@@ -123,25 +123,25 @@
         "goldValue": 500
     },
     {
-        "name": "Earth Spell",
+        "name": "Earth Magic upgrade",
         "slot": 16,
         "tier": 64,
         "precious": true
     },
     {
-        "name": "Water Spell",
+        "name": "Water Magic upgrade",
         "slot": 17,
         "tier": 64,
         "precious": true
     },
     {
-        "name": "Fire Spell",
+        "name": "Fire Magic upgrade",
         "slot": 18,
         "tier": 64,
         "precious": true
     },
     {
-        "name": "Wind Spell",
+        "name": "Wind Magic upgrade",
         "slot": 19,
         "tier": 64,
         "precious": true
