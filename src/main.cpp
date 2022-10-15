@@ -165,8 +165,7 @@ Json randomize(RandomizerWorld& world, GameData& game_data, RandomizerOptions& o
     return spoiler_json;
 }
 
-void build_patched_rom(const std::filesystem::path& input_path, const std::filesystem::path& output_path, 
-                       GameData& game_data, RandomizerWorld& world, const RandomizerOptions& options)
+void generate(const ArgumentDictionary& args)
 {
 #ifdef DEBUG
     std::filesystem::remove_all("./tmp_dump/");
@@ -174,6 +173,7 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
 
     std::cout << "Extracting game files...\n";
 
+    std::filesystem::path input_rom_path = args.get_string("input", "./input.bin");
     extract_game_files(input_rom_path);
 
     std::cout << "Editing game files...\n";
@@ -181,24 +181,6 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
     BinaryFile datas_file("./tmp_dump/DATA/DATAS.BIN");
     PsxExeFile exe_file("./tmp_dump/ALUN_CD.EXE");
 
-    apply_randomizer_patches(datas_file, exe_file, game_data, world, options);
-
-    datas_file.save();
-    exe_file.save();
-
-    // Use an external tool to repack the files into a PS1 disc image
-    std::cout << "Building a disc image...\n";
-    rebuild_iso("./tmp_dump/", output_path);
-
-#ifndef DEBUG
-    std::filesystem::remove_all("./tmp_dump/");
-#endif
-
-    std::cout << "Randomized game outputted to " << output_path << ".\n";
-}
-
-void generate(const ArgumentDictionary& args)
-{
     GameData game_data;
     RandomizerWorld world(game_data);
     RandomizerOptions options(args, game_data, world);
@@ -214,12 +196,25 @@ void generate(const ArgumentDictionary& args)
     std::filesystem::path spoiler_log_path = args.get_string("outputlog", "");
     process_paths(output_rom_path, spoiler_log_path, options.hash_sentence());
 
-    // Don't perform the patching process if "only-logic" option was provided
+    // Apply patches to relevant files that were extracted from the game ROM
+    apply_randomizer_patches(datas_file, exe_file, game_data, world, options);
+
+    datas_file.save();
+    exe_file.save();
+
+    // Don't repack a new disc image if "only-logic" option was provided
     if(!args.contains("only-logic"))
     {
-        std::string input_rom_path = args.get_string("input", "./input.bin");
-        build_patched_rom(input_rom_path, output_rom_path, game_data, world, options);
+        std::cout << "Building a disc image...\n";
+
+        rebuild_iso("./tmp_dump/", output_rom_path);
+
+        std::cout << "Randomized game outputted to " << output_rom_path << ".\n";
     }
+
+#ifndef DEBUG
+    std::filesystem::remove_all("./tmp_dump/");
+#endif
     
     // Write a spoiler log to help the player
     if(!spoiler_log_path.empty())
