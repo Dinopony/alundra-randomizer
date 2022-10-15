@@ -115,6 +115,25 @@ void process_paths(std::filesystem::path& output_rom_path, std::filesystem::path
         spoiler_log_path = spoiler_log_path / (hash_sentence + ".json");
 }
 
+void extract_game_files(const std::filesystem::path& input_path)
+{
+    if(!std::filesystem::exists(input_path))
+    {
+        throw RandomizerException("Input file 'input.bin' is missing from the randomizer folder. "
+                                  "Please place your Alundra 1.1 US disc image there and rename it 'input.md'.)");
+    }
+
+    size_t file_size = std::filesystem::file_size(input_path);
+    if(file_size != 600359760)
+    {
+        throw RandomizerException("Invalid file size (" + std::to_string(file_size) + ") on the image file. "
+                                                                                      "Make sure you are using a 1.1 US image.");
+    }
+
+    // Dump the input ROM into a "tmp_dump" folder
+    dump_iso(input_path, "./tmp_dump/");
+}
+
 Json randomize(RandomizerWorld& world, GameData& game_data, RandomizerOptions& options, PersonalSettings& personal_settings, const ArgumentDictionary& args)
 {
     Json spoiler_json;
@@ -153,27 +172,12 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
     std::filesystem::remove_all("./tmp_dump/");
 #endif
 
-    std::cout << "Checking input image...\n";
-
-    if(!std::filesystem::exists(input_path))
-    {
-        throw RandomizerException("Input file 'input.bin' is missing from the randomizer folder. "
-                                  "Please place your Alundra 1.1 US disc image there and rename it 'input.md'.)");
-    }
-
-    size_t file_size = std::filesystem::file_size(input_path);
-    if(file_size != 600359760)
-    {
-        throw RandomizerException("Invalid file size (" + std::to_string(file_size) + ") on the image file. "
-                                  "Make sure you are using a 1.1 US image.");
-    }
-
-    // Dump the input ROM into a "tmp_dump" folder
     std::cout << "Extracting game files...\n";
-    dump_iso(input_path, "./tmp_dump/");
 
-    // Apply patches to relevant files that were extracted from the game ROM
+    extract_game_files(input_rom_path);
+
     std::cout << "Editing game files...\n";
+
     BinaryFile datas_file("./tmp_dump/DATA/DATAS.BIN");
     PsxExeFile exe_file("./tmp_dump/ALUN_CD.EXE");
 
