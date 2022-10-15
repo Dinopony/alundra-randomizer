@@ -13,13 +13,14 @@
 class Item;
 class ItemSource;
 class HintSource;
-class SpawnLocation;
+class RandomizerOptions;
 
 class WorldShuffler
 {
 private:
     RandomizerWorld& _world;
     const GameData& _game_data;
+    const RandomizerOptions& _options;
 
     /// The random number generator (RNG) used to randomize the world
     std::mt19937 _rng;

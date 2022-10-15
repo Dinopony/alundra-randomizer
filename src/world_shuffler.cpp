@@ -22,6 +22,7 @@ WorldShuffler::WorldShuffler(RandomizerWorld& world, const GameData& game_data, 
     _world          (world),
     _game_data      (game_data),
     _solver         (world),
+    _options        (options),
     _rng            (options.seed())
 {}
 
@@ -474,12 +475,29 @@ void WorldShuffler::init_hint_collections()
             ITEM_DIAMOND_CREST,
 
             ITEM_BOMB,          ITEM_SAND_CAPE,
-            ITEM_SPRING_BEAN,   ITEM_LONG_BOOTS,
-            ITEM_MERMAN_BOOTS,  ITEM_FIRE_WAND,
-            ITEM_ICE_WAND,      ITEM_IRON_FLAIL,
+            ITEM_SPRING_BEAN,
+            ITEM_FIRE_WAND,     ITEM_ICE_WAND,
             ITEM_BOUQUET,       ITEM_TREE_GEM,
             ITEM_SECRET_PASS,   ITEM_POWER_GLOVE
     };
+
+    // Handle hints for flail location
+    if(_options.progressive_items())
+        _hintable_item_locations.emplace_back(ITEM_FLAIL_UPGRADE);
+    else
+        _hintable_item_locations.emplace_back(ITEM_IRON_FLAIL);
+
+    // Handle hints for boots location
+    if(_options.progressive_items() && !_options.split_boots_effects())
+    {
+        _hintable_item_locations.emplace_back(ITEM_BOOTS_UPGRADE);
+    }
+    else
+    {
+        _hintable_item_locations.emplace_back(ITEM_LONG_BOOTS);
+        _hintable_item_locations.emplace_back(ITEM_MERMAN_BOOTS);
+    }
+
     vectools::shuffle(_hintable_item_locations, _rng);
 }
 
