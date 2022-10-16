@@ -72,8 +72,7 @@ private:
         MipsCode func;
         {
             // Add instructions replaced by the J injection
-            func.add_long(0x680f020c);
-            func.add_long(0x00000000);
+            func.jal(0x83DA0);
 
             func.lui(reg_AT, 0x801E);
 
@@ -105,6 +104,29 @@ private:
             // Set Overworld E1 (Nirude) to a variant where things work properly
             func.set_(reg_T0, 0x01B7);
             func.sh(reg_T0, reg_AT, 0xD456);
+
+            /*
+             * In the vanilla game, only a handful of items can be found in shops and be taken inside Alundra's hands.
+             * Developers only set valid physics properties to item objects that could be encountered inside shops,
+             * not to every possible item object. This means, if we want any item to work inside shops, we need to copy
+             * the "good" physics properties from a well-handled object to all other item objects. This code chunk does this.
+             */
+            func.set_(reg_T5, 0x800FEFB4);
+            func.set_(reg_T6, 0x800FEFFC);
+            func.set_(reg_AT, 0x800CC004);
+            func.set_(reg_T4, 0x800CC168);
+            func.label_("entity_type_def_loop");
+            {
+                func.lw(reg_T3, reg_AT);
+                func.beq_(reg_T3, 0xFFFFFFFF, "next_iter");
+                {
+                    func.sw(reg_T5, reg_T3);
+                    func.sw(reg_T6, reg_T3, 4);
+                }
+                func.label_("next_iter");
+                func.addiu(reg_AT, 0x4);
+                func.blt_(reg_AT, reg_T4, "entity_type_def_loop");
+            }
 
             // Jump back to calling procedure
             func.j(return_addr);

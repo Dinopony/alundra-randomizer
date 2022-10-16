@@ -92,6 +92,8 @@ public:
 
     MipsCode& label_(const std::string& label);
     MipsCode& bra_(const std::string& label);
+    MipsCode& beq_(const MipsRegister& reg_1, uint32_t value, const std::string& label);
+    MipsCode& bne_(const MipsRegister& reg_1, uint32_t value, const std::string& label);
     MipsCode& ble_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label);
     MipsCode& ble_(const MipsRegister& reg_1, uint32_t value, const std::string& label);
     MipsCode& blt_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label);

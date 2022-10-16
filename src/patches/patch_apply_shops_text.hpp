@@ -15,6 +15,7 @@ public:
         apply_naomi_shop_text(data, world);
         apply_lurvy_shop_text(data, world);
 
+        freeze_merrick_items(data);
         skip_lurvy_shop_entrance_cutscene(data);
     }
 
@@ -98,6 +99,18 @@ private:
         strings.string(57) = R"(\BReceived a )" + naomi_4->item()->name() + R"(.)";
 
         strings.apply_on_data(data);
+    }
+
+    /**
+     * This function prevents Merrick items from being taken and thrown to remove the need for any text change
+     * and remove any crash-prone interaction with the "open chest" slot
+     */
+    static void freeze_merrick_items(BinaryFile& data)
+    {
+        data.set_long(0x1EBF9D2, 0x00000000);
+        data.set_byte(0x1EBF9E8, 0x00);
+        data.set_byte(0x1EBF9FC, 0x00);
+        data.set_byte(0x1EBFA10, 0x00);
     }
 
     static void skip_lurvy_shop_entrance_cutscene(BinaryFile& data)

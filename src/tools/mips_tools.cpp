@@ -358,6 +358,18 @@ MipsCode& MipsCode::bra_(const std::string& label)
     return *this;
 }
 
+MipsCode& MipsCode::beq_(const MipsRegister& reg_1, uint32_t value, const std::string& label)
+{
+    this->set_(reg_T9, value);
+    return this->beq(reg_1, reg_T9, label);
+}
+
+MipsCode& MipsCode::bne_(const MipsRegister& reg_1, uint32_t value, const std::string& label)
+{
+    this->set_(reg_T9, value);
+    return this->bne(reg_1, reg_T9, label);
+}
+
 MipsCode& MipsCode::ble_(const MipsRegister& reg_1, const MipsRegister& reg_2, const std::string& label)
 {
     // if(reg1 <= reg2) <-------> if(!(reg2 < reg1))

@@ -57,9 +57,8 @@ public:
         // Fix ground Book of Elna byte causing trouble
         data.set_byte(0x1BA5D05, 0x00);
 
-        // Change the "repeating" slot at Merrick's shop visually into a chest
+        // Change the "repeating" slot at Merrick's shop visually into a open chest
         data.set_byte(0x1EBF9CE, 0x1E);
-        data.set_long(0x1EBF9D1, 0x00000000);
     }
 
     void alter_exe_file(PsxExeFile& exe, const GameData& game_data, const RandomizerWorld& world) override

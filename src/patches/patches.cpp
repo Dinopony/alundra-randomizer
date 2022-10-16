@@ -16,7 +16,6 @@
 #include "patch_remove_items_fanfare.hpp"
 #include "patch_fix_wrong_map_transitions.hpp"
 #include "patch_fix_item_names_in_textboxes.hpp"
-#include "patch_fix_throwables.hpp"
 #include "patch_split_boots_effects.hpp"
 #include "patch_apply_hint_text.hpp"
 #include "patch_remove_nava_instances.hpp"
@@ -58,7 +57,6 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
     patches.emplace_back(new PatchSetKingSnowDeathCount(options.king_snow_death_count()));
     patches.emplace_back(new PatchRemoveItemsFanfare());
     patches.emplace_back(new PatchFixItemNamesInTextboxes());
-    patches.emplace_back(new PatchFixThrowables());
     patches.emplace_back(new PatchApplyHintText());
     patches.emplace_back(new PatchRemoveNavaInstances());
     patches.emplace_back(new PatchRemoveVideos(options));
