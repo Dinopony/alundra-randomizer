@@ -302,6 +302,9 @@ MipsCode& MipsCode::set_(const MipsRegister& reg_to, uint32_t value)
 {
     uint16_t upper_half = value >> 16;
     uint16_t lower_half = value & 0xFFFF;
+    if(lower_half & 0x8000)
+        upper_half += 1;
+
     if(upper_half)
     {
         this->lui(reg_to, upper_half);

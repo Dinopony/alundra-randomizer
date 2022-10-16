@@ -42,7 +42,7 @@ private:
         MipsCode func;
 
         constexpr uint32_t FUN_FindOwnedItemOfBestTierForSlot = 0x4F810;
-        constexpr uint32_t ITEM_INFO_TABLE = 0x800CBE50;
+        constexpr uint32_t ITEM_INFO_TABLE = 0x800BBE50;
 
         constexpr auto input = reg_A0; // input is item ID
         constexpr auto return_value = reg_V0;
@@ -145,7 +145,7 @@ private:
         func.set_(reg_A1, storage_A1);      // Restore the original input values for the calling function
 
         func.label_("return");
-        func.set_(reg_V0, 0x8013E234);      // Code portion removed to inject the call
+        func.set_(reg_V0, 0x8012E234);      // Code portion removed to inject the call
         func.lw(reg_V0, reg_V0);            // |
         func.set_(reg_RA, storage_RA);      // |
         func.jr(reg_RA);                    // return;
