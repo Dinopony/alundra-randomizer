@@ -60,8 +60,9 @@ void dump_iso(const std::filesystem::path& input_file_path, const std::filesyste
  * 
  * @param input_dir_path the path to the directory containing game files
  * @param output_file_path the path to the output disc image file that will be created
+ * @return true if the process succeeded, false otherwise
  */
-void rebuild_iso(const std::filesystem::path& input_dir_path, const std::filesystem::path& output_file_path)
+bool rebuild_iso(const std::filesystem::path& input_dir_path, const std::filesystem::path& output_file_path)
 {
     std::filesystem::path cue_file_path = output_file_path;
     cue_file_path.replace_extension("cue");
@@ -74,6 +75,7 @@ void rebuild_iso(const std::filesystem::path& input_dir_path, const std::filesys
 
     command += " -o \"" + output_file_path.string() + "\"";
     command += " -c \"" + cue_file_path.string() + "\"";
+    command += " -y";
 
     // Remove standard output for this command
 #ifdef WIN32
@@ -82,7 +84,8 @@ void rebuild_iso(const std::filesystem::path& input_dir_path, const std::filesys
     command += " > /dev/null";
 #endif
 
-    system(command.c_str());
+    int exit_code = system(command.c_str());
+    return exit_code == 0;
 }
 
 /**
@@ -194,7 +197,8 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
 
     // Use an external tool to repack the files into a PS1 disc image
     std::cout << "Building a disc image...\n";
-    rebuild_iso("./tmp_dump/", output_path);
+    if(!rebuild_iso("./tmp_dump/", output_path))
+        throw RandomizerException("Could not build disc image. Maybe the file is currently in use?");
 
 #ifndef DEBUG
     std::filesystem::remove_all("./tmp_dump/");
