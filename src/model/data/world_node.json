@@ -242,15 +242,19 @@
     },
     "overworld_a3_left": {
         "hints": [],
+        "graphPos": [-24,0]
+    },
+    "overworld_a3_left_behind_merman": {
+        "hints": [],
         "graphPos": [-20,0]
     },
     "overworld_a3_left_behind_power_glove": {
         "hints": [],
-        "graphPos": [-20,5]
+        "graphPos": [-20,4]
     },
     "overworld_a3_mimics_cave": {
         "hints": [],
-        "graphPos": [-24,0]
+        "graphPos": [-24,4]
     },
     "overworld_a3_megalith": {
         "hints": [],

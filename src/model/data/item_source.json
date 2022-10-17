@@ -454,7 +454,7 @@
     },
     {
         "name": "Overworld A3: Lower chest in left ruins",
-        "nodeId": "overworld_a3_left",
+        "nodeId": "overworld_a3_left_behind_merman",
         "address": "1866E2",
         "vanillaItem": "Gilded Falcon"
     },

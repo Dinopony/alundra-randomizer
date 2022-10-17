@@ -603,7 +603,8 @@
         "fromId": "overworld_a4_manor_caves",
         "toId": "overworld_a4_manor_caves_behind_flail",
         "requiredItems": [
-            "Iron Flail"
+            "Iron Flail",
+            "Merman Boots"
         ]
     },
     {
@@ -661,7 +662,15 @@
         "twoWay": true,
         "requiredItems": [
             "Power Glove",
-            "Spring Bean"
+            "Spring Bean",
+            "Fire Wand"
+        ]
+    },
+    {
+        "fromId": "overworld_a3_left",
+        "toId": "overworld_a3_left_behind_merman",
+        "requiredItems": [
+            "Merman Boots"
         ]
     },
     {
@@ -682,7 +691,7 @@
         ]
     },
     {
-        "fromId": "overworld_a3_left",
+        "fromId": "overworld_a3_left_behind_merman",
         "toId": "river_network",
         "twoWay": true,
         "requiredItems": [
