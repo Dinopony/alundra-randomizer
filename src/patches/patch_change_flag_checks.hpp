@@ -27,6 +27,10 @@ public:
         // Make the Sluice Key door check that Sluice Key is owned instead of checking that chest containing Sluice Key
         // in vanilla game was opened
         data.set_word_le(0x567029A, 0x3100);
+
+        // Remove Septimus appearing on Overworld C2 if Magyscar is done
+        data.set_bytes(0x364D4E, { 0x02, 0x8B, 0x00 });
+        data.set_bytes(0x3652AE, { 0x02, 0x2E, 0x00 });
     }
 };
 
