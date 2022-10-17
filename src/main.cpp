@@ -160,7 +160,8 @@ Json randomize(RandomizerWorld& world, GameData& game_data, RandomizerOptions& o
 }
 
 void build_patched_rom(const std::filesystem::path& input_path, const std::filesystem::path& output_path, 
-                       GameData& game_data, RandomizerWorld& world, const RandomizerOptions& options)
+                       GameData& game_data, RandomizerWorld& world,
+                       const RandomizerOptions& options, const PersonalSettings& personal_settings)
 {
 #ifdef DEBUG
     std::filesystem::remove_all("./tmp_dump/");
@@ -190,7 +191,7 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
     BinaryFile datas_file("./tmp_dump/DATA/DATAS.BIN");
     PsxExeFile exe_file("./tmp_dump/ALUN_CD.EXE");
 
-    apply_randomizer_patches(datas_file, exe_file, game_data, world, options);
+    apply_randomizer_patches(datas_file, exe_file, game_data, world, options, personal_settings);
 
     datas_file.save();
     exe_file.save();
@@ -228,7 +229,7 @@ void generate(const ArgumentDictionary& args)
     if(!args.contains("only-logic"))
     {
         std::string input_rom_path = args.get_string("input", "./input.bin");
-        build_patched_rom(input_rom_path, output_rom_path, game_data, world, options);
+        build_patched_rom(input_rom_path, output_rom_path, game_data, world, options, personal_settings);
     }
     
     // Write a spoiler log to help the player

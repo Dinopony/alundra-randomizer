@@ -3,6 +3,7 @@
 #include <vector>
 
 class RandomizerOptions;
+class PersonalSettings;
 class GamePatch;
 class BinaryFile;
 class PsxExeFile;
@@ -15,4 +16,4 @@ void execute_patches(const std::vector<GamePatch*>& patches,
 
 void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
                               GameData& game_data, RandomizerWorld& world,
-                              const RandomizerOptions& options);
+                              const RandomizerOptions& options, const PersonalSettings& personal_settings);

@@ -1,2 +1,4 @@
 {
+    // If true, all in-game music will be removed, but sound effects will keep playing as usual.
+    "removeMusic": false
 }

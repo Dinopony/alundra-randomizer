@@ -10,10 +10,13 @@ class ArgumentDictionary;
 class PersonalSettings
 {
 private:
-    // TODO
+    bool _remove_music = false;
 
 public:
     explicit PersonalSettings(const ArgumentDictionary& args);
 
+    [[nodiscard]] bool remove_music() const { return _remove_music; }
+
+private:
     void parse_json(const Json& json);
 };

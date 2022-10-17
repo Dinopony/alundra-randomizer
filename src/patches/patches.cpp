@@ -1,6 +1,7 @@
 #include "patches.hpp"
 
 #include "../randomizer_options.hpp"
+#include "../personal_settings.hpp"
 
 #include "patch_new_game.hpp"
 #include "patch_fix_map_inconsistencies.hpp"
@@ -27,6 +28,7 @@
 #include "patch_edit_global_strings.hpp"
 #include "patch_adapt_blue_chest.hpp"
 #include "patch_set_casino_win_count.hpp"
+#include "patch_remove_music.hpp"
 
 void execute_patches(const std::vector<GamePatch*>& patches, 
                      BinaryFile& data_file, PsxExeFile& exe_file, 
@@ -40,7 +42,7 @@ void execute_patches(const std::vector<GamePatch*>& patches,
 
 void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe, 
                               GameData& game_data, RandomizerWorld& world,
-                              const RandomizerOptions& options)
+                              const RandomizerOptions& options, const PersonalSettings& personal_settings)
 {
     std::vector<GamePatch*> patches;
 
@@ -73,6 +75,8 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
         patches.emplace_back(new PatchProgressiveItems(!options.split_boots_effects()));
     if(options.original_game_balance())
         patches.emplace_back(new PatchOriginalGameBalance());
+    if(personal_settings.remove_music())
+        patches.emplace_back(new PatchRemoveMusic());
 
     execute_patches(patches, data, exe, game_data, world);
 }
