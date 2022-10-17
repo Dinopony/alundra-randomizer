@@ -100,6 +100,11 @@ void GameData::init_starting_flags()
 
     // Remove the specific cutscene when we enter Lurvy's shop for the first time
     _starting_flags.emplace_back(FLAG_LURVY_WELCOMED_US_ONCE);
+
+    // Open Yustel's house in Inoa, and place her behind her counter as if we already talked with her once
+    _starting_flags.emplace_back(FLAG_TALKED_TO_MEIA_PUTTING_SEPTIMUS_AT_SANCTUARY);
+    _starting_flags.emplace_back(FLAG_TALKED_TO_YUSTEL_ONCE);
+    _starting_flags.emplace_back(FLAG_YUSTEL_MOVED_BEHIND_COUNTER);
 }
 
 void GameData::apply_options(const RandomizerOptions& options)

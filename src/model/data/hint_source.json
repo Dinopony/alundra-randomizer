@@ -58,5 +58,15 @@
         "name": "Jess (Inoa)",
         "nodeId": "inoa",
         "text": "there would be an evil god called Melzas"
+    },
+    "yustel_1": {
+        "name": "Yustel free hint (Inoa)",
+        "nodeId": "inoa",
+        "text": "...What was I saying?"
+    },
+    "yustel_2": {
+        "name": "Yustel buyable hint (Inoa)",
+        "nodeId": "inoa",
+        "text": "...I must have forgotten."
     }
 }

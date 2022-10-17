@@ -41,6 +41,8 @@ Json RoomStrings::to_json() const
 
 void RoomStrings::apply_on_data(BinaryFile& datas_file) const
 {
+    std::map<std::string, uint16_t> already_found_strings;
+
     ByteArray string_bytes;
     uint16_t offsets_table_size = (_strings.size() + 1) * 2;
     string_bytes.reserve(offsets_table_size + _strings.size() * 20);
@@ -50,12 +52,26 @@ void RoomStrings::apply_on_data(BinaryFile& datas_file) const
     {
         std::string str = _strings[i];
         char* str_ptr = &(str[0]);
-        string_bytes.set_word_le(i * 2, string_bytes.size());
-        string_bytes.add_bytes(reinterpret_cast<uint8_t*>(str_ptr), str.size() + 1);
+
+        if(already_found_strings.count(str))
+        {
+            string_bytes.set_word_le(i * 2, already_found_strings.at(str));
+        }
+        else
+        {
+            already_found_strings[str] = string_bytes.size();
+            string_bytes.set_word_le(i * 2, string_bytes.size());
+            string_bytes.add_bytes(reinterpret_cast<uint8_t*>(str_ptr), str.size() + 1);
+        }
     }
 
     if(string_bytes.size() > _initial_strings_size)
-        throw RandomizerException("String data is bigger than in original room");
+    {
+        throw RandomizerException(
+            "String data is bigger than in original room (" + std::to_string(string_bytes.size()) + " > " +
+            std::to_string(_initial_strings_size) + ")"
+        );
+    }
 
     string_bytes.resize(_initial_strings_size, 0x00);
     datas_file.set_bytes(_initial_strings_pos, string_bytes);

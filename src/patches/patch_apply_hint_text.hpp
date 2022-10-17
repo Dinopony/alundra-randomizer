@@ -24,6 +24,7 @@ public:
         apply_fairy_pond_hint(data, world);
         apply_great_tree_hint(data, world);
         apply_navas_keep_hint(data, world);
+        apply_yustel_hints(data, world);
 
         apply_jess_hint(data, world);
 
@@ -222,6 +223,38 @@ private:
 
             strings.apply_on_data(data);
         }
+    }
+
+    static void apply_yustel_hints(BinaryFile& data, const RandomizerWorld& world)
+    {
+        constexpr uint16_t SECOND_HINT_PRICE = 250;
+        const std::string& hint_1 = world.hint_source("yustel_1")->text();
+        const std::string& hint_2 = world.hint_source("yustel_2")->text();
+
+        // The first (free) hint is different depending on the story chapter where you talk to Yustel in vanilla game.
+        // In a randomizer context, this chapter may vary since it is mostly handled through dungeon completion flags.
+        // As a consequence, we need to edit all of the Yustel hints to contain the same randomizer hint.
+        const std::vector<uint8_t> FREE_HINT_IDS = {
+            20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 38, 39, 40, 41, 42, 43,
+            44, 45, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 64, 65, 66, 67, 68, 69,
+            70, 71, 72, 73, 74, 75, 76, 77
+        };
+
+        RoomStrings strings(MAP_YUSTEL_HOUSE, data);
+
+        std::string first_hint_formatted_text = TextboxFormatter(R"(\DI see...\W2I see )" + hint_1 + "...").format();
+        for(uint8_t string_id : FREE_HINT_IDS)
+            strings.string(string_id) = first_hint_formatted_text;
+
+        strings.string(8) = TextboxFormatter("\\DThank you! The crystal ball showed me that " + hint_2 + ".").format();
+
+        // Make technical changes to rehabilitate paying hint
+        stringtools::replace(strings.string(6), "15",  std::to_string(SECOND_HINT_PRICE));
+        data.set_word_le(0x6632B09, SECOND_HINT_PRICE);     // Check gilders owned when saying "yes"
+        data.set_word_le(0x6632B18, SECOND_HINT_PRICE);     // Subtract gilders on payment
+        data.set_bytes(0x6632B1E, { 0x11, 0x00, 0xFF });    // Remove the part where map is shown with a bright marker
+
+        strings.apply_on_data(data);
     }
 
     static void apply_coal_mine_sign_vanilla_hint(BinaryFile& data)
