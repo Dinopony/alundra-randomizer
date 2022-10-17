@@ -58,7 +58,7 @@
             "Merrick's Shop: Item traded for 50 Gilded Falcons (Spirit Wand)": "Spirit Wand"
         },
 
-        // A dictionary used to define item sources that will never contain an item required for progression
+        // An array used to define item sources that will never contain an item required for progression
         "itemSourcesWithoutProgression": [
             "Riverside Casino: 'Wheel of Fortune' second reward (Gilded Falcon)",
             "Riverside Casino: 'Hit Your Mark' second reward (Gilded Falcon)",
@@ -78,7 +78,7 @@
 
             "1 Gilder": 2,
             "5 Gilder": 8,
-            "10 Gilder": 18,
+            "10 Gilder": 17,
             "30 Gilder": 24,
 
             "Life Vessel": 40,
@@ -122,6 +122,7 @@
             "Bouquet": 1,
             "Broken Armor": 1,
             "Small Key": 1,
+            "Sluice Key": 1,
 
             "Earth Scroll": 1,
             "Earth Book": 1,
