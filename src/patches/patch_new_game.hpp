@@ -37,22 +37,6 @@ public:
         exe.set_code(0x125A8, MipsCode().addiu(reg_A0, reg_ZERO, _options.starting_mana()));
         // Set starting Gilders
         exe.set_code(0x125B0, MipsCode().addiu(reg_A0, reg_ZERO, _options.starting_gold()));
-
-        // Set starting items
-        std::vector<bool> items_owned_on_start;
-        items_owned_on_start.resize(ITEM_COUNT, false);
-        for(const Item* item : world.starting_inventory())
-            items_owned_on_start[item->id()] = true;
-
-        for(uint8_t item_id = 1 ; item_id < ITEM_COUNT ; ++item_id)
-        {
-            uint32_t item_info_2_addr = 0xA85EA + (item_id * 8);
-            uint8_t flag = exe.get_byte(item_info_2_addr) & 0x7F;
-            if(items_owned_on_start[item_id])
-                flag |= 0x80;
-
-            exe.set_byte(item_info_2_addr, flag);
-        }
     }
 
 private:

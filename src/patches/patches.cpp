@@ -14,7 +14,6 @@
 #include "patch_remove_useless_cephas.hpp"
 #include "patch_remove_cutscenes.hpp"
 #include "patch_set_king_snow_death_count.hpp"
-#include "patch_remove_items_fanfare.hpp"
 #include "patch_fix_wrong_map_transitions.hpp"
 #include "patch_fix_item_names_in_textboxes.hpp"
 #include "patch_split_boots_effects.hpp"
@@ -57,7 +56,6 @@ void apply_randomizer_patches(BinaryFile& data, PsxExeFile& exe,
     patches.emplace_back(new PatchRemoveUselessCephas());
     patches.emplace_back(new PatchRemoveCutscenes());
     patches.emplace_back(new PatchSetKingSnowDeathCount(options.king_snow_death_count()));
-    patches.emplace_back(new PatchRemoveItemsFanfare());
     patches.emplace_back(new PatchFixItemNamesInTextboxes());
     patches.emplace_back(new PatchApplyHintText());
     patches.emplace_back(new PatchRemoveNavaInstances());

@@ -89,7 +89,6 @@ set(SOURCES
         "src/patches/patch_remove_useless_cephas.hpp"
         "src/patches/patch_remove_cutscenes.hpp"
         "src/patches/patch_set_king_snow_death_count.hpp"
-        "src/patches/patch_remove_items_fanfare.hpp"
         "src/patches/patch_fix_wrong_map_transitions.hpp"
         "src/patches/patch_fix_item_names_in_textboxes.hpp"
         "src/patches/patch_split_boots_effects.hpp"
