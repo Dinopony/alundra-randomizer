@@ -312,7 +312,8 @@
         "toId": "magyscar",
         "twoWay": true,
         "requiredItems": [
-            "Iron Flail"
+            "Iron Flail",
+            "Bomb"
         ]
     },
     {
