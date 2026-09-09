@@ -173,7 +173,7 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
     if(!std::filesystem::exists(input_path))
     {
         throw RandomizerException("Input file 'input.bin' is missing from the randomizer folder. "
-                                  "Please place your Alundra 1.1 US disc image there and rename it 'input.md'.)");
+                                  "Please place your Alundra 1.1 US disc image there and rename it 'input.bin'.");
     }
 
     size_t file_size = std::filesystem::file_size(input_path);
