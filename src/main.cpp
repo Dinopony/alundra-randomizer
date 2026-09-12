@@ -8,6 +8,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+#include <cstdint>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -27,7 +28,72 @@
 #include "tools/base64.hpp"
 #include "tools/binary_file.hpp"
 #include "tools/psx_exe_file.hpp"
+#include "tools/sha1.hpp"
 #include "patches/patches.hpp"
+
+namespace
+{
+    constexpr uint64_t ALUNDRA_USA_1_1_SIZE = 600359760;
+    constexpr const char* ALUNDRA_USA_1_1_SHA1 = "26523fc6bd463890066ca81444217b4c10efb4e2";
+
+    struct KnownUnsupportedImage
+    {
+        uint64_t size;
+        const char* name;
+    };
+
+    // Redump sizes for known Alundra BIN images that this patcher does not support.
+    constexpr KnownUnsupportedImage UNSUPPORTED_ALUNDRA_IMAGES[] = {
+        { 600289200, "Alundra USA 1.0" },
+        { 606013968, "Alundra Europe" },
+        { 606206832, "Alundra France" },
+        { 606049248, "Alundra Germany" },
+        { 606110400, "Alundra Italy" },
+        { 493049760, "Alundra Japan" },
+        { 606119808, "Alundra Spain" },
+    };
+
+    void validate_input_image(const std::filesystem::path& input_path)
+    {
+        if(!std::filesystem::exists(input_path))
+        {
+            throw RandomizerException("Input file 'input.bin' is missing from the randomizer folder. "
+                                      "Please place your Alundra 1.1 US disc image there and rename it 'input.bin'.");
+        }
+
+        const uint64_t file_size = std::filesystem::file_size(input_path);
+        for(const KnownUnsupportedImage& image : UNSUPPORTED_ALUNDRA_IMAGES)
+        {
+            if(file_size == image.size)
+            {
+                throw RandomizerException("This image looks like " + std::string(image.name)
+                                          + ", which is not supported. The randomizer requires Alundra USA 1.1.");
+            }
+        }
+
+        if(file_size != ALUNDRA_USA_1_1_SIZE)
+        {
+            throw RandomizerException("Invalid file size (" + std::to_string(file_size) + ") on the image file. "
+                                      "Make sure you are using a 1.1 US image.");
+        }
+
+        std::cout << "Verifying image checksum...\n";
+        sha1::Hash digest;
+        if(!sha1::hash_file(input_path, digest))
+        {
+            throw RandomizerException("Could not read image file '" + input_path.string()
+                                      + "' while computing SHA-1 checksum.");
+        }
+
+        const std::string digest_hex = digest.hex();
+        if(digest_hex != ALUNDRA_USA_1_1_SHA1)
+        {
+            throw RandomizerException("Image SHA-1 (" + digest_hex + ") does not match the known Alundra USA 1.1 dump ("
+                                      + std::string(ALUNDRA_USA_1_1_SHA1) + "). "
+                                      "The file may be corrupted or an unclean rip.");
+        }
+    }
+}
 
 /**
  * Calls the external tool `dumpsxiso` in order to dump the game image into a folder containing
@@ -169,19 +235,7 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
 #endif
 
     std::cout << "Checking input image...\n";
-
-    if(!std::filesystem::exists(input_path))
-    {
-        throw RandomizerException("Input file 'input.bin' is missing from the randomizer folder. "
-                                  "Please place your Alundra 1.1 US disc image there and rename it 'input.bin'.");
-    }
-
-    size_t file_size = std::filesystem::file_size(input_path);
-    if(file_size != 600359760)
-    {
-        throw RandomizerException("Invalid file size (" + std::to_string(file_size) + ") on the image file. "
-                                  "Make sure you are using a 1.1 US image.");
-    }
+    validate_input_image(input_path);
 
     // Dump the input ROM into a "tmp_dump" folder
     std::cout << "Extracting game files...\n";

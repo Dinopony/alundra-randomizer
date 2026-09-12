@@ -131,6 +131,7 @@ set(SOURCES
         "src/tools/json_tools.hpp"
         "src/tools/psx_exe_file.hpp"
         "src/tools/flag.hpp"
+        "src/tools/sha1.hpp"
 
         # --- Project root ----------------------------------------
         "src/personal_settings.hpp"

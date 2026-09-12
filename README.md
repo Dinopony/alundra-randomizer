@@ -28,7 +28,7 @@ original disc will not load until you restore that name.
 
 If you would rather keep the original filename (and a working `.cue`), you can pass it with `--input=` when
 running the randomizer. Quote the path if it contains spaces or parentheses, which is common for dumped discs
-(e.g. `--input="Alundra (USA).bin"`). On Windows, you can add that argument to `gen_preset.bat` /
+(e.g. `--input="Alundra (USA) (Rev 1).bin"`). On Windows, you can add that argument to `gen_preset.bat` /
 `gen_permalink.bat`, or run `alundra-randomizer.exe` directly.
 
 A command line interface will open, don't be scared! It will ask you for which **preset** you want to use. Presets are a
