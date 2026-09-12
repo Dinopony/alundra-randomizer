@@ -53,12 +53,59 @@ namespace
         { 606119808, "Alundra Spain" },
     };
 
+    // Filenames accepted when --input is omitted. input.bin stays first so existing setups keep working.
+    constexpr const char* KNOWN_INPUT_IMAGE_NAMES[] = {
+        "input.bin",
+        "Alundra.bin",
+        "Alundra (USA).bin",
+        "Alundra (USA) (Rev 1).bin",
+        "Alundra (USA) (v1.1).bin",
+    };
+
+    std::string format_known_input_image_names()
+    {
+        std::string result;
+        bool first = true;
+        for(const char* name : KNOWN_INPUT_IMAGE_NAMES)
+        {
+            if(!first)
+                result += ", ";
+            first = false;
+            result += "'";
+            result += name;
+            result += "'";
+        }
+        return result;
+    }
+
+    std::filesystem::path resolve_input_image_path(const ArgumentDictionary& args)
+    {
+        const std::string input_arg = args.get_string("input");
+        if(!input_arg.empty())
+            return input_arg;
+
+        for(const char* name : KNOWN_INPUT_IMAGE_NAMES)
+        {
+            std::filesystem::path candidate("./");
+            candidate /= name;
+            if(std::filesystem::is_regular_file(candidate))
+                return candidate;
+        }
+
+        throw RandomizerException("Could not find an Alundra disc image in the randomizer folder. "
+                                  "Please place your Alundra 1.1 US image there using one of these names: "
+                                  + format_known_input_image_names()
+                                  + ". You can also pass a path with --input=.");
+    }
+
     void validate_input_image(const std::filesystem::path& input_path)
     {
         if(!std::filesystem::exists(input_path))
         {
-            throw RandomizerException("Input file 'input.bin' is missing from the randomizer folder. "
-                                      "Please place your Alundra 1.1 US disc image there and rename it 'input.bin'.");
+            throw RandomizerException("Input file '" + input_path.string() + "' was not found. "
+                                      "Please place your Alundra 1.1 US disc image at that path, "
+                                      "or omit --input to auto-detect a known filename ("
+                                      + format_known_input_image_names() + ").");
         }
 
         const uint64_t file_size = std::filesystem::file_size(input_path);
@@ -234,7 +281,7 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
     std::filesystem::remove_all("./tmp_dump/");
 #endif
 
-    std::cout << "Checking input image...\n";
+    std::cout << "Checking input image '" << input_path.string() << "'...\n";
     validate_input_image(input_path);
 
     // Dump the input ROM into a "tmp_dump" folder
@@ -265,6 +312,15 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
 
 void generate(const ArgumentDictionary& args)
 {
+    // Fail fast if the disc image is missing (--only-logic does not need one).
+    const bool patch_rom = !args.contains("only-logic");
+    std::filesystem::path input_rom_path;
+    if(patch_rom)
+    {
+        input_rom_path = resolve_input_image_path(args);
+        std::cout << "Using input image '" << input_rom_path.string() << "'.\n";
+    }
+
     GameData game_data;
     RandomizerWorld world(game_data);
     RandomizerOptions options(args, game_data, world);
@@ -280,12 +336,8 @@ void generate(const ArgumentDictionary& args)
     std::filesystem::path spoiler_log_path = args.get_string("outputlog", "");
     process_paths(output_rom_path, spoiler_log_path, options.hash_sentence());
 
-    // Don't perform the patching process if "only-logic" option was provided
-    if(!args.contains("only-logic"))
-    {
-        std::string input_rom_path = args.get_string("input", "./input.bin");
+    if(patch_rom)
         build_patched_rom(input_rom_path, output_rom_path, game_data, world, options);
-    }
     
     // Write a spoiler log to help the player
     if(!spoiler_log_path.empty())
