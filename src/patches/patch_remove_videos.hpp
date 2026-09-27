@@ -5,6 +5,9 @@
 #include "../tools/mips_tools.hpp"
 #include "../tools/exception.hpp"
 
+#include <cstdint>
+#include <fstream>
+
 /**
  * This patch removes the following videos from the game disc:
  *  - intro (logos + US opening)

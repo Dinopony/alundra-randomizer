@@ -1,5 +1,7 @@
 #include "bitstream_reader.hpp"
 
+#include <cstdint>
+
 template<>
 std::string unpack_from<std::string>(BitstreamReader& bitpack)
 {

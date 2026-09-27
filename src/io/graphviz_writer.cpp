@@ -9,6 +9,9 @@
 #include "../model/randomizer_world.hpp"
 
 #include <climits>
+#include <cstdint>
+#include <fstream>
+#include <map>
 
 namespace GraphvizWriter {
 

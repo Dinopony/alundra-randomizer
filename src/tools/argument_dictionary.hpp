@@ -1,8 +1,9 @@
 #pragma once
 
-#include <string>
+#include <algorithm>
 #include <map>
 #include <stdexcept>
+#include <string>
 #include "stringtools.hpp"
 
 class ArgumentDictionary {

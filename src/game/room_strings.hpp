@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <string>
 #include "../tools/json.hpp"
 #include "../tools/byte_array.hpp"

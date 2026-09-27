@@ -1,5 +1,8 @@
 #pragma once
 
+#include <cstdint>
+#include <vector>
+
 #include "binary_file.hpp"
 #include "mips_tools.hpp"
 

@@ -1,7 +1,13 @@
 #pragma once
 
+#include <cstdint>
+#include <map>
+#include <string>
+#include <vector>
+
 #include "../game/item.hpp"
 #include "../constants/item_codes.hpp"
+#include "../tools/json.hpp"
 
 class GameData;
 class WorldNode;

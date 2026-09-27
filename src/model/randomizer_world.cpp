@@ -18,7 +18,10 @@
 #include "../tools/vectools.hpp"
 #include "../constants/flags.hpp"
 
+#include <algorithm>
+#include <cstdint>
 #include <iostream>
+#include <map>
 
 RandomizerWorld::RandomizerWorld(const GameData& game_data)
 {

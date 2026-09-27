@@ -1,5 +1,4 @@
-#pragma once
-
+#include <cstdint>
 #include <stdexcept>
 #include <string>
 #include "byte_array.hpp"

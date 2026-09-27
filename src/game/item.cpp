@@ -1,6 +1,8 @@
 #include "item.hpp"
 #include "../tools/exception.hpp"
 
+#include <cstdint>
+
 Json Item::to_json() const
 {
     Json json;

@@ -1,3 +1,7 @@
+#include "base64.hpp"
+
+#include <cctype>
+#include <cstdint>
 #include <string>
 #include <vector>
 

@@ -6,6 +6,9 @@
 
 #include "tools/exception.hpp"
 
+#include <cstdint>
+#include <fstream>
+#include <map>
 
 WorldSolver::WorldSolver(const RandomizerWorld& world) : _world (world)
 {}

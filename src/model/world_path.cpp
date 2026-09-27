@@ -3,6 +3,8 @@
 #include "world_node.hpp"
 #include "../tools/vectools.hpp"
 #include "../tools/exception.hpp"
+#include <cstdint>
+#include <map>
 #include <utility>
 
 std::map<const Item*, uint16_t> WorldPath::required_items_and_quantity() const

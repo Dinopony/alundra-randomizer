@@ -1,5 +1,7 @@
 #include "game_data.hpp"
 
+#include <cstdint>
+
 #include "item.hpp"
 #include "../constants/flags.hpp"
 #include "../randomizer_options.hpp"

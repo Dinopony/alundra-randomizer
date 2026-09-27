@@ -1,10 +1,12 @@
 #pragma once
 
-#include <map>
-#include <string>
-#include <stdexcept>
+#include <array>
 #include <chrono>
+#include <cstdint>
 #include <fstream>
+#include <map>
+#include <stdexcept>
+#include <string>
 
 #include "tools/json.hpp"
 #include "constants/item_codes.hpp"

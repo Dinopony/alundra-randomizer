@@ -1,7 +1,10 @@
 #pragma once
 
 #include "json.hpp"
+#include <cstdint>
 #include <sstream>
+#include <string>
+#include <vector>
 
 inline Json addresses_to_json(const std::vector<uint32_t>& addresses)
 {

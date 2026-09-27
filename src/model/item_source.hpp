@@ -1,7 +1,9 @@
 #pragma once
 
+#include <cstdint>
 #include <string>
 #include <utility>
+#include <vector>
 #include "../game/item.hpp"
 #include "../constants/item_codes.hpp"
 

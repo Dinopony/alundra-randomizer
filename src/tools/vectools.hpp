@@ -1,9 +1,10 @@
 #pragma once
 
+#include <algorithm>
+#include <cstdint>
+#include <initializer_list>
 #include <random>
 #include <vector>
-#include <initializer_list>
-#include <algorithm>
 
 namespace vectools {
 

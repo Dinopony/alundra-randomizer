@@ -2,6 +2,7 @@
 #include "stringtools.hpp"
 
 #include <array>
+#include <cstdint>
 
 constexpr uint16_t TEXTBOX_WIDTH = 500;
 constexpr uint16_t TEXTBOX_LINES = 3;

@@ -1,5 +1,6 @@
 #include "world_node.hpp"
 
+#include <algorithm>
 #include <climits>
 
 void WorldNode::remove_item_source(ItemSource* source)

@@ -1,7 +1,10 @@
 #pragma once
 
-#include <vector>
+#include <array>
+#include <cstdint>
 #include <map>
+#include <string>
+#include <vector>
 #include "exception.hpp"
 
 class BitstreamReader {

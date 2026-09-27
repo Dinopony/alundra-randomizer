@@ -1,9 +1,10 @@
 ﻿#pragma once
 
+#include <cstdint>
 #include <filesystem>
-#include <vector>
-#include <map>
 #include <fstream>
+#include <map>
+#include <vector>
 #include "byte_array.hpp"
 
 class BinaryFile : public ByteArray

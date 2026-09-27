@@ -1,9 +1,10 @@
 #pragma once
 
-#include <map>
-#include <vector>
 #include <array>
+#include <cstdint>
+#include <map>
 #include <string>
+#include <vector>
 #include "../constants/item_codes.hpp"
 
 class GameData;

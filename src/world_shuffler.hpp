@@ -1,9 +1,11 @@
 #pragma once
 
-#include <vector>
-#include <string>
-#include <random>
 #include <array>
+#include <cstdint>
+#include <map>
+#include <random>
+#include <string>
+#include <vector>
 
 #include "randomizer_options.hpp"
 #include "world_solver.hpp"

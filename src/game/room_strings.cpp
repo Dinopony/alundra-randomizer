@@ -2,6 +2,8 @@
 #include "../tools/binary_file.hpp"
 #include "../tools/exception.hpp"
 
+#include <cstdint>
+
 RoomStrings::RoomStrings(uint32_t map_id, const BinaryFile& datas_file)
 {
     uint32_t room_offset_addr = 0x28 + (map_id * 4);

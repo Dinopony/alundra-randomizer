@@ -1,6 +1,8 @@
 #include "mips_tools.hpp"
 #include "exception.hpp"
 
+#include <cstdint>
+
 MipsCode::~MipsCode() noexcept(false)
 {
     if(!_pending_branches.empty())

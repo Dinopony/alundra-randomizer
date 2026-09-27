@@ -2,6 +2,8 @@
 #include "exception.hpp"
 #include "byte_array.hpp"
 
+#include <cstdint>
+#include <fstream>
 #include <iostream>
 
 BinaryFile::BinaryFile(const std::filesystem::path& input_path) :

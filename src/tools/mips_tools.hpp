@@ -1,8 +1,9 @@
 #pragma once
 
-#include <vector>
+#include <cstdint>
 #include <map>
 #include <string>
+#include <vector>
 #include "byte_array.hpp"
 
 ////////////////////////////////////////////////////////////////////////

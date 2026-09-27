@@ -1,6 +1,10 @@
 #include "randomizer_options.hpp"
 
+#include <chrono>
+#include <cstdint>
+#include <fstream>
 #include <iostream>
+#include <map>
 #include <utility>
 
 #include "game/game_data.hpp"

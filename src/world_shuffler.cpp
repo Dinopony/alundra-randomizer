@@ -16,7 +16,9 @@
 #include "world_solver.hpp"
 
 #include <algorithm>
+#include <cstdint>
 #include <iostream>
+#include <map>
 
 WorldShuffler::WorldShuffler(RandomizerWorld& world, const GameData& game_data, const RandomizerOptions& options) :
     _world          (world),

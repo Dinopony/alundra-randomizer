@@ -1,7 +1,9 @@
 #pragma once
 
 #include "../tools/json.hpp"
+#include <cstdint>
 #include <sstream>
+#include <string>
 #include <utility>
 
 class Item

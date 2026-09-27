@@ -1,12 +1,13 @@
 #pragma once
 
-#include <vector>
-#include <map>
-#include <string>
-#include <random>
 #include <algorithm>
-#include <sstream>
+#include <cctype>
 #include <fstream>
+#include <map>
+#include <random>
+#include <sstream>
+#include <string>
+#include <vector>
 #include "json.hpp"
 
 namespace stringtools

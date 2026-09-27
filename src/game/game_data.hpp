@@ -5,6 +5,8 @@
 #include "../tools/flag.hpp"
 #include "item.hpp"
 
+#include <array>
+#include <cstdint>
 #include <map>
 #include <vector>
 
