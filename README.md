@@ -21,8 +21,21 @@ It works on a 1.1 US image of the game by randomizing item sources and altering 
 Using the provided release packages (on the right panel of this webpage) is really straightforward since everything
 (excepted the original ROM, of course) is included for you to start randomizing.
 
-You just have to put your own copy of the original 1.1 US game disc inside the folder, rename it `input.bin`, and use the 
-`gen_preset.bat` script on Windows (Linux users are expected to know how to use CLI).
+You just have to put your own copy of the original 1.1 US game disc inside the folder. The randomizer will
+automatically pick it up if it uses one of these names:
+
+- `input.bin`
+- `Alundra.bin`
+- `Alundra (USA).bin`
+- `Alundra (USA) (Rev 1).bin`
+- `Alundra (USA) (v1.1).bin`
+
+Keeping a common dump name (instead of renaming to `input.bin` as older versions required) also keeps a matching `.cue`
+file working. Use the `gen_preset.bat` script on Windows (Linux users are expected to know how to use CLI).
+
+If your image uses a different filename, pass it with `--input=` when running the randomizer. Quote the path
+if it contains spaces or parentheses (e.g. `--input="My Alundra dump.bin"`). On Windows, you can add that
+argument to `gen_preset.bat` / `gen_permalink.bat`, or run `alundra-randomizer.exe` directly.
 
 A command line interface will open, don't be scared! It will ask you for which **preset** you want to use. Presets are a
 bunch of settings that define how the game will be randomized, and there is a default one provided with the randomizer.

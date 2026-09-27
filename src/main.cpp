@@ -8,6 +8,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+#include <cstdint>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -27,7 +28,119 @@
 #include "tools/base64.hpp"
 #include "tools/binary_file.hpp"
 #include "tools/psx_exe_file.hpp"
+#include "tools/sha1.hpp"
 #include "patches/patches.hpp"
+
+namespace
+{
+    constexpr uint64_t ALUNDRA_USA_1_1_SIZE = 600359760;
+    constexpr const char* ALUNDRA_USA_1_1_SHA1 = "26523fc6bd463890066ca81444217b4c10efb4e2";
+
+    struct KnownUnsupportedImage
+    {
+        uint64_t size;
+        const char* name;
+    };
+
+    // Redump sizes for known Alundra BIN images that this patcher does not support.
+    constexpr KnownUnsupportedImage UNSUPPORTED_ALUNDRA_IMAGES[] = {
+        { 600289200, "Alundra USA 1.0" },
+        { 606013968, "Alundra Europe" },
+        { 606206832, "Alundra France" },
+        { 606049248, "Alundra Germany" },
+        { 606110400, "Alundra Italy" },
+        { 493049760, "Alundra Japan" },
+        { 606119808, "Alundra Spain" },
+    };
+
+    // Filenames accepted when --input is omitted. input.bin stays first so existing setups keep working.
+    constexpr const char* KNOWN_INPUT_IMAGE_NAMES[] = {
+        "input.bin",
+        "Alundra.bin",
+        "Alundra (USA).bin",
+        "Alundra (USA) (Rev 1).bin",
+        "Alundra (USA) (v1.1).bin",
+    };
+
+    std::string format_known_input_image_names()
+    {
+        std::string result;
+        bool first = true;
+        for(const char* name : KNOWN_INPUT_IMAGE_NAMES)
+        {
+            if(!first)
+                result += ", ";
+            first = false;
+            result += "'";
+            result += name;
+            result += "'";
+        }
+        return result;
+    }
+
+    std::filesystem::path resolve_input_image_path(const ArgumentDictionary& args)
+    {
+        const std::string input_arg = args.get_string("input");
+        if(!input_arg.empty())
+            return input_arg;
+
+        for(const char* name : KNOWN_INPUT_IMAGE_NAMES)
+        {
+            std::filesystem::path candidate("./");
+            candidate /= name;
+            if(std::filesystem::is_regular_file(candidate))
+                return candidate;
+        }
+
+        throw RandomizerException("Could not find an Alundra disc image in the randomizer folder. "
+                                  "Please place your Alundra 1.1 US image there using one of these names: "
+                                  + format_known_input_image_names()
+                                  + ". You can also pass a path with --input=.");
+    }
+
+    void validate_input_image(const std::filesystem::path& input_path)
+    {
+        if(!std::filesystem::exists(input_path))
+        {
+            throw RandomizerException("Input file '" + input_path.string() + "' was not found. "
+                                      "Please place your Alundra 1.1 US disc image at that path, "
+                                      "or omit --input to auto-detect a known filename ("
+                                      + format_known_input_image_names() + ").");
+        }
+
+        const uint64_t file_size = std::filesystem::file_size(input_path);
+        for(const KnownUnsupportedImage& image : UNSUPPORTED_ALUNDRA_IMAGES)
+        {
+            if(file_size == image.size)
+            {
+                throw RandomizerException("This image looks like " + std::string(image.name)
+                                          + ", which is not supported. The randomizer requires Alundra USA 1.1.");
+            }
+        }
+
+        if(file_size != ALUNDRA_USA_1_1_SIZE)
+        {
+            throw RandomizerException("Invalid file size (" + std::to_string(file_size) + ") on the image file. "
+                                      "Make sure you are using a 1.1 US image.");
+        }
+
+        std::cout << "Verifying image checksum...\n";
+        sha1::Hash digest;
+        if(!sha1::hash_file(input_path, digest))
+        {
+            throw RandomizerException("Could not read image file '" + input_path.string()
+                                      + "' while computing SHA-1 checksum.");
+        }
+
+        const std::string digest_hex = digest.hex();
+        if(digest_hex != ALUNDRA_USA_1_1_SHA1)
+        {
+            throw RandomizerException("Image SHA-1 (" + digest_hex + ") does not match the known Alundra USA 1.1 dump ("
+                                      + std::string(ALUNDRA_USA_1_1_SHA1) + "). "
+                                      "The file may be corrupted or an unclean rip.");
+        }
+    }
+}
 
 /**
  * Calls the external tool `dumpsxiso` in order to dump the game image into a folder containing
@@ -168,20 +281,8 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
     std::filesystem::remove_all("./tmp_dump/");
 #endif
 
-    std::cout << "Checking input image...\n";
-
-    if(!std::filesystem::exists(input_path))
-    {
-        throw RandomizerException("Input file 'input.bin' is missing from the randomizer folder. "
-                                  "Please place your Alundra 1.1 US disc image there and rename it 'input.md'.)");
-    }
-
-    size_t file_size = std::filesystem::file_size(input_path);
-    if(file_size != 600359760)
-    {
-        throw RandomizerException("Invalid file size (" + std::to_string(file_size) + ") on the image file. "
-                                  "Make sure you are using a 1.1 US image.");
-    }
+    std::cout << "Checking input image '" << input_path.string() << "'...\n";
+    validate_input_image(input_path);
 
     // Dump the input ROM into a "tmp_dump" folder
     std::cout << "Extracting game files...\n";
@@ -211,6 +312,15 @@ void build_patched_rom(const std::filesystem::path& input_path, const std::files
 
 void generate(const ArgumentDictionary& args)
 {
+    // Fail fast if the disc image is missing (--only-logic does not need one).
+    const bool patch_rom = !args.contains("only-logic");
+    std::filesystem::path input_rom_path;
+    if(patch_rom)
+    {
+        input_rom_path = resolve_input_image_path(args);
+        std::cout << "Using input image '" << input_rom_path.string() << "'.\n";
+    }
+
     GameData game_data;
     RandomizerWorld world(game_data);
     RandomizerOptions options(args, game_data, world);
@@ -226,12 +336,8 @@ void generate(const ArgumentDictionary& args)
     std::filesystem::path spoiler_log_path = args.get_string("outputlog", "");
     process_paths(output_rom_path, spoiler_log_path, options.hash_sentence());
 
-    // Don't perform the patching process if "only-logic" option was provided
-    if(!args.contains("only-logic"))
-    {
-        std::string input_rom_path = args.get_string("input", "./input.bin");
+    if(patch_rom)
         build_patched_rom(input_rom_path, output_rom_path, game_data, world, options);
-    }
     
     // Write a spoiler log to help the player
     if(!spoiler_log_path.empty())
