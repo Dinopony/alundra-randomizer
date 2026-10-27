@@ -325,7 +325,8 @@
         "nodeIds": [
             "overworld_a2",
             "overworld_a2_behind_vines",
-            "overworld_a2_behind_vines_and_bomb"
+            "overworld_a2_behind_vines_and_bomb",
+            "overworld_a2_behind_vines_bomb_and_flail"
         ],
         "hintName": "in the Murgg woods"
     },

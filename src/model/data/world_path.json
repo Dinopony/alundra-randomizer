@@ -812,6 +812,14 @@
     },
     {
         "fromId": "overworld_a2_behind_vines_and_bomb",
+        "toId": "overworld_a2_behind_vines_bomb_and_flail",
+        "twoWay": true,
+        "requiredItems": [
+            "Iron Flail"
+        ]
+    },
+    {
+        "fromId": "overworld_a2_behind_vines_bomb_and_flail",
         "toId": "overworld_a1",
         "twoWay": true
     },

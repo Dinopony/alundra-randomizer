@@ -304,6 +304,10 @@
         "hints": [],
         "graphPos": [-20,16]
     },
+    "overworld_a2_behind_vines_bomb_and_flail": {
+        "hints": [],
+        "graphPos": [-20,18]
+    },
     "overworld_e2": {
         "hints": [],
         "graphPos": [20,10]
