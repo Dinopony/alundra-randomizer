@@ -2,6 +2,7 @@
 
 #include "game_patch.hpp"
 #include "../tools/byte_array.hpp"
+#include "../tools/exception.hpp"
 #include "../tools/mips_tools.hpp"
 #include "../constants/map_codes.hpp"
 
@@ -13,6 +14,12 @@ private:
     const RandomizerOptions& _options;
 
 public:
+    // j 0x80031E88. Its delay sets v0 and must stay: the join stores v0.
+    static constexpr uint32_t RESUME_JUMP = 0x1252C;
+    static constexpr uint32_t RESUME_JUMP_WORD = 0x0800C7A2;
+    static constexpr uint32_t RESUME_DELAY_WORD = 0x24020036;
+    static constexpr uint32_t RESUME_JOIN = 0x80000000 + 0x12688 + CODE_BASE_ADDR;
+
     explicit PatchNewGame(const RandomizerOptions& options) : _options(options)
     {}
 
@@ -28,6 +35,18 @@ public:
         uint32_t return_addr = 0x1253c + CODE_BASE_ADDR;
         uint32_t func_addr = inject_func_init_game(exe, return_addr, game_data);
         exe.set_code(0x12534, MipsCode().j(func_addr, false));
+
+        // A memory-card load takes the other branch and jumps over that init.
+        // Shop-throw physics are not part of the save, so the same copy has to
+        // run there and then rejoin at the instruction the jump used to name.
+        if(exe.get_long_le(RESUME_JUMP) != RESUME_JUMP_WORD
+                || exe.get_long_le(RESUME_JUMP + 4) != RESUME_DELAY_WORD)
+        {
+            throw RandomizerException(
+                    "Memory card resume does not jump over new game at the expected instruction.");
+        }
+        uint32_t resume_addr = inject_func_resume_shop_physics(exe);
+        exe.set_code(RESUME_JUMP, MipsCode().j(resume_addr, false));
 
         // Set starting HP
         exe.set_code(0x12590, MipsCode().addiu(reg_A0, reg_ZERO, _options.starting_health()));
@@ -56,6 +75,40 @@ public:
     }
 
 private:
+    static void add_shop_throw_physics(MipsCode& code)
+    {
+        /*
+         * In the vanilla game, only a handful of items can be found in shops and be taken inside Alundra's hands.
+         * Developers only set valid physics properties to item objects that could be encountered inside shops,
+         * not to every possible item object. This means, if we want any item to work inside shops, we need to copy
+         * the "good" physics properties from a well-handled object to all other item objects. This code chunk does this.
+         */
+        code.set_(reg_T5, 0x800FEFB4);
+        code.set_(reg_T6, 0x800FEFFC);
+        code.set_(reg_AT, 0x800CC004);
+        code.set_(reg_T4, 0x800CC168);
+        code.label_("entity_type_def_loop");
+        {
+            code.lw(reg_T3, reg_AT);
+            code.beq_(reg_T3, 0xFFFFFFFF, "next_iter");
+            {
+                code.sw(reg_T5, reg_T3);
+                code.sw(reg_T6, reg_T3, 4);
+            }
+            code.label_("next_iter");
+            code.addiu(reg_AT, 0x4);
+            code.blt_(reg_AT, reg_T4, "entity_type_def_loop");
+        }
+    }
+
+    static uint32_t inject_func_resume_shop_physics(PsxExeFile& exe)
+    {
+        MipsCode func;
+        add_shop_throw_physics(func);
+        func.j(RESUME_JOIN);
+        return exe.inject_code(func);
+    }
+
     static uint32_t inject_func_init_game(PsxExeFile& exe, uint32_t return_addr, const GameData& game_data)
     {
         // Build a memory map of starting flags in order to know which
@@ -105,28 +158,7 @@ private:
             func.set_(reg_T0, 0x01B7);
             func.sh(reg_T0, reg_AT, 0xD456);
 
-            /*
-             * In the vanilla game, only a handful of items can be found in shops and be taken inside Alundra's hands.
-             * Developers only set valid physics properties to item objects that could be encountered inside shops,
-             * not to every possible item object. This means, if we want any item to work inside shops, we need to copy
-             * the "good" physics properties from a well-handled object to all other item objects. This code chunk does this.
-             */
-            func.set_(reg_T5, 0x800FEFB4);
-            func.set_(reg_T6, 0x800FEFFC);
-            func.set_(reg_AT, 0x800CC004);
-            func.set_(reg_T4, 0x800CC168);
-            func.label_("entity_type_def_loop");
-            {
-                func.lw(reg_T3, reg_AT);
-                func.beq_(reg_T3, 0xFFFFFFFF, "next_iter");
-                {
-                    func.sw(reg_T5, reg_T3);
-                    func.sw(reg_T6, reg_T3, 4);
-                }
-                func.label_("next_iter");
-                func.addiu(reg_AT, 0x4);
-                func.blt_(reg_AT, reg_T4, "entity_type_def_loop");
-            }
+            add_shop_throw_physics(func);
 
             // Jump back to calling procedure
             func.j(return_addr);
